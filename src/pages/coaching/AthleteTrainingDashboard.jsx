@@ -126,7 +126,7 @@ export default function AthleteTrainingDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pb-24">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pb-24">
       {/* Top Banner & Header */}
       <div className="bg-[#141B24] border-b border-[#293442]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

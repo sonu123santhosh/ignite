@@ -130,7 +130,7 @@ export default function TournamentOrganiserDashboard({
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pb-24">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pb-24">
       {toast && (
         <Toast
           title={toast.title}
@@ -145,13 +145,13 @@ export default function TournamentOrganiserDashboard({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link
             to="/tournaments"
-            className="text-xs font-semibold text-[#94A3B8] hover:text-[#B6FF3B]"
+            className="text-xs font-semibold text-[#94A3B8] hover:text-[#E5C378]"
           >
             &larr; Back to Public Tournaments
           </Link>
           <Link
             to="/tournaments/organiser/create"
-            className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#0B0F14] font-bold text-xs flex items-center gap-1.5 transition-colors shadow-md"
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C59B27] hover:brightness-110 text-[#0F141C] font-bold text-xs flex items-center gap-1.5 transition-all shadow-[0_4px_16px_rgba(212,175,55,0.25)]"
           >
             <Plus className="w-4 h-4" />
             <span>+ Create Tournament</span>
@@ -162,7 +162,7 @@ export default function TournamentOrganiserDashboard({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
         {/* Title & Introduction */}
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/35 text-[#E5C378] text-xs font-bold uppercase tracking-wider mb-2">
             <Trophy className="w-3.5 h-3.5" />
             <span>Organiser Operations Suite</span>
           </div>
@@ -190,7 +190,7 @@ export default function TournamentOrganiserDashboard({
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#94A3B8] block">
               Active Events
             </span>
-            <div className="font-['Barlow_Condensed'] text-3xl font-black text-[#B6FF3B]">
+            <div className="font-['Barlow_Condensed'] text-3xl font-black text-[#E5C378]">
               {activeTournamentsCount}
             </div>
             <span className="text-[10px] text-slate-500">Live or Ongoing</span>
@@ -210,7 +210,7 @@ export default function TournamentOrganiserDashboard({
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#94A3B8] block">
               Approved
             </span>
-            <div className="font-['Barlow_Condensed'] text-3xl font-black text-[#00D4FF]">
+            <div className="font-['Barlow_Condensed'] text-3xl font-black text-sky-300">
               {approvedParticipantsCount}
             </div>
             <span className="text-[10px] text-slate-500">Athletes / Squads</span>
@@ -251,7 +251,7 @@ export default function TournamentOrganiserDashboard({
 
             <Link
               to="/tournaments/organiser/create"
-              className="px-4 py-2 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider hover:bg-[#a3ee28] self-start sm:self-auto"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] font-bold text-xs uppercase tracking-wider hover:brightness-110 shadow-sm self-start sm:self-auto transition-all"
             >
               + Create Tournament
             </Link>
@@ -280,7 +280,7 @@ export default function TournamentOrganiserDashboard({
                       <td className="py-3.5 px-4 font-semibold text-white">
                         <Link
                           to={`/tournaments/organiser/${t.id}`}
-                          className="hover:text-[#B6FF3B] transition-colors font-bold block"
+                          className="hover:text-[#E5C378] transition-colors font-bold block"
                         >
                           {t.name}
                         </Link>
@@ -306,7 +306,7 @@ export default function TournamentOrganiserDashboard({
                           {/* Manage Link */}
                           <Link
                             to={`/tournaments/organiser/${t.id}`}
-                            className="px-2.5 py-1 text-xs font-bold bg-[#1B2530] text-[#00D4FF] border border-[#00D4FF]/30 hover:bg-[#00D4FF] hover:text-[#0B0F14] rounded-lg transition-colors"
+                            className="px-2.5 py-1 text-xs font-bold bg-[#1B2530] text-sky-300 border border-sky-500/30 hover:bg-sky-500/20 rounded-lg transition-colors"
                           >
                             Manage
                           </Link>
@@ -316,7 +316,7 @@ export default function TournamentOrganiserDashboard({
                             <button
                               type="button"
                               onClick={() => handlePublishTournament(t)}
-                              className="px-2.5 py-1 text-xs font-bold bg-[#B6FF3B] text-[#0B0F14] rounded-lg hover:bg-[#a3ee28] cursor-pointer"
+                              className="px-2.5 py-1 text-xs font-bold bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] rounded-lg hover:brightness-110 cursor-pointer shadow-sm"
                             >
                               Publish
                             </button>

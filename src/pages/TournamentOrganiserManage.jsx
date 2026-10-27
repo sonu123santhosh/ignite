@@ -70,7 +70,7 @@ export default function TournamentOrganiserManage({
         <h2 className="font-['Barlow_Condensed'] text-3xl font-bold uppercase text-white mb-2">
           Tournament Not Found
         </h2>
-        <Link to="/tournaments/organiser" className="text-xs font-bold text-[#B6FF3B]">
+        <Link to="/tournaments/organiser" className="text-xs font-bold text-[#E5C378] hover:underline">
           Return to Organiser Dashboard
         </Link>
       </div>
@@ -399,7 +399,7 @@ export default function TournamentOrganiserManage({
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pb-24">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pb-24">
       {toast && (
         <Toast
           title={toast.title}
@@ -414,7 +414,7 @@ export default function TournamentOrganiserManage({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link
             to="/tournaments/organiser"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-[#B6FF3B]"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-[#E5C378]"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Organiser Dashboard</span>
@@ -463,7 +463,7 @@ export default function TournamentOrganiserManage({
             <div className="flex items-center gap-3">
               <div className="p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-center min-w-[100px]">
                 <span className="text-[10px] text-[#94A3B8] uppercase block font-bold">Approved</span>
-                <span className="font-['Barlow_Condensed'] text-2xl font-black text-[#B6FF3B]">
+                <span className="font-['Barlow_Condensed'] text-2xl font-black text-[#E5C378]">
                   {approvedEntrants.length} / {tournament.capacity}
                 </span>
               </div>
@@ -489,7 +489,7 @@ export default function TournamentOrganiserManage({
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer whitespace-nowrap ${
                   activeTab === tab.id
-                    ? 'bg-[#1B2530] text-[#B6FF3B] border border-[#293442] shadow-sm'
+                    ? 'bg-[#1B2530] text-[#E5C378] border border-[#D4AF37]/40 shadow-sm'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -516,7 +516,7 @@ export default function TournamentOrganiserManage({
                     onClick={() => setRegFilter(st)}
                     className={`px-3 py-1.5 rounded-lg font-semibold transition-colors cursor-pointer ${
                       regFilter === st
-                        ? 'bg-[#B6FF3B] text-[#0B0F14]'
+                        ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] shadow-sm'
                         : 'bg-[#1B2530] text-slate-400 hover:text-white'
                     }`}
                   >
@@ -548,7 +548,7 @@ export default function TournamentOrganiserManage({
 
                     return (
                       <tr key={reg.id} className="hover:bg-[#1B2530]/40 transition-colors">
-                        <td className="py-3 px-3 font-mono font-bold text-[#B6FF3B]">
+                        <td className="py-3 px-3 font-mono font-bold text-[#E5C378]">
                           {reg.id}
                         </td>
                         <td className="py-3 px-3">
@@ -574,7 +574,7 @@ export default function TournamentOrganiserManage({
                                     disabled={!isOwnerOrganiser}
                                     checked={Boolean(isChecked)}
                                     onChange={() => handleToggleDocVerified(reg.id, docName)}
-                                    className="w-3.5 h-3.5 rounded accent-[#B6FF3B] cursor-pointer"
+                                    className="w-3.5 h-3.5 rounded accent-[#D4AF37] cursor-pointer"
                                   />
                                   <span className={isChecked ? 'text-emerald-400 font-semibold' : ''}>
                                     {docName}
@@ -602,7 +602,7 @@ export default function TournamentOrganiserManage({
                                 <button
                                   type="button"
                                   onClick={() => setSelectedRegForApprove(reg)}
-                                  className="px-2.5 py-1 text-xs font-bold bg-[#B6FF3B] text-[#0B0F14] rounded-lg hover:bg-[#a3ee28] cursor-pointer"
+                                  className="px-2.5 py-1 text-xs font-bold bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] rounded-lg hover:brightness-110 cursor-pointer shadow-sm"
                                 >
                                   Approve
                                 </button>
@@ -652,7 +652,7 @@ export default function TournamentOrganiserManage({
                 <button
                   type="button"
                   onClick={handleGenerateFixtures}
-                  className="px-4 py-2.5 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider hover:bg-[#a3ee28] flex items-center gap-1.5 cursor-pointer shadow-md"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] font-bold text-xs uppercase tracking-wider hover:brightness-110 flex items-center gap-1.5 cursor-pointer shadow-md transition-all"
                 >
                   <RefreshCw className="w-4 h-4" />
                   <span>Generate / Redraw Fixtures</span>
@@ -795,7 +795,7 @@ export default function TournamentOrganiserManage({
                 <h3 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white">
                   Application Details
                 </h3>
-                <span className="text-xs text-[#B6FF3B] font-mono">{viewingAppDetails.id}</span>
+                <span className="text-xs text-[#E5C378] font-mono">{viewingAppDetails.id}</span>
               </div>
               <button
                 type="button"

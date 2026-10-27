@@ -32,7 +32,7 @@ export default function TournamentFilterPanel({
       {/* Header */}
       <div className="flex items-center justify-between pb-3 border-b border-[#293442]">
         <div className="flex items-center gap-2">
-          <Filter className="w-4 h-4 text-[#B6FF3B]" />
+          <Filter className="w-4 h-4 text-[#E5C378]" />
           <h3 className="font-['Barlow_Condensed'] text-xl font-bold uppercase text-white tracking-wide">
             Filters &amp; Refine
           </h3>
@@ -40,7 +40,7 @@ export default function TournamentFilterPanel({
         <button
           type="button"
           onClick={onResetFilters}
-          className="text-xs text-[#94A3B8] hover:text-[#B6FF3B] flex items-center gap-1 cursor-pointer transition-colors"
+          className="text-xs text-[#94A3B8] hover:text-[#E5C378] flex items-center gap-1 cursor-pointer transition-colors"
         >
           <RotateCcw className="w-3 h-3" />
           <span>Reset all</span>
@@ -62,7 +62,7 @@ export default function TournamentFilterPanel({
                 onClick={() => onFilterChange('sport', sp.id)}
                 className={`py-1.5 px-2.5 rounded-lg text-xs font-semibold text-left transition-all cursor-pointer truncate ${
                   isSelected
-                    ? 'bg-[#B6FF3B] text-[#0B0F14] font-bold shadow-sm'
+                    ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] font-bold shadow-sm'
                     : 'bg-[#1B2530] text-slate-300 hover:text-white hover:bg-slate-700'
                 }`}
               >
@@ -86,7 +86,7 @@ export default function TournamentFilterPanel({
             value={filters.city || ''}
             onChange={(e) => onFilterChange('city', e.target.value)}
             placeholder="e.g. Pune, Deccan, Mumbai..."
-            className="w-full pl-9 pr-3 py-2 bg-[#1B2530] border border-[#293442] focus:border-[#B6FF3B] rounded-xl text-xs text-white placeholder-slate-500 outline-none transition-colors"
+            className="w-full pl-9 pr-3 py-2 bg-[#1B2530] border border-[#293442] focus:border-[#D4AF37] rounded-xl text-xs text-white placeholder-slate-500 outline-none transition-colors"
           />
         </div>
       </div>
@@ -108,7 +108,7 @@ export default function TournamentFilterPanel({
               onClick={() => onFilterChange('participationType', item.id)}
               className={`py-1.5 px-2 rounded-lg text-xs font-semibold text-center transition-all cursor-pointer ${
                 (filters.participationType || 'all') === item.id
-                  ? 'bg-[#00D4FF] text-[#0B0F14] font-bold'
+                  ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] font-bold'
                   : 'bg-[#1B2530] text-slate-300 hover:text-white'
               }`}
             >
@@ -124,7 +124,7 @@ export default function TournamentFilterPanel({
           <label htmlFor="max-fee-range" className="font-bold uppercase tracking-wider text-[#94A3B8]">
             Max Entry Fee
           </label>
-          <span className="font-bold text-[#B6FF3B]">
+          <span className="font-bold text-[#E5C378]">
             {filters.maxFee ? `₹${Number(filters.maxFee).toLocaleString('en-IN')}` : 'Any'}
           </span>
         </div>
@@ -136,7 +136,7 @@ export default function TournamentFilterPanel({
           step="250"
           value={filters.maxFee || 5000}
           onChange={(e) => onFilterChange('maxFee', e.target.value === '5000' ? '' : e.target.value)}
-          className="w-full accent-[#B6FF3B] cursor-pointer"
+          className="w-full accent-[#D4AF37] cursor-pointer"
         />
         <div className="flex items-center justify-between text-[10px] text-slate-500">
           <span>₹0</span>
@@ -150,7 +150,7 @@ export default function TournamentFilterPanel({
             type="checkbox"
             checked={Boolean(filters.freeOnly)}
             onChange={(e) => onFilterChange('freeOnly', e.target.checked)}
-            className="w-4 h-4 rounded accent-[#B6FF3B] cursor-pointer"
+            className="w-4 h-4 rounded accent-[#D4AF37] cursor-pointer"
           />
           <span>Show Free Entry tournaments only</span>
         </label>
@@ -174,7 +174,7 @@ export default function TournamentFilterPanel({
               onClick={() => onFilterChange('minPrize', p.id)}
               className={`py-1.5 px-2.5 rounded-lg text-xs font-semibold text-center transition-all cursor-pointer ${
                 (filters.minPrize || '') === p.id
-                  ? 'bg-amber-400 text-[#0B0F14] font-bold'
+                  ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] font-bold shadow-sm'
                   : 'bg-[#1B2530] text-slate-300 hover:text-white'
               }`}
             >
@@ -191,7 +191,7 @@ export default function TournamentFilterPanel({
             type="checkbox"
             checked={Boolean(filters.collegeOnly)}
             onChange={(e) => onFilterChange('collegeOnly', e.target.checked)}
-            className="w-4 h-4 rounded accent-[#B6FF3B] cursor-pointer"
+            className="w-4 h-4 rounded accent-[#D4AF37] cursor-pointer"
           />
           <span className="font-medium text-white">College-Only tournaments</span>
         </label>
@@ -210,13 +210,13 @@ export default function TournamentFilterPanel({
               onClick={() => onFilterChange('status', st.id)}
               className={`w-full py-1.5 px-3 rounded-lg text-xs text-left transition-all cursor-pointer flex items-center justify-between ${
                 (filters.status || 'all') === st.id
-                  ? 'bg-[#1B2530] border border-[#B6FF3B] text-white font-bold'
+                  ? 'bg-[#1B2530] border border-[#D4AF37] text-[#E5C378] font-bold'
                   : 'bg-transparent text-slate-400 hover:text-white hover:bg-slate-800'
               }`}
             >
               <span>{st.label}</span>
               {(filters.status || 'all') === st.id && (
-                <Check className="w-3.5 h-3.5 text-[#B6FF3B]" />
+                <Check className="w-3.5 h-3.5 text-[#E5C378]" />
               )}
             </button>
           ))}
@@ -229,7 +229,7 @@ export default function TournamentFilterPanel({
     <>
       {/* Desktop Sticky Sidebar */}
       <aside className="hidden lg:block w-72 shrink-0">
-        <div className="sticky top-24 bg-[#141B24] border border-[#293442] rounded-2xl p-5 shadow-lg">
+        <div className="sticky top-24 bg-[#141B24]/90 border border-[#293442] rounded-2xl p-5 shadow-lg backdrop-blur-sm">
           {content}
         </div>
       </aside>
@@ -263,7 +263,7 @@ export default function TournamentFilterPanel({
               <button
                 type="button"
                 onClick={onCloseMobile}
-                className="w-full py-3 bg-[#B6FF3B] text-[#0B0F14] font-bold text-sm rounded-xl hover:bg-[#a3ee28] cursor-pointer"
+                className="w-full py-3 bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] font-bold text-sm rounded-xl hover:brightness-110 shadow-md cursor-pointer"
               >
                 Apply Filters ({totalResults} Results)
               </button>

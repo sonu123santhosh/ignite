@@ -38,9 +38,9 @@ export default function StatusBadge({ type = 'tournament', status, derived = fal
       case 'Registration Open':
         return (
           <span
-            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#B6FF3B]/15 text-[#B6FF3B] border border-[#B6FF3B]/40 ${className}`}
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-300 border border-emerald-500/35 ${className}`}
           >
-            <span className="w-2 h-2 rounded-full bg-[#B6FF3B] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span>Registration Open</span>
           </span>
         );
@@ -56,9 +56,9 @@ export default function StatusBadge({ type = 'tournament', status, derived = fal
       case 'Ongoing':
         return (
           <span
-            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#00D4FF]/15 text-[#00D4FF] border border-[#00D4FF]/40 ${className}`}
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-500/15 text-sky-300 border border-sky-500/35 ${className}`}
           >
-            <span className="w-2 h-2 rounded-full bg-[#00D4FF]" />
+            <span className="w-2 h-2 rounded-full bg-sky-400" />
             <span>Live / Ongoing</span>
           </span>
         );
@@ -121,7 +121,7 @@ export default function StatusBadge({ type = 'tournament', status, derived = fal
       case 'Submitted':
         return (
           <span
-            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#00D4FF]/15 text-[#00D4FF] border border-[#00D4FF]/40 ${className}`}
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-500/15 text-sky-300 border border-sky-500/35 ${className}`}
           >
             <Clock className="w-3.5 h-3.5" />
             <span>Submitted</span>

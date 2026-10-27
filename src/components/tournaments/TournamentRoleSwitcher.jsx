@@ -23,7 +23,7 @@ export default function TournamentRoleSwitcher({
             aria-pressed={currentRole === 'player'}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               currentRole === 'player'
-                ? 'bg-[#B6FF3B] text-[#0B0F14] shadow-sm'
+                ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] shadow-sm'
                 : 'text-[#94A3B8] hover:text-[#F5F7FA]'
             }`}
           >
@@ -37,7 +37,7 @@ export default function TournamentRoleSwitcher({
             aria-pressed={currentRole === 'captain'}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               currentRole === 'captain'
-                ? 'bg-[#00D4FF] text-[#0B0F14] shadow-sm'
+                ? 'bg-sky-600 text-white shadow-sm'
                 : 'text-[#94A3B8] hover:text-[#F5F7FA]'
             }`}
           >
@@ -51,7 +51,7 @@ export default function TournamentRoleSwitcher({
             aria-pressed={currentRole === 'organiser'}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               currentRole === 'organiser'
-                ? 'bg-amber-400 text-[#0B0F14] shadow-sm'
+                ? 'bg-amber-500 text-white shadow-sm'
                 : 'text-[#94A3B8] hover:text-[#F5F7FA]'
             }`}
           >
@@ -68,10 +68,10 @@ export default function TournamentRoleSwitcher({
           <button
             type="button"
             onClick={onOpenDemoTools}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#1B2530] text-[#F5F7FA] hover:text-white border border-[#293442] hover:border-[#B6FF3B]/50 rounded-xl transition-all cursor-pointer shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#1B2530] text-[#F5F7FA] hover:text-white border border-[#293442] hover:border-[#D4AF37]/50 rounded-xl transition-all cursor-pointer shadow-sm"
             title="Open Demo tools (switch personas, test collisions)"
           >
-            <Sliders className="w-3.5 h-3.5 text-[#B6FF3B]" />
+            <Sliders className="w-3.5 h-3.5 text-[#E5C378]" />
             <span className="hidden sm:inline">Demo Tools</span>
             <span className="sm:hidden">Tools</span>
           </button>

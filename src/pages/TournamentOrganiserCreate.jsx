@@ -214,7 +214,7 @@ export default function TournamentOrganiserCreate({
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pb-24">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pb-24">
       {/* Header bar */}
       <div className="bg-[#141B24] border-b border-[#293442] py-4">
         <div className="max-w-4xl mx-auto px-4 flex items-center justify-between">
@@ -240,7 +240,7 @@ export default function TournamentOrganiserCreate({
                 <div
                   className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs ${
                     currentStep > st.num
-                      ? 'bg-[#B6FF3B] text-[#0B0F14]'
+                      ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C]'
                       : currentStep === st.num
                       ? 'bg-amber-400 text-[#0B0F14] ring-4 ring-amber-400/20'
                       : 'bg-[#1B2530] text-slate-500 border border-[#293442]'
@@ -285,7 +285,7 @@ export default function TournamentOrganiserCreate({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Pune Monsoon Football Championship"
-                  className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-sm text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-sm text-white focus:border-[#D4AF37] outline-none"
                 />
               </div>
 
@@ -297,7 +297,7 @@ export default function TournamentOrganiserCreate({
                   <select
                     value={sport}
                     onChange={(e) => setSport(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none cursor-pointer"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none cursor-pointer"
                   >
                     <option value="Football">Football</option>
                     <option value="Cricket">Cricket</option>
@@ -315,7 +315,7 @@ export default function TournamentOrganiserCreate({
                   <select
                     value={participationType}
                     onChange={(e) => setParticipationType(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none cursor-pointer"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none cursor-pointer"
                   >
                     <option value="team">Team / Squad Only</option>
                     <option value="individual">Solo / Individual Only</option>
@@ -333,7 +333,7 @@ export default function TournamentOrganiserCreate({
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Describe your competition, atmosphere, and target participants..."
-                  className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                 />
               </div>
             </div>
@@ -357,7 +357,7 @@ export default function TournamentOrganiserCreate({
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
                 <div>
@@ -369,7 +369,7 @@ export default function TournamentOrganiserCreate({
                     value={venue}
                     onChange={(e) => setVenue(e.target.value)}
                     placeholder="e.g. Shivaji Park Stadium Grounds"
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
               </div>
@@ -383,7 +383,7 @@ export default function TournamentOrganiserCreate({
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   placeholder="Road, locality, landmark, pincode"
-                  className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                 />
               </div>
 
@@ -396,7 +396,7 @@ export default function TournamentOrganiserCreate({
                     type="datetime-local"
                     value={registrationOpens}
                     onChange={(e) => setRegistrationOpens(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
                 <div>
@@ -407,7 +407,7 @@ export default function TournamentOrganiserCreate({
                     type="datetime-local"
                     value={registrationDeadline}
                     onChange={(e) => setRegistrationDeadline(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
               </div>
@@ -421,7 +421,7 @@ export default function TournamentOrganiserCreate({
                     type="datetime-local"
                     value={startDate}
                     onChange={(e) => setStartDate(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
                 <div>
@@ -432,7 +432,7 @@ export default function TournamentOrganiserCreate({
                     type="datetime-local"
                     value={endDate}
                     onChange={(e) => setEndDate(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
               </div>
@@ -456,7 +456,7 @@ export default function TournamentOrganiserCreate({
                   <select
                     value={format}
                     onChange={(e) => setFormat(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none cursor-pointer"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none cursor-pointer"
                   >
                     <option value="single_elimination">Single Elimination (Knockout)</option>
                     <option value="round_robin">Round Robin League</option>
@@ -475,7 +475,7 @@ export default function TournamentOrganiserCreate({
                     max="64"
                     value={capacity}
                     onChange={(e) => setCapacity(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
               </div>
@@ -537,7 +537,7 @@ export default function TournamentOrganiserCreate({
                   type="checkbox"
                   checked={isFree}
                   onChange={(e) => setIsFree(e.target.checked)}
-                  className="w-4 h-4 rounded accent-[#B6FF3B] cursor-pointer"
+                  className="w-4 h-4 rounded accent-[#D4AF37] cursor-pointer"
                 />
                 <span className="font-bold text-white">This is a Free Entry Tournament</span>
               </label>
@@ -553,7 +553,7 @@ export default function TournamentOrganiserCreate({
                       min="0"
                       value={entryFee}
                       onChange={(e) => setEntryFee(e.target.value)}
-                      className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                      className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                     />
                   </div>
                   <div>
@@ -563,7 +563,7 @@ export default function TournamentOrganiserCreate({
                     <select
                       value={feeUnit}
                       onChange={(e) => setFeeUnit(e.target.value)}
-                      className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none cursor-pointer"
+                      className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none cursor-pointer"
                     >
                       <option value="per team">Per Team Squad</option>
                       <option value="per player">Per Player / Competitor</option>
@@ -581,7 +581,7 @@ export default function TournamentOrganiserCreate({
                   min="0"
                   value={prizePool}
                   onChange={(e) => setPrizePool(e.target.value)}
-                  className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                 />
               </div>
 
@@ -668,7 +668,7 @@ export default function TournamentOrganiserCreate({
                   type="checkbox"
                   checked={collegeOnly}
                   onChange={(e) => setCollegeOnly(e.target.checked)}
-                  className="w-4 h-4 rounded accent-[#B6FF3B] cursor-pointer"
+                  className="w-4 h-4 rounded accent-[#D4AF37] cursor-pointer"
                 />
                 <span className="font-bold text-white">College-Only Tournament (Requires College Student ID verification)</span>
               </label>
@@ -722,7 +722,7 @@ export default function TournamentOrganiserCreate({
               </div>
               <div className="flex justify-between">
                 <span className="text-[#94A3B8]">Entry Fee:</span>
-                <span className="font-bold text-[#B6FF3B]">{isFree ? 'FREE' : `₹${entryFee} ${feeUnit}`}</span>
+                <span className="font-bold text-[#E5C378]">{isFree ? 'FREE' : `₹${entryFee} ${feeUnit}`}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#94A3B8]">Prize Pool:</span>
@@ -768,7 +768,7 @@ export default function TournamentOrganiserCreate({
               <button
                 type="button"
                 onClick={handleNext}
-                className="px-6 py-2.5 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider hover:bg-[#a3ee28] flex items-center gap-1.5"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] font-bold text-xs uppercase tracking-wider hover:brightness-110 flex items-center gap-1.5 shadow-sm transition-all"
               >
                 <span>Continue</span>
                 <ArrowRight className="w-4 h-4" />

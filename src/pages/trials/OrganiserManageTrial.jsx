@@ -35,7 +35,7 @@ export default function OrganiserManageTrial() {
 
   if (!trial) {
     return (
-      <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pt-28 pb-20 px-4 text-center">
+      <div className="min-h-screen bg-transparent text-[#F5F7FA] pt-28 pb-20 px-4 text-center">
         <h2 className="text-xl font-bold text-white">Trial not found</h2>
         <Link to="/trials/organiser" className="text-[#00D4FF] underline text-sm mt-4 inline-block">
           Back to Dashboard
@@ -108,7 +108,7 @@ export default function OrganiserManageTrial() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pt-24 pb-24 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pt-24 pb-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Role Switcher */}
         <TrialsRoleSwitcher />

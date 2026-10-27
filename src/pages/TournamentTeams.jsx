@@ -207,7 +207,7 @@ export default function TournamentTeams({
   );
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pb-24">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pb-24">
       {toast && (
         <Toast
           title={toast.title}
@@ -222,7 +222,7 @@ export default function TournamentTeams({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link
             to="/tournaments"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-[#B6FF3B]"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-[#E5C378]"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Tournaments</span>
@@ -230,7 +230,7 @@ export default function TournamentTeams({
           <button
             type="button"
             onClick={() => setIsNewTeamModalOpen(true)}
-            className="px-3.5 py-1.5 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs hover:bg-[#a3ee28] transition-colors flex items-center gap-1.5 cursor-pointer shadow-sm"
+            className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] font-bold text-xs hover:brightness-110 transition-all flex items-center gap-1.5 cursor-pointer shadow-[0_4px_16px_rgba(212,175,55,0.25)]"
           >
             <Plus className="w-4 h-4" />
             <span>Create New Squad</span>
@@ -259,11 +259,11 @@ export default function TournamentTeams({
                 onClick={() => setActiveTeamId(t.id)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold shrink-0 transition-all cursor-pointer ${
                   isSelected
-                    ? 'bg-[#141B24] text-[#B6FF3B] border border-[#B6FF3B]/50 shadow-md'
+                    ? 'bg-[#141B24] text-[#E5C378] border border-[#D4AF37]/50 shadow-md'
                     : 'bg-[#1B2530] text-slate-400 hover:text-white border border-[#293442]'
                 }`}
               >
-                <div className="w-6 h-6 rounded-md bg-[#0B0F14] text-[#B6FF3B] flex items-center justify-center font-black text-[10px]">
+                <div className="w-6 h-6 rounded-md bg-[#0B0F14] text-[#E5C378] flex items-center justify-center font-black text-[10px]">
                   {t.logoInitials}
                 </div>
                 <span>{t.name}</span>
@@ -292,7 +292,7 @@ export default function TournamentTeams({
                     <button
                       type="button"
                       onClick={() => setIsAddMemberModalOpen(true)}
-                      className="px-3.5 py-1.5 rounded-xl bg-[#1B2530] hover:bg-slate-700 text-[#B6FF3B] font-bold text-xs border border-[#293442] flex items-center gap-1.5 cursor-pointer self-start sm:self-auto"
+                      className="px-3.5 py-1.5 rounded-xl bg-[#1B2530] hover:bg-[#232f3d] text-[#E5C378] font-bold text-xs border border-[#D4AF37]/35 flex items-center gap-1.5 cursor-pointer self-start sm:self-auto transition-colors"
                     >
                       <UserPlus className="w-3.5 h-3.5" />
                       <span>Invite Teammate</span>
@@ -324,9 +324,9 @@ export default function TournamentTeams({
                             <span
                               className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${
                                 m.role === 'Captain'
-                                  ? 'bg-[#B6FF3B]/10 text-[#B6FF3B] border border-[#B6FF3B]/30'
+                                  ? 'bg-[#D4AF37]/15 text-[#E5C378] border border-[#D4AF37]/35'
                                   : m.role === 'Vice-captain'
-                                  ? 'bg-[#00D4FF]/10 text-[#00D4FF] border border-[#00D4FF]/30'
+                                  ? 'bg-sky-500/10 text-sky-300 border border-sky-500/30'
                                   : 'bg-slate-800 text-slate-300'
                               }`}
                             >
@@ -352,7 +352,7 @@ export default function TournamentTeams({
                                   <button
                                     type="button"
                                     onClick={() => handleQuickAcceptInvite(m.id)}
-                                    className="px-2 py-1 text-[11px] font-semibold bg-[#1B2530] text-[#B6FF3B] hover:bg-[#B6FF3B] hover:text-[#0B0F14] rounded cursor-pointer"
+                                    className="px-2.5 py-1 text-[11px] font-semibold bg-[#1B2530] text-[#E5C378] hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#C59B27] hover:text-[#0F141C] border border-[#D4AF37]/30 rounded-lg cursor-pointer transition-all"
                                     title="Simulate teammate accepting invite"
                                   >
                                     Accept (Demo)
@@ -398,7 +398,7 @@ export default function TournamentTeams({
                           <span className="font-bold text-white block">{p.tournamentName}</span>
                           <span className="text-[11px] text-slate-400">Ref: {p.id}</span>
                         </div>
-                        <span className="font-semibold text-[#00D4FF] bg-[#00D4FF]/10 px-2.5 py-1 rounded-full border border-[#00D4FF]/30">
+                        <span className="font-semibold text-sky-300 bg-sky-500/10 px-2.5 py-1 rounded-full border border-sky-500/30">
                           {p.registrationStatus}
                         </span>
                       </div>
@@ -413,7 +413,7 @@ export default function TournamentTeams({
               {/* Copyable Invite Link Card */}
               <div className="bg-[#141B24] border border-[#293442] p-5 rounded-2xl space-y-3 shadow-lg">
                 <div className="flex items-center gap-2">
-                  <UserPlus className="w-4 h-4 text-[#B6FF3B]" />
+                  <UserPlus className="w-4 h-4 text-[#E5C378]" />
                   <h4 className="font-['Barlow_Condensed'] text-lg font-bold uppercase text-white">
                     Share Squad Invite Link
                   </h4>
@@ -435,7 +435,7 @@ export default function TournamentTeams({
                     className="p-2 rounded-xl bg-[#1B2530] border border-[#293442] text-slate-300 hover:text-white cursor-pointer"
                     aria-label="Copy squad link"
                   >
-                    {copiedLink ? <Check className="w-4 h-4 text-[#B6FF3B]" /> : <Copy className="w-4 h-4" />}
+                    {copiedLink ? <Check className="w-4 h-4 text-[#E5C378]" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
               </div>
@@ -454,7 +454,7 @@ export default function TournamentTeams({
 
                 <Link
                   to="/tournaments"
-                  className="w-full py-2.5 px-4 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider text-center block hover:bg-[#a3ee28] transition-colors"
+                  className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#E5C378] to-[#C59B27] text-[#0F141C] font-bold text-xs uppercase tracking-wider text-center block hover:brightness-110 transition-all shadow-[0_4px_16px_rgba(212,175,55,0.25)]"
                 >
                   Find Matching Tournaments
                 </Link>
@@ -486,7 +486,7 @@ export default function TournamentTeams({
                   value={newTeamName}
                   onChange={(e) => setNewTeamName(e.target.value)}
                   placeholder="e.g. Pune Titans FC"
-                  className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                 />
               </div>
 
@@ -498,7 +498,7 @@ export default function TournamentTeams({
                   <select
                     value={newTeamSport}
                     onChange={(e) => setNewTeamSport(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none cursor-pointer"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none cursor-pointer"
                   >
                     <option value="Football">Football</option>
                     <option value="Cricket">Cricket</option>
@@ -516,7 +516,7 @@ export default function TournamentTeams({
                     type="text"
                     value={newTeamCity}
                     onChange={(e) => setNewTeamCity(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
               </div>
@@ -530,7 +530,7 @@ export default function TournamentTeams({
                   value={newTeamCollege}
                   onChange={(e) => setNewTeamCollege(e.target.value)}
                   placeholder="e.g. Fergusson College / Independent Club"
-                  className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                 />
               </div>
 
@@ -544,7 +544,7 @@ export default function TournamentTeams({
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 text-xs font-bold bg-[#B6FF3B] text-[#0B0F14] rounded-xl hover:bg-[#a3ee28]"
+                  className="px-5 py-2 text-xs font-bold bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] rounded-xl hover:brightness-110 shadow-sm cursor-pointer"
                 >
                   Create Squad
                 </button>
@@ -576,7 +576,7 @@ export default function TournamentTeams({
                   value={newMemberName}
                   onChange={(e) => setNewMemberName(e.target.value)}
                   placeholder="e.g. Siddharth Roy"
-                  className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                 />
               </div>
 
@@ -590,7 +590,7 @@ export default function TournamentTeams({
                     value={newMemberPosition}
                     onChange={(e) => setNewMemberPosition(e.target.value)}
                     placeholder="e.g. Defender"
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
                 <div>
@@ -600,7 +600,7 @@ export default function TournamentTeams({
                   <select
                     value={newMemberRole}
                     onChange={(e) => setNewMemberRole(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none cursor-pointer"
+                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none cursor-pointer"
                   >
                     <option value="Player">Player</option>
                     <option value="Vice-captain">Vice-captain</option>
@@ -619,7 +619,7 @@ export default function TournamentTeams({
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 text-xs font-bold bg-[#B6FF3B] text-[#0B0F14] rounded-xl hover:bg-[#a3ee28]"
+                  className="px-5 py-2 text-xs font-bold bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] rounded-xl hover:brightness-110 shadow-sm cursor-pointer"
                 >
                   Send Invitation
                 </button>

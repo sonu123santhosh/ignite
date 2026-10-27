@@ -47,7 +47,7 @@ export default function TrialDetails() {
 
   if (!trial) {
     return (
-      <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pt-28 pb-20 px-4 text-center">
+      <div className="min-h-screen bg-transparent text-[#F5F7FA] pt-28 pb-20 px-4 text-center">
         <div className="max-w-md mx-auto bg-[#141B24] border border-[#293442] p-8 rounded-3xl space-y-4">
           <h2 className="text-xl font-bold text-white">Sports Trial Not Found</h2>
           <p className="text-xs text-[#94A3B8]">The requested trial listing could not be located.</p>
@@ -74,7 +74,7 @@ export default function TrialDetails() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pt-24 pb-24 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pt-24 pb-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Role Switcher Demo Bar */}
         <TrialsRoleSwitcher />

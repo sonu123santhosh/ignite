@@ -122,7 +122,7 @@ export default function FilterPanel({
               onClick={() => onFilterChange('sport', s)}
               className={`px-3 py-1.5 rounded-lg font-medium transition-colors cursor-pointer border ${
                 filters.sport === s
-                  ? 'bg-[#B6FF3B] text-[#0B0F14] border-[#B6FF3B] font-bold'
+                  ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] border-[#D4AF37] font-bold shadow-sm'
                   : 'bg-[#0B0F14] text-[#94A3B8] border-[#293442] hover:text-[#F5F7FA] hover:border-[#94A3B8]'
               }`}
             >
@@ -141,7 +141,7 @@ export default function FilterPanel({
           id="filter-locality"
           value={filters.locality}
           onChange={(e) => onFilterChange('locality', e.target.value)}
-          className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#B6FF3B] cursor-pointer"
+          className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] cursor-pointer"
         >
           {localities.map((loc) => (
             <option key={loc} value={loc}>{loc}</option>
@@ -155,7 +155,7 @@ export default function FilterPanel({
           <label htmlFor="filter-distance" className="text-xs font-bold uppercase tracking-wider text-[#F5F7FA]">
             Max Distance
           </label>
-          <span className="text-[#B6FF3B] font-bold">
+          <span className="text-[#E5C378] font-bold">
             Up to {filters.maxDistance} km approx.
           </span>
         </div>
@@ -167,7 +167,7 @@ export default function FilterPanel({
               onClick={() => onFilterChange('maxDistance', km)}
               className={`flex-1 py-1.5 text-xs rounded-lg border font-semibold transition-colors cursor-pointer ${
                 filters.maxDistance === km
-                  ? 'bg-[#B6FF3B] text-[#0B0F14] border-[#B6FF3B]'
+                  ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] border-[#D4AF37] font-bold shadow-sm'
                   : 'bg-[#0B0F14] text-[#94A3B8] border-[#293442] hover:text-[#F5F7FA]'
               }`}
             >
@@ -186,7 +186,7 @@ export default function FilterPanel({
           id="filter-time"
           value={filters.preferredTime}
           onChange={(e) => onFilterChange('preferredTime', e.target.value)}
-          className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#B6FF3B] cursor-pointer"
+          className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] cursor-pointer"
         >
           {timeSlots.map((slot) => (
             <option key={slot.id} value={slot.id}>{slot.label}</option>
@@ -200,7 +200,7 @@ export default function FilterPanel({
           <label htmlFor="filter-price" className="text-xs font-bold uppercase tracking-wider text-[#F5F7FA]">
             Max Price / Hour
           </label>
-          <span className="text-[#B6FF3B] font-bold">
+          <span className="text-[#E5C378] font-bold">
             ₹{filters.priceRange}
           </span>
         </div>
@@ -212,7 +212,7 @@ export default function FilterPanel({
           step="50"
           value={filters.priceRange}
           onChange={(e) => onFilterChange('priceRange', Number(e.target.value))}
-          className="w-full h-2 bg-[#0B0F14] rounded-lg appearance-none cursor-pointer accent-[#B6FF3B]"
+          className="w-full h-2 bg-[#0B0F14] rounded-lg appearance-none cursor-pointer accent-[#D4AF37]"
         />
         <div className="flex justify-between text-[10px] text-[#94A3B8] mt-1">
           <span>₹300</span>
@@ -233,7 +233,7 @@ export default function FilterPanel({
               onClick={() => onFilterChange('minRating', rate)}
               className={`py-1.5 text-xs rounded-lg border font-semibold transition-colors cursor-pointer text-center ${
                 filters.minRating === rate
-                  ? 'bg-[#B6FF3B] text-[#0B0F14] border-[#B6FF3B]'
+                  ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] border-[#D4AF37] font-bold shadow-sm'
                   : 'bg-[#0B0F14] text-[#94A3B8] border-[#293442] hover:text-[#F5F7FA]'
               }`}
             >
@@ -260,7 +260,7 @@ export default function FilterPanel({
               onClick={() => onFilterChange('indoorOutdoor', env.id)}
               className={`py-1.5 text-xs rounded-lg border font-semibold transition-colors cursor-pointer text-center ${
                 filters.indoorOutdoor === env.id
-                  ? 'bg-[#B6FF3B] text-[#0B0F14] border-[#B6FF3B]'
+                  ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] border-[#D4AF37] font-bold shadow-sm'
                   : 'bg-[#0B0F14] text-[#94A3B8] border-[#293442] hover:text-[#F5F7FA]'
               }`}
             >
@@ -279,7 +279,7 @@ export default function FilterPanel({
           id="filter-surface"
           value={filters.selectedSurface}
           onChange={(e) => onFilterChange('selectedSurface', e.target.value)}
-          className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#B6FF3B] cursor-pointer"
+          className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] cursor-pointer"
         >
           {surfaces.map((s) => (
             <option key={s.id} value={s.id}>{s.label}</option>
@@ -304,7 +304,7 @@ export default function FilterPanel({
                   type="checkbox"
                   checked={isChecked}
                   onChange={() => handleAmenityToggle(amenity)}
-                  className="rounded border-[#293442] bg-[#0B0F14] text-[#B6FF3B] focus:ring-[#B6FF3B] cursor-pointer accent-[#B6FF3B]"
+                  className="rounded border-[#293442] bg-[#0B0F14] text-[#D4AF37] focus:ring-[#D4AF37] cursor-pointer accent-[#D4AF37]"
                 />
                 <span className={isChecked ? 'text-[#F5F7FA] font-medium' : 'text-[#94A3B8]'}>
                   {amenity}
@@ -322,8 +322,8 @@ export default function FilterPanel({
           <input
             type="checkbox"
             checked={filters.availableSlotsOnly}
-            onChange={(e) => onFilterChange('availableSlotsOnly', e.target.checked)}
-            className="w-4 h-4 rounded border-[#293442] bg-[#0B0F14] text-[#B6FF3B] focus:ring-[#B6FF3B] cursor-pointer accent-[#B6FF3B]"
+            onChange={(e) => onFilterChange('availableSlotsOnly', e.target.value)}
+            className="w-4 h-4 rounded border-[#293442] bg-[#0B0F14] text-[#D4AF37] focus:ring-[#D4AF37] cursor-pointer accent-[#D4AF37]"
           />
         </label>
       </div>
@@ -337,7 +337,7 @@ export default function FilterPanel({
         <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-5 sticky top-24 shadow-lg">
           <div className="flex items-center justify-between pb-4 border-b border-[#293442] mb-5">
             <div className="flex items-center gap-2">
-              <Filter className="w-4 h-4 text-[#B6FF3B]" />
+              <Filter className="w-4 h-4 text-[#E5C378]" />
               <h3 className="font-['Barlow_Condensed'] text-xl font-bold uppercase tracking-wide text-[#F5F7FA]">
                 Filters
               </h3>
@@ -346,7 +346,7 @@ export default function FilterPanel({
               <button
                 type="button"
                 onClick={onResetFilters}
-                className="text-xs text-[#B6FF3B] hover:underline flex items-center gap-1 cursor-pointer font-medium"
+                className="text-xs text-[#E5C378] hover:underline flex items-center gap-1 cursor-pointer font-medium"
               >
                 <RotateCcw className="w-3 h-3" />
                 Reset
@@ -369,7 +369,7 @@ export default function FilterPanel({
           >
             <div className="flex items-center justify-between pb-4 border-b border-[#293442] mb-5 sticky top-0 bg-[#141B24] z-10">
               <div className="flex items-center gap-2">
-                <Filter className="w-5 h-5 text-[#B6FF3B]" />
+                <Filter className="w-5 h-5 text-[#E5C378]" />
                 <h3 className="font-['Barlow_Condensed'] text-2xl font-black uppercase tracking-wide text-[#F5F7FA]">
                   Filter Grounds ({totalResults})
                 </h3>
@@ -386,10 +386,10 @@ export default function FilterPanel({
             {content}
 
             <div className="pt-6 border-t border-[#293442] flex gap-3 sticky bottom-0 bg-[#141B24] pb-2">
-              <Button variant="outline" size="md" onClick={onResetFilters} className="flex-1">
+              <Button variant="outline" size="md" onClick={onResetFilters} className="flex-1 hover:border-[#D4AF37] hover:text-[#E5C378]">
                 Clear All
               </Button>
-              <Button variant="primary" size="md" onClick={onCloseMobile} className="flex-1">
+              <Button variant="gold" size="md" onClick={onCloseMobile} className="flex-1">
                 Show Results
               </Button>
             </div>

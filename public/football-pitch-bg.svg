@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <!-- Grass texture filter -->
+    <filter id="turf-grain" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.1   0 0 0 0 0.4   0 0 0 0 0.15   0 0 0 0.14 0" />
+      <feBlend mode="multiply" in="SourceGraphic" result="blend" />
+    </filter>
+
+    <!-- Alternating vertical mowing stripe pattern -->
+    <pattern id="mowing-stripes" width="136.66" height="1080" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="68.33" height="1080" fill="#247f2b" />
+      <rect x="68.33" y="0" width="68.33" height="1080" fill="#2c8d33" />
+      <!-- Subtle fine stripe variation for natural turf look -->
+      <line x1="17" y1="0" x2="17" y2="1080" stroke="rgba(255,255,255,0.015)" stroke-width="34" />
+      <line x1="102" y1="0" x2="102" y2="1080" stroke="rgba(0,0,0,0.02)" stroke-width="34" />
+    </pattern>
+
+    <!-- Goal net grid pattern -->
+    <pattern id="net-grid" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 8 0 L 0 0 0 8" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="0.8" />
+    </pattern>
+
+    <!-- Subtle vignette for contrast and depth -->
+    <radialGradient id="field-vignette" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="70%" stop-color="#000000" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#051408" stop-opacity="0.45" />
+    </radialGradient>
+
+    <!-- Realistic painted field chalk line filter -->
+    <filter id="chalk-line" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" result="lineNoise" />
+      <feDisplacementMap in="SourceGraphic" in2="lineNoise" scale="1.2" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+
+  <!-- 1. Base Green Grass Turf -->
+  <rect width="1920" height="1080" fill="#25832c" />
+
+  <!-- 2. Vertical Mowing Stripes across the field -->
+  <rect width="1920" height="1080" fill="url(#mowing-stripes)" />
+
+  <!-- 3. Fine Organic Grass Texture Overlay -->
+  <rect width="1920" height="1080" filter="url(#turf-grain)" fill="#28892f" opacity="0.85" />
+
+  <!-- 4. Goal Nets (Extending outside the touchlines, as in reference) -->
+  <!-- Left Goal Net -->
+  <g>
+    <rect x="85" y="475" width="55" height="130" fill="url(#net-grid)" stroke="#e2f5e4" stroke-width="2.5" />
+    <rect x="85" y="475" width="55" height="130" fill="rgba(255,255,255,0.08)" />
+    <!-- Net support bars -->
+    <line x1="85" y1="475" x2="140" y2="495" stroke="#ffffff" stroke-width="1.8" opacity="0.7" />
+    <line x1="85" y1="605" x2="140" y2="585" stroke="#ffffff" stroke-width="1.8" opacity="0.7" />
+  </g>
+
+  <!-- Right Goal Net -->
+  <g>
+    <rect x="1780" y="475" width="55" height="130" fill="url(#net-grid)" stroke="#e2f5e4" stroke-width="2.5" />
+    <rect x="1780" y="475" width="55" height="130" fill="rgba(255,255,255,0.08)" />
+    <!-- Net support bars -->
+    <line x1="1835" y1="475" x2="1780" y2="495" stroke="#ffffff" stroke-width="1.8" opacity="0.7" />
+    <line x1="1835" y1="605" x2="1780" y2="585" stroke="#ffffff" stroke-width="1.8" opacity="0.7" />
+  </g>
+
+  <!-- 5. Field Markings Group (Painted White Lines) -->
+  <g stroke="#ffffff" stroke-linecap="square" filter="url(#chalk-line)">
+    <!-- Outer Margin Boundary with Rounded Corners (matching reference image) -->
+    <rect x="55" y="38" width="1810" height="1004" rx="24" fill="none" stroke-width="2.8" stroke-opacity="0.85" />
+
+    <!-- Main Playing Pitch Inner Rectangle -->
+    <rect x="140" y="90" width="1640" height="900" fill="none" stroke-width="3" stroke-opacity="0.9" />
+
+    <!-- Halfway Line -->
+    <line x1="960" y1="90" x2="960" y2="990" stroke-width="3" stroke-opacity="0.9" />
+
+    <!-- Centre Circle -->
+    <circle cx="960" cy="540" r="140" fill="none" stroke-width="3" stroke-opacity="0.9" />
+
+    <!-- Centre Spot -->
+    <circle cx="960" cy="540" r="5" fill="#ffffff" stroke="none" />
+
+    <!-- Left 18-Yard Penalty Area -->
+    <rect x="140" y="280" width="260" height="520" fill="none" stroke-width="3" stroke-opacity="0.9" />
+
+    <!-- Left 6-Yard Goal Area -->
+    <rect x="140" y="420" width="90" height="240" fill="none" stroke-width="3" stroke-opacity="0.9" />
+
+    <!-- Left Penalty Spot -->
+    <circle cx="310" cy="540" r="4.5" fill="#ffffff" stroke="none" />
+
+    <!-- Left Penalty Arc ("D") -->
+    <path d="M 400 432.8 A 140 140 0 0 1 400 647.2" fill="none" stroke-width="3" stroke-opacity="0.9" />
+
+    <!-- Left Corner Arcs -->
+    <path d="M 140 125 A 35 35 0 0 0 175 90" fill="none" stroke-width="3" stroke-opacity="0.9" />
+    <path d="M 140 955 A 35 35 0 0 1 175 990" fill="none" stroke-width="3" stroke-opacity="0.9" />
+
+    <!-- Right 18-Yard Penalty Area -->
+    <rect x="1520" y="280" width="260" height="520" fill="none" stroke-width="3" stroke-opacity="0.9" />
+
+    <!-- Right 6-Yard Goal Area -->
+    <rect x="1690" y="420" width="90" height="240" fill="none" stroke-width="3" stroke-opacity="0.9" />
+
+    <!-- Right Penalty Spot -->
+    <circle cx="1610" cy="540" r="4.5" fill="#ffffff" stroke="none" />
+
+    <!-- Right Penalty Arc ("D") -->
+    <path d="M 1520 432.8 A 140 140 0 0 0 1520 647.2" fill="none" stroke-width="3" stroke-opacity="0.9" />
+
+    <!-- Right Corner Arcs -->
+    <path d="M 1745 90 A 35 35 0 0 0 1780 125" fill="none" stroke-width="3" stroke-opacity="0.9" />
+    <path d="M 1745 990 A 35 35 0 0 1 1780 955" fill="none" stroke-width="3" stroke-opacity="0.9" />
+  </g>
+
+  <!-- 6. Vignette for depth, atmosphere and readability -->
+  <rect width="1920" height="1080" fill="url(#field-vignette)" pointer-events="none" />
+</svg>

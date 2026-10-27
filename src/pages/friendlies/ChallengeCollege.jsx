@@ -80,7 +80,7 @@ export default function ChallengeCollege() {
   // Non-captain guard
   if (role !== 'captain') {
     return (
-      <div className="min-h-screen bg-[#0B0F14] text-white py-16 px-4">
+      <div className="min-h-screen bg-transparent text-white py-16 px-4">
         <div className="max-w-lg mx-auto bg-[#151B23] border border-[#293442] rounded-2xl p-8 text-center space-y-4 shadow-2xl">
           <div className="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto">
             <Swords className="w-8 h-8" />
@@ -202,7 +202,7 @@ export default function ChallengeCollege() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#FFFFFF] pb-24">
+    <div className="min-h-screen bg-transparent text-[#FFFFFF] pb-24">
       {/* Top Bar */}
       <div className="bg-[#151B23] border-b border-[#293442] py-4">
         <div className="max-w-4xl mx-auto px-4 flex items-center justify-between">

@@ -76,7 +76,7 @@ export default function TournamentRegister({
         <h2 className="font-['Barlow_Condensed'] text-3xl font-bold uppercase text-white mb-2">
           Tournament Not Found
         </h2>
-        <Link to="/tournaments" className="text-xs font-bold text-[#B6FF3B] hover:underline">
+        <Link to="/tournaments" className="text-xs font-bold text-[#E5C378] hover:underline">
           Return to Tournaments
         </Link>
       </div>
@@ -246,13 +246,13 @@ export default function TournamentRegister({
   ];
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pb-24">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pb-24">
       {/* Header bar */}
       <div className="bg-[#141B24] border-b border-[#293442] py-4">
         <div className="max-w-4xl mx-auto px-4 flex items-center justify-between">
           <Link
             to={`/tournaments/${tournament.id}`}
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-[#B6FF3B]"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-[#E5C378]"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Cancel Registration</span>
@@ -279,9 +279,9 @@ export default function TournamentRegister({
                   <div
                     className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all ${
                       isPast
-                        ? 'bg-[#B6FF3B] text-[#0B0F14]'
+                        ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C]'
                         : isCurrent
-                        ? 'bg-[#00D4FF] text-[#0B0F14] ring-4 ring-[#00D4FF]/20 shadow-[0_0_15px_rgba(0,212,255,0.4)]'
+                        ? 'bg-gradient-to-r from-[#E5C378] to-[#D4AF37] text-[#0F141C] ring-4 ring-[#D4AF37]/20 shadow-[0_0_15px_rgba(212,175,55,0.35)]'
                         : 'bg-[#1B2530] text-slate-500 border border-[#293442]'
                     }`}
                   >
@@ -310,7 +310,7 @@ export default function TournamentRegister({
 
         {/* Step 1: Participation Type */}
         {currentStep === 1 && (
-          <div className="bg-[#141B24] border border-[#293442] p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
+          <div className="bg-[#141B24]/90 border border-[#293442] p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl backdrop-blur-sm">
             <div>
               <h2 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white tracking-wide">
                 1. Select Entry Participation Type
@@ -330,12 +330,12 @@ export default function TournamentRegister({
                   tournament.participationType === 'individual'
                     ? 'opacity-40 cursor-not-allowed bg-[#0B0F14] border-[#293442]'
                     : participationType === 'team'
-                    ? 'bg-[#B6FF3B]/10 border-[#B6FF3B] shadow-[0_0_20px_rgba(182,255,59,0.15)]'
+                    ? 'bg-[#D4AF37]/10 border-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.15)]'
                     : 'bg-[#1B2530] border-[#293442] hover:border-slate-500'
                 }`}
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 rounded-xl bg-[#0B0F14] text-[#B6FF3B]">
+                  <div className="p-2 rounded-xl bg-[#0B0F14] text-[#E5C378]">
                     <Users className="w-5 h-5" />
                   </div>
                   <h3 className="font-bold text-white text-base">Squad / Team</h3>
@@ -354,12 +354,12 @@ export default function TournamentRegister({
                   tournament.participationType === 'team'
                     ? 'opacity-40 cursor-not-allowed bg-[#0B0F14] border-[#293442]'
                     : participationType === 'individual'
-                    ? 'bg-[#00D4FF]/10 border-[#00D4FF] shadow-[0_0_20px_rgba(0,212,255,0.15)]'
+                    ? 'bg-[#D4AF37]/10 border-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.15)]'
                     : 'bg-[#1B2530] border-[#293442] hover:border-slate-500'
                 }`}
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 rounded-xl bg-[#0B0F14] text-[#00D4FF]">
+                  <div className="p-2 rounded-xl bg-[#0B0F14] text-[#E5C378]">
                     <User className="w-5 h-5" />
                   </div>
                   <h3 className="font-bold text-white text-base">Solo Competitor</h3>
@@ -412,13 +412,13 @@ export default function TournamentRegister({
                           onClick={() => setSelectedTeamId(team.id)}
                           className={`p-4 rounded-xl border text-left transition-all cursor-pointer ${
                             isSelected
-                              ? 'bg-[#B6FF3B]/10 border-[#B6FF3B] text-white shadow-sm'
+                              ? 'bg-[#D4AF37]/10 border-[#D4AF37] text-white shadow-sm'
                               : 'bg-[#1B2530] border-[#293442] text-slate-300'
                           }`}
                         >
                           <div className="flex items-center justify-between mb-1">
                             <span className="font-bold text-sm text-white">{team.name}</span>
-                            <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#0B0F14] text-[#B6FF3B]">
+                            <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#0B0F14] text-[#E5C378]">
                               {joinedCount} players
                             </span>
                           </div>
@@ -439,7 +439,7 @@ export default function TournamentRegister({
                     type="text"
                     value={playerName}
                     onChange={(e) => setPlayerName(e.target.value)}
-                    className="w-full px-3 py-2 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full px-3 py-2 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
 
@@ -451,7 +451,7 @@ export default function TournamentRegister({
                     type="text"
                     value={playerPhone}
                     onChange={(e) => setPlayerPhone(e.target.value)}
-                    className="w-full px-3 py-2 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full px-3 py-2 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
 
@@ -463,7 +463,7 @@ export default function TournamentRegister({
                     type="email"
                     value={playerEmail}
                     onChange={(e) => setPlayerEmail(e.target.value)}
-                    className="w-full px-3 py-2 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full px-3 py-2 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
 
@@ -475,7 +475,7 @@ export default function TournamentRegister({
                     type="number"
                     value={playerAge}
                     onChange={(e) => setPlayerAge(e.target.value)}
-                    className="w-full px-3 py-2 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full px-3 py-2 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                   />
                 </div>
 
@@ -489,7 +489,7 @@ export default function TournamentRegister({
                       value={playerCollege}
                       onChange={(e) => setPlayerCollege(e.target.value)}
                       placeholder="e.g. Pune University / Fergusson College"
-                      className="w-full px-3 py-2 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                      className="w-full px-3 py-2 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#D4AF37] outline-none"
                     />
                   </div>
                 )}
@@ -503,12 +503,12 @@ export default function TournamentRegister({
               </label>
               <div className="p-3 bg-[#1B2530] border border-[#293442] rounded-xl flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-[#B6FF3B]" />
+                  <FileText className="w-4 h-4 text-[#E5C378]" />
                   <span className="text-slate-300">
                     Required: {tournament.eligibility?.documents?.join(', ')}
                   </span>
                 </div>
-                <span className="text-[11px] text-[#00D4FF] font-semibold bg-[#00D4FF]/10 px-2 py-0.5 rounded">
+                <span className="text-[11px] text-sky-300 font-semibold bg-sky-500/10 border border-sky-500/30 px-2 py-0.5 rounded">
                   Mock Attached
                 </span>
               </div>
@@ -605,7 +605,7 @@ export default function TournamentRegister({
                 <span className="font-bold text-xs uppercase tracking-wider text-white">
                   Total Payable (Demo):
                 </span>
-                <span className="font-['Barlow_Condensed'] text-2xl font-black text-[#B6FF3B]">
+                <span className="font-['Barlow_Condensed'] text-2xl font-black text-[#E5C378]">
                   ₹{tournament.entryFee.toLocaleString('en-IN')}
                 </span>
               </div>
@@ -623,7 +623,7 @@ export default function TournamentRegister({
                   type="checkbox"
                   checked={rulesAccepted}
                   onChange={(e) => setRulesAccepted(e.target.checked)}
-                  className="w-4 h-4 rounded accent-[#B6FF3B] mt-0.5 cursor-pointer"
+                  className="w-4 h-4 rounded accent-[#D4AF37] mt-0.5 cursor-pointer"
                 />
                 <span>
                   I have read and agree to follow all official tournament rules, referee decisions, and the specified refund schedule.
@@ -636,12 +636,12 @@ export default function TournamentRegister({
         {/* Step 5: Result Screen */}
         {currentStep === 5 && submissionResult && (
           <div className="bg-[#141B24] border border-[#293442] p-6 sm:p-10 rounded-2xl text-center space-y-6 shadow-2xl">
-            <div className="w-16 h-16 rounded-full bg-[#B6FF3B]/10 border border-[#B6FF3B] text-[#B6FF3B] flex items-center justify-center mx-auto shadow-[0_0_25px_rgba(182,255,59,0.3)]">
+            <div className="w-16 h-16 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#E5C378] flex items-center justify-center mx-auto shadow-[0_0_25px_rgba(212,175,55,0.25)]">
               <Sparkles className="w-8 h-8" />
             </div>
 
             <div className="space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#B6FF3B]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#E5C378]">
                 {submissionResult.registrationStatus === 'Waitlisted' ? 'Waitlist Confirmed' : 'Application Submitted'}
               </span>
               <h2 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-black uppercase text-white">
@@ -664,7 +664,7 @@ export default function TournamentRegister({
               </div>
               <div className="flex justify-between">
                 <span className="text-[#94A3B8]">Registration Status:</span>
-                <span className="font-bold text-[#00D4FF]">{submissionResult.registrationStatus}</span>
+                <span className="font-bold text-sky-300">{submissionResult.registrationStatus}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#94A3B8]">Payment Status:</span>
@@ -675,13 +675,13 @@ export default function TournamentRegister({
             <div className="flex items-center justify-center gap-3 pt-2">
               <Link
                 to="/tournaments/my-registrations"
-                className="px-5 py-2.5 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider hover:bg-[#a3ee28]"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] font-bold text-xs uppercase tracking-wider hover:brightness-110 shadow-md"
               >
                 View in My Registrations
               </Link>
               <Link
                 to="/tournaments"
-                className="px-5 py-2.5 rounded-xl bg-[#1B2530] text-white border border-[#293442] font-semibold text-xs hover:bg-slate-700"
+                className="px-5 py-2.5 rounded-xl bg-[#1B2530] text-slate-200 border border-[#293442] font-semibold text-xs hover:bg-slate-700"
               >
                 Browse More Events
               </Link>
@@ -699,7 +699,7 @@ export default function TournamentRegister({
               className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-colors ${
                 currentStep === 1
                   ? 'opacity-30 cursor-not-allowed text-slate-500'
-                  : 'bg-[#1B2530] hover:bg-slate-700 text-white border border-[#293442] cursor-pointer'
+                  : 'bg-[#1B2530] hover:bg-slate-700 text-slate-200 border border-[#293442] cursor-pointer'
               }`}
             >
               Back
@@ -708,7 +708,7 @@ export default function TournamentRegister({
             <button
               type="button"
               onClick={handleNext}
-              className="px-6 py-2.5 rounded-xl bg-[#B6FF3B] hover:bg-[#a3ee28] text-[#0B0F14] font-bold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md flex items-center gap-1.5"
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#E5C378] to-[#C59B27] hover:brightness-110 text-[#0F141C] font-bold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-[0_4px_16px_rgba(212,175,55,0.25)] flex items-center gap-1.5"
             >
               <span>{currentStep === 4 ? 'Confirm Demo Registration' : 'Continue'}</span>
               <ArrowRight className="w-4 h-4" />

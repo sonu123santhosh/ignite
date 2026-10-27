@@ -142,7 +142,7 @@ export default function FacilityCheckout({
           </div>
 
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#B6FF3B]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#E5C378]">
               Demo Booking Confirmed
             </span>
             <h1 className="font-['Barlow_Condensed'] text-4xl font-black uppercase text-[#F5F7FA] mt-1">
@@ -157,7 +157,7 @@ export default function FacilityCheckout({
           <div className="bg-[#0B0F14] border border-[#293442] rounded-xl p-5 text-left space-y-3">
             <div className="flex justify-between items-center pb-2 border-b border-[#293442]">
               <span className="text-xs text-[#94A3B8]">Booking Reference:</span>
-              <span className="font-mono text-sm font-bold text-[#00D4FF]">
+              <span className="font-mono text-sm font-bold text-amber-400">
                 {confirmedBooking.id}
               </span>
             </div>
@@ -174,7 +174,7 @@ export default function FacilityCheckout({
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
             <Link to="/facilities">
-              <Button variant="primary" size="md">
+              <Button variant="gold" size="md">
                 Browse More Facilities
               </Button>
             </Link>
@@ -190,7 +190,7 @@ export default function FacilityCheckout({
       <div>
         <Link
           to={`/facilities/${facility.id}`}
-          className="inline-flex items-center gap-2 text-xs font-bold text-[#94A3B8] hover:text-[#B6FF3B] transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-bold text-[#94A3B8] hover:text-[#E5C378] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Change Slot Time</span>
@@ -201,7 +201,7 @@ export default function FacilityCheckout({
         {/* Left: Player Details Form */}
         <div className="md:col-span-7 bg-[#141B24] border border-[#293442] rounded-2xl p-6 sm:p-7 shadow-xl space-y-6">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#B6FF3B]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#E5C378]">
               Step 2 &bull; Player Information
             </span>
             <h1 className="font-['Barlow_Condensed'] text-3xl font-black uppercase text-[#F5F7FA] mt-1">
@@ -227,7 +227,7 @@ export default function FacilityCheckout({
                   if (errors.playerName) setErrors({ ...errors, playerName: null });
                 }}
                 aria-invalid={errors.playerName ? 'true' : 'false'}
-                className="w-full bg-[#0B0F14] border border-[#293442] text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-[#B6FF3B]"
+                className="w-full bg-[#0B0F14] border border-[#293442] text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-[#D4AF37]"
               />
               {errors.playerName && (
                 <p role="alert" className="text-rose-400 text-[11px] mt-1 flex items-center gap-1">
@@ -251,7 +251,7 @@ export default function FacilityCheckout({
                   if (errors.playerPhone) setErrors({ ...errors, playerPhone: null });
                 }}
                 aria-invalid={errors.playerPhone ? 'true' : 'false'}
-                className="w-full bg-[#0B0F14] border border-[#293442] text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-[#B6FF3B]"
+                className="w-full bg-[#0B0F14] border border-[#293442] text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-[#D4AF37]"
               />
               {errors.playerPhone && (
                 <p role="alert" className="text-rose-400 text-[11px] mt-1 flex items-center gap-1">
@@ -271,7 +271,7 @@ export default function FacilityCheckout({
                 placeholder="e.g. Require bibs and footballs, match starting promptly..."
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] text-white text-xs rounded-xl p-3 focus:ring-2 focus:ring-[#B6FF3B]"
+                className="w-full bg-[#0B0F14] border border-[#293442] text-white text-xs rounded-xl p-3 focus:ring-2 focus:ring-[#D4AF37]"
               />
             </div>
 
@@ -285,7 +285,7 @@ export default function FacilityCheckout({
                     setAgreePolicy(e.target.checked);
                     if (errors.agreePolicy) setErrors({ ...errors, agreePolicy: null });
                   }}
-                  className="rounded border-[#293442] bg-[#0B0F14] text-[#B6FF3B] focus:ring-[#B6FF3B] cursor-pointer mt-0.5 accent-[#B6FF3B]"
+                  className="rounded border-[#293442] bg-[#0B0F14] text-[#D4AF37] focus:ring-[#D4AF37] cursor-pointer mt-0.5 accent-[#D4AF37]"
                 />
                 <span className="text-xs text-[#94A3B8] leading-tight">
                   I understand the venue&apos;s cancellation policy: &quot;{facility.cancellationPolicy}&quot;
@@ -300,7 +300,7 @@ export default function FacilityCheckout({
             </div>
 
             <div className="pt-4 border-t border-[#293442]">
-              <Button type="submit" variant="primary" size="lg" className="w-full py-3">
+              <Button type="submit" variant="gold" size="lg" className="w-full py-3">
                 Confirm Demo Booking
               </Button>
             </div>
@@ -342,7 +342,7 @@ export default function FacilityCheckout({
 
             <div className="pt-2 border-t border-[#293442] flex justify-between font-bold">
               <span className="text-white">Total:</span>
-              <span className="text-[#B6FF3B] text-base">₹{selection.priceBreakdown.total}</span>
+              <span className="text-[#E5C378] text-base">₹{selection.priceBreakdown.total}</span>
             </div>
           </div>
 

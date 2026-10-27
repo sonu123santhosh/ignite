@@ -77,7 +77,7 @@ export default function FriendliesInbox() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#FFFFFF] pb-24">
+    <div className="min-h-screen bg-transparent text-[#FFFFFF] pb-24">
       {toast && (
         <Toast
           title={toast.title}

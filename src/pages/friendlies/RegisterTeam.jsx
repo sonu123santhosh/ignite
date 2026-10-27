@@ -161,7 +161,7 @@ export default function RegisterTeam() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#FFFFFF] pb-24">
+    <div className="min-h-screen bg-transparent text-[#FFFFFF] pb-24">
       {/* Top Bar */}
       <div className="bg-[#151B23] border-b border-[#293442] py-4">
         <div className="max-w-4xl mx-auto px-4 flex items-center justify-between">

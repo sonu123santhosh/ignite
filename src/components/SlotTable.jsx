@@ -76,8 +76,8 @@ export default function SlotTable({
   const getSlotStateBadge = (state, isSelected) => {
     if (isSelected) {
       return (
-        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B0F14] bg-[#B6FF3B] px-2.5 py-1 rounded-md">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#0B0F14]" />
+        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0F141C] bg-gradient-to-r from-[#D4AF37] to-[#C59B27] px-2.5 py-1 rounded-md shadow-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#0F141C]" />
           Selected
         </span>
       );
@@ -86,8 +86,8 @@ export default function SlotTable({
     switch (state) {
       case 'available':
         return (
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#B6FF3B] bg-[#B6FF3B]/10 border border-[#B6FF3B]/30 px-2 py-0.5 rounded-md">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF3B]" />
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#E5C378] bg-[#D4AF37]/10 border border-[#D4AF37]/30 px-2 py-0.5 rounded-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E5C378]" />
             Available
           </span>
         );
@@ -147,7 +147,7 @@ export default function SlotTable({
               onSelectDate(e.target.value);
               onSelectSlotTime(null);
             }}
-            className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#B6FF3B] [color-scheme:dark] cursor-pointer"
+            className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] [color-scheme:dark] cursor-pointer"
           />
         </div>
 
@@ -163,7 +163,7 @@ export default function SlotTable({
               onSelectGround(e.target.value);
               onSelectSlotTime(null);
             }}
-            className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#B6FF3B] cursor-pointer"
+            className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] cursor-pointer"
           >
             {facility.grounds.map((g) => (
               <option key={g.id} value={g.id}>
@@ -197,7 +197,7 @@ export default function SlotTable({
                   onClick={() => onChangeDuration(dur)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed ${
                     durationHours === dur
-                      ? 'bg-[#B6FF3B] text-[#0B0F14]'
+                      ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] shadow-sm'
                       : 'bg-[#141B24] border border-[#293442] text-[#94A3B8] hover:text-[#F5F7FA]'
                   }`}
                 >
@@ -217,11 +217,11 @@ export default function SlotTable({
           className={`rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border ${
             holdExpired
               ? 'bg-rose-500/10 border-rose-500/30 text-rose-300'
-              : 'bg-[#1B2530] border-[#00D4FF]/40 text-[#F5F7FA]'
+              : 'bg-[#1B2530]/80 border-[#D4AF37]/40 text-[#F5F7FA]'
           }`}
         >
           <div className="flex items-center gap-3">
-            <Clock className={`w-5 h-5 shrink-0 ${holdExpired ? 'text-rose-400' : 'text-[#00D4FF]'}`} />
+            <Clock className={`w-5 h-5 shrink-0 ${holdExpired ? 'text-rose-400' : 'text-amber-400'}`} />
             <div>
               <div className="text-xs font-bold">
                 {holdExpired ? 'Hold Expired' : 'Temporary 5-Minute Hold Active'}
@@ -236,7 +236,7 @@ export default function SlotTable({
 
           {!holdExpired && (
             <div className="text-right">
-              <span className="text-lg font-mono font-black text-[#00D4FF]">
+              <span className="text-lg font-mono font-black text-[#E5C378]">
                 {formatHoldTime(holdRemainingSec)}
               </span>
             </div>
@@ -266,7 +266,7 @@ export default function SlotTable({
                   key={slot.startStr}
                   className={`transition-colors ${
                     isSelected
-                      ? 'bg-[#B6FF3B]/10 border-l-4 border-l-[#B6FF3B]'
+                      ? 'bg-[#D4AF37]/10 border-l-4 border-l-[#D4AF37]'
                       : isDisabled
                       ? 'bg-[#0B0F14]/40 opacity-70'
                       : 'hover:bg-[#1B2530]/60'
@@ -287,7 +287,7 @@ export default function SlotTable({
                     {getSlotStateBadge(slot.state, isSelected)}
                   </td>
 
-                  <td className="py-3.5 px-4 font-bold text-[#B6FF3B]">
+                  <td className="py-3.5 px-4 font-bold text-[#E5C378]">
                     ₹{slot.price}
                   </td>
 
@@ -300,10 +300,10 @@ export default function SlotTable({
                       aria-disabled={isDisabled}
                       className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer disabled:cursor-not-allowed ${
                         isSelected
-                          ? 'bg-[#B6FF3B] text-[#0B0F14]'
+                          ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] shadow-sm'
                           : isDisabled
                           ? 'bg-[#141B24] text-slate-600 border border-slate-800'
-                          : 'bg-[#141B24] border border-[#293442] text-[#B6FF3B] hover:border-[#B6FF3B] hover:bg-[#B6FF3B]/10'
+                          : 'bg-[#141B24] border border-[#D4AF37]/40 text-[#E5C378] hover:border-[#D4AF37] hover:bg-[#D4AF37]/15'
                       }`}
                     >
                       {isSelected ? 'Selected' : isDisabled ? 'Unavailable' : 'Select'}

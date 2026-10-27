@@ -68,7 +68,7 @@ export default function OrganiserDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pt-24 pb-24 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pt-24 pb-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Role Switcher */}
         <TrialsRoleSwitcher />

@@ -199,7 +199,7 @@ export default function Tournaments({
   const unreadNotifCount = (sharedTournamentsState.notifications || []).filter((n) => !n.read).length;
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pb-24">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pb-24">
       {/* Toast notifications */}
       {toast && (
         <Toast
@@ -211,8 +211,8 @@ export default function Tournaments({
       )}
 
       {/* Top Banner Notice */}
-      <div className="bg-[#141B24] border-b border-[#293442] py-2 px-4 text-center text-xs text-[#94A3B8]">
-        <span className="font-bold text-[#B6FF3B]">PROTOTYPE DEMO:</span> All tournaments, prizes, and registrations are simulated sample data. No real fees or payments taken.
+      <div className="bg-[#141B24]/90 border-b border-[#293442] py-2 px-4 text-center text-xs text-[#94A3B8]">
+        <span className="font-bold text-[#E5C378]">PROTOTYPE DEMO:</span> All tournaments, prizes, and registrations are simulated sample data. No real fees or payments taken.
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
@@ -227,19 +227,21 @@ export default function Tournaments({
         />
 
         {/* Hero Section */}
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#141B24] via-[#1B2530] to-[#141B24] border border-[#293442] p-6 sm:p-10 mb-8 shadow-2xl">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#141B24]/95 via-[#1B2530]/90 to-[#141B24]/95 border border-[#293442] p-6 sm:p-10 mb-8 shadow-2xl backdrop-blur-md">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B6FF3B]/10 border border-[#B6FF3B]/30 text-[#B6FF3B] text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/35 text-[#E5C378] text-xs font-bold uppercase tracking-wider">
               <Trophy className="w-3.5 h-3.5" />
               <span>Tournaments &amp; Invitationals</span>
             </div>
 
             <h1 className="font-['Barlow_Condensed'] text-4xl sm:text-6xl font-black uppercase tracking-tight text-white leading-none">
               Compete. Challenge. <br />
-              <span className="text-[#B6FF3B]">Become a Champion.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E5C378] via-[#F6E7B0] to-[#D4AF37]">
+                Become a Champion.
+              </span>
             </h1>
 
-            <p className="text-sm sm:text-base text-[#94A3B8] max-w-2xl leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-300/90 max-w-2xl leading-relaxed">
               Discover tournaments, register your team, and take your game to the next level. Live brackets, automated schedules, and verified organisers across all major sports.
             </p>
 
@@ -251,16 +253,16 @@ export default function Tournaments({
                   const target = document.getElementById('tournaments-listing');
                   target?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-5 py-2.5 rounded-xl bg-[#B6FF3B] hover:bg-[#a3ee28] text-[#0B0F14] font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-md"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#E5C378] to-[#C59B27] hover:brightness-110 text-[#0F141C] font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-[0_4px_16px_rgba(212,175,55,0.25)]"
               >
                 Explore Tournaments
               </button>
 
               <Link
                 to="/tournaments/my-registrations"
-                className="px-4 py-2.5 rounded-xl bg-[#1B2530] hover:bg-slate-700 text-white font-semibold text-xs sm:text-sm border border-[#293442] transition-all flex items-center gap-1.5"
+                className="px-4 py-2.5 rounded-xl bg-[#1B2530] hover:bg-slate-700 text-slate-200 font-semibold text-xs sm:text-sm border border-[#293442] transition-all flex items-center gap-1.5"
               >
-                <CalendarCheck className="w-4 h-4 text-[#00D4FF]" />
+                <CalendarCheck className="w-4 h-4 text-sky-300" />
                 <span>My Registrations</span>
               </Link>
 
@@ -268,9 +270,9 @@ export default function Tournaments({
               {(tournamentRole === 'captain' || tournamentRole === 'organiser') && (
                 <Link
                   to="/tournaments/teams"
-                  className="px-4 py-2.5 rounded-xl bg-[#1B2530] hover:bg-slate-700 text-white font-semibold text-xs sm:text-sm border border-[#293442] transition-all flex items-center gap-1.5"
+                  className="px-4 py-2.5 rounded-xl bg-[#1B2530] hover:bg-slate-700 text-slate-200 font-semibold text-xs sm:text-sm border border-[#293442] transition-all flex items-center gap-1.5"
                 >
-                  <Users className="w-4 h-4 text-[#B6FF3B]" />
+                  <Users className="w-4 h-4 text-[#E5C378]" />
                   <span>My Teams</span>
                 </Link>
               )}
@@ -279,7 +281,7 @@ export default function Tournaments({
               {tournamentRole === 'organiser' && (
                 <Link
                   to="/tournaments/organiser"
-                  className="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#0B0F14] font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 shadow-md"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:brightness-110 text-[#0B0F14] font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 shadow-md"
                 >
                   <PlusCircle className="w-4 h-4" />
                   <span>Organiser Dashboard</span>
@@ -299,7 +301,7 @@ export default function Tournaments({
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
               placeholder="Search tournaments, sports, cities, or organisers..."
-              className="w-full pl-12 pr-4 py-3 bg-[#141B24] border border-[#293442] focus:border-[#B6FF3B] rounded-2xl text-sm text-white placeholder-slate-500 outline-none transition-colors shadow-lg"
+              className="w-full pl-12 pr-4 py-3 bg-[#141B24]/90 border border-[#293442] focus:border-[#D4AF37] rounded-2xl text-sm text-white placeholder-slate-500 outline-none transition-colors shadow-lg backdrop-blur-sm"
             />
             {keyword && (
               <button
@@ -331,8 +333,8 @@ export default function Tournaments({
                   onClick={() => handleCollectionClick(col.id)}
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-[#B6FF3B] text-[#0B0F14] font-bold shadow-sm'
-                      : 'bg-[#141B24] text-slate-300 hover:text-white border border-[#293442]'
+                      ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] font-bold shadow-sm'
+                      : 'bg-[#141B24]/90 text-slate-300 hover:text-white border border-[#293442]'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -349,7 +351,7 @@ export default function Tournaments({
               {activeChips.map((chip) => (
                 <span
                   key={chip.key}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#1B2530] text-white border border-[#293442]"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#1B2530] text-slate-200 border border-[#293442]"
                 >
                   <span>{chip.label}</span>
                   <button
@@ -365,7 +367,7 @@ export default function Tournaments({
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="text-xs text-[#B6FF3B] hover:underline font-semibold cursor-pointer ml-1"
+                className="text-xs text-[#E5C378] hover:underline font-semibold cursor-pointer ml-1"
               >
                 Clear all
               </button>
@@ -388,7 +390,7 @@ export default function Tournaments({
           {/* Right Column: Results Header + Cards */}
           <main className="flex-1 w-full min-w-0 space-y-6">
             {/* Controls Bar: Count, Sort, View Toggle, Mobile Filter Trigger */}
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-[#141B24] border border-[#293442] p-4 rounded-2xl shadow-md">
+            <div className="flex flex-wrap items-center justify-between gap-4 bg-[#141B24]/90 border border-[#293442] p-4 rounded-2xl shadow-md backdrop-blur-sm">
               <div className="flex items-center gap-2">
                 <span className="font-['Barlow_Condensed'] text-xl font-bold uppercase text-white">
                   Showing {filteredList.length} Tournament{filteredList.length === 1 ? '' : 's'}
@@ -400,9 +402,9 @@ export default function Tournaments({
                 <button
                   type="button"
                   onClick={() => setIsMobileFiltersOpen(true)}
-                  className="lg:hidden flex items-center gap-1.5 px-3 py-1.5 bg-[#1B2530] text-xs font-semibold text-white border border-[#293442] rounded-xl cursor-pointer"
+                  className="lg:hidden flex items-center gap-1.5 px-3 py-1.5 bg-[#1B2530] text-xs font-semibold text-slate-200 border border-[#293442] rounded-xl cursor-pointer"
                 >
-                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#B6FF3B]" />
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#E5C378]" />
                   <span>Filters</span>
                 </button>
 
@@ -412,7 +414,7 @@ export default function Tournaments({
                   <select
                     value={sortKey}
                     onChange={(e) => setSortKey(e.target.value)}
-                    className="bg-[#1B2530] border border-[#293442] rounded-xl px-2.5 py-1.5 text-xs text-white outline-none cursor-pointer focus:border-[#B6FF3B]"
+                    className="bg-[#1B2530] border border-[#293442] rounded-xl px-2.5 py-1.5 text-xs text-white outline-none cursor-pointer focus:border-[#D4AF37]"
                   >
                     <option value="starting_soon">Starting Soon</option>
                     <option value="closing_soon">Closing Soon</option>
@@ -430,7 +432,7 @@ export default function Tournaments({
                     aria-label="Grid view"
                     className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                       viewMode === 'grid'
-                        ? 'bg-[#1B2530] text-[#B6FF3B]'
+                        ? 'bg-[#1B2530] text-[#E5C378]'
                         : 'text-slate-400 hover:text-white'
                     }`}
                   >
@@ -442,7 +444,7 @@ export default function Tournaments({
                     aria-label="List view"
                     className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                       viewMode === 'list'
-                        ? 'bg-[#1B2530] text-[#B6FF3B]'
+                        ? 'bg-[#1B2530] text-[#E5C378]'
                         : 'text-slate-400 hover:text-white'
                     }`}
                   >

@@ -17,7 +17,7 @@ export default function PriceSummary({
   return (
     <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 shadow-2xl space-y-5 sticky top-24">
       <div className="border-b border-[#293442] pb-4">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#B6FF3B]">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-[#E5C378]">
           Live Booking Summary
         </span>
         <h3 className="font-['Barlow_Condensed'] text-2xl font-black text-[#F5F7FA] uppercase tracking-wide mt-1">
@@ -64,7 +64,7 @@ export default function PriceSummary({
         <div className="pt-2.5 border-t border-[#293442] flex justify-between items-baseline">
           <span className="text-sm font-bold text-[#F5F7FA]">Estimated Total:</span>
           <div className="text-right">
-            <span className="text-2xl font-black text-[#B6FF3B] font-['Barlow_Condensed']">
+            <span className="text-2xl font-black text-[#E5C378] font-['Barlow_Condensed']">
               ₹{total}
             </span>
             <span className="block text-[10px] text-[#94A3B8]">All inclusive</span>
@@ -80,7 +80,7 @@ export default function PriceSummary({
 
       {/* Action Button */}
       <Button
-        variant="primary"
+        variant="gold"
         size="lg"
         disabled={!canContinue}
         onClick={onContinueToCheckout}

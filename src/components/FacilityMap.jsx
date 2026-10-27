@@ -81,8 +81,8 @@ export default function FacilityMap({
         <div style="
           width: 32px;
           height: 32px;
-          background-color: ${isSelected ? '#00D4FF' : '#B6FF3B'};
-          border: 2px solid #0B0F14;
+          background-color: ${isSelected ? '#D4AF37' : '#E5C378'};
+          border: ${isSelected ? '2px solid #DC2626' : '2px solid #0B0F14'};
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -113,13 +113,13 @@ export default function FacilityMap({
       const popupHtml = `
         <div style="min-width: 200px; padding: 4px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-            <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; color: #B6FF3B; letter-spacing: 0.5px;">${fac.sport}</span>
+            <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; color: #E5C378; letter-spacing: 0.5px;">${fac.sport}</span>
             <span style="font-size: 10px; color: #94A3B8;">${fac.area}</span>
           </div>
           <h4 style="font-size: 15px; font-weight: 800; margin: 0 0 4px 0; color: #F5F7FA; font-family: sans-serif;">${fac.name}</h4>
           <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; border-top: 1px solid #293442; padding-top: 6px;">
-            <span style="font-size: 14px; font-weight: 800; color: #B6FF3B;">₹${fac.pricing.offPeak}<span style="font-size: 10px; font-weight: normal; color: #94A3B8;">/hr</span></span>
-            <a href="/facilities/${fac.id}" style="display: inline-block; font-size: 11px; font-weight: 700; color: #0B0F14; background: #B6FF3B; padding: 4px 10px; border-radius: 999px; text-decoration: none;">View Details →</a>
+            <span style="font-size: 14px; font-weight: 800; color: #E5C378;">₹${fac.pricing.offPeak}<span style="font-size: 10px; font-weight: normal; color: #94A3B8;">/hr</span></span>
+            <a href="/facilities/${fac.id}" style="display: inline-block; font-size: 11px; font-weight: 700; color: #0B0F14; background: #D4AF37; padding: 4px 10px; border-radius: 999px; text-decoration: none;">View Details →</a>
           </div>
         </div>
       `;

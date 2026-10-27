@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, Zap, ChevronRight } from 'lucide-react';
 import Button from './Button';
 
 export default function Navbar({ onShowToast }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
     { label: 'Home', path: '/' },
@@ -16,6 +17,134 @@ export default function Navbar({ onShowToast }) {
     { label: 'Trials', path: '/trials' }
   ];
 
+  // Desktop active bubble refs & state
+  const navContainerRef = useRef(null);
+  const linkRefs = useRef({});
+  const isFirstRender = useRef(true);
+  const [bubble, setBubble] = useState({ left: 0, top: 0, width: 0, height: 0, opacity: 0 });
+
+  // Mobile active bubble refs & state
+  const mobileNavContainerRef = useRef(null);
+  const mobileLinkRefs = useRef({});
+  const [mobileBubble, setMobileBubble] = useState({ left: 0, top: 0, width: 0, height: 0, opacity: 0 });
+
+  // Determine active nav key based on current URL path
+  const getActiveKey = useCallback((pathname) => {
+    if (pathname === '/') return '/';
+    if (pathname.startsWith('/facilities')) return '/facilities';
+    if (pathname.startsWith('/tournaments')) return '/tournaments';
+    if (pathname.startsWith('/friendlies') || pathname.startsWith('/friendly-matches')) return '/friendlies';
+    if (pathname.startsWith('/coaching')) return '/coaching';
+    if (pathname.startsWith('/trials')) return '/trials';
+    return null;
+  }, []);
+
+  const activeKey = getActiveKey(location.pathname);
+
+  // Position calculation for the single shared desktop glass bubble
+  const updateBubblePosition = useCallback(() => {
+    if (!activeKey) {
+      setBubble((prev) => ({ ...prev, opacity: 0 }));
+      return;
+    }
+
+    const activeEl = linkRefs.current[activeKey];
+    const container = navContainerRef.current;
+
+    if (activeEl && container) {
+      const left = activeEl.offsetLeft;
+      const top = activeEl.offsetTop;
+      const width = activeEl.offsetWidth;
+      const height = activeEl.offsetHeight;
+
+      setBubble({
+        left,
+        top,
+        width,
+        height,
+        opacity: 1
+      });
+
+      if (isFirstRender.current) {
+        requestAnimationFrame(() => {
+          isFirstRender.current = false;
+        });
+      }
+    } else {
+      setBubble((prev) => ({ ...prev, opacity: 0 }));
+    }
+  }, [activeKey]);
+
+  // Position calculation for mobile glass bubble
+  const updateMobileBubblePosition = useCallback(() => {
+    if (!activeKey || !isOpen) {
+      setMobileBubble((prev) => ({ ...prev, opacity: 0 }));
+      return;
+    }
+
+    const activeEl = mobileLinkRefs.current[activeKey];
+    const container = mobileNavContainerRef.current;
+
+    if (activeEl && container) {
+      const left = activeEl.offsetLeft;
+      const top = activeEl.offsetTop;
+      const width = activeEl.offsetWidth;
+      const height = activeEl.offsetHeight;
+
+      setMobileBubble({
+        left,
+        top,
+        width,
+        height,
+        opacity: 1
+      });
+    }
+  }, [activeKey, isOpen]);
+
+  // Update bubble position when route changes or fonts load
+  useEffect(() => {
+    updateBubblePosition();
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        updateBubblePosition();
+      });
+    }
+  }, [activeKey, updateBubblePosition]);
+
+  // Recalculate on window resize & container resize
+  useEffect(() => {
+    const handleResize = () => {
+      updateBubblePosition();
+      if (isOpen) updateMobileBubblePosition();
+    };
+
+    window.addEventListener('resize', handleResize, { passive: true });
+
+    let resizeObserver;
+    if (navContainerRef.current && window.ResizeObserver) {
+      resizeObserver = new ResizeObserver(() => {
+        updateBubblePosition();
+      });
+      resizeObserver.observe(navContainerRef.current);
+    }
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (resizeObserver) resizeObserver.disconnect();
+    };
+  }, [updateBubblePosition, updateMobileBubblePosition, isOpen]);
+
+  // Update mobile bubble when drawer opens
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        updateMobileBubblePosition();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, updateMobileBubblePosition]);
+
+  // Scroll listener for enhanced backdrop density
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 15);
@@ -57,59 +186,82 @@ export default function Navbar({ onShowToast }) {
   };
 
   return (
-    <header
-      className={`sticky top-0 z-40 w-full transition-all duration-200 border-b ${
-        scrolled
-          ? 'bg-[#0a1020]/95 backdrop-blur-md border-[#2a3652] shadow-[0_4px_20px_rgba(0,0,0,0.6)]'
-          : 'bg-[#0a1020]/90 backdrop-blur-sm border-[#2a3652]/40'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18 sm:h-20">
+    <header className="sticky top-0 z-40 w-full pt-2.5 sm:pt-3.5 px-3 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none">
+      {/* Floating iPhone-inspired Liquid Glass Container */}
+      <div
+        className={`pointer-events-auto max-w-7xl mx-auto rounded-2xl sm:rounded-[24px] transition-all duration-300 relative overflow-hidden ${
+          scrolled ? 'liquid-glass-navbar-scrolled' : 'liquid-glass-navbar'
+        } px-4 sm:px-6`}
+      >
+        {/* Upper Specular Light Glint (Liquid Glass Rim Reflection) */}
+        <div className="pointer-events-none absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+        {/* Soft Ambient Refraction Glow in Upper Quadrant */}
+        <div className="pointer-events-none absolute -top-10 left-1/4 w-80 h-20 bg-white/[0.08] blur-xl rounded-full" />
+
+        <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Logo Mark + Brand */}
           <Link
             to="/"
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6ff3d] rounded-lg p-1"
+            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6ff3d] rounded-xl p-1"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#c6ff3d] to-emerald-400 flex items-center justify-center text-[#0a1020] font-black shadow-[0_0_15px_rgba(198,255,61,0.35)] transition-transform group-hover:scale-105">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#c6ff3d] to-emerald-400 flex items-center justify-center text-[#0a1020] font-black shadow-[0_0_18px_rgba(198,255,61,0.35)] transition-transform group-hover:scale-105">
               <Zap className="w-5 h-5 fill-current" />
             </div>
             <div className="flex flex-col">
-              <span className="font-['Barlow_Condensed'] text-2xl font-black tracking-wider uppercase text-white leading-none">
+              <span className="font-display text-xl sm:text-2xl font-black tracking-wider uppercase text-white leading-none">
                 Sport<span className="text-[#c6ff3d]">Link</span>
               </span>
-              <span className="text-[10px] text-slate-400 tracking-widest uppercase font-medium">
+              <span className="text-[9px] sm:text-[10px] text-slate-300/80 tracking-widest uppercase font-semibold">
                 Sports Platform
               </span>
             </div>
           </Link>
 
-          {/* Desktop Nav Links (Visible at 900px and above) */}
-          <nav className="hidden min-[900px]:flex items-center gap-1 xl:gap-2">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                end={link.path === '/'}
-                className={({ isActive }) =>
-                  `relative px-3.5 py-2 text-sm font-medium transition-colors rounded-lg tracking-wide ${
+          {/* Desktop Nav Track with Centered Shared Liquid Glass Bubble */}
+          <nav
+            ref={navContainerRef}
+            className="hidden min-[900px]:flex items-center h-11 p-1 rounded-full bg-white/[0.05] border border-white/[0.12] shadow-[inset_0_1px_2px_rgba(0,0,0,0.22),0_1px_2px_rgba(255,255,255,0.05)] backdrop-blur-md relative"
+          >
+            {/* The Single Shared Animated Liquid Glass Bubble */}
+            <div
+              className="navbar-liquid-bubble absolute rounded-full z-0"
+              style={{
+                transform: `translate3d(${bubble.left}px, ${bubble.top}px, 0)`,
+                width: `${bubble.width}px`,
+                height: `${bubble.height}px`,
+                opacity: bubble.opacity,
+                transition: isFirstRender.current
+                  ? 'opacity 150ms ease'
+                  : 'transform 300ms cubic-bezier(0.22, 1, 0.36, 1), width 300ms cubic-bezier(0.22, 1, 0.36, 1), height 300ms cubic-bezier(0.22, 1, 0.36, 1), opacity 150ms ease'
+              }}
+              aria-hidden="true"
+            >
+              {/* Internal Liquid Glass Specular Highlights */}
+              <div className="absolute inset-x-3.5 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/90 to-transparent" />
+              <div className="absolute inset-x-4 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-[#c6ff3d]/60 to-transparent" />
+            </div>
+
+            {navLinks.map((link) => {
+              const isActive = activeKey === link.path;
+              return (
+                <NavLink
+                  key={link.path}
+                  ref={(el) => (linkRefs.current[link.path] = el)}
+                  to={link.path}
+                  end={link.path === '/'}
+                  className={`relative z-10 h-9 px-3.5 xl:px-4 flex items-center justify-center text-xs xl:text-sm tracking-wide transition-colors duration-200 select-none rounded-full whitespace-nowrap ${
                     isActive
-                      ? 'text-[#c6ff3d] font-semibold'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/40'
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    <span>{link.label}</span>
-                    {isActive && (
-                      <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#c6ff3d] rounded-full shadow-[0_0_8px_#c6ff3d]" />
-                    )}
-                  </>
-                )}
-              </NavLink>
-            ))}
+                      ? 'text-white font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]'
+                      : 'text-slate-200/90 hover:text-white font-medium hover:bg-white/[0.04]'
+                  }`}
+                >
+                  <span className="flex items-center gap-1.5">
+                    {link.label}
+                  </span>
+                </NavLink>
+              );
+            })}
           </nav>
 
           {/* Right Action Buttons */}
@@ -117,7 +269,7 @@ export default function Navbar({ onShowToast }) {
             <button
               type="button"
               onClick={() => handleAccountAction('Login')}
-              className="text-sm font-semibold text-slate-300 hover:text-white px-3.5 py-2 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-[#c6ff3d] rounded-full"
+              className="text-xs sm:text-sm font-semibold text-slate-200 hover:text-white px-4 py-2 transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#c6ff3d] rounded-full hover:bg-white/[0.08] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
             >
               Login
             </button>
@@ -125,6 +277,7 @@ export default function Navbar({ onShowToast }) {
               variant="primary"
               size="md"
               onClick={() => handleAccountAction('Get Started')}
+              className="shadow-sm font-bold"
             >
               Get Started
             </Button>
@@ -137,57 +290,81 @@ export default function Navbar({ onShowToast }) {
               onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}
               aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              className="p-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-[#2a3652] focus-visible:ring-2 focus-visible:ring-[#c6ff3d] cursor-pointer"
+              className="p-2 rounded-xl text-slate-200 hover:text-white hover:bg-white/[0.12] border border-white/20 bg-white/[0.05] focus-visible:ring-2 focus-visible:ring-[#c6ff3d] cursor-pointer transition-colors shadow-sm"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer (Below 900px) */}
+      {/* Mobile Liquid Glass Drawer (Below 900px) */}
       {isOpen && (
         <div
-          className="min-[900px]:hidden fixed inset-x-0 top-18 sm:top-20 bg-[#0a1020]/98 border-b border-[#2a3652] shadow-2xl backdrop-blur-xl animate-in slide-in-from-top-4 duration-200"
+          className="pointer-events-auto min-[900px]:hidden fixed inset-x-3 sm:inset-x-6 top-20 liquid-glass-navbar border border-white/25 shadow-2xl rounded-2xl p-4 space-y-4 animate-in slide-in-from-top-4 duration-200 z-50 max-w-7xl mx-auto overflow-hidden relative"
           id="mobile-navigation"
         >
-          <div className="max-w-7xl mx-auto px-4 py-6 space-y-4">
-            <nav className="flex flex-col space-y-1">
-              {navLinks.map((link) => (
-                <NavLink
-                  key={link.path}
-                  to={link.path}
-                  end={link.path === '/'}
-                  onClick={() => setIsOpen(false)}
-                  className={({ isActive }) =>
-                    `flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all ${
+          {/* Top Glint for Mobile Drawer */}
+          <div className="pointer-events-none absolute inset-x-6 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+
+          <div className="space-y-4">
+            <nav
+              ref={mobileNavContainerRef}
+              className="flex flex-col space-y-1 relative p-1.5 bg-white/[0.04] rounded-2xl border border-white/[0.10] shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]"
+            >
+              {/* Mobile Shared Animated Liquid Glass Bubble */}
+              <div
+                className="navbar-liquid-bubble absolute rounded-xl z-0"
+                style={{
+                  transform: `translate3d(${mobileBubble.left}px, ${mobileBubble.top}px, 0)`,
+                  width: `${mobileBubble.width}px`,
+                  height: `${mobileBubble.height}px`,
+                  opacity: mobileBubble.opacity,
+                  transition: 'transform 280ms cubic-bezier(0.22, 1, 0.36, 1), width 280ms cubic-bezier(0.22, 1, 0.36, 1), height 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 150ms ease'
+                }}
+                aria-hidden="true"
+              >
+                <div className="absolute inset-x-3 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/90 to-transparent" />
+                <div className="absolute inset-x-4 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-[#c6ff3d]/60 to-transparent" />
+              </div>
+
+              {navLinks.map((link) => {
+                const isActive = activeKey === link.path;
+                return (
+                  <NavLink
+                    key={link.path}
+                    ref={(el) => (mobileLinkRefs.current[link.path] = el)}
+                    to={link.path}
+                    end={link.path === '/'}
+                    onClick={() => setIsOpen(false)}
+                    className={`relative z-10 flex items-center justify-between h-11 px-4 rounded-xl text-sm font-semibold transition-colors ${
                       isActive
-                        ? 'bg-[#c6ff3d]/10 text-[#c6ff3d] border border-[#c6ff3d]/30 font-semibold'
-                        : 'text-slate-200 hover:bg-slate-800/60'
-                    }`
-                  }
-                >
-                  <span>{link.label}</span>
-                  <ChevronRight className="w-4 h-4 text-slate-500" />
-                </NavLink>
-              ))}
+                        ? 'text-white font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]'
+                        : 'text-slate-200/90 hover:text-white'
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? 'text-[#c6ff3d] translate-x-0.5' : 'text-slate-400'}`} />
+                  </NavLink>
+                );
+              })}
             </nav>
 
-            <div className="pt-4 border-t border-[#2a3652] flex flex-col gap-3">
+            <div className="pt-3 border-t border-white/15 flex flex-col gap-2.5">
               <button
                 type="button"
                 onClick={() => {
                   setIsOpen(false);
                   handleAccountAction('Login');
                 }}
-                className="w-full py-3 text-center text-sm font-semibold text-slate-200 bg-[#172033] border border-[#2a3652] rounded-full hover:border-slate-400 cursor-pointer"
+                className="w-full py-2.5 text-center text-sm font-semibold text-slate-100 bg-white/[0.08] border border-white/15 rounded-xl hover:bg-white/[0.15] transition-colors cursor-pointer"
               >
                 Login
               </button>
               <Button
                 variant="primary"
-                size="lg"
-                className="w-full"
+                size="md"
+                className="w-full font-bold"
                 onClick={() => {
                   setIsOpen(false);
                   handleAccountAction('Get Started');

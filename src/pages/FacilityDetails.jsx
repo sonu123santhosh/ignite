@@ -208,7 +208,7 @@ export default function FacilityDetails({
     <div className="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 animate-hero-fade">
       {/* Top Breadcrumb & Back button */}
       <div className="flex items-center justify-between">
-        <Link to="/facilities" className="inline-flex items-center gap-2 text-xs font-bold text-[#94A3B8] hover:text-[#B6FF3B] transition-colors">
+        <Link to="/facilities" className="inline-flex items-center gap-2 text-xs font-bold text-[#94A3B8] hover:text-[#E5C378] transition-colors">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Facilities Directory</span>
         </Link>
@@ -230,7 +230,7 @@ export default function FacilityDetails({
           {/* Top Gallery Tags */}
           <div className="relative z-10 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#B6FF3B] bg-[#0B0F14]/90 px-3 py-1 rounded-full border border-[#B6FF3B]/30">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#E5C378] bg-[#0B0F14]/90 px-3 py-1 rounded-full border border-[#D4AF37]/35">
                 {facility.sport}
               </span>
               <span className="text-xs font-medium text-[#94A3B8] bg-[#0B0F14]/90 px-2.5 py-1 rounded-full border border-[#293442]">
@@ -238,7 +238,7 @@ export default function FacilityDetails({
               </span>
             </div>
             {facility.verified && (
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#22C55E] bg-[#0B0F14]/90 border border-[#22C55E]/40 px-3 py-1 rounded-full">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 bg-[#0B0F14]/90 border border-emerald-500/40 px-3 py-1 rounded-full">
                 <ShieldCheck className="w-4 h-4" />
                 Verified Facility
               </span>
@@ -251,7 +251,7 @@ export default function FacilityDetails({
               {facility.name}
             </h1>
             <p className="text-xs sm:text-sm text-[#94A3B8] flex items-center justify-center gap-1.5">
-              <MapPin className="w-4 h-4 text-[#00D4FF]" />
+              <MapPin className="w-4 h-4 text-amber-400" />
               {facility.address}
             </p>
           </div>
@@ -282,7 +282,7 @@ export default function FacilityDetails({
           </div>
           <div className="bg-[#0B0F14] border border-[#293442] rounded-xl p-3.5">
             <span className="text-[10px] uppercase font-bold text-[#94A3B8]">Available Grounds</span>
-            <div className="text-sm font-bold text-[#B6FF3B] mt-0.5">{facility.grounds.length} Pitches</div>
+            <div className="text-sm font-bold text-[#E5C378] mt-0.5">{facility.grounds.length} Pitches</div>
           </div>
         </div>
 
@@ -307,7 +307,7 @@ export default function FacilityDetails({
                   key={idx}
                   className="inline-flex items-center gap-1.5 text-xs text-[#F5F7FA] bg-[#0B0F14] border border-[#293442] px-3 py-1.5 rounded-lg"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#B6FF3B]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#E5C378]" />
                   {amenity}
                 </span>
               ))}
@@ -321,7 +321,7 @@ export default function FacilityDetails({
         {/* Left: Interactive Slot Table */}
         <div className="lg:col-span-8 space-y-6">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#B6FF3B]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#E5C378]">
               Step 1 &bull; Choose Slot
             </span>
             <h2 className="font-['Barlow_Condensed'] text-3xl font-black uppercase text-[#F5F7FA] mt-1">

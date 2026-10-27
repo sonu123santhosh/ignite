@@ -25,7 +25,7 @@ export default function CoachingRoleSwitcher() {
         {/* Left: Role Switcher Tabs */}
         <div className="flex flex-wrap items-center gap-3">
           <span className="text-xs font-bold uppercase tracking-wider text-[#94A3B8] shrink-0">
-            Active Mode:
+            Role:
           </span>
           <div className="inline-flex p-1 bg-[#0B0F14] border border-[#293442] rounded-xl" role="group" aria-label="Role Switcher">
             <button

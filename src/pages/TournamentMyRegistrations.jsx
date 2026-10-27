@@ -122,7 +122,7 @@ export default function TournamentMyRegistrations({
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pb-24">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pb-24">
       {toast && (
         <Toast
           title={toast.title}
@@ -137,7 +137,7 @@ export default function TournamentMyRegistrations({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link
             to="/tournaments"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-[#B6FF3B]"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-[#E5C378]"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Tournaments</span>
@@ -172,7 +172,7 @@ export default function TournamentMyRegistrations({
               onClick={() => setFilterTab(tab.id)}
               className={`px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                 filterTab === tab.id
-                  ? 'bg-[#141B24] text-[#B6FF3B] border border-[#293442] shadow-sm'
+                  ? 'bg-[#141B24] text-[#E5C378] border border-[#293442] shadow-sm'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -183,13 +183,13 @@ export default function TournamentMyRegistrations({
 
         {/* Registrations List (Desktop Table / Mobile Cards) */}
         {filteredRegistrations.length === 0 ? (
-          <div className="py-16 text-center text-[#94A3B8] text-sm bg-[#141B24] border border-[#293442] rounded-2xl">
+          <div className="py-16 text-center text-[#94A3B8] text-sm bg-[#141B24]/90 border border-[#293442] rounded-2xl backdrop-blur-sm">
             No registrations found in this category.
           </div>
         ) : (
           <div className="space-y-4">
             {/* Desktop Table */}
-            <div className="hidden lg:block bg-[#141B24] border border-[#293442] rounded-2xl overflow-hidden shadow-lg">
+            <div className="hidden lg:block bg-[#141B24]/90 border border-[#293442] rounded-2xl overflow-hidden shadow-lg backdrop-blur-sm">
               <table className="w-full text-left text-xs sm:text-sm">
                 <thead>
                   <tr className="bg-[#1B2530] border-b border-[#293442] text-[11px] font-bold uppercase tracking-wider text-[#94A3B8]">
@@ -210,13 +210,13 @@ export default function TournamentMyRegistrations({
 
                     return (
                       <tr key={reg.id} className="hover:bg-[#1B2530]/50 transition-colors">
-                        <td className="py-3.5 px-4 font-mono font-bold text-[#B6FF3B]">
+                        <td className="py-3.5 px-4 font-mono font-bold text-[#E5C378]">
                           {reg.id}
                         </td>
                         <td className="py-3.5 px-4">
                           <Link
                             to={`/tournaments/${reg.tournamentId}`}
-                            className="font-bold text-white hover:text-[#B6FF3B] transition-colors line-clamp-1"
+                            className="font-bold text-white hover:text-[#E5C378] transition-colors line-clamp-1"
                           >
                             {reg.tournamentName}
                           </Link>
@@ -258,7 +258,7 @@ export default function TournamentMyRegistrations({
                                   setSelectedRegForMissingInfo(reg);
                                   setMissingInfoInput('');
                                 }}
-                                className="px-2.5 py-1 text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/40 rounded-lg hover:bg-amber-500 hover:text-black cursor-pointer"
+                                className="px-2.5 py-1 text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded-lg hover:bg-amber-500 hover:text-black cursor-pointer"
                               >
                                 Fix Info
                               </button>
@@ -297,16 +297,16 @@ export default function TournamentMyRegistrations({
                 );
 
                 return (
-                  <div key={reg.id} className="p-4 bg-[#141B24] border border-[#293442] rounded-2xl space-y-3 shadow-md">
+                  <div key={reg.id} className="p-4 bg-[#141B24]/90 border border-[#293442] rounded-2xl space-y-3 shadow-md backdrop-blur-sm">
                     <div className="flex items-center justify-between text-xs pb-2 border-b border-[#293442]">
-                      <span className="font-mono font-bold text-[#B6FF3B]">{reg.id}</span>
+                      <span className="font-mono font-bold text-[#E5C378]">{reg.id}</span>
                       <StatusBadge type="registration" status={reg.registrationStatus} />
                     </div>
 
                     <div>
                       <Link
                         to={`/tournaments/${reg.tournamentId}`}
-                        className="font-bold text-base text-white hover:text-[#B6FF3B] block leading-tight"
+                        className="font-bold text-base text-white hover:text-[#E5C378] block leading-tight"
                       >
                         {reg.tournamentName}
                       </Link>
@@ -404,7 +404,7 @@ export default function TournamentMyRegistrations({
               value={missingInfoInput}
               onChange={(e) => setMissingInfoInput(e.target.value)}
               placeholder="e.g. Scanned official seal from College Principal attached; corrected jersey number list provided."
-              className="w-full p-2.5 bg-[#0B0F14] border border-[#293442] focus:border-[#B6FF3B] rounded-xl text-xs text-white outline-none"
+              className="w-full p-2.5 bg-[#0B0F14] border border-[#293442] focus:border-[#D4AF37] rounded-xl text-xs text-white outline-none"
             />
           </div>
         </ConfirmDialog>

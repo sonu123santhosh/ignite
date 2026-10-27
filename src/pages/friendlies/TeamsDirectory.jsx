@@ -56,7 +56,7 @@ export default function TeamsDirectory() {
   const canChallenge = typeof checkPermission === 'function' ? checkPermission('canSendInvitations') : false;
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-white pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-transparent text-white pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         
         {/* Header and Role Switcher */}

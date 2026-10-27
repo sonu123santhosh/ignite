@@ -8,7 +8,6 @@ import {
   Users,
   GraduationCap,
   Compass,
-  Sparkles,
   ChevronRight
 } from 'lucide-react';
 import Button from '../components/Button';
@@ -40,33 +39,15 @@ export default function Home() {
     <div className="animate-hero-fade">
       {/* SECTION A: Hero */}
       <section className="relative pt-12 pb-20 sm:pt-18 sm:pb-28 overflow-hidden border-b border-[#2a3652]/40">
-        {/* Background Court Art & Photo Replacement Slot */}
+        {/* Subtle atmospheric glow allowing global pitch background to shine through */}
         <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-          {/* PHOTO SLOT: Replace the below SVG court and gradients with a real stadium/turf photo when available */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#c6ff3d]/10 via-[#1e2d4d]/25 to-transparent rounded-full blur-3xl opacity-70" />
-          <div className="absolute top-10 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-emerald-500/10 via-sky-500/5 to-transparent rounded-full blur-3xl opacity-40" />
-
-          {/* SVG Court Line schematic */}
-          <svg
-            className="absolute inset-0 w-full h-full opacity-[0.07] stroke-slate-200"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            strokeWidth="1.5"
-            aria-hidden="true"
-          >
-            <circle cx="50%" cy="50%" r="220" />
-            <line x1="50%" y1="0" x2="50%" y2="100%" />
-            <rect x="25%" y="20%" width="50%" height="60%" rx="14" />
-          </svg>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1020]/60 via-[#0a1020]/90 to-[#0a1020]" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#c6ff3d]/10 via-emerald-500/10 to-transparent rounded-full blur-3xl opacity-40" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Column: Headlines & Navigation */}
             <div className="lg:col-span-7 space-y-6 text-left">
-              <Tag variant="lime">Your Game. Your Ground. Your Opportunity.</Tag>
-
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white font-['Barlow_Condensed'] leading-[0.98]">
                 Find Your Game. <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-[#c6ff3d]">
@@ -96,20 +77,7 @@ export default function Home() {
             {/* Right Column: Floating Card */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <div className="w-full max-w-md bg-gradient-to-br from-[#172033] to-[#111827] border border-[#2a3652] rounded-[22px] p-6 sm:p-7 shadow-2xl relative group hover:border-[#c6ff3d]/60 transition-all duration-200">
-                <div className="flex items-center justify-between pb-4 border-b border-[#2a3652]">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#c6ff3d] flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#c6ff3d] animate-ping" />
-                    SportLink Platform Shell
-                  </span>
-                  <span className="text-[11px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">
-                    Demo Shell
-                  </span>
-                </div>
-
-                <div className="mt-5 space-y-3">
-                  <div className="w-12 h-12 rounded-2xl bg-[#c6ff3d]/10 border border-[#c6ff3d]/30 flex items-center justify-center text-[#c6ff3d]">
-                    <Sparkles className="w-6 h-6" />
-                  </div>
+                <div className="space-y-3">
                   <h2 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase tracking-wide text-white">
                     Your next game starts here
                   </h2>
@@ -184,7 +152,7 @@ export default function Home() {
       </section>
 
       {/* SECTION C: "How SportLink works" */}
-      <section className="py-20 sm:py-24 bg-[#131a2b] border-y border-[#2a3652]/60">
+      <section className="py-20 sm:py-24 bg-[#131a2b]/75 backdrop-blur-md border-y border-[#2a3652]/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center max-w-2xl mx-auto">
             <Tag variant="lime" className="mb-3">Streamlined Experience</Tag>

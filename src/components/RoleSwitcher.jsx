@@ -15,12 +15,12 @@ export default function RoleSwitcher({ currentRole, onRoleChange }) {
             aria-pressed={currentRole === 'player'}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               currentRole === 'player'
-                ? 'bg-[#B6FF3B] text-[#0B0F14] shadow-sm'
+                ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] shadow-sm'
                 : 'text-[#94A3B8] hover:text-[#F5F7FA]'
             }`}
           >
             <User className="w-3.5 h-3.5" />
-            <span>Player Mode</span>
+            <span>Player / Athlete</span>
           </button>
           <button
             type="button"
@@ -28,7 +28,7 @@ export default function RoleSwitcher({ currentRole, onRoleChange }) {
             aria-pressed={currentRole === 'owner'}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               currentRole === 'owner'
-                ? 'bg-[#00D4FF] text-[#0B0F14] shadow-sm'
+                ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-sm'
                 : 'text-[#94A3B8] hover:text-[#F5F7FA]'
             }`}
           >

@@ -116,7 +116,7 @@ export default function TrialsLanding() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Role Switcher Demo Bar */}
         <TrialsRoleSwitcher />
@@ -125,9 +125,6 @@ export default function TrialsLanding() {
         {role === 'organiser' && (
           <div className="bg-[#141B24] border border-[#00D4FF]/40 rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
             <div className="space-y-1">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#00D4FF] px-2 py-0.5 rounded bg-[#00D4FF]/10 border border-[#00D4FF]/30">
-                Organiser Mode Active
-              </span>
               <h2 className="text-lg font-bold text-white">
                 Manage your trials, review candidates, and record selection results.
               </h2>

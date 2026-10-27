@@ -65,7 +65,7 @@ export default function TournamentDetails({
         </p>
         <Link
           to="/tournaments"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] font-bold text-xs uppercase tracking-wider hover:brightness-110 shadow-md"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Tournaments</span>
@@ -198,7 +198,7 @@ export default function TournamentDetails({
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F5F7FA] pb-24">
+    <div className="min-h-screen bg-transparent text-[#F5F7FA] pb-24">
       {toast && (
         <Toast
           title={toast.title}
@@ -209,11 +209,11 @@ export default function TournamentDetails({
       )}
 
       {/* Top Breadcrumb & Actions Bar */}
-      <div className="bg-[#141B24] border-b border-[#293442] py-3">
+      <div className="bg-[#141B24]/90 border-b border-[#293442] py-3 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link
             to="/tournaments"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-[#B6FF3B] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-[#E5C378] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to All Tournaments</span>
@@ -222,7 +222,7 @@ export default function TournamentDetails({
           {isOrganiserOfThisTournament && (
             <Link
               to={`/tournaments/organiser/${tournament.id}`}
-              className="px-3.5 py-1.5 rounded-xl bg-amber-400 text-[#0B0F14] font-bold text-xs hover:bg-amber-300 transition-colors"
+              className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-[#0B0F14] font-bold text-xs hover:brightness-110 transition-colors shadow-sm"
             >
               Manage This Tournament
             </Link>
@@ -232,7 +232,7 @@ export default function TournamentDetails({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 space-y-8">
         {/* Hero Banner Slot with Court SVG Schematic */}
-        <div className="relative rounded-3xl overflow-hidden bg-[#141B24] border border-[#293442] shadow-2xl">
+        <div className="relative rounded-3xl overflow-hidden bg-[#141B24]/95 border border-[#293442] shadow-2xl backdrop-blur-md">
           <div className="h-48 sm:h-64 w-full relative">
             <SportCourtSVG sport={tournament.sport} />
             <div className="absolute inset-0 bg-gradient-to-t from-[#141B24] via-transparent to-black/40" />
@@ -263,7 +263,7 @@ export default function TournamentDetails({
                   <span className="text-xs text-[#94A3B8]">Organised by</span>
                   <span className="text-xs font-semibold text-white">{tournament.organiserName}</span>
                   {tournament.organiserVerified && (
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#00D4FF] bg-[#00D4FF]/10 border border-[#00D4FF]/30 px-2 py-0.5 rounded-full">
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-sky-300 bg-sky-500/10 border border-sky-500/30 px-2 py-0.5 rounded-full">
                       <ShieldCheck className="w-3.5 h-3.5" />
                       <span>Verified Organiser</span>
                     </span>
@@ -276,15 +276,15 @@ export default function TournamentDetails({
 
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs sm:text-sm text-[#94A3B8]">
                   <span className="flex items-center gap-1.5 text-white">
-                    <MapPin className="w-4 h-4 text-[#00D4FF]" />
+                    <MapPin className="w-4 h-4 text-sky-300" />
                     <span>{tournament.venue}, {tournament.city}</span>
                   </span>
                   <span className="flex items-center gap-1.5 text-white">
-                    <Calendar className="w-4 h-4 text-[#B6FF3B]" />
+                    <Calendar className="w-4 h-4 text-[#E5C378]" />
                     <span>{formatDateDisplay(tournament.startDate)} &ndash; {formatDateDisplay(tournament.endDate)}</span>
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Users className="w-4 h-4 text-amber-400" />
+                    <Users className="w-4 h-4 text-amber-300" />
                     <span>
                       {approvedRegistrations.length} / {tournament.capacity} Spots Filled
                     </span>
@@ -296,7 +296,7 @@ export default function TournamentDetails({
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 shrink-0">
                 <div className="text-left sm:text-right">
                   <span className="text-xs text-[#94A3B8] block">Entry Fee</span>
-                  <div className="font-['Barlow_Condensed'] text-3xl font-black text-[#B6FF3B] leading-none">
+                  <div className="font-['Barlow_Condensed'] text-3xl font-black text-[#E5C378] leading-none">
                     {tournament.entryFee === 0 ? 'FREE ENTRY' : `₹${tournament.entryFee.toLocaleString('en-IN')}`}
                     {tournament.entryFee > 0 && (
                       <span className="text-xs font-normal text-slate-400 ml-1 font-sans">
@@ -309,7 +309,7 @@ export default function TournamentDetails({
                 {isRegOpen ? (
                   <Link
                     to={`/tournaments/${tournament.id}/register`}
-                    className="px-6 py-3.5 rounded-xl bg-[#B6FF3B] hover:bg-[#a3ee28] text-[#0B0F14] font-black text-sm uppercase tracking-wider transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(182,255,59,0.3)] hover:scale-105"
+                    className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#E5C378] to-[#C59B27] hover:brightness-110 text-[#0F141C] font-black text-sm uppercase tracking-wider transition-all flex items-center gap-2 shadow-[0_4px_20px_rgba(212,175,55,0.3)] hover:scale-105"
                   >
                     <span>Register Now</span>
                     <ArrowRight className="w-4 h-4" />
@@ -343,7 +343,7 @@ export default function TournamentDetails({
               onClick={() => setActiveTab(tab.id)}
               className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'bg-[#141B24] text-[#B6FF3B] border border-[#293442] shadow-sm'
+                  ? 'bg-[#141B24] text-[#E5C378] border border-[#293442] shadow-sm'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -357,8 +357,8 @@ export default function TournamentDetails({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
               {/* Format description card */}
-              <div className="bg-[#141B24] border border-[#293442] p-6 rounded-2xl space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#00D4FF]">
+              <div className="bg-[#141B24]/90 border border-[#293442] p-6 rounded-2xl space-y-2 backdrop-blur-sm">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-300">
                   <Sparkles className="w-4 h-4" />
                   <span>Competition Structure</span>
                 </div>
@@ -371,7 +371,7 @@ export default function TournamentDetails({
               </div>
 
               {/* Venue details */}
-              <div className="bg-[#141B24] border border-[#293442] p-6 rounded-2xl space-y-3">
+              <div className="bg-[#141B24]/90 border border-[#293442] p-6 rounded-2xl space-y-3 backdrop-blur-sm">
                 <h3 className="font-['Barlow_Condensed'] text-xl font-bold uppercase text-white tracking-wide">
                   Venue &amp; Location
                 </h3>
@@ -383,7 +383,7 @@ export default function TournamentDetails({
 
               {/* Prize Pool Breakdown Table */}
               {tournament.prizePool > 0 && (
-                <div className="bg-[#141B24] border border-[#293442] p-6 rounded-2xl space-y-4">
+                <div className="bg-[#141B24]/90 border border-[#293442] p-6 rounded-2xl space-y-4 backdrop-blur-sm">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white tracking-wide">
@@ -393,7 +393,7 @@ export default function TournamentDetails({
                         Total Pool: ₹{tournament.prizePool.toLocaleString('en-IN')} (Demo figures)
                       </span>
                     </div>
-                    <Trophy className="w-6 h-6 text-amber-400" />
+                    <Trophy className="w-6 h-6 text-amber-300" />
                   </div>
 
                   <div className="overflow-hidden border border-[#293442] rounded-xl">
@@ -409,10 +409,10 @@ export default function TournamentDetails({
                         {tournament.prizeDistribution?.map((p, idx) => (
                           <tr key={idx} className="hover:bg-[#1B2530]/40">
                             <td className="py-2.5 px-4 font-semibold text-white">{p.rank}</td>
-                            <td className="py-2.5 px-4 font-bold text-[#B6FF3B]">
+                            <td className="py-2.5 px-4 font-bold text-[#E5C378]">
                               ₹{p.amount.toLocaleString('en-IN')}
                             </td>
-                            <td className="py-2.5 px-4 text-right text-amber-400">
+                            <td className="py-2.5 px-4 text-right text-amber-300">
                               {p.trophy ? 'Championship Trophy' : 'Certificate'}
                             </td>
                           </tr>
@@ -427,7 +427,7 @@ export default function TournamentDetails({
             {/* Right sidebar: Registration Progress & Organiser Contact */}
             <div className="space-y-6">
               {/* Quota widget */}
-              <div className="bg-[#141B24] border border-[#293442] p-5 rounded-2xl space-y-4">
+              <div className="bg-[#141B24]/90 border border-[#293442] p-5 rounded-2xl space-y-4 backdrop-blur-sm">
                 <h4 className="font-['Barlow_Condensed'] text-lg font-bold uppercase text-white">
                   Registration Progress
                 </h4>
@@ -441,7 +441,7 @@ export default function TournamentDetails({
                   </div>
                   <div className="w-full h-2 bg-[#0B0F14] rounded-full overflow-hidden border border-[#293442]">
                     <div
-                      className="h-full bg-gradient-to-r from-[#00D4FF] to-[#B6FF3B]"
+                      className="h-full bg-gradient-to-r from-[#D4AF37] to-[#E5C378]"
                       style={{
                         width: `${Math.min(100, (approvedRegistrations.length / tournament.capacity) * 100)}%`
                       }}
@@ -452,7 +452,7 @@ export default function TournamentDetails({
                 <div className="space-y-2 text-xs text-slate-300 pt-2 border-t border-[#293442]">
                   <div className="flex items-center justify-between">
                     <span className="text-[#94A3B8]">Registration Closes:</span>
-                    <span className="font-semibold text-amber-400">
+                    <span className="font-semibold text-amber-300">
                       {formatDateDisplay(tournament.registrationDeadline)}
                     </span>
                   </div>
@@ -466,17 +466,17 @@ export default function TournamentDetails({
               </div>
 
               {/* Organiser Support */}
-              <div className="bg-[#141B24] border border-[#293442] p-5 rounded-2xl space-y-3">
+              <div className="bg-[#141B24]/90 border border-[#293442] p-5 rounded-2xl space-y-3 backdrop-blur-sm">
                 <h4 className="font-['Barlow_Condensed'] text-lg font-bold uppercase text-white">
                   Organiser Contact
                 </h4>
                 <div className="space-y-2 text-xs text-slate-300">
                   <div className="flex items-center gap-2">
-                    <Mail className="w-3.5 h-3.5 text-[#00D4FF]" />
+                    <Mail className="w-3.5 h-3.5 text-sky-300" />
                     <span>{tournament.contact?.email || 'help@sportlink.in'}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Phone className="w-3.5 h-3.5 text-[#B6FF3B]" />
+                    <Phone className="w-3.5 h-3.5 text-[#E5C378]" />
                     <span>{tournament.contact?.phone || '+91 20 2500 0000'}</span>
                   </div>
                 </div>
@@ -500,7 +500,7 @@ export default function TournamentDetails({
                     type="button"
                     onClick={() => setActiveView('table')}
                     className={`px-3 py-1 text-xs font-bold rounded-lg cursor-pointer ${
-                      activeView === 'table' ? 'bg-[#1B2530] text-[#B6FF3B]' : 'text-slate-400'
+                      activeView === 'table' ? 'bg-[#1B2530] text-[#E5C378]' : 'text-slate-400'
                     }`}
                   >
                     Table View
@@ -509,7 +509,7 @@ export default function TournamentDetails({
                     type="button"
                     onClick={() => setActiveView('bracket')}
                     className={`px-3 py-1 text-xs font-bold rounded-lg cursor-pointer ${
-                      activeView === 'bracket' ? 'bg-[#1B2530] text-[#B6FF3B]' : 'text-slate-400'
+                      activeView === 'bracket' ? 'bg-[#1B2530] text-[#E5C378]' : 'text-slate-400'
                     }`}
                   >
                     Bracket View
@@ -552,31 +552,31 @@ export default function TournamentDetails({
         {/* TAB 4: Rules & Eligibility */}
         {activeTab === 'rules' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-[#141B24] border border-[#293442] p-6 rounded-2xl space-y-4">
+            <div className="bg-[#141B24]/90 border border-[#293442] p-6 rounded-2xl space-y-4 backdrop-blur-sm">
               <h3 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white">
                 Eligibility Criteria
               </h3>
               <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#B6FF3B] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                   <span>
                     Age Limits: {tournament.eligibility?.minAge} to {tournament.eligibility?.maxAge} years old.
                   </span>
                 </li>
                 {tournament.eligibility?.collegeOnly && (
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#00D4FF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-sky-300 shrink-0 mt-0.5" />
                     <span>Collegiate validation mandatory. Valid student ID required.</span>
                   </li>
                 )}
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#B6FF3B] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                   <span>
                     Squad Size: Minimum {tournament.teamSize?.min || 1} player(s), maximum {tournament.teamSize?.max || 10} players (+{tournament.teamSize?.substitutes || 0} substitutes).
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#B6FF3B] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                   <span>
                     Required verification documents: {tournament.eligibility?.documents?.join(', ')}.
                   </span>
@@ -584,7 +584,7 @@ export default function TournamentDetails({
               </ul>
             </div>
 
-            <div className="bg-[#141B24] border border-[#293442] p-6 rounded-2xl space-y-4">
+            <div className="bg-[#141B24]/90 border border-[#293442] p-6 rounded-2xl space-y-4 backdrop-blur-sm">
               <h3 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white">
                 Tournament Rules &amp; Refund Policy
               </h3>
@@ -596,7 +596,7 @@ export default function TournamentDetails({
                 </ul>
 
                 <div className="p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-slate-300 space-y-1">
-                  <span className="font-bold text-amber-400 block uppercase tracking-wider">
+                  <span className="font-bold text-amber-300 block uppercase tracking-wider">
                     Refund Policy
                   </span>
                   <p>{tournament.refundPolicy}</p>

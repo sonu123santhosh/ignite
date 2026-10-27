@@ -22,15 +22,15 @@ export function SportCourtSVG({ sport, className = '' }) {
     return (
       <svg className={`w-full h-full object-cover ${className}`} viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Football pitch line schematic">
         <rect width="400" height="200" fill="url(#pitchGrad)" />
-        <rect x="20" y="15" width="360" height="170" stroke="rgba(182,255,59,0.3)" strokeWidth="2" />
-        <line x1="200" y1="15" x2="200" y2="185" stroke="rgba(182,255,59,0.3)" strokeWidth="2" />
-        <circle cx="200" cy="100" r="35" stroke="rgba(182,255,59,0.3)" strokeWidth="2" />
-        <circle cx="200" cy="100" r="3" fill="rgba(182,255,59,0.4)" />
-        <rect x="20" y="60" width="45" height="80" stroke="rgba(182,255,59,0.3)" strokeWidth="2" />
-        <rect x="335" y="60" width="45" height="80" stroke="rgba(182,255,59,0.3)" strokeWidth="2" />
+        <rect x="20" y="15" width="360" height="170" stroke="rgba(229,195,120,0.3)" strokeWidth="2" />
+        <line x1="200" y1="15" x2="200" y2="185" stroke="rgba(229,195,120,0.3)" strokeWidth="2" />
+        <circle cx="200" cy="100" r="35" stroke="rgba(229,195,120,0.3)" strokeWidth="2" />
+        <circle cx="200" cy="100" r="3" fill="rgba(229,195,120,0.4)" />
+        <rect x="20" y="60" width="45" height="80" stroke="rgba(229,195,120,0.3)" strokeWidth="2" />
+        <rect x="335" y="60" width="45" height="80" stroke="rgba(229,195,120,0.3)" strokeWidth="2" />
         <defs>
           <linearGradient id="pitchGrad" x1="0" y1="0" x2="400" y2="200" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#0a2e1d" />
+            <stop stopColor="#0f241a" />
             <stop offset="1" stopColor="#0B1319" />
           </linearGradient>
         </defs>
@@ -60,12 +60,12 @@ export function SportCourtSVG({ sport, className = '' }) {
     return (
       <svg className={`w-full h-full object-cover ${className}`} viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Badminton court schematic">
         <rect width="400" height="200" fill="url(#badmintonGrad)" />
-        <rect x="50" y="25" width="300" height="150" stroke="rgba(0,212,255,0.3)" strokeWidth="2" />
-        <line x1="200" y1="20" x2="200" y2="180" stroke="rgba(0,212,255,0.6)" strokeWidth="3" strokeDasharray="4 2" />
-        <line x1="50" y1="40" x2="350" y2="40" stroke="rgba(0,212,255,0.25)" strokeWidth="1.5" />
-        <line x1="50" y1="160" x2="350" y2="160" stroke="rgba(0,212,255,0.25)" strokeWidth="1.5" />
-        <line x1="140" y1="25" x2="140" y2="175" stroke="rgba(0,212,255,0.25)" strokeWidth="1.5" />
-        <line x1="260" y1="25" x2="260" y2="175" stroke="rgba(0,212,255,0.25)" strokeWidth="1.5" />
+        <rect x="50" y="25" width="300" height="150" stroke="rgba(125,211,252,0.3)" strokeWidth="2" />
+        <line x1="200" y1="20" x2="200" y2="180" stroke="rgba(125,211,252,0.5)" strokeWidth="3" strokeDasharray="4 2" />
+        <line x1="50" y1="40" x2="350" y2="40" stroke="rgba(125,211,252,0.25)" strokeWidth="1.5" />
+        <line x1="50" y1="160" x2="350" y2="160" stroke="rgba(125,211,252,0.25)" strokeWidth="1.5" />
+        <line x1="140" y1="25" x2="140" y2="175" stroke="rgba(125,211,252,0.25)" strokeWidth="1.5" />
+        <line x1="260" y1="25" x2="260" y2="175" stroke="rgba(125,211,252,0.25)" strokeWidth="1.5" />
         <defs>
           <linearGradient id="badmintonGrad" x1="0" y1="0" x2="400" y2="200" gradientUnits="userSpaceOnUse">
             <stop stopColor="#0b2438" />
@@ -99,9 +99,9 @@ export function SportCourtSVG({ sport, className = '' }) {
   return (
     <svg className={`w-full h-full object-cover ${className}`} viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sports court line schematic">
       <rect width="400" height="200" fill="url(#defaultCourtGrad)" />
-      <rect x="30" y="25" width="340" height="150" stroke="rgba(182,255,59,0.25)" strokeWidth="2" />
-      <line x1="200" y1="20" x2="200" y2="180" stroke="rgba(182,255,59,0.4)" strokeWidth="3" />
-      <line x1="30" y1="100" x2="370" y2="100" stroke="rgba(182,255,59,0.18)" strokeWidth="1.5" strokeDasharray="3 3" />
+      <rect x="30" y="25" width="340" height="150" stroke="rgba(229,195,120,0.25)" strokeWidth="2" />
+      <line x1="200" y1="20" x2="200" y2="180" stroke="rgba(229,195,120,0.35)" strokeWidth="3" />
+      <line x1="30" y1="100" x2="370" y2="100" stroke="rgba(229,195,120,0.18)" strokeWidth="1.5" strokeDasharray="3 3" />
       <defs>
         <linearGradient id="defaultCourtGrad" x1="0" y1="0" x2="400" y2="200" gradientUnits="userSpaceOnUse">
           <stop stopColor="#152336" />
@@ -133,7 +133,7 @@ export default function TournamentCard({
 
   if (viewMode === 'list') {
     return (
-      <div className="bg-[#141B24] border border-[#293442] hover:border-[#B6FF3B]/60 rounded-2xl p-4 sm:p-5 transition-all duration-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-md group">
+      <div className="bg-[#141B24]/90 border border-[#293442] hover:border-[#D4AF37]/50 rounded-2xl p-4 sm:p-5 transition-all duration-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-md group backdrop-blur-sm">
         {/* Left: Thumbnail & Core Info */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 flex-1 min-w-0 w-full">
           {/* Banner Slot */}
@@ -159,14 +159,14 @@ export default function TournamentCard({
                 <StatusBadge key={idx} derived={true} status={lbl.text} />
               ))}
               {tournament.organiserVerified && (
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#00D4FF] bg-[#00D4FF]/10 border border-[#00D4FF]/30 px-2 py-0.5 rounded-full">
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-sky-300 bg-sky-500/10 border border-sky-500/30 px-2 py-0.5 rounded-full">
                   <ShieldCheck className="w-3 h-3" />
                   <span>Verified Organiser</span>
                 </span>
               )}
             </div>
 
-            <Link to={`/tournaments/${tournament.id}`} className="block group-hover:text-[#B6FF3B] transition-colors">
+            <Link to={`/tournaments/${tournament.id}`} className="block group-hover:text-[#E5C378] transition-colors">
               <h3 className="font-['Barlow_Condensed'] text-xl sm:text-2xl font-bold uppercase tracking-wide text-white truncate">
                 {tournament.name}
               </h3>
@@ -193,7 +193,7 @@ export default function TournamentCard({
         <div className="flex items-center justify-between md:flex-col md:items-end gap-3 w-full md:w-auto pt-3 md:pt-0 border-t md:border-t-0 border-[#293442]">
           <div className="text-left md:text-right">
             <div className="text-xs text-[#94A3B8]">Entry Fee</div>
-            <div className="font-['Barlow_Condensed'] text-xl font-black text-[#B6FF3B]">
+            <div className="font-['Barlow_Condensed'] text-xl font-black text-[#E5C378]">
               {tournament.entryFee === 0 ? 'FREE ENTRY' : `₹${tournament.entryFee.toLocaleString('en-IN')}`}
               {tournament.entryFee > 0 && (
                 <span className="text-xs font-normal text-slate-400 ml-1 font-sans">
@@ -202,7 +202,7 @@ export default function TournamentCard({
               )}
             </div>
             {tournament.prizePool > 0 && (
-              <div className="flex items-center md:justify-end gap-1 text-xs text-amber-400 font-semibold mt-0.5">
+              <div className="flex items-center md:justify-end gap-1 text-xs text-amber-300 font-semibold mt-0.5">
                 <Trophy className="w-3.5 h-3.5" />
                 <span>Prize: ₹{tournament.prizePool.toLocaleString('en-IN')}</span>
               </div>
@@ -225,7 +225,7 @@ export default function TournamentCard({
 
             <Link
               to={`/tournaments/${tournament.id}`}
-              className="px-3.5 py-2 rounded-xl bg-[#1B2530] hover:bg-slate-700 text-white font-semibold text-xs border border-[#293442] transition-colors"
+              className="px-3.5 py-2 rounded-xl bg-[#1B2530] hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-[#293442] transition-colors"
             >
               View Details
             </Link>
@@ -233,7 +233,7 @@ export default function TournamentCard({
             {isRegOpen && (
               <Link
                 to={`/tournaments/${tournament.id}/register`}
-                className="px-3.5 py-2 rounded-xl bg-[#B6FF3B] hover:bg-[#a3ee28] text-[#0B0F14] font-bold text-xs transition-colors flex items-center gap-1"
+                className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C59B27] hover:brightness-110 text-[#0F141C] font-bold text-xs transition-all flex items-center gap-1 shadow-[0_2px_10px_rgba(212,175,55,0.2)]"
               >
                 <span>Register</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -247,7 +247,7 @@ export default function TournamentCard({
 
   // Grid Card View (Default)
   return (
-    <div className="bg-[#141B24] border border-[#293442] hover:border-[#B6FF3B]/60 rounded-2xl overflow-hidden transition-all duration-200 flex flex-col shadow-lg group hover:-translate-y-1">
+    <div className="bg-[#141B24]/90 border border-[#293442] hover:border-[#D4AF37]/50 rounded-2xl overflow-hidden transition-all duration-200 flex flex-col shadow-lg group hover:-translate-y-1 backdrop-blur-sm">
       {/* Banner Slot (SVG schematic, clear placeholder for real photo) */}
       <div className="h-44 w-full relative overflow-hidden bg-[#0B0F14] border-b border-[#293442]">
         <SportCourtSVG sport={tournament.sport} />
@@ -259,7 +259,7 @@ export default function TournamentCard({
               {tournament.sport}
             </span>
             {tournament.organiserVerified && (
-              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#00D4FF]/20 text-[#00D4FF] border border-[#00D4FF]/40 backdrop-blur-sm">
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/40 backdrop-blur-sm">
                 <ShieldCheck className="w-3 h-3" />
                 <span>Verified Organiser</span>
               </span>
@@ -303,7 +303,7 @@ export default function TournamentCard({
           </div>
 
           {/* Title */}
-          <Link to={`/tournaments/${tournament.id}`} className="block group-hover:text-[#B6FF3B] transition-colors">
+          <Link to={`/tournaments/${tournament.id}`} className="block group-hover:text-[#E5C378] transition-colors">
             <h3 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase tracking-wide text-white leading-tight line-clamp-2">
               {tournament.name}
             </h3>
@@ -317,16 +317,16 @@ export default function TournamentCard({
           {/* Meta details list */}
           <div className="space-y-1.5 pt-2 border-t border-[#293442] text-xs text-slate-300">
             <div className="flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-[#00D4FF] shrink-0" />
+              <MapPin className="w-3.5 h-3.5 text-sky-300 shrink-0" />
               <span className="truncate">{tournament.venue}, {tournament.city}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Calendar className="w-3.5 h-3.5 text-[#B6FF3B] shrink-0" />
+              <Calendar className="w-3.5 h-3.5 text-[#E5C378] shrink-0" />
               <span>Starts {formatDateDisplay(tournament.startDate)}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Clock className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span className={daysLeft <= 3 && daysLeft >= 0 ? 'text-amber-400 font-semibold' : ''}>
+              <Clock className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+              <span className={daysLeft <= 3 && daysLeft >= 0 ? 'text-amber-300 font-semibold' : ''}>
                 Reg closes {formatDateDisplay(tournament.registrationDeadline)}
               </span>
             </div>
@@ -338,7 +338,7 @@ export default function TournamentCard({
           <div className="flex items-center justify-between">
             <div>
               <span className="text-[11px] text-[#94A3B8] block">Entry Fee</span>
-              <div className="font-['Barlow_Condensed'] text-2xl font-black text-[#B6FF3B] leading-none">
+              <div className="font-['Barlow_Condensed'] text-2xl font-black text-[#E5C378] leading-none">
                 {tournament.entryFee === 0 ? 'FREE' : `₹${tournament.entryFee.toLocaleString('en-IN')}`}
                 {tournament.entryFee > 0 && (
                   <span className="text-xs font-normal text-slate-400 ml-1 font-sans">
@@ -351,7 +351,7 @@ export default function TournamentCard({
             {tournament.prizePool > 0 && (
               <div className="text-right">
                 <span className="text-[11px] text-[#94A3B8] block">Prize Pool</span>
-                <div className="flex items-center gap-1 font-['Barlow_Condensed'] text-xl font-bold text-amber-400 leading-none">
+                <div className="flex items-center gap-1 font-['Barlow_Condensed'] text-xl font-bold text-amber-300 leading-none">
                   <Trophy className="w-4 h-4" />
                   <span>₹{tournament.prizePool.toLocaleString('en-IN')}</span>
                 </div>
@@ -362,7 +362,7 @@ export default function TournamentCard({
           <div className="grid grid-cols-2 gap-2 pt-1">
             <Link
               to={`/tournaments/${tournament.id}`}
-              className="w-full py-2 px-3 text-center rounded-xl bg-[#1B2530] hover:bg-slate-700 text-white font-semibold text-xs border border-[#293442] transition-colors"
+              className="w-full py-2 px-3 text-center rounded-xl bg-[#1B2530] hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-[#293442] transition-colors"
             >
               View Details
             </Link>
@@ -370,7 +370,7 @@ export default function TournamentCard({
             {isRegOpen ? (
               <Link
                 to={`/tournaments/${tournament.id}/register`}
-                className="w-full py-2 px-3 text-center rounded-xl bg-[#B6FF3B] hover:bg-[#a3ee28] text-[#0B0F14] font-bold text-xs transition-colors flex items-center justify-center gap-1"
+                className="w-full py-2 px-3 text-center rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C59B27] hover:brightness-110 text-[#0F141C] font-bold text-xs transition-all flex items-center justify-center gap-1 shadow-[0_2px_10px_rgba(212,175,55,0.2)]"
               >
                 <span>Register</span>
                 <ArrowRight className="w-3.5 h-3.5" />
