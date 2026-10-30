@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Zap, ChevronRight } from 'lucide-react';
+import { Menu, X, Zap, ChevronRight, LogOut } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import Button from './Button';
 
 export default function Navbar({ onShowToast }) {
@@ -11,6 +12,7 @@ export default function Navbar({ onShowToast }) {
   const isFriendliesPage = location.pathname.startsWith('/friendlies') || location.pathname.startsWith('/friendly-matches');
   const isCoachingPage = location.pathname.startsWith('/coaching');
   const isTrialsPage = location.pathname.startsWith('/trials');
+  const { currentUser, isAuthenticated, logout } = useAuth();
 
   const navLinks = [
     { label: 'Home', path: '/home' },
@@ -296,31 +298,66 @@ export default function Navbar({ onShowToast }) {
 
           {/* Right Action Buttons */}
           <div className="hidden min-[900px]:flex items-center gap-3">
-            <button
-              type="button"
-              onClick={() => handleAccountAction('Login')}
-              className={`text-xs sm:text-sm font-semibold text-slate-200 hover:text-white px-4 py-2 transition-all duration-200 cursor-pointer rounded-full hover:bg-white/[0.08] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] focus-visible:outline-none focus-visible:ring-2 ${
-                isFacilitiesPage
-                  ? 'focus-visible:ring-rose-500'
-                  : isFriendliesPage
-                  ? 'focus-visible:ring-sky-400'
-                  : isCoachingPage
-                  ? 'focus-visible:ring-red-500'
-                  : isTrialsPage
-                  ? 'focus-visible:ring-amber-500'
-                  : 'focus-visible:ring-[#c6ff3d]'
-              }`}
-            >
-              Login
-            </button>
-            <Button
-              variant={isFacilitiesPage ? 'crimson' : isFriendliesPage ? 'stadium' : isCoachingPage ? 'crimson' : isTrialsPage ? 'gold' : 'primary'}
-              size="md"
-              onClick={() => handleAccountAction('Get Started')}
-              className="shadow-sm font-bold"
-            >
-              Get Started
-            </Button>
+{isAuthenticated ? (
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/10">
+                  <div className="w-6 h-6 rounded-full bg-[#B6FF3B]/20 text-[#B6FF3B] flex items-center justify-center text-xs font-bold border border-[#B6FF3B]/40">
+                    {currentUser?.name ? currentUser.name.charAt(0).toUpperCase() : 'U'}
+                  </div>
+                  <span className="text-xs font-semibold text-slate-200 max-w-[120px] truncate">
+                    {currentUser?.name || 'Account'}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    logout();
+                    if (onShowToast) {
+                      onShowToast({
+                        title: 'Logged Out',
+                        message: 'You have been successfully logged out.',
+                        type: 'info'
+                      });
+                    }
+                  }}
+                  className="text-xs font-medium text-slate-400 hover:text-rose-400 p-2 rounded-full hover:bg-white/[0.06] transition-colors cursor-pointer"
+                  title="Log out"
+                  aria-label="Log out"
+                >
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link
+                  to={`/login${location.pathname !== '/' ? `?redirect=${encodeURIComponent(location.pathname + location.search)}` : ''}`}
+                  className={`text-xs sm:text-sm font-semibold text-slate-200 hover:text-white px-4 py-2 transition-all duration-200 cursor-pointer rounded-full hover:bg-white/[0.08] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] focus-visible:outline-none focus-visible:ring-2 ${
+                    isFacilitiesPage
+                      ? 'focus-visible:ring-rose-500'
+                      : isFriendliesPage
+                      ? 'focus-visible:ring-sky-400'
+                      : isCoachingPage
+                      ? 'focus-visible:ring-red-500'
+                      : isTrialsPage
+                      ? 'focus-visible:ring-amber-500'
+                      : 'focus-visible:ring-[#c6ff3d]'
+                  }`}
+                >
+                  Login
+                </Link>
+                <Link
+                  to={`/register${location.pathname !== '/' ? `?redirect=${encodeURIComponent(location.pathname + location.search)}` : ''}`}
+                >
+                  <Button
+                    variant={isFacilitiesPage ? 'crimson' : isFriendliesPage ? 'stadium' : isCoachingPage ? 'crimson' : isTrialsPage ? 'gold' : 'primary'}
+                    size="md"
+                    className="shadow-sm font-bold"
+                  >
+                    Sign Up
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Hamburger Menu (Below 900px) */}
@@ -419,27 +456,63 @@ export default function Navbar({ onShowToast }) {
             </nav>
 
             <div className="pt-3 border-t border-white/15 flex flex-col gap-2.5">
-              <button
-                type="button"
-                onClick={() => {
-                  setIsOpen(false);
-                  handleAccountAction('Login');
-                }}
-                className="w-full py-2.5 text-center text-sm font-semibold text-slate-100 bg-white/[0.08] border border-white/15 rounded-xl hover:bg-white/[0.15] transition-colors cursor-pointer"
-              >
-                Login
-              </button>
-              <Button
-                variant={isFacilitiesPage ? 'crimson' : isFriendliesPage ? 'stadium' : isCoachingPage ? 'crimson' : isTrialsPage ? 'gold' : 'primary'}
-                size="md"
-                className="w-full font-bold"
-                onClick={() => {
-                  setIsOpen(false);
-                  handleAccountAction('Get Started');
-                }}
-              >
-                Get Started
-              </Button>
+{isAuthenticated ? (
+                <div className="p-3 bg-white/[0.04] border border-white/10 rounded-xl flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-full bg-[#B6FF3B]/20 text-[#B6FF3B] flex items-center justify-center text-sm font-bold border border-[#B6FF3B]/40">
+                      {currentUser?.name ? currentUser.name.charAt(0).toUpperCase() : 'U'}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-bold text-white leading-tight">
+                        {currentUser?.name}
+                      </span>
+                      <span className="text-[11px] text-slate-400 capitalize">
+                        {currentUser?.role?.replace('_', ' ')}
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsOpen(false);
+                      logout();
+                      if (onShowToast) {
+                        onShowToast({
+                          title: 'Logged Out',
+                          message: 'You have been successfully logged out.',
+                          type: 'info'
+                        });
+                      }
+                    }}
+                    className="px-3 py-1.5 rounded-lg bg-rose-500/15 border border-rose-500/30 text-rose-400 text-xs font-semibold hover:bg-rose-500/25 transition-colors"
+                  >
+                    Log Out
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <Link
+                    to={`/login${location.pathname !== '/' ? `?redirect=${encodeURIComponent(location.pathname + location.search)}` : ''}`}
+                    onClick={() => setIsOpen(false)}
+                    className="w-full py-2.5 text-center text-sm font-semibold text-slate-100 bg-white/[0.08] border border-white/15 rounded-xl hover:bg-white/[0.15] transition-colors cursor-pointer block"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to={`/register${location.pathname !== '/' ? `?redirect=${encodeURIComponent(location.pathname + location.search)}` : ''}`}
+                    onClick={() => setIsOpen(false)}
+                    className="block"
+                  >
+                    <Button
+                      variant={isFacilitiesPage ? 'crimson' : isFriendliesPage ? 'stadium' : isCoachingPage ? 'crimson' : isTrialsPage ? 'gold' : 'primary'}
+                      size="md"
+                      className="w-full font-bold"
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

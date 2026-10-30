@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Routes, Route, Navigate, useSearchParams } from 'react-router-dom';
 import Layout from './components/Layout';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import Home from './pages/Home';
 import IntroPage from './pages/IntroPage';
 import Facilities from './pages/Facilities';
@@ -95,6 +97,10 @@ export default function App() {
       <CoachingProvider>
         <TrialsProvider>
           <Routes>
+            {/* Auth Routes */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+
             {/* Cinematic Fullscreen Intro Landing Page (Pure White #FFFFFF) */}
             <Route path="/" element={<IntroPage />} />
             <Route path="/intro" element={<IntroPage />} />
