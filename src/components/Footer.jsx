@@ -10,7 +10,7 @@ export default function Footer() {
     { label: 'College Friendly Matches', path: '/friendly-matches' },
     { label: 'Coaching Centres', path: '/coaching' },
     { label: 'Sports Trials', path: '/trials' },
-    { label: 'Watch Intro', path: '/' }
+    { label: 'Watch Intro', path: '/intro' }
   ];
 
   return (

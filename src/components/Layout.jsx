@@ -79,7 +79,7 @@ export default function Layout() {
       {/* Dynamic Route-Aware Fixed Background */}
       {isFacilitiesPage ? (
         <div
-          className="fixed inset-0 -z-50 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
+          className="fixed inset-0 z-0 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
           style={{
             backgroundImage: `linear-gradient(rgba(11, 15, 20, 0.35), rgba(11, 15, 20, 0.35)), url('${facilitiesBg}')`
           }}
@@ -87,7 +87,7 @@ export default function Layout() {
         />
       ) : isTournamentsPage ? (
         <div
-          className="fixed inset-0 -z-50 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
+          className="fixed inset-0 z-0 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
           style={{
             backgroundImage: `linear-gradient(rgba(11, 15, 20, 0.35), rgba(11, 15, 20, 0.35)), url('${tournamentsBg}')`
           }}
@@ -95,7 +95,7 @@ export default function Layout() {
         />
       ) : isFriendliesPage ? (
         <div
-          className="fixed inset-0 -z-50 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
+          className="fixed inset-0 z-0 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
           style={{
             backgroundImage: `linear-gradient(rgba(6, 10, 18, 0.35), rgba(5, 8, 15, 0.60)), url('${friendliesBg}')`
           }}
@@ -103,7 +103,7 @@ export default function Layout() {
         />
       ) : isCoachingPage ? (
         <div
-          className="fixed inset-0 -z-50 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
+          className="fixed inset-0 z-0 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
           style={{
             backgroundImage: `linear-gradient(rgba(10, 8, 14, 0.40), rgba(7, 5, 10, 0.65)), url('${coachingBg}')`
           }}
@@ -111,7 +111,7 @@ export default function Layout() {
         />
       ) : isTrialsPage ? (
         <div
-          className="fixed inset-0 -z-50 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
+          className="fixed inset-0 z-0 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
           style={{
             backgroundImage: `linear-gradient(rgba(10, 12, 18, 0.45), rgba(7, 8, 14, 0.70)), url('${trialsBg}')`
           }}
@@ -119,7 +119,7 @@ export default function Layout() {
         />
       ) : (
         <div
-          className="fixed inset-0 -z-50 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
+          className="fixed inset-0 z-0 pointer-events-none bg-cover bg-center bg-no-repeat transition-all duration-300"
           style={{
             backgroundImage: `url('${pitchBg}')`
           }}
@@ -127,7 +127,8 @@ export default function Layout() {
         />
       )}
 
-      <Navbar onShowToast={showToast} />
+      <div className="relative z-10 flex flex-col flex-1">
+        <Navbar onShowToast={showToast} />
 
       <main className="flex-1 relative z-0">
         <Outlet context={{ showToast }} />
@@ -138,6 +139,7 @@ export default function Layout() {
       <FloatingCompareBar facilitiesList={INITIAL_FACILITIES} />
 
       <Toast toast={toast} onClose={closeToast} />
+      </div>
     </div>
   </CompareProvider>
 );

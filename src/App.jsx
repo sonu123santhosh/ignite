@@ -110,9 +110,12 @@ export default function App() {
             {/* Standalone Public Cost Split Share Route */}
             <Route path="/splits/:shareToken" element={<PublicSplitView />} />
 
+            {/* Starting Animation Landing Page */}
+            <Route index element={<IntroPage />} />
+            <Route path="intro" element={<IntroPage />} />
+
             {/* Main Application Shell */}
             <Route element={<Layout />}>
-              <Route index element={<Home />} />
               <Route path="home" element={<Home />} />
 
           {/* Facilities & Grounds Feature Routes */}
