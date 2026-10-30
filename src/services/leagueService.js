@@ -1154,8 +1154,8 @@ export function detectLeagueSchedulingConflicts(matches = [], league = null) {
         }
 
         // Team collision
-        const teams1 = [m1.homeTeamId, m1.awayTeamId];
-        const teams2 = [m2.homeTeamId, m2.awayTeamId];
+        const teams1 = [m1.homeTeamId, m1.awayTeamId].filter(Boolean).map(String);
+        const teams2 = [m2.homeTeamId, m2.awayTeamId].filter(Boolean).map(String);
         const sharedTeam = teams1.find((t) => teams2.includes(t));
 
         if (sharedTeam) {

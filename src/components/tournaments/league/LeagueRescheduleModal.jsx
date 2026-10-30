@@ -58,17 +58,19 @@ export default function LeagueRescheduleModal({
 
   if (isDateValid && proposedTime > 0) {
     allMatches.forEach((other) => {
-      if (other.id === match.id || !other.scheduledAt) return;
+      if (!other || other.id === match?.id || !other.scheduledAt) return;
       const otherTime = new Date(other.scheduledAt).getTime();
+      if (isNaN(otherTime)) return;
       const diffMinutes = Math.abs(proposedTime - otherTime) / (1000 * 60);
 
       if (diffMinutes < matchDurationMinutes) {
-        if (venue && other.venue && venue.trim().toLowerCase() === other.venue.trim().toLowerCase()) {
-          liveConflicts.push(`Venue "${venue}" is already booked for match #${other.id} at ${other.scheduledAt.slice(11, 16)}.`);
+        if (venue?.trim() && other.venue?.trim() && venue.trim().toLowerCase() === other.venue.trim().toLowerCase()) {
+          liveConflicts.push(`Venue "${venue.trim()}" is already booked for match #${other.id} at ${other.scheduledAt.slice(11, 16)}.`);
         }
-        const sharedTeams = [match.homeTeamId, match.awayTeamId].filter((tId) =>
-          [other.homeTeamId, other.awayTeamId].includes(tId)
-        );
+        const getMatchTeamIds = (m) => [m?.homeTeamId, m?.awayTeamId, m?.homeTeam?.id, m?.awayTeam?.id].filter(Boolean).map(String);
+        const matchTeams = getMatchTeamIds(match);
+        const otherTeams = getMatchTeamIds(other);
+        const sharedTeams = matchTeams.filter((tId) => otherTeams.includes(tId));
         if (sharedTeams.length > 0) {
           liveConflicts.push(`A participating team is already playing in match #${other.id} in an overlapping time window.`);
         }
