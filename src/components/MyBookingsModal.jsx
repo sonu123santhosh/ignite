@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { getSplitByBookingId } from '../services/costSplitService';
+import CostSplitBreakdownView from './facility/CostSplitBreakdownView';
 import { X, Calendar, Clock, MapPin, AlertCircle, CheckCircle2, RotateCcw } from 'lucide-react';
 import Button from './Button';
 
@@ -8,6 +10,8 @@ export default function MyBookingsModal({
   bookings = [],
   onCancelBooking
 }) {
+  const [expandedSplitId, setExpandedSplitId] = useState(null);
+
   if (!isOpen) return null;
 
   const getStatusBadge = (status) => {

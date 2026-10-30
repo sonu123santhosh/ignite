@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ShieldCheck, Clock, Calendar, Layers } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Clock, Calendar, Layers, Users } from 'lucide-react';
 import Button from './Button';
 import { formatINR, formatDisplayDate, formatTime12h } from './facility/facilityAdapter';
 
@@ -11,7 +11,10 @@ export default function PriceSummary({
   durationHours,
   priceBreakdown,
   onContinueToCheckout,
-  canContinue
+  canContinue,
+  splitConfig,
+  onToggleSplit,
+  onOpenSplitModal
 }) {
   const { basePrice = 0, taxPercent = 18, taxes = 0, platformFee = 0, total = 0 } = priceBreakdown || {};
 
@@ -19,6 +22,9 @@ export default function PriceSummary({
   const timeDisplay = selectedSlotTime
     ? `${selectedSlotTime} (${formatTime12h(selectedSlotTime)}) - ${durationHours} ${durationHours === 1 ? 'Hour' : 'Hours'}`
     : 'No slot chosen';
+
+  const participantCount = splitConfig?.participantCount || 2;
+  const estimatedPerPerson = total > 0 ? total / participantCount : 0;
 
   return (
     <div
@@ -91,6 +97,51 @@ export default function PriceSummary({
             <span className="block text-[10px] text-[#94A3B8]">All inclusive</span>
           </div>
         </div>
+      </div>
+
+      {/* Group Cost Splitting Toggle & Indicator */}
+      <div className="bg-[#0B0F14] border border-[#293442] rounded-xl p-3.5 space-y-2.5">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Users className="w-4 h-4 text-rose-400" />
+            <div>
+              <span className="text-xs font-bold text-white block">Split Cost with Friends</span>
+              <span className="text-[10px] text-[#94A3B8] block">Share breakdown with squad</span>
+            </div>
+          </div>
+          <label className="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              checked={Boolean(splitConfig?.enabled)}
+              onChange={(e) => onToggleSplit && onToggleSplit(e.target.checked)}
+              className="sr-only peer"
+            />
+            <div className="w-9 h-5 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-rose-500"></div>
+          </label>
+        </div>
+
+        {splitConfig?.enabled && (
+          <div className="pt-2 border-t border-[#293442] space-y-2">
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-[#94A3B8]">
+                {participantCount} Players ({splitConfig.mode === 'equal' ? 'Equal' : 'Custom'}):
+              </span>
+              <span className="font-mono font-bold text-rose-300">
+                {splitConfig.mode === 'equal'
+                  ? `${formatINR(estimatedPerPerson)} / person`
+                  : 'Custom shares'}
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={onOpenSplitModal}
+              className="w-full py-2 px-3 rounded-lg bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/30 text-rose-300 text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              <Users className="w-3.5 h-3.5" />
+              <span>Configure Cost Split</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Cancellation Policy Preview (omitted if not defined) */}

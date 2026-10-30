@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useSearchParams } from 'react-router-dom';
 import Layout from './components/Layout';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import PublicSplitView from './pages/facility/PublicSplitView';
 import Home from './pages/Home';
 import IntroPage from './pages/IntroPage';
 import Facilities from './pages/Facilities';

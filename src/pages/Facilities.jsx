@@ -21,6 +21,7 @@ import FacilityMap from '../components/FacilityMap';
 import EmptyState from '../components/EmptyState';
 import MyBookingsModal from '../components/MyBookingsModal';
 import OwnerDashboard from '../components/OwnerDashboard';
+import { cancelSplitForBooking } from '../services/costSplitService';
 import {
   INITIAL_FACILITIES,
   INITIAL_BOOKINGS,
@@ -215,6 +216,7 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
 
   const handleCancelPlayerBooking = (bookingId) => {
     handleUpdateBookingStatus(bookingId, 'Cancelled');
+    cancelSplitForBooking(bookingId);
     showToast({
       title: 'Booking Cancelled',
       message: 'Slot has been released back into inventory. Demo refund calculated.',

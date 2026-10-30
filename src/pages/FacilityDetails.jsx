@@ -8,6 +8,9 @@ import {
 import Button from '../components/Button';
 import SlotTable from '../components/SlotTable';
 import PriceSummary from '../components/PriceSummary';
+import CostSplitModal from '../components/facility/CostSplitModal';
+import { useAuth } from '../context/AuthContext';
+import { calculateEqualSplit, toPaise } from '../services/costSplitService';
 import FacilityOverview from '../components/facility/FacilityOverview';
 import FacilityPhotoGallery from '../components/facility/FacilityPhotoGallery';
 import FacilityAmenitiesSection from '../components/facility/FacilityAmenitiesSection';
@@ -190,6 +193,49 @@ export default function FacilityDetails({
       type: 'warning',
       isDemo: true
     });
+  };
+
+  // Recalculate split instantly when booking total changes
+  useEffect(() => {
+    if (splitConfig?.enabled && priceBreakdown?.total) {
+      const newTotalPaise = toPaise(priceBreakdown.total);
+      if (splitConfig.mode === 'equal') {
+        setSplitConfig((prev) => ({
+          ...prev,
+          totalRupees: priceBreakdown.total,
+          totalPaise: newTotalPaise,
+          participants: calculateEqualSplit(newTotalPaise, prev.participantCount, prev.participants)
+        }));
+      } else if (splitConfig.totalRupees !== priceBreakdown.total) {
+        showToastRef.current({
+          title: 'Booking Total Updated',
+          message: `Slot total updated to ₹${priceBreakdown.total}. Please adjust custom player shares.`,
+          type: 'warning'
+        });
+      }
+    }
+  }, [priceBreakdown?.total]);
+
+  const handleToggleSplit = (enabled) => {
+    if (enabled) {
+      const initialTotal = priceBreakdown?.total || 0;
+      const initialTotalPaise = toPaise(initialTotal);
+      const initialConfig = splitConfig || {
+        enabled: true,
+        participantCount: 2,
+        mode: 'equal',
+        note: '',
+        totalRupees: initialTotal,
+        totalPaise: initialTotalPaise,
+        participants: calculateEqualSplit(initialTotalPaise, 2, [
+          { name: currentUser?.name || 'Booker (You)' }
+        ])
+      };
+      setSplitConfig({ ...initialConfig, enabled: true });
+      setIsSplitModalOpen(true);
+    } else {
+      setSplitConfig((prev) => (prev ? { ...prev, enabled: false } : null));
+    }
   };
 
   const handleReleaseSlot = () => {
@@ -401,6 +447,18 @@ export default function FacilityDetails({
               priceBreakdown={priceBreakdown}
               onContinueToCheckout={handleContinueToCheckout}
               canContinue={Boolean(selectedSlotTime && !holdExpired)}
+              splitConfig={splitConfig}
+              onToggleSplit={handleToggleSplit}
+              onOpenSplitModal={() => setIsSplitModalOpen(true)}
+            />
+
+            <CostSplitModal
+              isOpen={isSplitModalOpen}
+              onClose={() => setIsSplitModalOpen(false)}
+              totalRupees={priceBreakdown.total}
+              currentSplitConfig={splitConfig}
+              onSaveSplitConfig={(cfg) => setSplitConfig(cfg)}
+              currentUserName={currentUser?.name || 'Booker (You)'}
             />
           </div>
         </div>

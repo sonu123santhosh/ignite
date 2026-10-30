@@ -12,6 +12,9 @@ import {
   BookmarkCheck
 } from 'lucide-react';
 import Button from '../components/Button';
+import { createBookingSplit } from '../services/costSplitService';
+import CostSplitBreakdownView from '../components/facility/CostSplitBreakdownView';
+import { useAuth } from '../context/AuthContext';
 import Tag from '../components/Tag';
 import { checkSlotOverlap, INITIAL_FACILITIES } from '../data/facilitiesData';
 
@@ -44,8 +47,11 @@ export default function FacilityCheckout({
   const [agreePolicy, setAgreePolicy] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const { currentUser } = useAuth();
+
   // Confirmation state
   const [confirmedBooking, setConfirmedBooking] = useState(null);
+  const [savedSplit, setSavedSplit] = useState(null);
 
   useEffect(() => {
     document.title = `Checkout &bull; ${facility.name} | SportLink`;
