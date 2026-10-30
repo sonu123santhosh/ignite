@@ -89,3 +89,4 @@ export default function FloatingCompareBar({ facilitiesList = INITIAL_FACILITIES
     </aside>
   );
 }
+

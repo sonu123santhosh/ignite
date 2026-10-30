@@ -846,3 +846,4 @@ export default function FacilityComparisonPage({ sharedState }) {
     </div>
   );
 }
+

@@ -33,6 +33,107 @@ export class ApiError extends Error {
 }
 
 // -----------------------------------------------------------------------------
+// SHARED LEAGUE TEAM LIMITS & VALIDATION RULES
+// -----------------------------------------------------------------------------
+export const LEAGUE_TEAM_LIMITS = {
+  MIN: 2,
+  MAX: 32
+};
+
+/**
+ * Pure parser & validator for team count.
+ * Enforces integer within [MIN, MAX], rejects decimals, exponents, text, negatives.
+ */
+export function parseAndValidateTeamCount(raw) {
+  if (raw === undefined || raw === null || String(raw).trim() === '') {
+    return {
+      valid: false,
+      value: null,
+      error: `Enter a whole number between ${LEAGUE_TEAM_LIMITS.MIN} and ${LEAGUE_TEAM_LIMITS.MAX}.`
+    };
+  }
+
+  const str = String(raw).trim();
+  // Strictly digits only (handles " 8 ", "08", but rejects "8.5", "1e3", "-3", "abc")
+  if (!/^\d+$/.test(str)) {
+    return {
+      valid: false,
+      value: null,
+      error: `Enter a whole number between ${LEAGUE_TEAM_LIMITS.MIN} and ${LEAGUE_TEAM_LIMITS.MAX}.`
+    };
+  }
+
+  const num = parseInt(str, 10);
+  if (isNaN(num) || num < LEAGUE_TEAM_LIMITS.MIN || num > LEAGUE_TEAM_LIMITS.MAX) {
+    return {
+      valid: false,
+      value: num,
+      error: `Enter a whole number between ${LEAGUE_TEAM_LIMITS.MIN} and ${LEAGUE_TEAM_LIMITS.MAX}.`
+    };
+  }
+
+  return {
+    valid: true,
+    value: num,
+    error: null
+  };
+}
+
+/**
+ * Validates team names array: required, trimmed (1-40 chars), unique within league, no duplicates.
+ */
+export function validateTeamNames(teams, expectedCount = null) {
+  if (!Array.isArray(teams)) {
+    return {
+      valid: false,
+      errors: ['Teams must be provided as a list.'],
+      summary: 'Teams must be provided as a list.'
+    };
+  }
+
+  if (expectedCount !== null && teams.length !== expectedCount) {
+    return {
+      valid: false,
+      errors: [`Expected exactly ${expectedCount} teams, but got ${teams.length}.`],
+      summary: `Expected exactly ${expectedCount} teams, but got ${teams.length}.`
+    };
+  }
+
+  const errors = new Array(teams.length).fill(null);
+  const seenNorms = new Map();
+  let hasError = false;
+
+  teams.forEach((t, index) => {
+    const rawName = typeof t === 'string' ? t : (t?.name || '');
+    const clean = rawName.trim();
+
+    if (!clean || clean.length < 1 || clean.length > 40) {
+      errors[index] = 'Team name is required (1 to 40 characters).';
+      hasError = true;
+      return;
+    }
+
+    const norm = normalizeTeamName(clean);
+    if (seenNorms.has(norm)) {
+      const priorIdx = seenNorms.get(norm);
+      errors[index] = `Duplicate name: matches Team ${priorIdx + 1}.`;
+      if (!errors[priorIdx]) {
+        errors[priorIdx] = `Duplicate name: matches Team ${index + 1}.`;
+      }
+      hasError = true;
+    } else {
+      seenNorms.set(norm, index);
+    }
+  });
+
+  return {
+    valid: !hasError,
+    errors,
+    summary: hasError ? 'Please provide a unique, valid name for all teams.' : null
+  };
+}
+
+// -----------------------------------------------------------------------------
 // SPORT PRESETS CONFIGURATION
 // -----------------------------------------------------------------------------
 export const SPORT_PRESETS = {
@@ -1177,10 +1278,30 @@ export const leagueService = {
   /**
    * 3. POST /api/leagues
    * Create a new league. Owner is ALWAYS derived from session.
+   * Atomically saves league and teams in one database transaction when teams are supplied.
+   * Supports idempotency key to prevent accidental duplicate league submissions.
    */
   createLeague(session, payload) {
     const user = authenticateSession(session);
     const db = getLeagueDbState();
+
+    // Idempotency defense: if key was already processed, return existing league
+    if (payload.idempotencyKey) {
+      db.idempotencyKeys = db.idempotencyKeys || {};
+      const existingId = db.idempotencyKeys[payload.idempotencyKey];
+      if (existingId) {
+        const existingLeague = db.leagues.find((l) => l.id === existingId);
+        if (existingLeague) {
+          const existingTeams = db.teams.filter((t) => t.leagueId === existingId);
+          return {
+            success: true,
+            data: { ...existingLeague, teams: existingTeams },
+            warning: null,
+            isIdempotentReplay: true
+          };
+        }
+      }
+    }
 
     // Input Validation
     const name = sanitizeString(payload.name, 60);
@@ -1190,7 +1311,30 @@ export const leagueService = {
 
     const sport = sanitizeString(payload.sport || 'Football', 40);
     const description = sanitizeString(payload.description || '', 500);
-    const plannedTeamCount = Math.max(2, Math.min(20, Number(payload.plannedTeamCount) || 4));
+
+    // Validate plannedTeamCount strictly using shared parser
+    const countVal = parseAndValidateTeamCount(payload.plannedTeamCount);
+    if (!countVal.valid) {
+      throw new ApiError(400, countVal.error || `Planned number of teams must be between ${LEAGUE_TEAM_LIMITS.MIN} and ${LEAGUE_TEAM_LIMITS.MAX}.`);
+    }
+    const plannedTeamCount = countVal.value;
+
+    // Optional atomic teams validation
+    let createdTeams = [];
+    if (Array.isArray(payload.teams) && payload.teams.length > 0) {
+      if (payload.teams.length !== plannedTeamCount) {
+        throw new ApiError(
+          400,
+          `Team count mismatch: expected ${plannedTeamCount} teams, but received ${payload.teams.length}.`
+        );
+      }
+
+      const teamValidation = validateTeamNames(payload.teams, plannedTeamCount);
+      if (!teamValidation.valid) {
+        throw new ApiError(400, teamValidation.summary || 'Team names must be non-empty, between 1 and 40 characters, and unique.');
+      }
+    }
+
     const format = payload.format === 'double round-robin' ? 'double round-robin' : 'single round-robin';
     const startDate = payload.startDate || new Date().toISOString().slice(0, 10);
     const endDate = payload.endDate || '';
@@ -1224,6 +1368,24 @@ export const leagueService = {
 
     const leagueId = `league-${Date.now()}-${Math.floor(100 + Math.random() * 900)}`;
 
+    if (Array.isArray(payload.teams) && payload.teams.length > 0) {
+      createdTeams = payload.teams.map((t, index) => {
+        const rawName = typeof t === 'string' ? t : (t?.name || '');
+        const cleanName = sanitizeString(rawName, 40);
+        const norm = normalizeTeamName(cleanName);
+        return {
+          id: `lteam-${Date.now()}-${Math.floor(100 + Math.random() * 900)}-${index}`,
+          leagueId,
+          name: cleanName,
+          normalizedName: norm,
+          logo: typeof t === 'object' && t?.logo ? t.logo : '',
+          captainName: typeof t === 'object' && t?.captainName ? sanitizeString(t.captainName, 60) : '',
+          captainContact: typeof t === 'object' && t?.captainContact ? sanitizeString(t.captainContact, 100) : '',
+          createdAt: new Date().toISOString()
+        };
+      });
+    }
+
     const newLeague = {
       id: leagueId,
       ownerId: user.id, // Enforced from session, never from body
@@ -1249,22 +1411,35 @@ export const leagueService = {
       version: 1
     };
 
+    // ATOMIC SAVE: League, Manager, Teams, and Idempotency key stored in one operation
     db.leagues.unshift(newLeague);
     db.managers.push({ leagueId, userId: user.id, role: 'owner' });
+
+    if (createdTeams.length > 0) {
+      db.teams.push(...createdTeams);
+    }
+
+    if (payload.idempotencyKey) {
+      db.idempotencyKeys = db.idempotencyKeys || {};
+      db.idempotencyKeys[payload.idempotencyKey] = leagueId;
+    }
 
     recordLeagueAudit(db, {
       leagueId,
       actorId: user.id,
       action: 'LEAGUE_CREATED',
       before: null,
-      after: { name, sport, format, plannedTeamCount }
+      after: { name, sport, format, plannedTeamCount, teamsCount: createdTeams.length }
     });
 
     saveLeagueDbState(db);
 
     return {
       success: true,
-      data: newLeague,
+      data: {
+        ...newLeague,
+        teams: createdTeams
+      },
       warning: existingSameName ? `You already have an existing league named "${name}".` : null
     };
   },
@@ -1369,8 +1544,8 @@ export const leagueService = {
     const existingNorms = new Set(currentTeams.map((t) => t.normalizedName));
 
     const rawList = Array.isArray(teamsInput) ? teamsInput : [teamsInput];
-    if (currentTeams.length + rawList.length > 20) {
-      throw new ApiError(400, `League maximum is 20 teams. Current: ${currentTeams.length}, Adding: ${rawList.length}.`);
+    if (currentTeams.length + rawList.length > LEAGUE_TEAM_LIMITS.MAX) {
+      throw new ApiError(400, `League maximum is ${LEAGUE_TEAM_LIMITS.MAX} teams. Current: ${currentTeams.length}, Adding: ${rawList.length}.`);
     }
 
     const addedTeams = [];
