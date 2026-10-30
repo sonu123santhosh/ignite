@@ -104,7 +104,8 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
 
-            {/* Optional Cinematic Intro Page */}
+            {/* Cinematic Fullscreen Intro Page (Default Opening Page) */}
+            <Route path="/" element={<IntroPage />} />
             <Route path="/intro" element={<IntroPage />} />
 
             {/* Standalone Public Cost Split Share Route */}

@@ -1,7 +1,7 @@
 /**
  * PasswordStrengthBar.jsx
  * Visual password strength indicator (0–4 segments).
- * Uses existing SportLink colour palette.
+ * Uses polished athletic colour palette (Red, Amber, Cyan, Emerald).
  */
 
 import React from 'react';
@@ -13,7 +13,7 @@ const SEGMENT_COLORS = [
   'bg-[#EF4444]',        // 1 — Weak (red)
   'bg-[#F59E0B]',        // 2 — Fair (amber)
   'bg-[#00D4FF]',        // 3 — Good (cyan)
-  'bg-[#B6FF3B]'         // 4 — Strong (lime)
+  'bg-[#10B981]'         // 4 — Strong (emerald)
 ];
 
 export default function PasswordStrengthBar({ password }) {
@@ -37,7 +37,7 @@ export default function PasswordStrengthBar({ password }) {
         ))}
       </div>
       {/* Label */}
-      <p className={`text-xs font-medium ${strength >= 3 ? 'text-[#B6FF3B]' : strength === 2 ? 'text-[#F59E0B]' : 'text-[#EF4444]'}`}>
+      <p className={`text-xs font-medium ${strength >= 3 ? 'text-[#10B981]' : strength === 2 ? 'text-[#F59E0B]' : 'text-[#EF4444]'}`}>
         {label}
       </p>
 
@@ -51,9 +51,9 @@ export default function PasswordStrengthBar({ password }) {
         ].map(({ test, label: reqLabel }) => {
           const met = test(password);
           return (
-            <li key={reqLabel} className={`flex items-center gap-1.5 ${met ? 'text-[#B6FF3B]' : 'text-slate-400'}`}>
-              <span className={`w-3 h-3 rounded-full flex items-center justify-center text-[9px] font-bold border ${met ? 'bg-[#B6FF3B]/20 border-[#B6FF3B]/50 text-[#B6FF3B]' : 'border-white/20'}`}>
-                {met ? '✓' : ''}
+            <li key={reqLabel} className={`flex items-center gap-1.5 ${met ? 'text-[#10B981]' : 'text-slate-400'}`}>
+              <span className={`w-3 h-3 rounded-full flex items-center justify-center text-[9px] font-bold border ${met ? 'bg-[#10B981]/20 border-[#10B981]/50 text-[#10B981]' : 'border-white/20'}`}>
+                {met ? 'Yes' : ''}
               </span>
               {reqLabel}
             </li>
@@ -63,4 +63,3 @@ export default function PasswordStrengthBar({ password }) {
     </div>
   );
 }
-

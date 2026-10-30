@@ -166,7 +166,7 @@ export default function AthleteTrainingDashboard() {
             <span className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 shrink-0" /> {feedbackMsg}
             </span>
-            <button onClick={() => setFeedbackMsg(null)} className="text-slate-400 hover:text-white">✕</button>
+            <button onClick={() => setFeedbackMsg(null)} className="text-slate-400 hover:text-white"><X className="w-4 h-4" /></button>
           </div>
         )}
 
@@ -314,7 +314,7 @@ export default function AthleteTrainingDashboard() {
                         <td className="py-3.5 px-4">
                           <span className="font-medium text-slate-200">{coach?.name || enrol.coachName || 'Assigned Staff'}</span>
                           {coach?.verifiedBadge && (
-                            <span className="text-[10px] ml-1 text-red-400 font-semibold">✓ Verified</span>
+                            <span className="text-[10px] ml-1 text-red-400 font-semibold">Verified</span>
                           )}
                         </td>
                         <td className="py-3.5 px-4">
@@ -554,7 +554,7 @@ export default function AthleteTrainingDashboard() {
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-red-400" /> Batch Weekly Schedule
               </h3>
-              <button onClick={() => setActiveModal(null)} className="text-slate-400 hover:text-white cursor-pointer">✕</button>
+              <button onClick={() => setActiveModal(null)} className="text-slate-400 hover:text-white cursor-pointer"><X className="w-4 h-4" /></button>
             </div>
             <div className="space-y-3 text-xs">
               <div>
@@ -600,7 +600,7 @@ export default function AthleteTrainingDashboard() {
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <MessageSquare className="w-4 h-4 text-red-400" /> Contact Training Team
               </h3>
-              <button onClick={() => setActiveModal(null)} className="text-slate-400 hover:text-white cursor-pointer">✕</button>
+              <button onClick={() => setActiveModal(null)} className="text-slate-400 hover:text-white cursor-pointer"><X className="w-4 h-4" /></button>
             </div>
             <div className="space-y-3 text-xs">
               <p className="text-slate-300">

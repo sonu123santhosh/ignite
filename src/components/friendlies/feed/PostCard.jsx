@@ -231,7 +231,7 @@ export default function PostCard({
                 <Swords className="w-3 h-3" />{post.sport}
               </span>
               <span className={`${TAG_CLASS} bg-[#1B2530] text-slate-300 border-[#293442]`}>
-                {post.type === 'Hosting, need an opponent' ? '🏟️ Hosting' : '🔍 Looking for Match'}
+                {post.type === 'Hosting, need an opponent' ? 'Hosting' : 'Looking for Match'}
               </span>
               <span className={`${TAG_CLASS} bg-[#1B2530] text-slate-300 border-[#293442]`}>
                 <Trophy className="w-3 h-3" />{post.skillLevel}
@@ -343,7 +343,7 @@ export default function PostCard({
         {/* Reputation line: only when > 0 completed matches, from real data */}
         {team?.reputation && (
           <div className="text-[11px] text-slate-500">
-            🏆 {team.reputation.label}
+            {team.reputation.label}
           </div>
         )}
 

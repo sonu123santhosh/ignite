@@ -83,7 +83,7 @@ export default function CoachingMapView({ academies, userCoords, onSelectAcademy
           >
             <Popup>
               <div className="text-xs font-bold text-gray-900">
-                📍 Your Selected Location
+                Your Selected Location
               </div>
             </Popup>
           </Marker>

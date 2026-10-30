@@ -95,7 +95,7 @@ export default function FacilityMap({
           transform: ${isSelected ? 'scale(1.2)' : 'scale(1)'};
           transition: transform 0.15s ease;
         ">
-          ⚡
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
         </div>
       `;
 

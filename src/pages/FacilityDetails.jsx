@@ -365,7 +365,7 @@ export default function FacilityDetails({
                   : 'bg-[#141B24] text-slate-300 hover:text-white border-[#293442] hover:border-slate-500'
               }`}
             >
-              <span>{isComparing(rawFacility.id) ? '✓ Comparing' : '+ Compare Venue'}</span>
+              <span>{isComparing(rawFacility.id) ? 'Comparing' : '+ Compare Venue'}</span>
             </button>
           )}
           <span className="text-[11px] text-[#94A3B8] bg-[#141B24] border border-[#293442] px-2.5 py-1 rounded-full">
@@ -461,7 +461,7 @@ export default function FacilityDetails({
                           )}
                         </div>
                         {rev.rating != null && (
-                          <span className="text-xs text-amber-400 font-bold">{rev.rating} ★</span>
+                          <span className="text-xs text-amber-400 font-bold">{rev.rating} / 5</span>
                         )}
                       </div>
 

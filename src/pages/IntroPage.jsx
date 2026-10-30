@@ -58,6 +58,145 @@ function easeInOutCubic(t) {
   return clamped < 0.5 ? 4 * clamped * clamped * clamped : 1 - Math.pow(-2 * clamped + 2, 3) / 2;
 }
 
+
+// =========================================================================
+// Innovative Black Line Architectural Vector Animations for Each Intro Stage
+// =========================================================================
+function StageBlackLines({ stageIndex }) {
+  switch (stageIndex) {
+    case 0: // Stage 1: Book a Turf (Football Turf Blueprint)
+      return (
+        <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 select-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          {/* Outer Boundary Frame */}
+          <rect x="120" y="90" width="1200" height="720" fill="none" stroke="#000000" strokeWidth="2" strokeDasharray="12 8" />
+          
+          {/* Halfway Line & Center Circle */}
+          <line x1="720" y1="90" x2="720" y2="810" stroke="#000000" strokeWidth="2" />
+          <circle cx="720" cy="450" r="140" fill="none" stroke="#000000" strokeWidth="2" />
+          <circle cx="720" cy="450" r="140" fill="none" stroke="#000000" strokeWidth="1" strokeDasharray="6 8" className="animate-spin-slow origin-[720px_450px]" />
+          <circle cx="720" cy="450" r="6" fill="#000000" />
+
+          {/* Goal Penalty Boxes */}
+          <rect x="120" y="270" width="220" height="360" fill="none" stroke="#000000" strokeWidth="1.75" />
+          <rect x="120" y="360" width="80" height="180" fill="none" stroke="#000000" strokeWidth="1.5" />
+          <path d="M 340 380 A 80 80 0 0 1 340 520" fill="none" stroke="#000000" strokeWidth="1.5" strokeDasharray="6 6" />
+
+          <rect x="1100" y="270" width="220" height="360" fill="none" stroke="#000000" strokeWidth="1.75" />
+          <rect x="1240" y="360" width="80" height="180" fill="none" stroke="#000000" strokeWidth="1.5" />
+          <path d="M 1100 380 A 80 80 0 0 0 1100 520" fill="none" stroke="#000000" strokeWidth="1.5" strokeDasharray="6 6" />
+
+          {/* Tactical Ball Pass Trajectory Vector with Animated Flow */}
+          <path d="M 280 650 Q 520 250, 720 450 T 1160 380" fill="none" stroke="#000000" strokeWidth="2.5" strokeDasharray="14 10" className="animate-dash-flow" />
+          <circle cx="1160" cy="380" r="8" fill="none" stroke="#000000" strokeWidth="2" />
+
+          {/* Architectural Dimension Annotations */}
+          <text x="140" y="125" fill="#000000" fontFamily="monospace" fontSize="11" fontWeight="bold" letterSpacing="2">FIFA STANDARD 105M × 68M</text>
+          <text x="735" y="445" fill="#000000" fontFamily="monospace" fontSize="10" fontWeight="bold">R = 9.15M</text>
+          <text x="1120" y="795" fill="#000000" fontFamily="monospace" fontSize="11" fontWeight="bold">TURF BOOKING // STAGE 01</text>
+        </svg>
+      );
+
+    case 1: // Stage 2: Tournaments (Tournament Elimination Bracket Matrix & Trophy Wireframe)
+      return (
+        <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 select-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          {/* Left Bracket Tree */}
+          <path d="M 80 200 H 220 V 320 H 360 V 450 H 500" fill="none" stroke="#000000" strokeWidth="2" strokeDasharray="8 6" className="animate-dash-flow" />
+          <path d="M 80 440 H 220 V 320" fill="none" stroke="#000000" strokeWidth="1.5" />
+          <path d="M 80 560 H 220 V 680 H 360 V 450" fill="none" stroke="#000000" strokeWidth="2" strokeDasharray="8 6" className="animate-dash-flow" />
+          <path d="M 80 800 H 220 V 680" fill="none" stroke="#000000" strokeWidth="1.5" />
+
+          {/* Right Bracket Tree */}
+          <path d="M 1360 200 H 1220 V 320 H 1080 V 450 H 940" fill="none" stroke="#000000" strokeWidth="2" strokeDasharray="8 6" className="animate-dash-flow" style={{ animationDirection: 'reverse' }} />
+          <path d="M 1360 440 H 1220 V 320" fill="none" stroke="#000000" strokeWidth="1.5" />
+          <path d="M 1360 560 H 1220 V 680 H 1080 V 450" fill="none" stroke="#000000" strokeWidth="2" strokeDasharray="8 6" className="animate-dash-flow" style={{ animationDirection: 'reverse' }} />
+          <path d="M 1360 800 H 1220 V 680" fill="none" stroke="#000000" strokeWidth="1.5" />
+
+          {/* Central Championship Trophy Wireframe */}
+          <polygon points="720,240 780,310 770,410 740,470 740,540 790,570 650,570 700,540 700,470 670,410 660,310" fill="none" stroke="#000000" strokeWidth="2" />
+          <line x1="660" y1="310" x2="780" y2="310" stroke="#000000" strokeWidth="1" strokeDasharray="4 4" />
+          <line x1="720" y1="240" x2="720" y2="540" stroke="#000000" strokeWidth="1" strokeDasharray="2 4" />
+
+          {/* Connector Nodes */}
+          <circle cx="500" cy="450" r="6" fill="#000000" />
+          <circle cx="940" cy="450" r="6" fill="#000000" />
+
+          {/* Annotations */}
+          <text x="100" y="160" fill="#000000" fontFamily="monospace" fontSize="11" fontWeight="bold" letterSpacing="2">KNOCKOUT BRACKET // MATRIX</text>
+          <text x="660" y="610" fill="#000000" fontFamily="monospace" fontSize="11" fontWeight="bold" letterSpacing="2">FINALS ARENA</text>
+          <text x="1140" y="160" fill="#000000" fontFamily="monospace" fontSize="11" fontWeight="bold" letterSpacing="2">ELIMINATION GRID</text>
+        </svg>
+      );
+
+    case 2: // Stage 3: Train and Grow (Athletic Performance Curve & Stopwatch Radar)
+      return (
+        <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 select-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          {/* Coordinate Grid Lines */}
+          <line x1="160" y1="740" x2="1280" y2="740" stroke="#000000" strokeWidth="2" />
+          <line x1="160" y1="160" x2="160" y2="740" stroke="#000000" strokeWidth="2" />
+          {[260, 360, 460, 560, 660].map((y) => (
+            <line key={y} x1="150" y1={y} x2="1280" y2={y} stroke="#000000" strokeWidth="0.75" strokeDasharray="6 6" />
+          ))}
+
+          {/* Parabolic Athletic Growth Curve */}
+          <path d="M 160 700 C 450 680, 680 520, 920 320 S 1180 180, 1280 160" fill="none" stroke="#000000" strokeWidth="3" />
+          <path d="M 160 700 C 450 680, 680 520, 920 320 S 1180 180, 1280 160" fill="none" stroke="#000000" strokeWidth="6" strokeDasharray="20 40" className="animate-dash-flow" />
+
+          {/* Milestone Nodes */}
+          <circle cx="450" cy="620" r="6" fill="#000000" />
+          <circle cx="780" cy="420" r="6" fill="#000000" />
+          <circle cx="1060" cy="240" r="7" fill="#000000" />
+          <circle cx="1280" cy="160" r="9" fill="#000000" />
+
+          {/* Technical Radar / Stopwatch Circle in Corner */}
+          <g transform="translate(1180, 620)">
+            <circle cx="0" cy="0" r="80" fill="none" stroke="#000000" strokeWidth="1.5" />
+            <circle cx="0" cy="0" r="60" fill="none" stroke="#000000" strokeWidth="1" strokeDasharray="4 6" className="animate-spin-slow" />
+            <line x1="0" y1="-80" x2="0" y2="80" stroke="#000000" strokeWidth="1" />
+            <line x1="-80" y1="0" x2="80" y2="0" stroke="#000000" strokeWidth="1" />
+            <line x1="0" y1="0" x2="45" y2="-45" stroke="#000000" strokeWidth="2" className="animate-spin-slow origin-center" style={{ animationDuration: '6s' }} />
+          </g>
+
+          {/* Annotations */}
+          <text x="180" y="200" fill="#000000" fontFamily="monospace" fontSize="11" fontWeight="bold" letterSpacing="2">ATHLETE SKILL INDEX // 99.8% PEAK</text>
+          <text x="180" y="770" fill="#000000" fontFamily="monospace" fontSize="11" fontWeight="bold" letterSpacing="2">PROGRESSION TIMELINE (WEEKS 01 - 52)</text>
+        </svg>
+      );
+
+    case 3: // Stage 4: Right Place (Viewfinder Target & 4-Way Sports Convergence)
+      return (
+        <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 select-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          {/* Viewfinder Target Framing Brackets [   ] */}
+          <path d="M 80 160 V 80 H 160" fill="none" stroke="#000000" strokeWidth="3" />
+          <path d="M 1360 160 V 80 H 1280" fill="none" stroke="#000000" strokeWidth="3" />
+          <path d="M 80 740 V 820 H 160" fill="none" stroke="#000000" strokeWidth="3" />
+          <path d="M 1360 740 V 820 H 1280" fill="none" stroke="#000000" strokeWidth="3" />
+
+          {/* Crosshair Axes */}
+          <line x1="720" y1="60" x2="720" y2="840" stroke="#000000" strokeWidth="1.5" strokeDasharray="16 8" />
+          <line x1="60" y1="450" x2="1380" y2="450" stroke="#000000" strokeWidth="1.5" strokeDasharray="16 8" />
+
+          {/* Interlocking Orbital Sports Rings */}
+          <circle cx="720" cy="450" r="180" fill="none" stroke="#000000" strokeWidth="2" strokeDasharray="10 8" className="animate-spin-slow origin-[720px_450px]" />
+          <circle cx="720" cy="450" r="280" fill="none" stroke="#000000" strokeWidth="1.5" strokeDasharray="18 12" className="animate-spin-slow origin-[720px_450px]" style={{ animationDirection: 'reverse', animationDuration: '36s' }} />
+
+          {/* 4 Diagonal Vectors Converging to Nexus */}
+          <line x1="160" y1="140" x2="560" y2="350" stroke="#000000" strokeWidth="1.5" strokeDasharray="6 6" className="animate-dash-flow" />
+          <line x1="1280" y1="140" x2="880" y2="350" stroke="#000000" strokeWidth="1.5" strokeDasharray="6 6" className="animate-dash-flow" />
+          <line x1="160" y1="760" x2="560" y2="550" stroke="#000000" strokeWidth="1.5" strokeDasharray="6 6" className="animate-dash-flow" />
+          <line x1="1280" y1="760" x2="880" y2="550" stroke="#000000" strokeWidth="1.5" strokeDasharray="6 6" className="animate-dash-flow" />
+
+          {/* Technical Annotations */}
+          <text x="180" y="110" fill="#000000" fontFamily="monospace" fontSize="11" fontWeight="bold" letterSpacing="2">SPORTS NEXUS // ALL-IN-ONE HUB</text>
+          <text x="180" y="805" fill="#000000" fontFamily="monospace" fontSize="11" fontWeight="bold" letterSpacing="2">COORDINATE 18.5204° N, 73.8567° E</text>
+          <text x="1050" y="805" fill="#000000" fontFamily="monospace" fontSize="11" fontWeight="bold" letterSpacing="2">LOCK STATUS: 100% READY</text>
+        </svg>
+      );
+
+    default:
+      return null;
+  }
+}
+
 export default function IntroPage() {
   const navigate = useNavigate();
   const trackRef = useRef(null);
@@ -414,14 +553,16 @@ export default function IntroPage() {
           <div
             key={stage.id}
             ref={(el) => (stageRefs.current[idx] = el)}
-            className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-8 will-change-transform pointer-events-none"
+            className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-8 will-change-transform pointer-events-none overflow-hidden"
             style={{
               transform: idx === 0 ? 'translate3d(0, 0, 0)' : 'translate3d(125%, 0, 0)',
               opacity: idx === 0 ? 1 : 0,
               visibility: idx === 0 ? 'visible' : 'hidden'
             }}
           >
-            {/* Atmospheric Accent Glow */}
+{/* Innovative Black Line Sports Geometry & Blueprint Animations */}
+            <StageBlackLines stageIndex={idx} />
+            {/* Subtle Atmospheric Accent Glow Behind Text */}
             <div
               className="absolute w-[450px] sm:w-[650px] h-[220px] sm:h-[320px] rounded-full blur-[90px] pointer-events-none -z-10"
               style={{
@@ -450,14 +591,33 @@ export default function IntroPage() {
         {/* Stage 5: SportLink Brand Reveal */}
         <div
           ref={brandRevealRef}
-          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-8 will-change-transform pointer-events-none"
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-8 will-change-transform pointer-events-none overflow-hidden"
           style={{
             transform: 'translate3d(0, 45px, 0) scale(0.92)',
             opacity: 0,
             visibility: 'hidden'
           }}
         >
-          {/* Atmospheric Glow */}
+          {/* Innovative Black Line Speed Burst & Kinetic Shield Animations */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 select-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+            {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+              <line
+                key={deg}
+                x1="720"
+                y1="450"
+                x2={720 + 640 * Math.cos((deg * Math.PI) / 180)}
+                y2={450 + 640 * Math.sin((deg * Math.PI) / 180)}
+                stroke="#000000"
+                strokeWidth="1.5"
+                strokeDasharray="16 16"
+                className="animate-dash-flow"
+              />
+            ))}
+            <polygon points="720,270 876,360 876,540 720,630 564,540 564,360" fill="none" stroke="#000000" strokeWidth="2" strokeDasharray="8 6" className="animate-spin-slow origin-[720px_450px]" style={{ animationDuration: '40s' }} />
+            <polygon points="720,210 928,330 928,570 720,690 512,570 512,330" fill="none" stroke="#000000" strokeWidth="1" strokeDasharray="12 12" />
+            <text x="720" y="830" textAnchor="middle" fill="#000000" fontFamily="monospace" fontSize="11" fontWeight="bold" letterSpacing="3">SPORTLINK ATHLETIC ECOSYSTEM &bull; VERIFIED PLATFORM</text>
+          </svg>
+          {/* Subtle Red/Green Glow */}
           <div
             className="absolute w-[500px] sm:w-[700px] h-[350px] rounded-full blur-[110px] pointer-events-none -z-10"
             style={{

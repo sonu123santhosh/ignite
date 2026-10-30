@@ -40,11 +40,6 @@ export default function TrialsHeader({
 
         {/* Content Container */}
         <div className="relative z-10 p-6 sm:p-10 lg:p-14 space-y-6 max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Collegiate & Professional Sports Recruitment</span>
-          </div>
-
           <div className="space-y-3">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-none font-['Barlow_Condensed',sans-serif]">
               Your Next Opportunity <span className="bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">Starts Here.</span>
@@ -172,7 +167,7 @@ export default function TrialsHeader({
                 {isLocating
                   ? 'Detecting...'
                   : userCoords
-                  ? 'Location Active ✓'
+                  ? 'Location Active'
                   : 'Use My Location'}
               </span>
             </button>

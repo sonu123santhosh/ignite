@@ -16,7 +16,8 @@ import {
   ChevronRight,
   TrendingUp,
   MapPin,
-  Trash2
+  Trash2,
+  X
 } from 'lucide-react';
 import { useTrials } from '../../context/TrialsContext';
 import TrialsRoleSwitcher from '../../components/trials/TrialsRoleSwitcher';
@@ -113,13 +114,7 @@ export default function OrganiserDashboard() {
               <CheckCircle2 className="w-4 h-4 shrink-0" />
               <span>{feedbackMsg}</span>
             </span>
-            <button
-              type="button"
-              onClick={() => setFeedbackMsg(null)}
-              className="text-slate-400 hover:text-white"
-            >
-              ✕
-            </button>
+            <button type="button" onClick={() => setFeedbackMsg(null)} className="text-slate-400 hover:text-white"><X className="w-4 h-4" /></button>
           </div>
         )}
 

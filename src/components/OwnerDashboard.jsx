@@ -893,7 +893,7 @@ export default function OwnerDashboard({
                     </div>
 
                     <div className="text-amber-400 font-bold text-sm">
-                      {rev.rating} ★
+                      {rev.rating} / 5
                     </div>
                   </div>
 

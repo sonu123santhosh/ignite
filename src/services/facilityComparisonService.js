@@ -304,7 +304,7 @@ export function compareFacilities({
 
     // 4. Quality & Reviews
     const hasReviews = Boolean(fac.reviewCount && fac.reviewCount > 0);
-    const ratingDisplay = hasReviews ? `${fac.rating} ★` : 'No reviews yet';
+    const ratingDisplay = hasReviews ? `${fac.rating} / 5` : 'No reviews yet';
     const reviewCountDisplay = hasReviews ? `(${fac.reviewCount} reviews)` : '';
 
     // 5. Amenities presence

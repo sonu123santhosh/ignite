@@ -99,7 +99,7 @@ export default function MatchDetails() {
       // Custom marker icon
       const customPin = L.divIcon({
         className: 'custom-venue-pin',
-        html: `<div style="background-color: #0284c7; width: 28px; height: 28px; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 14px rgba(14,165,233,0.9); display: flex; align-items: center; justify-content: center;"><span style="font-size: 14px; font-weight: bold; color: #ffffff;">📍</span></div>`,
+        html: `<div style="background-color: #0284c7; width: 28px; height: 28px; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 14px rgba(14,165,233,0.9); display: flex; align-items: center; justify-content: center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>`,
         iconSize: [28, 28],
         iconAnchor: [14, 28]
       });

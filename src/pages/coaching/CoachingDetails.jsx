@@ -665,25 +665,25 @@ export default function CoachingDetails() {
               <div>
                 <span className="text-gray-500 uppercase text-[10px] font-bold">Coaching Quality</span>
                 <div className="text-base font-extrabold text-red-400 mt-0.5">
-                  ★ {academy.ratingsBreakdown?.coachingQuality || 4.9}
+                  {academy.ratingsBreakdown?.coachingQuality || 4.9}
                 </div>
               </div>
               <div>
                 <span className="text-gray-500 uppercase text-[10px] font-bold">Facilities & Courts</span>
                 <div className="text-base font-extrabold text-rose-400 mt-0.5">
-                  ★ {academy.ratingsBreakdown?.facilities || 4.8}
+                  {academy.ratingsBreakdown?.facilities || 4.8}
                 </div>
               </div>
               <div>
                 <span className="text-gray-500 uppercase text-[10px] font-bold">Communication</span>
                 <div className="text-base font-extrabold text-white mt-0.5">
-                  ★ {academy.ratingsBreakdown?.communication || 4.7}
+                  {academy.ratingsBreakdown?.communication || 4.7}
                 </div>
               </div>
               <div>
                 <span className="text-gray-500 uppercase text-[10px] font-bold">Value for Money</span>
                 <div className="text-base font-extrabold text-amber-400 mt-0.5">
-                  ★ {academy.ratingsBreakdown?.valueForMoney || 4.8}
+                  {academy.ratingsBreakdown?.valueForMoney || 4.8}
                 </div>
               </div>
             </div>
@@ -700,9 +700,9 @@ export default function CoachingDetails() {
                       onChange={(e) => setReviewRating(e.target.value)}
                       className="w-full bg-[#08050c] border border-red-500/25 rounded-lg p-2 text-white outline-none focus:border-red-500"
                     >
-                      <option value="5">★★★★★ (5/5) Exceptional</option>
-                      <option value="4">★★★★☆ (4/5) Very Good</option>
-                      <option value="3">★★★☆☆ (3/5) Average</option>
+                      <option value="5">5 / 5 - Exceptional</option>
+                      <option value="4">4 / 5 - Very Good</option>
+                      <option value="3">3 / 5 - Average</option>
                     </select>
                   </div>
                   <div>

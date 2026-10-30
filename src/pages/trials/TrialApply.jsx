@@ -386,7 +386,7 @@ export default function TrialApply() {
                         <FileText className="w-4 h-4 text-amber-400 shrink-0" />
                         <span className="text-white font-medium truncate">{doc.name}</span>
                       </div>
-                      <span className="text-[10px] text-emerald-400 font-mono shrink-0 ml-2">✓ Attached</span>
+                      <span className="text-[10px] text-emerald-400 font-mono shrink-0 ml-2">Attached</span>
                     </div>
                   ))}
                 </div>

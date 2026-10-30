@@ -9,22 +9,7 @@ import { MapPin, Calendar, ArrowRight, ShieldCheck } from 'lucide-react';
 const customTrialIcon = new L.DivIcon({
   className: 'custom-trial-pin',
   html: `
-    <div style="
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #0B0F14;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 14px;
-      box-shadow: 0 0 16px rgba(245, 158, 11, 0.7);
-      border: 2px solid #fef3c7;
-    ">
-      ★
-    </div>
+    <div><svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff" style="margin:auto;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
   `,
   iconSize: [32, 32],
   iconAnchor: [16, 32],

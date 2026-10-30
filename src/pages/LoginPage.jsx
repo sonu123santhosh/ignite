@@ -10,11 +10,12 @@
  *  - Link to /register (preserves ?redirect= param)
  *  - ?redirect= param: redirects after successful login
  *  - First invalid field receives focus automatically
+ *  - Sports-themed animations & transparent glass styling (Football Turf Stadium)
  */
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { Eye, EyeOff, Loader2 } from 'lucide-react';
+import { Eye, EyeOff, Loader2, AlertTriangle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { validateEmail } from '../services/authService';
 import AuthCard from '../components/auth/AuthCard';
@@ -95,23 +96,28 @@ export default function LoginPage() {
     : '/register';
 
   return (
-    <AuthCard title="Welcome back" subtitle="Log in to your SportLink account">
+    <AuthCard
+      title="Welcome"
+      titleHighlight="Back"
+      subtitle="Sign in to your SportLink pitch account"
+      sport="football"
+    >
       {/* Form-level error banner */}
       {formError && (
         <div
-          className="flex items-start gap-2.5 rounded-xl px-4 py-3 text-sm text-[#EF4444] bg-[#EF4444]/10 border border-[#EF4444]/25"
+          className="flex items-start gap-2.5 rounded-xl px-4 py-3 text-sm text-[#EF4444] bg-[#EF4444]/15 border border-[#EF4444]/30 backdrop-blur-md animate-hero-fade"
           role="alert"
           aria-live="assertive"
         >
-          <span className="shrink-0 mt-0.5">⚠</span>
-          <span>{formError}</span>
+          <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
+          <span className="font-medium">{formError}</span>
         </div>
       )}
 
       <form onSubmit={handleSubmit} noValidate className="space-y-5">
         {/* Email */}
         <div>
-          <label htmlFor="login-email" className="block text-sm font-semibold text-slate-200 mb-1.5">
+          <label htmlFor="login-email" className="block text-xs font-['Barlow_Condensed'] font-bold uppercase tracking-wider text-slate-300 mb-1.5">
             Email address
           </label>
           <input
@@ -125,16 +131,18 @@ export default function LoginPage() {
             placeholder="you@college.edu"
             aria-describedby={fieldErrors.email ? 'login-email-err' : undefined}
             aria-invalid={Boolean(fieldErrors.email)}
-            className={`w-full rounded-xl px-4 py-3 text-sm ${fieldErrors.email ? 'border-[#EF4444]! shadow-[0_0_0_1px_#EF4444]!' : ''}`}
+            className={`w-full rounded-xl px-4 py-3 text-sm text-white placeholder-slate-400 ${fieldErrors.email ? 'border-[#EF4444]! shadow-[0_0_0_1px_#EF4444]!' : ''}`}
           />
           <FieldError message={fieldErrors.email} />
         </div>
 
         {/* Password */}
         <div>
-          <label htmlFor="login-password" className="block text-sm font-semibold text-slate-200 mb-1.5">
-            Password
-          </label>
+          <div className="flex items-center justify-between mb-1.5">
+            <label htmlFor="login-password" className="block text-xs font-['Barlow_Condensed'] font-bold uppercase tracking-wider text-slate-300">
+              Password
+            </label>
+          </div>
           <div className="relative">
             <input
               ref={passwordRef}
@@ -146,7 +154,7 @@ export default function LoginPage() {
               placeholder="••••••••"
               aria-describedby={fieldErrors.password ? 'login-pwd-err' : undefined}
               aria-invalid={Boolean(fieldErrors.password)}
-              className={`w-full rounded-xl px-4 py-3 pr-11 text-sm ${fieldErrors.password ? 'border-[#EF4444]! shadow-[0_0_0_1px_#EF4444]!' : ''}`}
+              className={`w-full rounded-xl px-4 py-3 pr-11 text-sm text-white placeholder-slate-400 ${fieldErrors.password ? 'border-[#EF4444]! shadow-[0_0_0_1px_#EF4444]!' : ''}`}
             />
             <button
               type="button"
@@ -164,24 +172,25 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 rounded-xl bg-[#c6ff3d] text-[#0a1020] font-bold text-sm transition-all hover:bg-[#b8f226] active:translate-y-0.5 shadow-[0_2px_12px_rgba(198,255,61,0.25)] hover:shadow-[0_4px_18px_rgba(198,255,61,0.35)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:via-teal-400 hover:to-cyan-400 text-white font-['Barlow_Condensed'] text-base uppercase tracking-wider font-black transition-all hover:brightness-105 active:translate-y-0.5 shadow-[0_4px_20px_rgba(16,185,129,0.35)] hover:shadow-[0_6px_25px_rgba(16,185,129,0.5)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
         >
-          {loading && <Loader2 className="w-4 h-4 animate-spin" />}
-          {loading ? 'Logging in…' : 'Log in'}
+          {loading && <Loader2 className="w-4 h-4 animate-spin text-white" />}
+          <span>{loading ? 'Entering Pitch…' : 'Log In to SportLink'}</span>
         </button>
       </form>
 
       {/* Switch to Sign Up */}
-      <p className="text-center text-sm text-slate-400">
-        Don&apos;t have an account?{' '}
-        <Link
-          to={registerHref}
-          className="text-[#c6ff3d] font-semibold hover:underline"
-        >
-          Sign up
-        </Link>
-      </p>
+      <div className="pt-1 text-center">
+        <p className="text-sm text-slate-400 font-sans">
+          Don&apos;t have an account?{' '}
+          <Link
+            to={registerHref}
+            className="text-emerald-400 font-bold hover:text-emerald-300 hover:underline transition-colors"
+          >
+            Create an Account
+          </Link>
+        </p>
+      </div>
     </AuthCard>
   );
 }
-

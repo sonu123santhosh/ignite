@@ -241,7 +241,7 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
   if (filters.locality !== 'All') activeChips.push({ label: `Area: ${filters.locality}`, key: 'locality', val: 'All' });
   if (filters.maxDistance !== 20) activeChips.push({ label: `Within ${filters.maxDistance}km`, key: 'maxDistance', val: 20 });
   if (filters.priceRange < 2000) activeChips.push({ label: `Max ₹${filters.priceRange}`, key: 'priceRange', val: 2000 });
-  if (filters.minRating > 0) activeChips.push({ label: `${filters.minRating}★+`, key: 'minRating', val: 0 });
+  if (filters.minRating > 0) activeChips.push({ label: `${filters.minRating}+ Stars`, key: 'minRating', val: 0 });
   if (filters.indoorOutdoor !== 'all') activeChips.push({ label: filters.indoorOutdoor, key: 'indoorOutdoor', val: 'all' });
   if (filters.availableSlotsOnly) activeChips.push({ label: 'Available Slots', key: 'availableSlotsOnly', val: false });
 

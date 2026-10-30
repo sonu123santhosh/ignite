@@ -123,11 +123,6 @@ export default function YourLeagueHub({
         {/* Hero Section */}
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#141B24]/95 via-[#1B2530]/90 to-[#141B24]/95 border border-[#293442] p-6 sm:p-10 shadow-2xl backdrop-blur-md">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c6ff3d]/15 border border-[#c6ff3d]/35 text-[#c6ff3d] text-xs font-bold uppercase tracking-wider">
-              <Trophy className="w-3.5 h-3.5" />
-              <span>Community &amp; Private Leagues</span>
-            </div>
-
             <h1 className="font-['Barlow_Condensed'] text-4xl sm:text-6xl font-black uppercase tracking-tight text-white leading-none">
               Run Your League. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c6ff3d] via-emerald-300 to-teal-400">

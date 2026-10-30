@@ -237,7 +237,7 @@ export default function FilterPanel({
                   : 'bg-black/40 text-slate-300 border-white/10 hover:text-white'
               }`}
             >
-              {rate === 0 ? 'All' : `${rate}★`}
+              {rate === 0 ? 'All' : `${rate}+ Stars`}
             </button>
           ))}
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Shield, ChevronDown, CheckCircle2, Sparkles } from 'lucide-react';
+import { User, Shield, ChevronDown, CheckCircle2, Sparkles, X } from 'lucide-react';
 import { useTrials } from '../../context/TrialsContext';
 import { DEMO_PERSONAS } from '../../data/trialsData';
 
@@ -77,13 +77,7 @@ export default function TrialsRoleSwitcher() {
                   Test the role-based features from the viewpoint of different athletes and trial directors.
                 </p>
               </div>
-              <button
-                type="button"
-                onClick={() => setIsModalOpen(false)}
-                className="text-slate-400 hover:text-white text-sm p-1 cursor-pointer"
-              >
-                ✕
-              </button>
+              <button type="button" onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-white p-1 cursor-pointer"><X className="w-4 h-4" /></button>
             </div>
 
             <div className="space-y-3">

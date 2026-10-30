@@ -573,7 +573,7 @@ export function generateShareText(split, shareUrl = '') {
   if (!split) return '';
 
   const lines = [
-    `⚽ SportLink Match Cost Split`,
+    `SportLink Match Cost Split`,
     `Venue: ${split.facilityName} (${split.groundName})`,
     `Scheduled: ${split.date} at ${split.time}`,
     `Total Booking Cost: ${formatINR(split.totalRupees)} (Split among ${split.participantCount} players)`,

@@ -129,7 +129,7 @@ export default function FacilityCard({
               <span className={`w-2.5 h-2.5 rounded-sm border flex items-center justify-center text-[8px] leading-none ${
                 comparing ? 'bg-slate-950 text-[#c6ff3d] border-slate-950' : 'border-slate-500'
               }`}>
-                {comparing ? '✓' : '+'}
+                {comparing ? 'Added' : '+'}
               </span>
               <span>Compare</span>
             </button>
@@ -244,7 +244,7 @@ export default function FacilityCard({
             <span className={`w-3.5 h-3.5 rounded border flex items-center justify-center text-[9px] ${
               comparing ? 'bg-[#c6ff3d] text-slate-950 border-[#c6ff3d]' : 'border-slate-600'
             }`}>
-              {comparing ? '✓' : '+'}
+              {comparing ? 'Added' : '+'}
             </span>
             <span className="hidden sm:inline">{comparing ? 'Comparing' : 'Compare'}</span>
           </button>

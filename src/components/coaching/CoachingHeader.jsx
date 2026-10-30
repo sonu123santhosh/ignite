@@ -66,11 +66,6 @@ export default function CoachingHeader({
         <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-rose-600/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-red-500/15 text-red-300 border border-red-500/30 tracking-wide uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-red-400" />
-            <span>Coaching & Academy Marketplace</span>
-          </div>
-
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
             Train Better. <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-rose-400 to-red-500 drop-shadow-[0_2px_10px_rgba(239,68,68,0.35)]">Play Stronger.</span>
           </h1>

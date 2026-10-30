@@ -16,7 +16,8 @@ import {
   MapPin,
   Bell,
   Eye,
-  Edit3
+  Edit3,
+  X
 } from 'lucide-react';
 import { useTrials } from '../../context/TrialsContext';
 import TrialReceiptModal from '../../components/trials/TrialReceiptModal';
@@ -154,13 +155,7 @@ export default function AthleteTrialsDashboard() {
               <CheckCircle2 className="w-4 h-4 shrink-0" />
               <span>{feedbackMsg}</span>
             </span>
-            <button
-              type="button"
-              onClick={() => setFeedbackMsg(null)}
-              className="text-slate-400 hover:text-white"
-            >
-              ✕
-            </button>
+            <button type="button" onClick={() => setFeedbackMsg(null)} className="text-slate-400 hover:text-white"><X className="w-4 h-4" /></button>
           </div>
         )}
 

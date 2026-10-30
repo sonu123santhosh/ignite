@@ -303,13 +303,7 @@ export default function OrganiserManageTrial() {
                               placeholder="Score"
                               className="w-14 px-1.5 py-0.5 rounded bg-[#0B0F14] border border-[#293442] text-xs text-white"
                             />
-                            <button
-                              type="button"
-                              onClick={() => handleSaveScore(app.id)}
-                              className="px-2 py-0.5 rounded bg-[#B6FF3B] text-black font-bold text-[10px]"
-                            >
-                              ✓
-                            </button>
+                            <button type="button" onClick={() => handleSaveScore(app.id)} className="px-2 py-0.5 rounded bg-[#B6FF3B] text-black font-bold text-[10px]">Save</button>
                           </div>
                         ) : (
                           <button

@@ -603,13 +603,13 @@ export default function CoachingLanding() {
                             <div className="flex items-center gap-1.5">
                               <span>{coach.qualifications[0]}</span>
                               {coach.qualificationsVerified ? (
-                                <span className="text-[10px] font-bold text-emerald-400" title="Verified Credential">✓</span>
+                                <span className="text-[10px] font-bold text-emerald-400" title="Verified Credential">Verified</span>
                               ) : (
                                 <span className="text-[10px] font-mono text-gray-500" title="Profile Claim (Unverified)">?</span>
                               )}
                             </div>
                           </td>
-                          <td className="p-3.5 font-bold text-white">★ {coach.rating}</td>
+                          <td className="p-3.5 font-bold text-white">{coach.rating} / 5</td>
                           <td className="p-3.5">
                             <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                               coach.status === 'Active' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-gray-800 text-gray-400'

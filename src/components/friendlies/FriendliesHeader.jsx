@@ -12,11 +12,6 @@ export default function FriendliesHeader({ onScrollToMatches }) {
         <div className="pointer-events-none absolute -bottom-24 -left-24 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl" />
 
         <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/15 border border-sky-400/30 text-sky-300 text-xs font-bold uppercase tracking-wider shadow-sm">
-            <Swords className="w-3.5 h-3.5 text-sky-400" />
-            <span>Inter-College Sports Community</span>
-          </div>
-
           <h1 className="font-['Barlow_Condensed'] text-4xl sm:text-6xl font-black uppercase tracking-tight text-white leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
             College Friendlies
           </h1>
