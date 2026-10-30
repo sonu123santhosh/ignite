@@ -33,6 +33,7 @@ export default function FacilityDetails({
 }) {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
   const outletContext = useOutletContext() || {};
   const showToast = outletContext.showToast || (() => {});
   const showToastRef = React.useRef(showToast);
@@ -57,6 +58,10 @@ export default function FacilityDetails({
   const [selectedSlotTime, setSelectedSlotTime] = useState(null);
   const [durationHours, setDurationHours] = useState(1);
 
+  // Cost split state
+  const [splitConfig, setSplitConfig] = useState(null);
+  const [isSplitModalOpen, setIsSplitModalOpen] = useState(false);
+
   // 5-minute temporary hold countdown (300 seconds)
   const [holdRemainingSec, setHoldRemainingSec] = useState(300);
   const [holdExpired, setHoldExpired] = useState(false);
@@ -73,7 +78,7 @@ export default function FacilityDetails({
     setDurationHours(1);
     setHoldRemainingSec(300);
     setHoldExpired(false);
-  }, [id, facility, todayStr]);
+  }, [id, facility?.id, todayStr]);
 
   // Auto-select earliest available slot so user immediately sees live booking pricing
   useEffect(() => {
@@ -298,7 +303,8 @@ export default function FacilityDetails({
       startTime: selectedSlotTime,
       durationHours,
       priceBreakdown,
-      holdRemainingSec
+      holdRemainingSec,
+      splitConfig: splitConfig?.enabled ? splitConfig : null
     });
 
     navigate(`/facilities/${rawFacility.id}/checkout`);

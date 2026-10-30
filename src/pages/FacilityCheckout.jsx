@@ -25,7 +25,8 @@ export default function FacilityCheckout({
 }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { showToast } = useOutletContext();
+  const outletContext = useOutletContext() || {};
+  const showToast = outletContext.showToast || (() => {});
 
   const facilities = sharedState?.facilities || INITIAL_FACILITIES;
   const facility = facilities.find((f) => f.id === id) || currentBookingSelection?.facility || facilities[0];
@@ -128,6 +129,30 @@ export default function FacilityCheckout({
       bookings: [newBooking, ...(prev.bookings || [])]
     }));
 
+    // If split was configured, atomically create and associate booking split
+    if (selection.splitConfig && selection.splitConfig.enabled) {
+      try {
+        const splitRecord = createBookingSplit({
+          bookingId: newBooking.id,
+          facilityId: facility.id,
+          facilityName: facility.name,
+          groundName: selection.ground.name,
+          date: selection.date,
+          time: selection.startTime,
+          totalRupees: selection.priceBreakdown.total,
+          participantCount: selection.splitConfig.participantCount,
+          mode: selection.splitConfig.mode,
+          participants: selection.splitConfig.participants,
+          note: selection.splitConfig.note,
+          creatorUserId: currentUser?.id,
+          creatorName: playerName.trim() || currentUser?.name || 'Booker'
+        });
+        setSavedSplit(splitRecord);
+      } catch (err) {
+        console.warn('Could not auto-create split:', err);
+      }
+    }
+
     setConfirmedBooking(newBooking);
 
     showToast({
@@ -177,6 +202,12 @@ export default function FacilityCheckout({
               <div><strong>Estimated Total:</strong> ₹{confirmedBooking.amount}</div>
             </div>
           </div>
+
+          {savedSplit && (
+            <div className="text-left pt-2">
+              <CostSplitBreakdownView split={savedSplit} isCreator={true} />
+            </div>
+          )}
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
             <Link to="/facilities">

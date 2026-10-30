@@ -32,7 +32,8 @@ import {
 } from '../data/facilitiesData';
 
 export default function Facilities({ sharedRole, onRoleChange, sharedState, setSharedState }) {
-  const { showToast } = useOutletContext();
+  const outletContext = useOutletContext() || {};
+  const showToast = outletContext.showToast || (() => {});
   const todayStr = getRelativeDateStr(0);
 
   // Role: 'player' | 'owner'
