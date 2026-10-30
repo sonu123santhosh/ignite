@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Star, MapPin, ShieldCheck, Heart, Clock, ArrowRight, Zap } from 'lucide-react';
+import { Star, MapPin, ShieldCheck, Heart, Clock, ArrowRight, Zap, Check, Plus } from 'lucide-react';
 import Button from './Button';
 import { getNextAvailableSlot, haversineDistance } from '../data/facilitiesData';
+import { useCompare } from '../context/CompareContext';
 
 export default function FacilityCard({
   facility,
@@ -13,6 +14,8 @@ export default function FacilityCard({
   onSelectMarker
 }) {
   const [isFav, setIsFav] = useState(false);
+  const { isComparing, toggleCompare } = useCompare();
+  const comparing = isComparing(facility.id);
 
   // Compute approx distance if reference coordinates exist
   const approxDistance = referenceCoords
@@ -109,6 +112,27 @@ export default function FacilityCard({
           </div>
 
           <div className="absolute top-2.5 right-2.5 z-20 flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleCompare(facility.id);
+              }}
+              aria-label={comparing ? `Remove ${facility.name} from comparison` : `Add ${facility.name} to comparison`}
+              className={`px-2 py-0.5 rounded text-[10px] font-bold tracking-wide inline-flex items-center gap-1 transition-all cursor-pointer ${
+                comparing
+                  ? 'bg-[#c6ff3d] text-slate-950 shadow-[0_0_10px_rgba(198,255,61,0.4)] border border-[#c6ff3d]'
+                  : 'bg-[#0B0F14]/90 text-slate-300 hover:text-white border border-[#293442] hover:border-[#c6ff3d]/60'
+              }`}
+            >
+              <span className={`w-2.5 h-2.5 rounded-sm border flex items-center justify-center text-[8px] leading-none ${
+                comparing ? 'bg-slate-950 text-[#c6ff3d] border-slate-950' : 'border-slate-500'
+              }`}>
+                {comparing ? '✓' : '+'}
+              </span>
+              <span>Compare</span>
+            </button>
             <span className="text-[10px] font-medium text-slate-400 bg-[#0B0F14]/90 px-1.5 py-0.5 rounded border border-slate-700">
               Demo listing
             </span>
@@ -204,6 +228,26 @@ export default function FacilityCard({
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              toggleCompare(facility.id);
+            }}
+            aria-label={comparing ? `Remove ${facility.name} from comparison` : `Add ${facility.name} to comparison`}
+            className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer flex items-center gap-1.5 ${
+              comparing
+                ? 'bg-[#c6ff3d]/15 text-[#c6ff3d] border-[#c6ff3d] shadow-[0_0_10px_rgba(198,255,61,0.2)]'
+                : 'text-slate-300 hover:text-white bg-[#141B24] border-[#293442] hover:border-slate-400'
+            }`}
+          >
+            <span className={`w-3.5 h-3.5 rounded border flex items-center justify-center text-[9px] ${
+              comparing ? 'bg-[#c6ff3d] text-slate-950 border-[#c6ff3d]' : 'border-slate-600'
+            }`}>
+              {comparing ? '✓' : '+'}
+            </span>
+            <span className="hidden sm:inline">{comparing ? 'Comparing' : 'Compare'}</span>
+          </button>
           <Link to={`/facilities/${facility.id}`}>
             <Button variant="outline" size="sm" className="hover:border-rose-400 hover:text-white">
               Check Slots

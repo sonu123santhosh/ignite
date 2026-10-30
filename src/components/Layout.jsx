@@ -3,6 +3,9 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Toast from './Toast';
+import { CompareProvider } from '../context/CompareContext';
+import FloatingCompareBar from './facility/FloatingCompareBar';
+import { INITIAL_FACILITIES } from '../data/facilitiesData';
 
 export default function Layout() {
   const [toast, setToast] = useState(null);
@@ -51,7 +54,8 @@ export default function Layout() {
   }, [isFacilitiesPage, isTournamentsPage, isFriendliesPage, isCoachingPage, isTrialsPage]);
 
   return (
-    <div className={`min-h-screen bg-transparent text-slate-100 flex flex-col font-sans relative ${
+    <CompareProvider onShowToast={showToast}>
+      <div className={`min-h-screen bg-transparent text-slate-100 flex flex-col font-sans relative ${
       isFacilitiesPage
         ? 'selection:bg-rose-600/40 selection:text-white'
         : isFriendliesPage
@@ -118,7 +122,10 @@ export default function Layout() {
 
       <Footer />
 
+      <FloatingCompareBar facilitiesList={INITIAL_FACILITIES} />
+
       <Toast toast={toast} onClose={closeToast} />
     </div>
-  );
+  </CompareProvider>
+);
 }

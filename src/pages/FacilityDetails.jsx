@@ -10,6 +10,7 @@ import SlotTable from '../components/SlotTable';
 import PriceSummary from '../components/PriceSummary';
 import CostSplitModal from '../components/facility/CostSplitModal';
 import { useAuth } from '../context/AuthContext';
+import { useCompare } from '../context/CompareContext';
 import { calculateEqualSplit, toPaise } from '../services/costSplitService';
 import FacilityOverview from '../components/facility/FacilityOverview';
 import FacilityPhotoGallery from '../components/facility/FacilityPhotoGallery';
@@ -34,6 +35,7 @@ export default function FacilityDetails({
   const { id } = useParams();
   const navigate = useNavigate();
   const { currentUser } = useAuth();
+  const { isComparing, toggleCompare } = useCompare();
   const outletContext = useOutletContext() || {};
   const showToast = outletContext.showToast || (() => {});
   const showToastRef = React.useRef(showToast);
@@ -343,7 +345,7 @@ export default function FacilityDetails({
   return (
     <div className="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 animate-hero-fade">
       {/* Top Breadcrumb & Navigation */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-3">
         <Link
           to="/facilities"
           className="inline-flex items-center gap-2 text-xs font-bold text-[#94A3B8] hover:text-[#E5C378] transition-colors focus-visible:ring-1 focus-visible:ring-[#E5C378] rounded p-1"
@@ -351,9 +353,25 @@ export default function FacilityDetails({
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Facilities Directory</span>
         </Link>
-        <span className="text-[11px] text-[#94A3B8] bg-[#141B24] border border-[#293442] px-2.5 py-1 rounded-full">
-          Venue Profile
-        </span>
+        <div className="flex items-center gap-2">
+          {rawFacility && (
+            <button
+              type="button"
+              onClick={() => toggleCompare(rawFacility.id)}
+              aria-label={isComparing(rawFacility.id) ? "Remove from comparison" : "Add to comparison"}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer border ${
+                isComparing(rawFacility.id)
+                  ? 'bg-[#c6ff3d] text-slate-950 border-[#c6ff3d] shadow-[0_0_12px_rgba(198,255,61,0.35)]'
+                  : 'bg-[#141B24] text-slate-300 hover:text-white border-[#293442] hover:border-slate-500'
+              }`}
+            >
+              <span>{isComparing(rawFacility.id) ? '✓ Comparing' : '+ Compare Venue'}</span>
+            </button>
+          )}
+          <span className="text-[11px] text-[#94A3B8] bg-[#141B24] border border-[#293442] px-2.5 py-1 rounded-full">
+            Venue Profile
+          </span>
+        </div>
       </div>
 
       {/* SECTION 1: OVERVIEW */}

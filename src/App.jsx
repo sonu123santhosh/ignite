@@ -10,6 +10,7 @@ import Facilities from './pages/Facilities';
 import FacilityDetails from './pages/FacilityDetails';
 import FacilityCheckout from './pages/FacilityCheckout';
 import MyBookingsPage from './pages/facility/MyBookingsPage';
+import FacilityComparisonPage from './pages/facility/FacilityComparisonPage';
 
 // Tournaments Feature Pages
 import Tournaments from './pages/Tournaments';
@@ -149,6 +150,7 @@ export default function App() {
           />
           <Route path="facilities/my-bookings" element={<MyBookingsPage />} />
           <Route path="facilities/my-bookings/:id" element={<MyBookingsPage />} />
+          <Route path="facilities/compare" element={<FacilityComparisonPage sharedState={sharedState} />} />
 
           {/* Tournaments Feature Routes */}
           <Route
