@@ -208,11 +208,11 @@ export default function FacilityDetails({
     <div className="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 animate-hero-fade">
       {/* Top Breadcrumb & Back button */}
       <div className="flex items-center justify-between">
-        <Link to="/facilities" className="inline-flex items-center gap-2 text-xs font-bold text-[#94A3B8] hover:text-[#E5C378] transition-colors">
+        <Link to="/facilities" className="inline-flex items-center gap-2 text-xs font-bold text-slate-300 hover:text-rose-300 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Facilities Directory</span>
         </Link>
-        <span className="text-[11px] text-[#94A3B8] bg-[#141B24] border border-[#293442] px-2.5 py-1 rounded-full">
+        <span className="text-[11px] text-slate-300 bg-white/5 border border-white/15 px-2.5 py-1 rounded-full">
           Demo Facility Profile
         </span>
       </div>
@@ -230,7 +230,7 @@ export default function FacilityDetails({
           {/* Top Gallery Tags */}
           <div className="relative z-10 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#E5C378] bg-[#0B0F14]/90 px-3 py-1 rounded-full border border-[#D4AF37]/35">
+              <span className="text-xs font-bold uppercase tracking-wider text-rose-200 bg-[#0B0F14]/90 px-3 py-1 rounded-full border border-rose-500/30">
                 {facility.sport}
               </span>
               <span className="text-xs font-medium text-[#94A3B8] bg-[#0B0F14]/90 px-2.5 py-1 rounded-full border border-[#293442]">
@@ -250,8 +250,8 @@ export default function FacilityDetails({
             <h1 className="text-3xl sm:text-5xl font-black uppercase text-[#F5F7FA] font-['Barlow_Condensed'] leading-tight">
               {facility.name}
             </h1>
-            <p className="text-xs sm:text-sm text-[#94A3B8] flex items-center justify-center gap-1.5">
-              <MapPin className="w-4 h-4 text-amber-400" />
+            <p className="text-xs sm:text-sm text-slate-300 flex items-center justify-center gap-1.5">
+              <MapPin className="w-4 h-4 text-rose-400" />
               {facility.address}
             </p>
           </div>
@@ -282,7 +282,7 @@ export default function FacilityDetails({
           </div>
           <div className="bg-[#0B0F14] border border-[#293442] rounded-xl p-3.5">
             <span className="text-[10px] uppercase font-bold text-[#94A3B8]">Available Grounds</span>
-            <div className="text-sm font-bold text-[#E5C378] mt-0.5">{facility.grounds.length} Pitches</div>
+            <div className="text-sm font-bold text-rose-200 mt-0.5">{facility.grounds.length} Pitches</div>
           </div>
         </div>
 
@@ -292,7 +292,7 @@ export default function FacilityDetails({
             <h3 className="font-['Barlow_Condensed'] text-xl font-bold uppercase text-[#F5F7FA]">
               About the Ground
             </h3>
-            <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed mt-1">
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mt-1">
               {facility.description}
             </p>
           </div>
@@ -307,7 +307,7 @@ export default function FacilityDetails({
                   key={idx}
                   className="inline-flex items-center gap-1.5 text-xs text-[#F5F7FA] bg-[#0B0F14] border border-[#293442] px-3 py-1.5 rounded-lg"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#E5C378]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
                   {amenity}
                 </span>
               ))}
@@ -321,7 +321,7 @@ export default function FacilityDetails({
         {/* Left: Interactive Slot Table */}
         <div className="lg:col-span-8 space-y-6">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#E5C378]">
+            <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
               Step 1 &bull; Choose Slot
             </span>
             <h2 className="font-['Barlow_Condensed'] text-3xl font-black uppercase text-[#F5F7FA] mt-1">

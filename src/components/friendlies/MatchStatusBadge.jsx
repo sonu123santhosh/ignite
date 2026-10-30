@@ -8,9 +8,9 @@ export default function MatchStatusBadge({ status, className = '' }) {
     case 'Open for Teams':
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#B6FF3B]/15 text-[#B6FF3B] border border-[#B6FF3B]/40 shadow-sm ${className}`}
+          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-500/15 text-sky-300 border border-sky-400/40 shadow-[0_0_12px_rgba(56,189,248,0.25)] ${className}`}
         >
-          <span className="w-2 h-2 rounded-full bg-[#B6FF3B] animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
           <span>Open for Teams</span>
         </span>
       );

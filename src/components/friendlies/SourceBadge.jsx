@@ -22,9 +22,9 @@ export default function SourceBadge({ source, lastVerified, showDate = false, cl
     case 'official_fixture':
       badgeConfig = {
         label: 'Official fixture',
-        bg: 'bg-[#00D9FF]/10',
-        text: 'text-[#00D9FF]',
-        border: 'border-[#00D9FF]/40',
+        bg: 'bg-sky-500/15',
+        text: 'text-sky-300',
+        border: 'border-sky-400/30',
         icon: Award
       };
       break;

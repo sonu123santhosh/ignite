@@ -75,12 +75,12 @@ export default function EnrolmentModal({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-[#141B24] border border-[#293442] rounded-2xl w-full max-w-xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div className="bg-[#0c0d15] border border-red-500/30 rounded-2xl w-full max-w-xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
         
         {/* Header */}
-        <div className="p-5 border-b border-[#293442] flex items-center justify-between bg-[#1B2530]/50">
+        <div className="p-5 border-b border-red-500/20 flex items-center justify-between bg-[#140e18]/80">
           <div>
-            <div className="text-[11px] font-bold text-[#00D4FF] uppercase tracking-wider flex items-center gap-1.5">
+            <div className="text-[11px] font-bold text-red-400 uppercase tracking-wider flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Step {step} of 3 • Programme Enrolment</span>
             </div>
@@ -88,7 +88,7 @@ export default function EnrolmentModal({
               {currentProg?.name || 'Enrol in Training'}
             </h2>
           </div>
-          <button onClick={onClose} className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-[#293442]">
+          <button onClick={onClose} className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-red-950/40 cursor-pointer">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -110,7 +110,7 @@ export default function EnrolmentModal({
                       const matching = batches.filter((b) => b.programmeId === e.target.value);
                       if (matching.length > 0) setSelectedBatchId(matching[0].id);
                     }}
-                    className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#00D4FF]"
+                    className="w-full bg-[#08050c] border border-red-500/25 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-red-500"
                   >
                     {academyProgrammes.map((p) => (
                       <option key={p.id} value={p.id}>
@@ -127,7 +127,7 @@ export default function EnrolmentModal({
                   Select Training Batch
                 </label>
                 {progBatches.length === 0 ? (
-                  <div className="p-4 bg-[#0B0F14] rounded-xl text-xs text-gray-400 border border-[#293442]">
+                  <div className="p-4 bg-[#08050c] rounded-xl text-xs text-gray-400 border border-red-500/20">
                     No active batches configured for this programme yet. Please check back soon or contact the academy.
                   </div>
                 ) : (
@@ -143,8 +143,8 @@ export default function EnrolmentModal({
                           onClick={() => setSelectedBatchId(b.id)}
                           className={`p-3.5 rounded-xl border flex items-center justify-between gap-3 cursor-pointer transition-all ${
                             isSelected
-                              ? 'bg-[#1B2530] border-[#00D4FF] shadow-md'
-                              : 'bg-[#0B0F14] border-[#293442] hover:border-slate-500'
+                              ? 'bg-[#140e18] border-red-500 shadow-md ring-1 ring-red-500/40'
+                              : 'bg-[#08050c] border-red-500/20 hover:border-red-500/40'
                           }`}
                         >
                           <div>
@@ -155,7 +155,7 @@ export default function EnrolmentModal({
                                   Full (Waitlist Available)
                                 </span>
                               ) : (
-                                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#B6FF3B]/15 text-[#B6FF3B] border border-[#B6FF3B]/30 font-mono">
+                                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-500/15 text-red-300 border border-red-500/30 font-mono">
                                   {free} Seats Left
                                 </span>
                               )}
@@ -195,7 +195,7 @@ export default function EnrolmentModal({
                   type="button"
                   onClick={() => setStep(2)}
                   disabled={!activeBatch}
-                  className="w-full py-2.5 rounded-xl bg-[#00D4FF] text-black font-bold text-xs hover:bg-[#00c2e6] transition-all flex items-center justify-center gap-1.5 disabled:opacity-50"
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-bold text-xs hover:shadow-[0_4px_16px_rgba(220,38,38,0.5)] transition-all flex items-center justify-center gap-1.5 disabled:opacity-50 cursor-pointer"
                 >
                   <span>Continue to Participant Info</span>
                   <ArrowRight className="w-4 h-4" />
@@ -229,7 +229,7 @@ export default function EnrolmentModal({
                     max="80"
                     value={age}
                     onChange={(e) => setAge(e.target.value)}
-                    className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-[#00D4FF]"
+                    className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-red-500"
                   />
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function EnrolmentModal({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+91 98220 00000"
-                    className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-[#00D4FF]"
+                    className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-red-500"
                   />
                 </div>
 
@@ -255,14 +255,14 @@ export default function EnrolmentModal({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="athlete@domain.com"
-                    className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-[#00D4FF]"
+                    className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-red-500"
                   />
                 </div>
               </div>
 
               {isMinor && (
-                <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl space-y-1.5">
-                  <label className="text-xs font-bold text-amber-300 flex items-center gap-1.5">
+                <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl space-y-1.5">
+                  <label className="text-xs font-bold text-red-300 flex items-center gap-1.5">
                     <AlertCircle className="w-3.5 h-3.5" />
                     <span>Parent / Guardian Contact (Compulsory for Minors)</span>
                   </label>
@@ -272,7 +272,7 @@ export default function EnrolmentModal({
                     value={parentContact}
                     onChange={(e) => setParentContact(e.target.value)}
                     placeholder="Parent's phone number or email"
-                    className="w-full bg-[#0B0F14] border border-[#293442] rounded-lg p-2 text-xs text-white"
+                    className="w-full bg-[#08050c] border border-red-500/20 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-red-500"
                   />
                 </div>
               )}
@@ -281,7 +281,7 @@ export default function EnrolmentModal({
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="px-4 py-2 rounded-xl bg-[#1B2530] text-gray-300 text-xs font-semibold"
+                  className="px-4 py-2 rounded-xl bg-[#140e18] text-gray-300 border border-red-500/20 hover:text-white text-xs font-semibold cursor-pointer transition-all"
                 >
                   Back
                 </button>
@@ -289,7 +289,7 @@ export default function EnrolmentModal({
                   type="button"
                   onClick={() => setStep(3)}
                   disabled={!participantName || !phone || (isMinor && !parentContact)}
-                  className="px-5 py-2 rounded-xl bg-[#00D4FF] text-black font-bold text-xs disabled:opacity-50"
+                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-bold text-xs hover:shadow-[0_4px_18px_rgba(220,38,38,0.5)] border border-red-500/40 disabled:opacity-50 cursor-pointer transition-all"
                 >
                   Review Terms & Fees
                 </button>
@@ -300,26 +300,26 @@ export default function EnrolmentModal({
           {/* STEP 3: Review Fees & Payment Preference */}
           {step === 3 && (
             <div className="space-y-5">
-              <div className="p-4 bg-[#0B0F14] border border-[#293442] rounded-xl space-y-3 text-xs">
-                <div className="flex justify-between border-b border-[#293442] pb-2">
+              <div className="p-4 bg-[#08050c] border border-red-500/20 rounded-xl space-y-3 text-xs">
+                <div className="flex justify-between border-b border-red-500/15 pb-2">
                   <span className="text-gray-400">Programme:</span>
                   <span className="font-bold text-white">{currentProg?.name}</span>
                 </div>
-                <div className="flex justify-between border-b border-[#293442] pb-2">
+                <div className="flex justify-between border-b border-red-500/15 pb-2">
                   <span className="text-gray-400">Batch:</span>
-                  <span className="font-semibold text-[#00D4FF]">{activeBatch?.name}</span>
+                  <span className="font-semibold text-red-400">{activeBatch?.name}</span>
                 </div>
-                <div className="flex justify-between border-b border-[#293442] pb-2">
+                <div className="flex justify-between border-b border-red-500/15 pb-2">
                   <span className="text-gray-400">Schedule:</span>
                   <span className="text-gray-200">{activeBatch?.days?.join(', ')} ({activeBatch?.startTime} - {activeBatch?.endTime})</span>
                 </div>
-                <div className="flex justify-between border-b border-[#293442] pb-2">
+                <div className="flex justify-between border-b border-red-500/15 pb-2">
                   <span className="text-gray-400">Required Kit:</span>
                   <span className="text-gray-300 max-w-[240px] text-right truncate">{currentProg?.equipmentRequirements}</span>
                 </div>
                 <div className="flex justify-between pt-1">
                   <span className="font-bold text-white text-sm">Monthly Subscription Fee:</span>
-                  <span className="text-base font-extrabold text-[#B6FF3B]">
+                  <span className="text-base font-extrabold text-red-400">
                     ₹{currentProg?.monthlyFee?.toLocaleString('en-IN')} / month
                   </span>
                 </div>
@@ -327,17 +327,17 @@ export default function EnrolmentModal({
 
               {/* Payment Mode Selector */}
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
+                <label className="text-xs font-bold uppercase tracking-wider text-red-300">
                   Select Payment Preference (Demo Flow)
                 </label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={() => setPaymentOption('pay_later')}
-                    className={`p-3 rounded-xl border text-left transition-all ${
+                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                       paymentOption === 'pay_later'
-                        ? 'bg-[#1B2530] border-[#00D4FF] text-white'
-                        : 'bg-[#0B0F14] border-[#293442] text-gray-400 hover:text-white'
+                        ? 'bg-red-950/40 border-red-500 text-white shadow-[0_0_15px_rgba(239,68,68,0.2)]'
+                        : 'bg-[#08050c] border-red-500/20 text-gray-400 hover:text-white hover:border-red-500/40'
                     }`}
                   >
                     <div className="font-bold text-xs text-white">Pay at Academy</div>
@@ -347,13 +347,13 @@ export default function EnrolmentModal({
                   <button
                     type="button"
                     onClick={() => setPaymentOption('demo_upi')}
-                    className={`p-3 rounded-xl border text-left transition-all ${
+                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                       paymentOption === 'demo_upi'
-                        ? 'bg-[#1B2530] border-[#B6FF3B] text-white'
-                        : 'bg-[#0B0F14] border-[#293442] text-gray-400 hover:text-white'
+                        ? 'bg-red-950/40 border-red-500 text-white shadow-[0_0_15px_rgba(239,68,68,0.2)]'
+                        : 'bg-[#08050c] border-red-500/20 text-gray-400 hover:text-white hover:border-red-500/40'
                     }`}
                   >
-                    <div className="font-bold text-xs text-[#B6FF3B]">Demo UPI / Gateway</div>
+                    <div className="font-bold text-xs text-red-400">Demo UPI / Gateway</div>
                     <div className="text-[10px] text-gray-400 mt-0.5">Simulate digital payment invoice</div>
                   </button>
                 </div>
@@ -363,14 +363,14 @@ export default function EnrolmentModal({
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="px-4 py-2 rounded-xl bg-[#1B2530] text-gray-300 text-xs font-semibold"
+                  className="px-4 py-2 rounded-xl bg-[#140e18] text-gray-300 border border-red-500/20 hover:text-white text-xs font-semibold cursor-pointer transition-all"
                 >
                   Back
                 </button>
                 <button
                   type="button"
                   onClick={handleConfirmEnrolment}
-                  className="px-6 py-2.5 rounded-xl bg-[#B6FF3B] text-black font-extrabold text-xs hover:bg-[#a5ef28] shadow-lg cursor-pointer"
+                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold text-xs hover:shadow-[0_4px_20px_rgba(220,38,38,0.6)] border border-red-500/40 cursor-pointer transition-all"
                 >
                   Submit Enrolment Application
                 </button>
@@ -381,7 +381,7 @@ export default function EnrolmentModal({
           {/* STEP 4: Success Screen */}
           {step === 4 && (
             <div className="text-center py-6 space-y-4">
-              <div className="w-14 h-14 rounded-full bg-[#00D4FF]/15 border border-[#00D4FF] text-[#00D4FF] flex items-center justify-center mx-auto">
+              <div className="w-14 h-14 rounded-full bg-red-500/15 border border-red-500 text-red-400 flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(239,68,68,0.3)]">
                 <Check className="w-7 h-7" />
               </div>
 
@@ -397,14 +397,14 @@ export default function EnrolmentModal({
               </div>
 
               {createdEnrolment && (
-                <div className="bg-[#0B0F14] border border-[#293442] rounded-xl p-3.5 text-xs text-left max-w-sm mx-auto space-y-1.5 font-mono">
+                <div className="bg-[#08050c] border border-red-500/20 rounded-xl p-3.5 text-xs text-left max-w-sm mx-auto space-y-1.5 font-mono">
                   <div className="flex justify-between">
                     <span className="text-gray-500">Enrolment ID:</span>
                     <span className="text-white font-bold">{createdEnrolment.id}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-500">Enrolment Status:</span>
-                    <span className="text-[#00D4FF] font-bold">{createdEnrolment.enrolmentStatus}</span>
+                    <span className="text-red-400 font-bold">{createdEnrolment.enrolmentStatus}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-500">Payment Status:</span>
@@ -417,7 +417,7 @@ export default function EnrolmentModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-6 py-2 rounded-xl bg-[#1B2530] text-white border border-[#293442] hover:bg-[#222f3d] text-xs font-bold"
+                  className="px-6 py-2 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold hover:shadow-[0_4px_16px_rgba(220,38,38,0.4)] border border-red-500/40 text-xs cursor-pointer transition-all"
                 >
                   Close & View in My Training
                 </button>

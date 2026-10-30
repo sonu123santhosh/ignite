@@ -26,7 +26,7 @@ export default function NotFound() {
       </p>
 
       <div className="mt-8 flex justify-center">
-        <Link to="/">
+        <Link to="/home">
           <Button variant="primary" size="lg" className="gap-2">
             <Home className="w-4 h-4" />
             <span>Back to home</span>

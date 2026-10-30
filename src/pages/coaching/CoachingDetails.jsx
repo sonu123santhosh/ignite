@@ -69,7 +69,7 @@ export default function CoachingDetails() {
         <div className="max-w-md mx-auto bg-[#141B24] border border-[#293442] p-8 rounded-2xl space-y-4">
           <h2 className="text-xl font-bold text-white">Academy Not Found</h2>
           <p className="text-xs text-[#94A3B8]">The requested coaching centre could not be located.</p>
-          <Link to="/coaching" className="inline-block px-4 py-2 rounded-xl bg-[#B6FF3B] text-[#0B0F14] text-xs font-bold uppercase tracking-wider">
+          <Link to="/coaching" className="inline-block px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white text-xs font-bold uppercase tracking-wider hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all">
             Back to Directory
           </Link>
         </div>
@@ -116,7 +116,7 @@ export default function CoachingDetails() {
         <div>
           <Link
             to="/coaching"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-[#B6FF3B] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-red-400 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Coaching Centres Directory</span>
@@ -124,7 +124,7 @@ export default function CoachingDetails() {
         </div>
 
         {/* Hero Header Banner */}
-        <div className="bg-[#141B24] border border-[#293442] rounded-3xl overflow-hidden shadow-2xl">
+        <div className="bg-[#0c0d15]/85 border border-red-500/25 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-md">
           {/* Cover Image Gallery */}
           <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-black/50">
             <img 
@@ -132,13 +132,13 @@ export default function CoachingDetails() {
               alt={academy.name} 
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#141B24] via-[#141B24]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d15] via-[#0c0d15]/40 to-transparent" />
 
             {/* Overlays: Back, Favourites, Badges */}
             <div className="absolute top-4 inset-x-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 {academy.sports.map(s => (
-                  <span key={s} className="px-3 py-1 rounded-full text-xs font-bold bg-[#00D4FF]/20 text-[#00D4FF] backdrop-blur-md border border-[#00D4FF]/40">
+                  <span key={s} className="px-3 py-1 rounded-full text-xs font-bold bg-red-500/20 text-red-200 backdrop-blur-md border border-red-500/40">
                     {s}
                   </span>
                 ))}
@@ -158,7 +158,7 @@ export default function CoachingDetails() {
             <div className="absolute bottom-6 inset-x-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div className="space-y-1.5 max-w-2xl">
                 <div className="flex items-center gap-2">
-                  <span className="w-10 h-10 rounded-xl bg-[#00D4FF] text-black font-extrabold text-sm flex items-center justify-center shadow-md">
+                  <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1c121e] via-[#120a14] to-[#080509] border border-red-500/40 text-red-200 font-extrabold text-sm flex items-center justify-center shadow-md">
                     {academy.logoInitials}
                   </span>
                   <div>
@@ -166,7 +166,7 @@ export default function CoachingDetails() {
                       {academy.name}
                     </h1>
                     <div className="flex items-center gap-2 text-xs text-[#94A3B8]">
-                      <MapPin className="w-3.5 h-3.5 text-[#00D4FF]" />
+                      <MapPin className="w-3.5 h-3.5 text-red-400" />
                       <span>{academy.address}, {academy.locality}, {academy.city}</span>
                     </div>
                   </div>
@@ -182,7 +182,7 @@ export default function CoachingDetails() {
                       setSelectedTrialProg(academyProgrammes[0]);
                       setIsTrialModalOpen(true);
                     }}
-                    className="px-5 py-2.5 rounded-xl bg-[#B6FF3B] text-black font-extrabold text-xs hover:bg-[#a5ef28] transition-all shadow-lg cursor-pointer"
+                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold text-xs hover:shadow-[0_4px_20px_rgba(220,38,38,0.5)] border border-red-500/40 transition-all shadow-lg cursor-pointer"
                   >
                     {academy.trialFee === 0 ? 'Book Free Trial' : `Book Trial (₹${academy.trialFee})`}
                   </button>
@@ -195,7 +195,7 @@ export default function CoachingDetails() {
                       setSelectedEnrolProg(academyProgrammes[0]);
                       setIsEnrolModalOpen(true);
                     }}
-                    className="px-5 py-2.5 rounded-xl bg-[#00D4FF] text-black font-extrabold text-xs hover:bg-[#00c2e6] transition-all shadow-lg cursor-pointer"
+                    className="px-5 py-2.5 rounded-xl bg-red-950/70 hover:bg-red-900/70 text-red-100 border border-red-500/40 font-extrabold text-xs hover:shadow-[0_4px_16px_rgba(220,38,38,0.3)] transition-all shadow-lg cursor-pointer"
                   >
                     Enrol in Programme
                   </button>
@@ -205,7 +205,7 @@ export default function CoachingDetails() {
           </div>
 
           {/* Navigation Tabs Bar */}
-          <div className="bg-[#1B2530] border-t border-[#293442] px-6 flex items-center gap-2 overflow-x-auto">
+          <div className="bg-[#0c0d15]/95 border-t border-red-500/20 px-6 flex items-center gap-2 overflow-x-auto">
             {[
               { id: 'overview', label: 'Overview' },
               { id: 'coaches', label: `Coaches (${academyCoaches.length})` },
@@ -219,8 +219,8 @@ export default function CoachingDetails() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`py-4 px-4 text-xs font-bold uppercase tracking-wider whitespace-nowrap border-b-2 transition-all cursor-pointer ${
                   activeTab === tab.id
-                    ? 'border-[#B6FF3B] text-[#B6FF3B]'
-                    : 'border-transparent text-[#94A3B8] hover:text-white'
+                    ? 'border-red-500 text-red-400 font-extrabold'
+                    : 'border-transparent text-slate-400 hover:text-white'
                 }`}
               >
                 {tab.label}
@@ -238,27 +238,27 @@ export default function CoachingDetails() {
             <div className="lg:col-span-8 space-y-6">
               
               {/* About Centre Card */}
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-4 shadow-xl">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-4 shadow-xl">
                 <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <Building className="w-5 h-5 text-[#B6FF3B]" />
+                  <Building className="w-5 h-5 text-red-400" />
                   <span>About the Academy</span>
                 </h3>
                 <p className="text-sm text-gray-300 leading-relaxed">
                   {academy.description}
                 </p>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-[#293442] text-xs">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-red-500/20 text-xs">
                   <div>
                     <span className="text-gray-500 uppercase text-[10px] font-bold block">Facility Type</span>
                     <span className="font-semibold text-white mt-0.5">{academy.facilityType}</span>
                   </div>
                   <div>
                     <span className="text-gray-500 uppercase text-[10px] font-bold block">Age Groups</span>
-                    <span className="font-semibold text-[#00D4FF] mt-0.5">{academy.ageGroups.join(', ')}</span>
+                    <span className="font-semibold text-rose-300 mt-0.5">{academy.ageGroups.join(', ')}</span>
                   </div>
                   <div>
                     <span className="text-gray-500 uppercase text-[10px] font-bold block">Monthly Fee</span>
-                    <span className="font-semibold text-[#B6FF3B] mt-0.5">₹{academy.monthlyFeeMin.toLocaleString('en-IN')}+</span>
+                    <span className="font-semibold text-red-400 mt-0.5">₹{academy.monthlyFeeMin.toLocaleString('en-IN')}+</span>
                   </div>
                   <div>
                     <span className="text-gray-500 uppercase text-[10px] font-bold block">Trial Class</span>
@@ -268,15 +268,15 @@ export default function CoachingDetails() {
               </div>
 
               {/* Amenities & Infrastructure */}
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-4 shadow-xl">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-4 shadow-xl">
                 <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-[#00D4FF]" />
+                  <Sparkles className="w-5 h-5 text-red-400" />
                   <span>Infrastructure & Amenities</span>
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {academy.amenities.map((amenity, idx) => (
-                    <div key={idx} className="flex items-center gap-2 p-2.5 bg-[#0B0F14] border border-[#293442] rounded-xl text-xs text-gray-200">
-                      <CheckCircle2 className="w-4 h-4 text-[#B6FF3B] shrink-0" />
+                    <div key={idx} className="flex items-center gap-2 p-2.5 bg-[#08050c] border border-red-500/20 rounded-xl text-xs text-gray-200">
+                      <CheckCircle2 className="w-4 h-4 text-red-400 shrink-0" />
                       <span>{amenity}</span>
                     </div>
                   ))}
@@ -284,7 +284,7 @@ export default function CoachingDetails() {
               </div>
 
               {/* Cancellation Policy */}
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-2 text-xs">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-2 text-xs">
                 <h4 className="font-bold text-white text-sm">Cancellation & Refund Policy</h4>
                 <p className="text-gray-400 leading-relaxed">
                   {academy.cancellationPolicy}
@@ -294,8 +294,8 @@ export default function CoachingDetails() {
 
             {/* Right 4 Cols: Operating Hours & Contact Card */}
             <div className="lg:col-span-4 space-y-6">
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-4 shadow-xl">
-                <h3 className="font-bold text-white text-sm uppercase tracking-wider text-[#00D4FF]">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-4 shadow-xl">
+                <h3 className="font-bold text-white text-sm uppercase tracking-wider text-red-400">
                   Opening Hours & Contact
                 </h3>
 
@@ -316,7 +316,7 @@ export default function CoachingDetails() {
                   </div>
 
                   {academy.contact.website && (
-                    <div className="flex items-center gap-2.5 text-[#00D4FF]">
+                    <div className="flex items-center gap-2.5 text-red-400">
                       <Globe className="w-4 h-4 shrink-0" />
                       <a href={academy.contact.website} target="_blank" rel="noopener noreferrer" className="hover:underline">
                         {academy.contact.website}
@@ -325,7 +325,7 @@ export default function CoachingDetails() {
                   )}
                 </div>
 
-                <div className="pt-3 border-t border-[#293442] space-y-2">
+                <div className="pt-3 border-t border-red-500/20 space-y-2">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-400">Academy Rating</span>
                     <span className="font-bold text-white flex items-center gap-1">
@@ -335,18 +335,18 @@ export default function CoachingDetails() {
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-400">Verified Reviews</span>
-                    <span className="font-bold text-[#B6FF3B]">{academy.reviewCount} Reviews</span>
+                    <span className="font-bold text-red-400">{academy.reviewCount} Reviews</span>
                   </div>
                 </div>
               </div>
 
               {/* Map Preview */}
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-4 space-y-3 shadow-xl">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-4 space-y-3 shadow-xl">
                 <div className="text-xs font-bold text-white flex items-center justify-between">
                   <span>Location Map</span>
                   <span className="text-[10px] text-gray-400 font-mono">{academy.locality}</span>
                 </div>
-                <div className="h-48 rounded-xl overflow-hidden border border-[#293442]">
+                <div className="h-48 rounded-xl overflow-hidden border border-red-500/20">
                   <CoachingMapView
                     academies={[academy]}
                     userCoords={{ lat: academy.lat, lng: academy.lng }}
@@ -371,18 +371,18 @@ export default function CoachingDetails() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {academyCoaches.map((coach) => (
-                <div key={coach.id} className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 flex flex-col justify-between hover:border-[#38485c] transition-all shadow-lg space-y-4">
+                <div key={coach.id} className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between hover:border-red-500/40 transition-all shadow-lg space-y-4">
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
                       <img 
                         src={coach.photo} 
                         alt={coach.name} 
-                        className="w-16 h-16 rounded-2xl object-cover border border-[#293442] shrink-0"
+                        className="w-16 h-16 rounded-2xl object-cover border border-red-500/25 shrink-0"
                       />
                       <div>
                         <div className="flex items-center gap-2">
                           <h4 className="font-bold text-white text-base">{coach.name}</h4>
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#00D4FF]/10 text-[#00D4FF] border border-[#00D4FF]/30">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-500/10 text-red-400 border border-red-500/30">
                             {coach.sport}
                           </span>
                         </div>
@@ -412,7 +412,7 @@ export default function CoachingDetails() {
                             className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold ${
                               coach.qualificationsVerified
                                 ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
-                                : 'bg-[#1B2530] text-gray-400 border border-[#293442]'
+                                : 'bg-[#140e18] text-gray-400 border border-red-500/20'
                             }`}
                           >
                             {coach.qualificationsVerified && <ShieldCheck className="w-3 h-3 text-emerald-400" />}
@@ -428,7 +428,7 @@ export default function CoachingDetails() {
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-[#293442] flex items-center justify-between">
+                  <div className="pt-4 border-t border-red-500/20 flex items-center justify-between">
                     <span className="text-xs text-gray-400 font-mono">
                       {coach.programmesCount} Active Programmes
                     </span>
@@ -439,7 +439,7 @@ export default function CoachingDetails() {
                         setSelectedTrialProg(targetProg);
                         setIsTrialModalOpen(true);
                       }}
-                      className="px-4 py-2 rounded-xl bg-[#B6FF3B] text-black font-bold text-xs hover:bg-[#a5ef28]"
+                      className="px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-bold text-xs hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all cursor-pointer"
                     >
                       Book Trial Session
                     </button>
@@ -472,17 +472,17 @@ export default function CoachingDetails() {
                 return (
                   <div 
                     key={prog.id}
-                    className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-[#38485c] transition-all shadow-xl"
+                    className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-red-500/50 transition-all shadow-xl"
                   >
                     <div className="space-y-3 flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#00D4FF]/10 text-[#00D4FF] border border-[#00D4FF]/30">
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-500/10 text-red-400 border border-red-500/30">
                           {prog.sport}
                         </span>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#B6FF3B]/10 text-[#B6FF3B] border border-[#B6FF3B]/30">
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-300 border border-rose-500/30">
                           {prog.skillLevel}
                         </span>
-                        <span className="text-[10px] text-gray-400 bg-[#0B0F14] px-2 py-0.5 rounded border border-[#293442]">
+                        <span className="text-[10px] text-gray-400 bg-[#08050c] px-2 py-0.5 rounded border border-red-500/20">
                           Age: {prog.ageEligibility}
                         </span>
                         {seatsLeft === 0 ? (
@@ -490,7 +490,7 @@ export default function CoachingDetails() {
                             Batch Full (Waitlist Open)
                           </span>
                         ) : (
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#B6FF3B]/10 text-[#B6FF3B] font-mono">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-500/15 text-red-300 border border-red-500/30 font-mono">
                             {seatsLeft} Seats Available
                           </span>
                         )}
@@ -509,7 +509,7 @@ export default function CoachingDetails() {
                     </div>
 
                     {/* Fees & Action Buttons */}
-                    <div className="flex flex-col md:items-end justify-between shrink-0 gap-3 pt-4 md:pt-0 border-t md:border-t-0 border-[#293442]">
+                    <div className="flex flex-col md:items-end justify-between shrink-0 gap-3 pt-4 md:pt-0 border-t md:border-t-0 border-red-500/20">
                       <div className="text-left md:text-right">
                         <span className="text-xs text-gray-400 block">Monthly Subscription</span>
                         <span className="text-xl font-extrabold text-white">
@@ -531,7 +531,7 @@ export default function CoachingDetails() {
                               setSelectedTrialProg(prog);
                               setIsTrialModalOpen(true);
                             }}
-                            className="px-4 py-2 rounded-xl bg-[#1B2530] text-gray-200 border border-[#293442] hover:text-white hover:bg-[#222f3d] text-xs font-bold transition-all"
+                            className="px-4 py-2 rounded-xl bg-[#140e18] text-red-200 border border-red-500/30 hover:bg-red-950/40 hover:text-white text-xs font-bold transition-all cursor-pointer"
                           >
                             {prog.trialFee === 0 ? 'Free Trial' : `Trial (₹${prog.trialFee})`}
                           </button>
@@ -543,7 +543,7 @@ export default function CoachingDetails() {
                             setSelectedEnrolProg(prog);
                             setIsEnrolModalOpen(true);
                           }}
-                          className="px-5 py-2 rounded-xl bg-[#B6FF3B] text-black font-extrabold text-xs hover:bg-[#a5ef28] shadow-md transition-all"
+                          className="px-5 py-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold text-xs hover:shadow-[0_4px_18px_rgba(220,38,38,0.5)] border border-red-500/40 shadow-md transition-all cursor-pointer"
                         >
                           Enrol Now
                         </button>
@@ -560,7 +560,7 @@ export default function CoachingDetails() {
         {/* TAB 4: SCHEDULE & BATCH TIMETABLE                                         */}
         {/* ========================================================================= */}
         {activeTab === 'schedule' && (
-          <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-6 shadow-xl">
+          <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-6 shadow-xl">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h3 className="text-lg font-bold text-white">Weekly Batch Timetable</h3>
@@ -574,10 +574,10 @@ export default function CoachingDetails() {
                     key={day}
                     type="button"
                     onClick={() => setScheduleDay(day)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                       scheduleDay === day
-                        ? 'bg-[#B6FF3B] text-black shadow-sm'
-                        : 'bg-[#0B0F14] text-gray-400 border border-[#293442] hover:text-white'
+                        ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-sm'
+                        : 'bg-[#08050c] text-gray-400 border border-red-500/20 hover:text-white hover:border-red-500/40'
                     }`}
                   >
                     {day}
@@ -588,7 +588,7 @@ export default function CoachingDetails() {
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs text-gray-300">
-                <thead className="bg-[#0B0F14] text-gray-400 uppercase font-mono text-[11px] border-b border-[#293442]">
+                <thead className="bg-[#08050c] text-gray-400 uppercase font-mono text-[11px] border-b border-red-500/20">
                   <tr>
                     <th className="p-3.5">Day(s)</th>
                     <th className="p-3.5">Timing</th>
@@ -599,15 +599,15 @@ export default function CoachingDetails() {
                     <th className="p-3.5 text-right">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#293442]">
+                <tbody className="divide-y divide-red-500/10">
                   {filteredSchedule.map((b) => {
                     const free = Math.max(0, b.capacity - b.enrolledCount);
                     const isFull = free === 0;
 
                     return (
-                      <tr key={b.id} className="hover:bg-[#1B2530]/50 transition-colors">
+                      <tr key={b.id} className="hover:bg-red-950/20 transition-colors">
                         <td className="p-3.5 font-bold text-white">{b.days.join(', ')}</td>
-                        <td className="p-3.5 font-mono text-[#00D4FF]">{b.startTime} - {b.endTime}</td>
+                        <td className="p-3.5 font-mono text-red-400">{b.startTime} - {b.endTime}</td>
                         <td className="p-3.5 font-semibold text-white">{b.name}</td>
                         <td className="p-3.5">{b.coachName}</td>
                         <td className="p-3.5 text-gray-400">{b.venue}</td>
@@ -615,7 +615,7 @@ export default function CoachingDetails() {
                           {isFull ? (
                             <span className="text-red-400 font-bold">Waitlist Only</span>
                           ) : (
-                            <span className="text-[#B6FF3B] font-bold">{free} / {b.capacity} Seats Left</span>
+                            <span className="text-red-400 font-bold">{free} / {b.capacity} Seats Left</span>
                           )}
                         </td>
                         <td className="p-3.5 text-right">
@@ -626,7 +626,7 @@ export default function CoachingDetails() {
                               setSelectedEnrolProg(matchingProg);
                               setIsEnrolModalOpen(true);
                             }}
-                            className="px-3 py-1 rounded-lg bg-[#00D4FF]/20 text-[#00D4FF] border border-[#00D4FF]/40 text-xs font-bold hover:bg-[#00D4FF]/30"
+                            className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold text-xs hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all cursor-pointer"
                           >
                             Enrol in Batch
                           </button>
@@ -644,8 +644,8 @@ export default function CoachingDetails() {
         {/* TAB 5: REVIEWS                                                            */}
         {/* ========================================================================= */}
         {activeTab === 'reviews' && (
-          <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-6 shadow-xl">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#293442]">
+          <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-6 shadow-xl">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-red-500/20">
               <div>
                 <h3 className="text-lg font-bold text-white">Student & Parent Reviews</h3>
                 <p className="text-xs text-gray-400">Authentic feedback from verified athletes and guardians</p>
@@ -654,23 +654,23 @@ export default function CoachingDetails() {
               <button
                 type="button"
                 onClick={() => setIsReviewFormOpen(!isReviewFormOpen)}
-                className="px-4 py-2 rounded-xl bg-[#1B2530] text-gray-200 border border-[#293442] hover:text-white text-xs font-bold"
+                className="px-4 py-2 rounded-xl bg-[#140e18] text-red-200 border border-red-500/30 hover:bg-red-950/40 hover:text-white text-xs font-bold transition-all cursor-pointer"
               >
                 {isReviewFormOpen ? 'Close Form' : '+ Write a Review'}
               </button>
             </div>
 
             {/* Ratings Breakdown Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-[#0B0F14] border border-[#293442] rounded-xl text-center text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-[#08050c] border border-red-500/20 rounded-xl text-center text-xs">
               <div>
                 <span className="text-gray-500 uppercase text-[10px] font-bold">Coaching Quality</span>
-                <div className="text-base font-extrabold text-[#B6FF3B] mt-0.5">
+                <div className="text-base font-extrabold text-red-400 mt-0.5">
                   ★ {academy.ratingsBreakdown?.coachingQuality || 4.9}
                 </div>
               </div>
               <div>
                 <span className="text-gray-500 uppercase text-[10px] font-bold">Facilities & Courts</span>
-                <div className="text-base font-extrabold text-[#00D4FF] mt-0.5">
+                <div className="text-base font-extrabold text-rose-400 mt-0.5">
                   ★ {academy.ratingsBreakdown?.facilities || 4.8}
                 </div>
               </div>
@@ -690,7 +690,7 @@ export default function CoachingDetails() {
 
             {/* Review Submission Form */}
             {isReviewFormOpen && (
-              <form onSubmit={handleReviewSubmit} className="p-4 bg-[#1B2530] border border-[#293442] rounded-xl space-y-3 text-xs">
+              <form onSubmit={handleReviewSubmit} className="p-4 bg-[#140e18] border border-red-500/30 rounded-xl space-y-3 text-xs">
                 <div className="font-bold text-white text-sm">Write Review as {activeUser.name}</div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
@@ -698,7 +698,7 @@ export default function CoachingDetails() {
                     <select
                       value={reviewRating}
                       onChange={(e) => setReviewRating(e.target.value)}
-                      className="w-full bg-[#0B0F14] border border-[#293442] rounded-lg p-2 text-white"
+                      className="w-full bg-[#08050c] border border-red-500/25 rounded-lg p-2 text-white outline-none focus:border-red-500"
                     >
                       <option value="5">★★★★★ (5/5) Exceptional</option>
                       <option value="4">★★★★☆ (4/5) Very Good</option>
@@ -713,7 +713,7 @@ export default function CoachingDetails() {
                       placeholder="e.g. Great coaching & well maintained turf"
                       value={reviewTitle}
                       onChange={(e) => setReviewTitle(e.target.value)}
-                      className="w-full bg-[#0B0F14] border border-[#293442] rounded-lg p-2 text-white"
+                      className="w-full bg-[#08050c] border border-red-500/25 rounded-lg p-2 text-white outline-none focus:border-red-500"
                     />
                   </div>
                 </div>
@@ -726,7 +726,7 @@ export default function CoachingDetails() {
                     placeholder="Share details about coach attention, fitness drills, and match practice..."
                     value={reviewComment}
                     onChange={(e) => setReviewComment(e.target.value)}
-                    className="w-full bg-[#0B0F14] border border-[#293442] rounded-lg p-2 text-white"
+                    className="w-full bg-[#08050c] border border-red-500/25 rounded-lg p-2 text-white outline-none focus:border-red-500"
                   />
                 </div>
 
@@ -734,13 +734,13 @@ export default function CoachingDetails() {
                   <button
                     type="button"
                     onClick={() => setIsReviewFormOpen(false)}
-                    className="px-3 py-1.5 rounded-lg bg-[#0B0F14] text-gray-300"
+                    className="px-3 py-1.5 rounded-lg bg-[#08050c] text-gray-300 border border-red-500/20"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-1.5 rounded-lg bg-[#B6FF3B] text-black font-bold"
+                    className="px-5 py-1.5 rounded-lg bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-bold hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all cursor-pointer"
                   >
                     Submit Review
                   </button>

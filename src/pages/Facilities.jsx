@@ -257,13 +257,13 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
           <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 sm:p-8 shadow-xl">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#E5C378]">
+                <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
                   Sports Facility Discovery
                 </span>
                 <h1 className="text-4xl sm:text-5xl font-black uppercase tracking-tight text-[#F5F7FA] font-['Barlow_Condensed'] leading-tight mt-1">
                   Find Your Game.
                 </h1>
-                <p className="text-sm sm:text-base text-[#94A3B8] mt-1.5 max-w-2xl">
+                <p className="text-sm sm:text-base text-slate-300 mt-1.5 max-w-2xl">
                   Discover, compare and book the best sports facilities around you.
                 </p>
               </div>
@@ -273,9 +273,9 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                   variant="outline"
                   size="sm"
                   onClick={() => setIsMyBookingsOpen(true)}
-                  className="gap-2 text-xs hover:border-[#D4AF37] hover:text-[#E5C378]"
+                  className="gap-2 text-xs hover:border-rose-400 hover:text-white"
                 >
-                  <BookmarkCheck className="w-4 h-4 text-[#E5C378]" />
+                  <BookmarkCheck className="w-4 h-4 text-rose-400" />
                   <span>My Bookings ({bookings.filter(b => b.status === 'Confirmed').length})</span>
                 </Button>
               </div>
@@ -289,19 +289,19 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                   Location / Area
                 </label>
                 <div className="relative flex items-center">
-                  <MapPin className="absolute left-3.5 w-4 h-4 text-amber-400" />
+                  <MapPin className="absolute left-3.5 w-4 h-4 text-rose-400" />
                   <input
                     id="search-loc-field"
                     type="text"
                     value={locationInput}
                     onChange={(e) => setLocationInput(e.target.value)}
                     placeholder="Enter locality (e.g. Koramangala)"
-                    className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl pl-10 pr-24 py-2.5 focus:ring-2 focus:ring-[#D4AF37] outline-none"
+                    className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl pl-10 pr-24 py-2.5 focus:ring-2 focus:ring-rose-500 outline-none"
                   />
                   <button
                     type="button"
                     onClick={handleUseMyLocation}
-                    className="absolute right-2 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-[#E5C378] bg-[#141B24] hover:bg-[#1B2530] border border-[#293442] rounded-md transition-colors cursor-pointer flex items-center gap-1"
+                    className="absolute right-2 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-rose-300 bg-white/5 hover:bg-white/10 border border-white/15 rounded-md transition-colors cursor-pointer flex items-center gap-1"
                   >
                     <Navigation className="w-3 h-3" />
                     <span>GPS</span>
@@ -322,7 +322,7 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search turfs, grounds, courts or areas..."
-                    className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl pl-10 pr-3.5 py-2.5 focus:ring-2 focus:ring-[#D4AF37] outline-none"
+                    className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl pl-10 pr-3.5 py-2.5 focus:ring-2 focus:ring-rose-500 outline-none"
                   />
                 </div>
               </div>
@@ -338,7 +338,7 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                   min={todayStr}
                   value={filters.selectedDate}
                   onChange={(e) => handleFilterChange('selectedDate', e.target.value)}
-                  className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-[#D4AF37] [color-scheme:dark] outline-none"
+                  className="w-full bg-[#0B0F14] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-rose-500 [color-scheme:dark] outline-none"
                 />
               </div>
 
@@ -346,7 +346,7 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
               <div className="lg:col-span-2">
                 <Button
                   type="submit"
-                  variant="gold"
+                  variant="crimson"
                   size="md"
                   className="w-full h-[40px] text-xs font-bold"
                 >
@@ -368,7 +368,7 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
               <button
                 type="button"
                 onClick={() => setIsMobileFiltersOpen(true)}
-                className="lg:hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-[#141B24] border border-[#D4AF37]/35 text-[#E5C378]"
+                className="lg:hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-[#141B24] border border-rose-500/40 text-rose-300"
               >
                 <SlidersHorizontal className="w-3.5 h-3.5" />
                 <span>Filters {activeChips.length > 0 && `(${activeChips.length})`}</span>
@@ -395,7 +395,7 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                 <button
                   type="button"
                   onClick={handleResetFilters}
-                  className="text-xs text-[#E5C378] hover:underline font-bold ml-1 cursor-pointer"
+                  className="text-xs text-rose-400 hover:text-rose-300 hover:underline font-bold ml-1 cursor-pointer"
                 >
                   Clear all
                 </button>
@@ -409,7 +409,7 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                 <select
                   value={filters.sortBy}
                   onChange={(e) => handleFilterChange('sortBy', e.target.value)}
-                  className="bg-[#141B24] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl px-3 py-1.5 focus:ring-2 focus:ring-[#D4AF37] cursor-pointer outline-none"
+                  className="bg-[#141B24] border border-[#293442] text-[#F5F7FA] text-xs rounded-xl px-3 py-1.5 focus:ring-2 focus:ring-rose-500 cursor-pointer outline-none"
                 >
                   <option value="popular">Popular</option>
                   <option value="nearest">Nearest First</option>
@@ -425,7 +425,7 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                   onClick={() => setViewMode('grid')}
                   aria-pressed={viewMode === 'grid'}
                   className={`p-1.5 rounded-lg text-xs transition-all cursor-pointer ${
-                    viewMode === 'grid' ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] shadow-sm' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
+                    viewMode === 'grid' ? 'bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-md shadow-red-950/40' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
                   }`}
                   title="Grid View"
                 >
@@ -436,7 +436,7 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                   onClick={() => setViewMode('list')}
                   aria-pressed={viewMode === 'list'}
                   className={`p-1.5 rounded-lg text-xs transition-all cursor-pointer ${
-                    viewMode === 'list' ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] shadow-sm' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
+                    viewMode === 'list' ? 'bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-md shadow-red-950/40' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
                   }`}
                   title="List View"
                 >
@@ -447,7 +447,7 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                   onClick={() => setViewMode('map')}
                   aria-pressed={viewMode === 'map'}
                   className={`p-1.5 rounded-lg text-xs transition-all cursor-pointer ${
-                    viewMode === 'map' ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] shadow-sm' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
+                    viewMode === 'map' ? 'bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-md shadow-red-950/40' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
                   }`}
                   title="Map View"
                 >

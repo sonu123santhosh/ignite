@@ -63,7 +63,7 @@ export const INITIAL_COLLEGES = [
     city: 'Pune',
     area: 'Shivajinagar',
     emailDomain: 'pit.edu.in',
-    primaryColor: '#00D9FF',
+    primaryColor: '#0f1726',
     logoInitials: 'PIT',
     address: 'Near FC Road, Shivajinagar, Pune 411005',
     verified: true
@@ -75,7 +75,7 @@ export const INITIAL_COLLEGES = [
     city: 'Pune',
     area: 'Deccan Gymkhana',
     emailDomain: 'dce.edu.in',
-    primaryColor: '#B6FF3B',
+    primaryColor: '#0f1726',
     logoInitials: 'DCE',
     address: 'Prabhat Road, Deccan Gymkhana, Pune 411004',
     verified: true
@@ -87,7 +87,7 @@ export const INITIAL_COLLEGES = [
     city: 'Pune',
     area: 'Kothrud',
     emailDomain: 'masc.ac.in',
-    primaryColor: '#F59E0B',
+    primaryColor: '#0f1726',
     logoInitials: 'MASC',
     address: 'Paud Road, Kothrud, Pune 411038',
     verified: false
@@ -99,7 +99,7 @@ export const INITIAL_COLLEGES = [
     city: 'Pune',
     area: 'Viman Nagar',
     emailDomain: 'sis.edu.in',
-    primaryColor: '#EC4899',
+    primaryColor: '#0f1726',
     logoInitials: 'SIS',
     address: 'Symbiosis Campus, Viman Nagar, Pune 411014',
     verified: true
@@ -111,7 +111,7 @@ export const INITIAL_COLLEGES = [
     city: 'Pune',
     area: 'Shivajinagar',
     emailDomain: 'coep.ac.in',
-    primaryColor: '#3B82F6',
+    primaryColor: '#0f1726',
     logoInitials: 'COEP',
     address: 'Wellesley Road, Shivajinagar, Pune 411005',
     verified: true
@@ -123,7 +123,7 @@ export const INITIAL_COLLEGES = [
     city: 'Mumbai',
     area: 'Churchgate',
     emailDomain: 'bmcc.edu.in',
-    primaryColor: '#8B5CF6',
+    primaryColor: '#0f1726',
     logoInitials: 'BMCC',
     address: 'Marine Lines, Churchgate, Mumbai 400020',
     verified: true
@@ -204,7 +204,7 @@ export const INITIAL_TEAMS = [
     followersCount: 128,
     preferredHomeGround: 'Shivaji Park Ground, Pune',
     logoInitials: 'PS',
-    primaryColor: '#00D9FF',
+    primaryColor: '#0f1726',
     roster: [
       { id: 'p1', name: 'Rohan Deshmukh', position: 'Forward / Striker', role: 'Captain' },
       { id: 'p2', name: 'Faizan Sheikh', position: 'Midfielder', role: 'Vice-captain' },
@@ -232,7 +232,7 @@ export const INITIAL_TEAMS = [
     followersCount: 94,
     preferredHomeGround: 'Deccan Gymkhana Main Turf',
     logoInitials: 'DT',
-    primaryColor: '#B6FF3B',
+    primaryColor: '#0f1726',
     roster: [
       { id: 'p21', name: 'Aakash Shinde', position: 'Central Midfield', role: 'Captain' },
       { id: 'p22', name: 'Gaurav Kulkarni', position: 'Centre Forward', role: 'Vice-captain' },
@@ -259,7 +259,7 @@ export const INITIAL_TEAMS = [
     followersCount: 156,
     preferredHomeGround: 'COEP Sports Ground, Pune',
     logoInitials: 'CE',
-    primaryColor: '#3B82F6',
+    primaryColor: '#0f1726',
     roster: [
       { id: 'p31', name: 'Nikhil Kulkarni', position: 'All-Rounder', role: 'Captain' },
       { id: 'p32', name: 'Sarang Date', position: 'Opening Batsman', role: 'Player' },
@@ -285,7 +285,7 @@ export const INITIAL_TEAMS = [
     followersCount: 42,
     preferredHomeGround: 'Kothrud Public Ground',
     logoInitials: 'ML',
-    primaryColor: '#F59E0B',
+    primaryColor: '#0f1726',
     roster: [
       { id: 'p41', name: 'Yashraj Patil', position: 'Batsman', role: 'Captain' },
       { id: 'p42', name: 'Sunil Dhavale', position: 'Bowler', role: 'Player' },
@@ -308,7 +308,7 @@ export const INITIAL_TEAMS = [
     followersCount: 88,
     preferredHomeGround: 'Symbiosis Indoor Arena',
     logoInitials: 'SH',
-    primaryColor: '#EC4899',
+    primaryColor: '#0f1726',
     roster: [
       { id: 'p51', name: 'Tanvi Joshi', position: 'Point Guard', role: 'Captain' },
       { id: 'p52', name: 'Ria Sen', position: 'Shooting Guard', role: 'Player' },
@@ -333,7 +333,7 @@ export const INITIAL_TEAMS = [
     followersCount: 60,
     preferredHomeGround: 'PIT Basketball Court',
     logoInitials: 'PD',
-    primaryColor: '#00D9FF',
+    primaryColor: '#0f1726',
     roster: [
       { id: 'p61', name: 'Varun Mehta', position: 'Shooting Guard', role: 'Captain' },
       { id: 'p62', name: 'Karthik Rao', position: 'Point Guard', role: 'Player' },
@@ -356,7 +356,7 @@ export const INITIAL_TEAMS = [
     followersCount: 51,
     preferredHomeGround: 'Deccan Gymkhana Badminton Complex',
     logoInitials: 'DS',
-    primaryColor: '#B6FF3B',
+    primaryColor: '#0f1726',
     roster: [
       { id: 'p71', name: 'Neha Kadam', position: 'Singles / Doubles', role: 'Captain' },
       { id: 'p72', name: 'Omkar Date', position: 'Mixed Doubles', role: 'Player' }
@@ -378,7 +378,7 @@ export const INITIAL_TEAMS = [
     followersCount: 73,
     preferredHomeGround: 'University Marine Ground, Mumbai',
     logoInitials: 'BS',
-    primaryColor: '#8B5CF6',
+    primaryColor: '#0f1726',
     roster: [
       { id: 'p81', name: 'Sameer Sheikh', position: 'Setter', role: 'Captain' },
       { id: 'p82', name: 'Rahul Nair', position: 'Spiker', role: 'Player' },

@@ -15,7 +15,7 @@ export default function RoleSwitcher({ currentRole, onRoleChange }) {
             aria-pressed={currentRole === 'player'}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               currentRole === 'player'
-                ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] shadow-sm'
+                ? 'bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-md shadow-red-950/40'
                 : 'text-[#94A3B8] hover:text-[#F5F7FA]'
             }`}
           >
@@ -28,7 +28,7 @@ export default function RoleSwitcher({ currentRole, onRoleChange }) {
             aria-pressed={currentRole === 'owner'}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               currentRole === 'owner'
-                ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-sm'
+                ? 'bg-gradient-to-r from-stone-800 to-neutral-900 border border-rose-500/40 text-rose-200 shadow-sm'
                 : 'text-[#94A3B8] hover:text-[#F5F7FA]'
             }`}
           >

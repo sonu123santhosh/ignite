@@ -80,12 +80,12 @@ export default function BookTrialModal({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-[#141B24] border border-[#293442] rounded-2xl w-full max-w-xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div className="bg-[#0c0d15] border border-red-500/30 rounded-2xl w-full max-w-xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
         
         {/* Modal Header */}
-        <div className="p-5 border-b border-[#293442] flex items-center justify-between bg-[#1B2530]/50">
+        <div className="p-5 border-b border-red-500/20 flex items-center justify-between bg-[#140e18]/80">
           <div>
-            <div className="text-[11px] font-bold text-[#B6FF3B] uppercase tracking-wider flex items-center gap-1.5">
+            <div className="text-[11px] font-bold text-red-400 uppercase tracking-wider flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Step {step} of 3 • Book Trial Session</span>
             </div>
@@ -95,7 +95,7 @@ export default function BookTrialModal({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-[#293442]"
+            className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-red-950/40 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -113,7 +113,7 @@ export default function BookTrialModal({
                 <select
                   value={chosenProgId}
                   onChange={(e) => setChosenProgId(e.target.value)}
-                  className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#B6FF3B]"
+                  className="w-full bg-[#08050c] border border-red-500/25 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-red-500"
                 >
                   {academyProgrammes.map((p) => (
                     <option key={p.id} value={p.id}>
@@ -124,14 +124,14 @@ export default function BookTrialModal({
               </div>
 
               {activeProg && (
-                <div className="p-3.5 bg-[#0B0F14] border border-[#293442] rounded-xl space-y-2 text-xs">
+                <div className="p-3.5 bg-[#08050c] border border-red-500/20 rounded-xl space-y-2 text-xs">
                   <div className="flex justify-between">
                     <span className="text-gray-400">Assigned Coach:</span>
                     <span className="text-white font-semibold">{activeProg.coachName}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Skill Level:</span>
-                    <span className="text-[#00D4FF] font-semibold">{activeProg.skillLevel}</span>
+                    <span className="text-red-400 font-semibold">{activeProg.skillLevel}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Age Requirement:</span>
@@ -154,7 +154,7 @@ export default function BookTrialModal({
                     value={trialDate}
                     min={new Date().toISOString().slice(0, 10)}
                     onChange={(e) => setTrialDate(e.target.value)}
-                    className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-[#B6FF3B]"
+                    className="w-full bg-[#08050c] border border-red-500/25 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-red-500"
                   />
                 </div>
 
@@ -165,7 +165,7 @@ export default function BookTrialModal({
                   <select
                     value={trialTime}
                     onChange={(e) => setTrialTime(e.target.value)}
-                    className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-[#B6FF3B]"
+                    className="w-full bg-[#08050c] border border-red-500/25 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-red-500"
                   >
                     <option value="06:30">06:30 AM (Morning Conditioning)</option>
                     <option value="08:00">08:00 AM (Technical Drills)</option>
@@ -180,7 +180,7 @@ export default function BookTrialModal({
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="w-full py-2.5 rounded-xl bg-[#B6FF3B] text-black font-bold text-xs hover:bg-[#a5ef28] transition-all flex items-center justify-center gap-1.5"
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-bold text-xs hover:shadow-[0_4px_16px_rgba(220,38,38,0.5)] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <span>Continue to Participant Info</span>
                   <ArrowRight className="w-4 h-4" />
@@ -298,7 +298,7 @@ export default function BookTrialModal({
                   type="button"
                   onClick={() => setStep(3)}
                   disabled={!participantName || !phone || (isMinor && !parentContact)}
-                  className="px-5 py-2 rounded-xl bg-[#B6FF3B] text-black font-bold text-xs disabled:opacity-50"
+                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-bold text-xs hover:shadow-[0_4px_16px_rgba(220,38,38,0.5)] disabled:opacity-50 transition-all cursor-pointer"
                 >
                   Review Booking
                 </button>
@@ -309,35 +309,35 @@ export default function BookTrialModal({
           {/* STEP 3: Review & Confirm */}
           {step === 3 && (
             <div className="space-y-4">
-              <div className="p-4 bg-[#0B0F14] border border-[#293442] rounded-xl space-y-3">
-                <div className="flex items-center justify-between border-b border-[#293442] pb-2">
+              <div className="p-4 bg-[#08050c] border border-red-500/20 rounded-xl space-y-3">
+                <div className="flex items-center justify-between border-b border-red-500/15 pb-2">
                   <span className="text-xs text-gray-400">Academy:</span>
                   <span className="font-bold text-white text-sm">{academy.name}</span>
                 </div>
-                <div className="flex items-center justify-between border-b border-[#293442] pb-2">
+                <div className="flex items-center justify-between border-b border-red-500/15 pb-2">
                   <span className="text-xs text-gray-400">Programme:</span>
-                  <span className="font-bold text-[#00D4FF] text-sm">{activeProg?.name}</span>
+                  <span className="font-bold text-red-400 text-sm">{activeProg?.name}</span>
                 </div>
-                <div className="flex items-center justify-between border-b border-[#293442] pb-2">
+                <div className="flex items-center justify-between border-b border-red-500/15 pb-2">
                   <span className="text-xs text-gray-400">Date & Slot:</span>
                   <span className="font-semibold text-white text-xs">{trialDate} at {trialTime}</span>
                 </div>
-                <div className="flex items-center justify-between border-b border-[#293442] pb-2">
+                <div className="flex items-center justify-between border-b border-red-500/15 pb-2">
                   <span className="text-xs text-gray-400">Participant:</span>
                   <span className="text-gray-200 text-xs">{participantName} ({age} yrs)</span>
                 </div>
                 <div className="flex items-center justify-between pt-1">
                   <span className="text-xs font-bold text-white">Trial Fee:</span>
-                  <span className="text-base font-extrabold text-[#B6FF3B]">
+                  <span className="text-base font-extrabold text-red-400">
                     {trialFee === 0 ? 'FREE TRIAL' : `₹${trialFee}`}
                   </span>
                 </div>
               </div>
 
               {/* Demo Notice */}
-              <div className="bg-[#1B2530] border border-[#293442] rounded-xl p-3 text-[11px] text-gray-400 space-y-1">
+              <div className="bg-[#140e18] border border-red-500/20 rounded-xl p-3 text-[11px] text-gray-400 space-y-1">
                 <div className="font-bold text-white flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#00D4FF]" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-red-400" />
                   <span>Prototype Booking Flow</span>
                 </div>
                 <p>
@@ -349,14 +349,14 @@ export default function BookTrialModal({
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="px-4 py-2 rounded-xl bg-[#1B2530] text-gray-300 text-xs font-semibold"
+                  className="px-4 py-2 rounded-xl bg-[#140e18] text-gray-300 border border-red-500/20 text-xs font-semibold cursor-pointer"
                 >
                   Back
                 </button>
                 <button
                   type="button"
                   onClick={handleConfirmBooking}
-                  className="px-6 py-2.5 rounded-xl bg-[#B6FF3B] text-black font-extrabold text-xs hover:bg-[#a5ef28] shadow-lg cursor-pointer"
+                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold text-xs hover:shadow-[0_4px_18px_rgba(220,38,38,0.5)] shadow-lg cursor-pointer transition-all"
                 >
                   Confirm Trial Booking
                 </button>
@@ -367,7 +367,7 @@ export default function BookTrialModal({
           {/* STEP 4: Success Screen */}
           {step === 4 && (
             <div className="text-center py-6 space-y-4">
-              <div className="w-14 h-14 rounded-full bg-[#B6FF3B]/15 border border-[#B6FF3B] text-[#B6FF3B] flex items-center justify-center mx-auto">
+              <div className="w-14 h-14 rounded-full bg-red-500/15 border border-red-500 text-red-400 flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(220,38,38,0.3)]">
                 <Check className="w-7 h-7" />
               </div>
 
@@ -379,14 +379,14 @@ export default function BookTrialModal({
               </div>
 
               {createdBooking && (
-                <div className="bg-[#0B0F14] border border-[#293442] rounded-xl p-3.5 text-xs text-left max-w-sm mx-auto space-y-1.5 font-mono">
+                <div className="bg-[#08050c] border border-red-500/25 rounded-xl p-3.5 text-xs text-left max-w-sm mx-auto space-y-1.5 font-mono">
                   <div className="flex justify-between">
                     <span className="text-gray-500">Booking ID:</span>
-                    <span className="text-[#00D4FF] font-bold">{createdBooking.id}</span>
+                    <span className="text-red-400 font-bold">{createdBooking.id}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-500">Status:</span>
-                    <span className="text-[#B6FF3B] font-bold">{createdBooking.status}</span>
+                    <span className="text-red-400 font-bold">{createdBooking.status}</span>
                   </div>
                 </div>
               )}
@@ -395,7 +395,7 @@ export default function BookTrialModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-6 py-2 rounded-xl bg-[#1B2530] text-white border border-[#293442] hover:bg-[#222f3d] text-xs font-bold"
+                  className="px-6 py-2 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold text-xs hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all cursor-pointer"
                 >
                   Close & View in My Training
                 </button>

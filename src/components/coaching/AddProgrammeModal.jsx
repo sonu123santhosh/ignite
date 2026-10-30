@@ -70,13 +70,13 @@ export default function AddProgrammeModal({ academy, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-[#141B24] border border-[#293442] rounded-2xl w-full max-w-xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+      <div className="bg-[#0c0d15]/95 border border-red-500/30 rounded-2xl w-full max-w-xl max-h-[90vh] flex flex-col shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden animate-in fade-in zoom-in-95 duration-150">
         
         {/* Header */}
-        <div className="p-5 border-b border-[#293442] flex items-center justify-between bg-[#1B2530]/50">
+        <div className="p-5 border-b border-red-500/20 flex items-center justify-between bg-red-950/20">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-[#B6FF3B]/10 text-[#B6FF3B] border border-[#B6FF3B]/30">
+            <div className="p-2 rounded-xl bg-red-500/15 text-red-400 border border-red-500/30">
               <Award className="w-5 h-5" />
             </div>
             <div>
@@ -84,7 +84,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
               <p className="text-xs text-gray-400">{academy.name}</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-[#293442]">
+          <button onClick={onClose} className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-red-950/40 cursor-pointer">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -106,7 +106,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
               placeholder="e.g. Weekend High-Performance Bowling Clinic"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-[#B6FF3B]"
+              className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-red-500"
             />
           </div>
 
@@ -116,7 +116,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
               <select
                 value={sport}
                 onChange={(e) => setSport(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               >
                 {academy.sports.map((s) => (
                   <option key={s} value={s}>{s}</option>
@@ -129,7 +129,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
               <select
                 value={coachId}
                 onChange={(e) => setCoachId(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               >
                 {academyCoaches.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -146,7 +146,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
               <select
                 value={skillLevel}
                 onChange={(e) => setSkillLevel(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               >
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
@@ -163,7 +163,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
                 placeholder="e.g. 10 to 18 years"
                 value={ageEligibility}
                 onChange={(e) => setAgeEligibility(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               />
             </div>
           </div>
@@ -178,7 +178,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
                 min="0"
                 value={monthlyFee}
                 onChange={(e) => setMonthlyFee(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               />
             </div>
 
@@ -189,7 +189,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
                 min="0"
                 value={perSessionFee}
                 onChange={(e) => setPerSessionFee(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               />
             </div>
 
@@ -201,7 +201,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
                 min="1"
                 value={enrolmentCapacity}
                 onChange={(e) => setEnrolmentCapacity(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               />
             </div>
           </div>
@@ -215,7 +215,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
                 max="7"
                 value={sessionsPerWeek}
                 onChange={(e) => setSessionsPerWeek(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               />
             </div>
 
@@ -227,7 +227,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
                 step="15"
                 value={sessionLengthMinutes}
                 onChange={(e) => setSessionLengthMinutes(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               />
             </div>
           </div>
@@ -239,7 +239,7 @@ export default function AddProgrammeModal({ academy, onClose }) {
               placeholder="e.g. Indoor Turf Net 1 / Court 3"
               value={venue}
               onChange={(e) => setVenue(e.target.value)}
-              className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+              className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
             />
           </div>
 
@@ -250,18 +250,18 @@ export default function AddProgrammeModal({ academy, onClose }) {
               placeholder="Summary of training curriculum, biomechanics, drills, and student outcomes..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+              className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
             />
           </div>
 
           {/* Trial availability */}
-          <div className="flex items-center gap-3 pt-2 border-t border-[#293442]">
+          <div className="flex items-center gap-3 pt-2 border-t border-red-500/20">
             <label className="flex items-center gap-2 cursor-pointer text-gray-300">
               <input
                 type="checkbox"
                 checked={trialAvailable}
                 onChange={(e) => setTrialAvailable(e.target.checked)}
-                className="w-4 h-4 rounded text-[#B6FF3B]"
+                className="w-4 h-4 rounded accent-red-500 cursor-pointer"
               />
               <span>Allow Athletes to Book Trial Class</span>
             </label>
@@ -272,16 +272,16 @@ export default function AddProgrammeModal({ academy, onClose }) {
                 placeholder="Trial Fee (0 = Free)"
                 value={trialFee}
                 onChange={(e) => setTrialFee(e.target.value)}
-                className="w-28 bg-[#0B0F14] border border-[#293442] rounded-lg p-1.5 text-center text-white"
+                className="w-28 bg-[#08050c] border border-red-500/20 rounded-lg p-1.5 text-center text-white focus:outline-none focus:border-red-500"
               />
             )}
           </div>
 
-          <div className="pt-4 border-t border-[#293442] flex items-center justify-end gap-3">
-            <button type="button" onClick={onClose} className="px-4 py-2 rounded-xl bg-[#1B2530] text-gray-300 font-semibold">
+          <div className="pt-4 border-t border-red-500/20 flex items-center justify-end gap-3">
+            <button type="button" onClick={onClose} className="px-4 py-2 rounded-xl bg-[#140e18] text-gray-300 border border-red-500/20 hover:text-white font-semibold cursor-pointer transition-all">
               Cancel
             </button>
-            <button type="submit" className="px-5 py-2.5 rounded-xl bg-[#B6FF3B] text-black font-extrabold hover:bg-[#a5ef28] shadow-md">
+            <button type="submit" className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold hover:shadow-[0_4px_18px_rgba(220,38,38,0.5)] border border-red-500/40 cursor-pointer transition-all">
               Create Programme
             </button>
           </div>

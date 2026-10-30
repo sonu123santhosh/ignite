@@ -15,7 +15,6 @@ import {
   Sparkles
 } from 'lucide-react';
 import { useTrials } from '../../context/TrialsContext';
-import TrialsRoleSwitcher from '../../components/trials/TrialsRoleSwitcher';
 import TrialReceiptModal from '../../components/trials/TrialReceiptModal';
 
 export default function TrialApply() {
@@ -58,7 +57,7 @@ export default function TrialApply() {
     return (
       <div className="min-h-screen bg-transparent text-[#F5F7FA] pt-28 pb-20 px-4 text-center">
         <h2 className="text-xl font-bold text-white">Trial not found</h2>
-        <Link to="/trials" className="text-[#B6FF3B] underline text-sm mt-4 inline-block">
+        <Link to="/trials" className="text-amber-400 underline text-sm mt-4 inline-block font-bold">
           Back to Directory
         </Link>
       </div>
@@ -101,14 +100,11 @@ export default function TrialApply() {
   return (
     <div className="min-h-screen bg-transparent text-[#F5F7FA] pt-24 pb-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-8">
-        {/* Role Switcher */}
-        <TrialsRoleSwitcher />
-
         {/* Back Link */}
         <div>
           <Link
             to={`/trials/${trial.id}`}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#94A3B8] hover:text-[#B6FF3B] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-amber-400 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to {trial.title}</span>
@@ -116,22 +112,22 @@ export default function TrialApply() {
         </div>
 
         {/* Application Container */}
-        <div className="bg-[#141B24] border border-[#293442] rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl">
+        <div className="bg-[#0a0d16]/85 border border-amber-500/25 rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl backdrop-blur-md">
           {/* Header & Step Tracker */}
-          <div className="border-b border-[#293442] pb-6 space-y-4">
+          <div className="border-b border-amber-500/20 pb-6 space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <span className="text-[10px] font-mono text-[#00D4FF] uppercase tracking-wider font-bold">
+                <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider font-bold">
                   Official Application Portal
                 </span>
                 <h1 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tight">
                   {trial.title}
                 </h1>
-                <p className="text-xs text-[#94A3B8] mt-0.5">
+                <p className="text-xs text-slate-400 mt-0.5">
                   Conducted by <strong className="text-white">{trial.organisationName}</strong> • {trial.trialDate}
                 </p>
               </div>
-              <span className="text-xs font-mono px-3 py-1.5 rounded-xl bg-[#0B0F14] text-[#B6FF3B] border border-[#293442] self-start sm:self-auto font-bold">
+              <span className="text-xs font-mono px-3 py-1.5 rounded-xl bg-[#07090e] text-amber-300 border border-amber-500/30 self-start sm:self-auto font-bold">
                 {trial.isFree ? 'FREE ENTRY' : `₹${trial.entryFee} ENTRY`}
               </span>
             </div>
@@ -146,12 +142,12 @@ export default function TrialApply() {
               ].map((s) => (
                 <div
                   key={s.step}
-                  className={`text-center py-2 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all border ${
+                  className={`text-center py-2 rounded-xl text-[11px] font-black uppercase tracking-wider transition-all border ${
                     currentStep === s.step
-                      ? 'bg-[#B6FF3B] text-[#0B0F14] border-[#B6FF3B]'
+                      ? 'bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white border-transparent shadow-md shadow-amber-500/20'
                       : currentStep > s.step
-                      ? 'bg-[#1B2530] text-[#B6FF3B] border-[#B6FF3B]/30'
-                      : 'bg-[#0B0F14] text-slate-500 border-[#293442]'
+                      ? 'bg-[#141824] text-amber-300 border-amber-500/30'
+                      : 'bg-[#07090e] text-slate-500 border-amber-500/15'
                   }`}
                 >
                   {s.label}
@@ -175,13 +171,13 @@ export default function TrialApply() {
                 <h2 className="text-lg font-bold text-white uppercase tracking-wider">
                   Step 1: Check Eligibility & Rules
                 </h2>
-                <p className="text-xs text-[#94A3B8]">
+                <p className="text-xs text-slate-400">
                   Carefully review the criteria set by the trial director. Unqualified applicants will not be permitted into match evaluation.
                 </p>
               </div>
 
-              <div className="bg-[#0B0F14] border border-[#293442] p-5 rounded-2xl space-y-4 text-xs">
-                <div className="grid grid-cols-2 gap-3 pb-3 border-b border-[#293442]">
+              <div className="bg-[#07090e] border border-amber-500/20 p-5 rounded-2xl space-y-4 text-xs">
+                <div className="grid grid-cols-2 gap-3 pb-3 border-b border-amber-500/15">
                   <div>
                     <span className="text-slate-500 block uppercase text-[10px]">Age Range</span>
                     <strong className="text-white text-sm">{trial.minAge} to {trial.maxAge} Years</strong>
@@ -199,14 +195,14 @@ export default function TrialApply() {
                   <ul className="space-y-2">
                     {trial.eligibilityCriteria.map((c, i) => (
                       <li key={i} className="flex items-start gap-2 text-slate-300">
-                        <Check className="w-3.5 h-3.5 text-[#B6FF3B] shrink-0 mt-0.5" />
+                        <Check className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
                         <span>{c}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="pt-2 border-t border-[#293442] space-y-1">
+                <div className="pt-2 border-t border-amber-500/15 space-y-1">
                   <span className="font-bold text-slate-300 block uppercase text-[10px]">
                     Required Equipment:
                   </span>
@@ -215,12 +211,12 @@ export default function TrialApply() {
               </div>
 
               {/* Confirmation Checkbox */}
-              <label className="flex items-start gap-3 p-4 rounded-2xl bg-[#1B2530] border border-[#293442] cursor-pointer">
+              <label className="flex items-start gap-3 p-4 rounded-2xl bg-[#07090e] border border-amber-500/20 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={confirmedEligibility}
                   onChange={(e) => setConfirmedEligibility(e.target.checked)}
-                  className="w-4 h-4 rounded accent-[#B6FF3B] mt-0.5 cursor-pointer"
+                  className="w-4 h-4 rounded accent-amber-500 mt-0.5 cursor-pointer"
                 />
                 <span className="text-xs text-slate-200 leading-relaxed">
                   I confirm that I meet the age eligibility ({trial.minAge}–{trial.maxAge} years), skill level, and agree to present original government and sports documents at the venue.
@@ -232,7 +228,7 @@ export default function TrialApply() {
                   type="button"
                   onClick={handleNextStep}
                   disabled={!confirmedEligibility}
-                  className="px-6 py-3 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-black text-xs uppercase tracking-wider hover:bg-[#a5ef28] disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white font-black text-xs uppercase tracking-wider hover:shadow-[0_4px_20px_rgba(245,158,11,0.45)] disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer border border-amber-400/40 shadow-lg"
                 >
                   Continue to Step 2
                 </button>
@@ -247,7 +243,7 @@ export default function TrialApply() {
                 <h2 className="text-lg font-bold text-white uppercase tracking-wider">
                   Step 2: Athlete Information & Sporting Profile
                 </h2>
-                <p className="text-xs text-[#94A3B8]">
+                <p className="text-xs text-slate-400">
                   Pre-filled from your SportLink profile. Ensure your contact details and sporting statistics are accurate.
                 </p>
               </div>
@@ -260,7 +256,7 @@ export default function TrialApply() {
                     value={formData.athleteName}
                     onChange={(e) => setFormData({ ...formData, athleteName: e.target.value })}
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#0B0F14] border border-[#293442] text-white focus:outline-none focus:border-[#B6FF3B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-amber-500/25 text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
 
@@ -271,7 +267,7 @@ export default function TrialApply() {
                     value={formData.athletePhone}
                     onChange={(e) => setFormData({ ...formData, athletePhone: e.target.value })}
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#0B0F14] border border-[#293442] text-white focus:outline-none focus:border-[#B6FF3B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-amber-500/25 text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
 
@@ -282,7 +278,7 @@ export default function TrialApply() {
                     value={formData.athleteEmail}
                     onChange={(e) => setFormData({ ...formData, athleteEmail: e.target.value })}
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#0B0F14] border border-[#293442] text-white focus:outline-none focus:border-[#B6FF3B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-amber-500/25 text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
 
@@ -295,7 +291,7 @@ export default function TrialApply() {
                     min={trial.minAge}
                     max={trial.maxAge}
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#0B0F14] border border-[#293442] text-white focus:outline-none focus:border-[#B6FF3B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-amber-500/25 text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
 
@@ -306,7 +302,7 @@ export default function TrialApply() {
                     value={formData.position}
                     placeholder="e.g. Central Midfielder, Opening Batsman, Singles"
                     onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#0B0F14] border border-[#293442] text-white focus:outline-none focus:border-[#B6FF3B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-amber-500/25 text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
 
@@ -317,7 +313,7 @@ export default function TrialApply() {
                     value={formData.experienceLevel}
                     placeholder="e.g. 4 years (District / College level)"
                     onChange={(e) => setFormData({ ...formData, experienceLevel: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#0B0F14] border border-[#293442] text-white focus:outline-none focus:border-[#B6FF3B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-amber-500/25 text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
 
@@ -328,7 +324,7 @@ export default function TrialApply() {
                     onChange={(e) => setFormData({ ...formData, previousAchievements: e.target.value })}
                     placeholder="List tournaments played, awards won, representative honors..."
                     rows={2}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#0B0F14] border border-[#293442] text-white focus:outline-none focus:border-[#B6FF3B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-amber-500/25 text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
 
@@ -339,23 +335,23 @@ export default function TrialApply() {
                     value={formData.sportsStats}
                     placeholder="e.g. 24 Matches | 6 Goals | 14 Assists | Best 100m Time: 11.2s"
                     onChange={(e) => setFormData({ ...formData, sportsStats: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#0B0F14] border border-[#293442] text-white focus:outline-none focus:border-[#B6FF3B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#07090e] border border-amber-500/25 text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-[#293442]">
+              <div className="flex items-center justify-between pt-4 border-t border-amber-500/20">
                 <button
                   type="button"
                   onClick={() => setCurrentStep(1)}
-                  className="px-4 py-2.5 rounded-xl bg-[#1B2530] text-slate-300 text-xs font-bold border border-[#293442]"
+                  className="px-4 py-2.5 rounded-xl bg-[#141824] hover:bg-amber-950/40 text-slate-300 text-xs font-bold border border-amber-500/30 transition-all cursor-pointer"
                 >
                   Back
                 </button>
                 <button
                   type="button"
                   onClick={handleNextStep}
-                  className="px-6 py-3 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-black text-xs uppercase tracking-wider hover:bg-[#a5ef28] transition-all cursor-pointer"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white font-black text-xs uppercase tracking-wider hover:shadow-[0_4px_20px_rgba(245,158,11,0.45)] transition-all cursor-pointer border border-amber-400/40 shadow-lg"
                 >
                   Continue to Documents
                 </button>
@@ -370,7 +366,7 @@ export default function TrialApply() {
                 <h2 className="text-lg font-bold text-white uppercase tracking-wider">
                   Step 3: Document Uploads & Minor Consent
                 </h2>
-                <p className="text-xs text-[#94A3B8]">
+                <p className="text-xs text-slate-400">
                   Upload digital copies of required certificates. SportLink secures your documents and only shares them with verified trial organizers.
                 </p>
               </div>
@@ -384,10 +380,10 @@ export default function TrialApply() {
                   {formData.uploadedDocuments.map((doc, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-2xl bg-[#0B0F14] border border-[#293442] flex items-center justify-between text-xs"
+                      className="p-3.5 rounded-2xl bg-[#07090e] border border-amber-500/20 flex items-center justify-between text-xs"
                     >
                       <div className="flex items-center gap-2.5 truncate">
-                        <FileText className="w-4 h-4 text-[#00D4FF] shrink-0" />
+                        <FileText className="w-4 h-4 text-amber-400 shrink-0" />
                         <span className="text-white font-medium truncate">{doc.name}</span>
                       </div>
                       <span className="text-[10px] text-emerald-400 font-mono shrink-0 ml-2">✓ Attached</span>
@@ -413,7 +409,7 @@ export default function TrialApply() {
                       value={formData.emergencyContact}
                       onChange={(e) => setFormData({ ...formData, emergencyContact: e.target.value })}
                       placeholder="e.g. Suresh Deshmukh (+91 98234 66121)"
-                      className="w-full px-3 py-2 rounded-xl bg-[#0B0F14] border border-amber-500/40 text-white focus:outline-none"
+                      className="w-full px-3 py-2 rounded-xl bg-[#07090e] border border-amber-500/40 text-white focus:outline-none focus:border-amber-400"
                     />
                   </div>
                   <label className="flex items-start gap-2.5 pt-1 cursor-pointer">
@@ -430,18 +426,18 @@ export default function TrialApply() {
                 </div>
               )}
 
-              <div className="flex items-center justify-between pt-4 border-t border-[#293442]">
+              <div className="flex items-center justify-between pt-4 border-t border-amber-500/20">
                 <button
                   type="button"
                   onClick={() => setCurrentStep(2)}
-                  className="px-4 py-2.5 rounded-xl bg-[#1B2530] text-slate-300 text-xs font-bold border border-[#293442]"
+                  className="px-4 py-2.5 rounded-xl bg-[#141824] hover:bg-amber-950/40 text-slate-300 text-xs font-bold border border-amber-500/30 transition-all cursor-pointer"
                 >
                   Back
                 </button>
                 <button
                   type="button"
                   onClick={handleNextStep}
-                  className="px-6 py-3 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-black text-xs uppercase tracking-wider hover:bg-[#a5ef28] transition-all cursor-pointer"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white font-black text-xs uppercase tracking-wider hover:shadow-[0_4px_20px_rgba(245,158,11,0.45)] transition-all cursor-pointer border border-amber-400/40 shadow-lg"
                 >
                   Review Application
                 </button>
@@ -456,13 +452,13 @@ export default function TrialApply() {
                 <h2 className="text-lg font-bold text-white uppercase tracking-wider">
                   Step 4: Review Application Summary
                 </h2>
-                <p className="text-xs text-[#94A3B8]">
+                <p className="text-xs text-slate-400">
                   Please verify all submitted details. Once submitted, changes can only be made prior to the application deadline.
                 </p>
               </div>
 
-              <div className="bg-[#0B0F14] border border-[#293442] p-5 rounded-2xl space-y-4 text-xs">
-                <div className="grid grid-cols-2 gap-3 pb-3 border-b border-[#293442]">
+              <div className="bg-[#07090e] border border-amber-500/20 p-5 rounded-2xl space-y-4 text-xs">
+                <div className="grid grid-cols-2 gap-3 pb-3 border-b border-amber-500/15">
                   <div>
                     <span className="text-slate-500 block uppercase text-[10px]">Candidate</span>
                     <strong className="text-white text-sm">{formData.athleteName} ({formData.athleteAge} yrs)</strong>
@@ -473,10 +469,10 @@ export default function TrialApply() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 pb-3 border-b border-[#293442]">
+                <div className="grid grid-cols-2 gap-3 pb-3 border-b border-amber-500/15">
                   <div>
                     <span className="text-slate-500 block uppercase text-[10px]">Trial Date & Reporting</span>
-                    <strong className="text-[#B6FF3B] text-sm">{trial.trialDate} ({trial.reportingTime})</strong>
+                    <strong className="text-amber-400 text-sm">{trial.trialDate} ({trial.reportingTime})</strong>
                   </div>
                   <div>
                     <span className="text-slate-500 block uppercase text-[10px]">Venue</span>
@@ -486,22 +482,22 @@ export default function TrialApply() {
 
                 <div className="flex items-center justify-between">
                   <span className="text-slate-400">Attached Documents:</span>
-                  <span className="font-bold text-[#00D4FF]">{formData.uploadedDocuments.length} Verified Files</span>
+                  <span className="font-bold text-amber-400">{formData.uploadedDocuments.length} Verified Files</span>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-[#293442]">
+              <div className="flex items-center justify-between pt-4 border-t border-amber-500/20">
                 <button
                   type="button"
                   onClick={() => setCurrentStep(3)}
-                  className="px-4 py-2.5 rounded-xl bg-[#1B2530] text-slate-300 text-xs font-bold border border-[#293442]"
+                  className="px-4 py-2.5 rounded-xl bg-[#141824] hover:bg-amber-950/40 text-slate-300 text-xs font-bold border border-amber-500/30 transition-all cursor-pointer"
                 >
                   Back
                 </button>
                 <button
                   type="button"
                   onClick={handleFinalSubmit}
-                  className="px-6 py-3 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-black text-xs uppercase tracking-wider hover:bg-[#a5ef28] transition-all shadow-lg shadow-[#B6FF3B]/10 cursor-pointer"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white font-black text-xs uppercase tracking-wider hover:shadow-[0_4px_20px_rgba(245,158,11,0.45)] transition-all shadow-lg border border-amber-400/40 cursor-pointer"
                 >
                   Submit Application
                 </button>
@@ -517,30 +513,30 @@ export default function TrialApply() {
               </div>
 
               <div className="space-y-2">
-                <span className="text-xs font-mono uppercase tracking-widest text-[#B6FF3B] font-bold">
+                <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold">
                   Registration Confirmed
                 </span>
                 <h2 className="text-2xl font-black text-white uppercase tracking-tight">
                   Application Submitted Successfully!
                 </h2>
-                <p className="text-xs text-[#94A3B8] max-w-md mx-auto leading-relaxed">
+                <p className="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
                   Your reference ID is <strong className="text-white font-mono">{submittedApplication.id}</strong>. The conducting organisation will review your credentials and issue shortlist passes.
                 </p>
               </div>
 
               {/* Pass Card Preview */}
-              <div className="max-w-md mx-auto bg-[#0B0F14] border border-[#293442] p-5 rounded-2xl text-left space-y-3 text-xs">
-                <div className="flex items-center justify-between border-b border-[#293442] pb-2">
+              <div className="max-w-md mx-auto bg-[#07090e] border border-amber-500/20 p-5 rounded-2xl text-left space-y-3 text-xs">
+                <div className="flex items-center justify-between border-b border-amber-500/15 pb-2">
                   <span className="text-slate-400">Scheduled Date:</span>
-                  <span className="font-bold text-[#B6FF3B]">{trial.trialDate} ({trial.reportingTime})</span>
+                  <span className="font-bold text-amber-400">{trial.trialDate} ({trial.reportingTime})</span>
                 </div>
-                <div className="flex items-center justify-between border-b border-[#293442] pb-2">
+                <div className="flex items-center justify-between border-b border-amber-500/15 pb-2">
                   <span className="text-slate-400">Venue:</span>
                   <span className="font-bold text-white truncate max-w-[200px]">{trial.venue}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-slate-400">Receipt Pass No:</span>
-                  <span className="font-mono text-[#00D4FF] font-bold">{submittedApplication.receiptNumber}</span>
+                  <span className="font-mono text-amber-400 font-bold">{submittedApplication.receiptNumber}</span>
                 </div>
               </div>
 
@@ -549,15 +545,15 @@ export default function TrialApply() {
                 <button
                   type="button"
                   onClick={() => setIsReceiptOpen(true)}
-                  className="px-5 py-3 rounded-xl bg-[#1B2530] hover:bg-[#253241] text-xs font-bold text-white border border-[#293442] flex items-center gap-2 cursor-pointer"
+                  className="px-5 py-3 rounded-xl bg-[#141824] hover:bg-amber-950/40 text-xs font-bold text-white border border-amber-500/30 flex items-center gap-2 cursor-pointer transition-all"
                 >
-                  <Printer className="w-4 h-4 text-[#00D4FF]" />
+                  <Printer className="w-4 h-4 text-amber-400" />
                   <span>Download Application Receipt</span>
                 </button>
 
                 <Link
                   to="/trials/dashboard"
-                  className="px-6 py-3 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-black text-xs uppercase tracking-wider hover:bg-[#a5ef28] transition-all shadow-md shadow-[#B6FF3B]/10"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white font-black text-xs uppercase tracking-wider hover:shadow-[0_4px_20px_rgba(245,158,11,0.45)] transition-all shadow-md border border-amber-400/40"
                 >
                   Track in My Trials Dashboard
                 </Link>

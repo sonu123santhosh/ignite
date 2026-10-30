@@ -18,7 +18,7 @@ export default function ReportListingModal({ trial, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-150">
-      <div className="bg-[#141B24] border border-[#293442] rounded-3xl w-full max-w-md p-6 space-y-5 shadow-2xl relative">
+      <div className="bg-[#0c0f17]/95 border border-amber-500/30 rounded-3xl w-full max-w-md p-6 space-y-5 shadow-2xl relative backdrop-blur-md">
         <button
           type="button"
           onClick={onClose}
@@ -33,14 +33,14 @@ export default function ReportListingModal({ trial, onClose }) {
               <CheckCircle2 className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold text-white">Report Submitted</h3>
-            <p className="text-xs text-[#94A3B8] max-w-xs mx-auto leading-relaxed">
+            <p className="text-xs text-slate-400 max-w-xs mx-auto leading-relaxed">
               Thank you for keeping SportLink safe. Our compliance and verification committee will investigate this listing immediately.
             </p>
             <div className="pt-2">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-6 py-2 rounded-xl bg-[#1B2530] text-xs font-bold text-white border border-[#293442] cursor-pointer"
+                className="px-6 py-2 rounded-xl bg-[#141824] hover:bg-amber-950/40 text-xs font-bold text-white border border-amber-500/30 cursor-pointer transition-all"
               >
                 Close
               </button>
@@ -65,7 +65,7 @@ export default function ReportListingModal({ trial, onClose }) {
               <select
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-[#0B0F14] border border-[#293442] text-xs text-white focus:outline-none focus:border-[#EF4444]"
+                className="w-full px-3 py-2 rounded-xl bg-[#07090e] border border-amber-500/25 text-xs text-white focus:outline-none focus:border-red-400"
               >
                 <option value="Fraudulent / Demanding Unofficial Fees">
                   Fraudulent / Demanding Unofficial Fees
@@ -96,7 +96,7 @@ export default function ReportListingModal({ trial, onClose }) {
                 placeholder="Explain what was misleading, unverified, or fraudulent about this trial listing..."
                 rows={4}
                 required
-                className="w-full px-3 py-2 rounded-xl bg-[#0B0F14] border border-[#293442] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#EF4444]"
+                className="w-full px-3 py-2 rounded-xl bg-[#07090e] border border-amber-500/25 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-red-400"
               />
             </div>
 
@@ -108,13 +108,13 @@ export default function ReportListingModal({ trial, onClose }) {
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 py-2.5 rounded-xl bg-[#1B2530] text-xs font-bold text-slate-300 border border-[#293442] hover:text-white cursor-pointer"
+                className="flex-1 py-2.5 rounded-xl bg-[#141824] hover:bg-amber-950/40 text-xs font-bold text-slate-300 border border-amber-500/30 hover:text-white cursor-pointer transition-all"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="flex-1 py-2.5 rounded-xl bg-red-500 hover:bg-red-600 text-xs font-bold text-white uppercase tracking-wider transition-colors cursor-pointer shadow-lg shadow-red-500/20"
+                className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-xs font-bold text-white uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-red-500/20"
               >
                 Submit Report
               </button>

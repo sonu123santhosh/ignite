@@ -37,9 +37,9 @@ export default function FriendliesFilterPanel({
   const content = (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-[#293442]">
+      <div className="flex items-center justify-between pb-3 border-b border-white/10">
         <div className="flex items-center gap-2">
-          <Filter className="w-4 h-4 text-[#B6FF3B]" />
+          <Filter className="w-4 h-4 text-sky-400" />
           <h3 className="font-['Barlow_Condensed'] text-xl font-bold uppercase text-white tracking-wide">
             Filter Matches
           </h3>
@@ -47,7 +47,7 @@ export default function FriendliesFilterPanel({
         <button
           type="button"
           onClick={onResetFilters}
-          className="text-xs text-[#9CA3AF] hover:text-[#B6FF3B] flex items-center gap-1 cursor-pointer transition-colors"
+          className="text-xs text-slate-400 hover:text-sky-400 flex items-center gap-1 cursor-pointer transition-colors"
         >
           <RotateCcw className="w-3 h-3" />
           <span>Reset</span>
@@ -56,7 +56,7 @@ export default function FriendliesFilterPanel({
 
       {/* Sport Selector */}
       <div className="space-y-2">
-        <label className="text-xs font-bold uppercase tracking-wider text-[#9CA3AF] block">
+        <label className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
           Sport
         </label>
         <div className="grid grid-cols-2 gap-1.5">
@@ -69,8 +69,8 @@ export default function FriendliesFilterPanel({
                 onClick={() => onFilterChange('sport', sp.id)}
                 className={`py-1.5 px-2.5 rounded-lg text-xs font-semibold text-left transition-all cursor-pointer truncate ${
                   isSelected
-                    ? 'bg-[#B6FF3B] text-[#0B0F14] font-bold shadow-sm'
-                    : 'bg-[#1B2530] text-slate-300 hover:text-white hover:bg-slate-700'
+                    ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold shadow-md shadow-sky-500/25'
+                    : 'bg-white/[0.06] text-slate-300 hover:text-white hover:bg-white/[0.12] border border-white/5'
                 }`}
               >
                 {sp.label}
@@ -82,7 +82,7 @@ export default function FriendliesFilterPanel({
 
       {/* City Selector */}
       <div className="space-y-2">
-        <label className="text-xs font-bold uppercase tracking-wider text-[#9CA3AF] block">
+        <label className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
           City
         </label>
         <div className="grid grid-cols-3 gap-1.5">
@@ -93,8 +93,8 @@ export default function FriendliesFilterPanel({
               onClick={() => onFilterChange('city', c)}
               className={`py-1.5 px-2 rounded-lg text-xs font-semibold text-center transition-all cursor-pointer ${
                 (filters.city || 'all') === c
-                  ? 'bg-[#00D9FF] text-[#0B0F14] font-bold'
-                  : 'bg-[#1B2530] text-slate-300 hover:text-white'
+                  ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold shadow-md shadow-sky-500/25'
+                  : 'bg-white/[0.06] text-slate-300 hover:text-white hover:bg-white/[0.12] border border-white/5'
               }`}
             >
               {c === 'all' ? 'Any City' : c}
@@ -105,7 +105,7 @@ export default function FriendliesFilterPanel({
 
       {/* Source Tier Filter */}
       <div className="space-y-2">
-        <label className="text-xs font-bold uppercase tracking-wider text-[#9CA3AF] block">
+        <label className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
           Verification Source
         </label>
         <div className="space-y-1">
@@ -116,13 +116,13 @@ export default function FriendliesFilterPanel({
               onClick={() => onFilterChange('source', s.id)}
               className={`w-full py-1.5 px-2.5 rounded-lg text-xs text-left transition-all cursor-pointer flex items-center justify-between ${
                 (filters.source || 'all') === s.id
-                  ? 'bg-[#1B2530] border border-[#00D9FF] text-white font-bold'
-                  : 'bg-transparent text-slate-400 hover:text-white hover:bg-slate-800'
+                  ? 'bg-sky-500/15 border border-sky-400 text-white font-bold'
+                  : 'bg-transparent text-slate-400 hover:text-white hover:bg-white/[0.06]'
               }`}
             >
               <span>{s.label}</span>
               {(filters.source || 'all') === s.id && (
-                <Check className="w-3.5 h-3.5 text-[#00D9FF]" />
+                <Check className="w-3.5 h-3.5 text-sky-400" />
               )}
             </button>
           ))}
@@ -131,16 +131,16 @@ export default function FriendliesFilterPanel({
 
       {/* Skill Level */}
       <div className="space-y-2">
-        <label className="text-xs font-bold uppercase tracking-wider text-[#9CA3AF] block">
+        <label className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
           Competition Skill Level
         </label>
         <select
           value={filters.skillLevel || 'all'}
           onChange={(e) => onFilterChange('skillLevel', e.target.value)}
-          className="w-full px-3 py-2 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white outline-none focus:border-[#B6FF3B] cursor-pointer"
+          className="w-full px-3 py-2 bg-black/40 border border-white/15 rounded-xl text-xs text-white outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 cursor-pointer"
         >
           {skillLevels.map((lvl) => (
-            <option key={lvl.id} value={lvl.id}>
+            <option key={lvl.id} value={lvl.id} className="bg-[#0b1326] text-white">
               {lvl.label}
             </option>
           ))}
@@ -148,13 +148,13 @@ export default function FriendliesFilterPanel({
       </div>
 
       {/* Free Matches Only Checkbox */}
-      <div className="pt-2 border-t border-[#293442]">
+      <div className="pt-2 border-t border-white/10">
         <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
           <input
             type="checkbox"
             checked={Boolean(filters.freeOnly)}
             onChange={(e) => onFilterChange('freeOnly', e.target.checked)}
-            className="w-4 h-4 rounded accent-[#B6FF3B] cursor-pointer"
+            className="w-4 h-4 rounded accent-sky-500 cursor-pointer"
           />
           <span className="font-medium text-white">Free Friendly Matches Only</span>
         </label>
@@ -166,7 +166,7 @@ export default function FriendliesFilterPanel({
     <>
       {/* Desktop Sticky Sidebar */}
       <aside className="hidden lg:block w-72 shrink-0">
-        <div className="sticky top-24 bg-[#151B23] border border-[#293442] rounded-2xl p-5 shadow-lg">
+        <div className="sticky top-24 bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 rounded-2xl p-5 shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
           {content}
         </div>
       </aside>
@@ -178,15 +178,15 @@ export default function FriendliesFilterPanel({
           role="dialog"
           aria-modal="true"
         >
-          <div className="bg-[#151B23] border-t border-[#293442] rounded-t-3xl max-h-[85vh] overflow-y-auto p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-2 border-b border-[#293442]">
+          <div className="bg-[#0c1629]/95 backdrop-blur-xl border-t border-sky-500/30 rounded-t-3xl max-h-[85vh] overflow-y-auto p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-2 border-b border-white/10">
               <span className="font-['Barlow_Condensed'] text-xl font-bold uppercase text-white">
                 Filter Matches ({totalResults} found)
               </span>
               <button
                 type="button"
                 onClick={onCloseMobile}
-                className="p-1.5 text-slate-400 hover:text-white"
+                className="p-1.5 text-slate-400 hover:text-white cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -194,11 +194,11 @@ export default function FriendliesFilterPanel({
 
             {content}
 
-            <div className="pt-4 border-t border-[#293442]">
+            <div className="pt-4 border-t border-white/10">
               <button
                 type="button"
                 onClick={onCloseMobile}
-                className="w-full py-3 bg-[#B6FF3B] text-[#0B0F14] font-bold text-sm rounded-xl cursor-pointer"
+                className="w-full py-3 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white font-bold text-sm rounded-xl cursor-pointer shadow-[0_4px_16px_rgba(14,165,233,0.35)]"
               >
                 Apply Filters ({totalResults} Matches)
               </button>

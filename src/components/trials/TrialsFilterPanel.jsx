@@ -19,18 +19,18 @@ export default function TrialsFilterPanel({
   onCloseMobileDrawer
 }) {
   return (
-    <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-5 space-y-6">
+    <div className="bg-[#0a0d16]/90 border border-amber-500/25 rounded-2xl p-5 space-y-6 backdrop-blur-md shadow-xl">
       {/* Panel Header */}
-      <div className="flex items-center justify-between border-b border-[#293442] pb-3">
+      <div className="flex items-center justify-between border-b border-amber-500/20 pb-3">
         <div className="flex items-center gap-2">
-          <SlidersHorizontal className="w-4 h-4 text-[#B6FF3B]" />
+          <SlidersHorizontal className="w-4 h-4 text-amber-400" />
           <h3 className="font-extrabold text-white text-sm uppercase tracking-wider">Filter Trials</h3>
         </div>
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={onResetFilters}
-            className="flex items-center gap-1 text-[11px] text-[#94A3B8] hover:text-white transition-colors cursor-pointer"
+            className="flex items-center gap-1 text-[11px] text-amber-300 hover:text-white transition-colors cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Reset</span>
@@ -55,7 +55,7 @@ export default function TrialsFilterPanel({
         <select
           value={filters.sport}
           onChange={(e) => onFilterChange('sport', e.target.value)}
-          className="w-full px-3 py-2 rounded-xl bg-[#0B0F14] border border-[#293442] text-xs text-white focus:outline-none focus:border-[#B6FF3B] transition-colors cursor-pointer"
+          className="w-full px-3 py-2 rounded-xl bg-[#07090e] border border-amber-500/20 text-xs text-white focus:outline-none focus:border-amber-400 transition-colors cursor-pointer"
         >
           <option value="all">All Sports</option>
           {SPORTS_CATEGORIES.filter(s => s.id !== 'all').map((s) => (
@@ -72,7 +72,7 @@ export default function TrialsFilterPanel({
         <select
           value={filters.city}
           onChange={(e) => onFilterChange('city', e.target.value)}
-          className="w-full px-3 py-2 rounded-xl bg-[#0B0F14] border border-[#293442] text-xs text-white focus:outline-none focus:border-[#B6FF3B] transition-colors cursor-pointer"
+          className="w-full px-3 py-2 rounded-xl bg-[#07090e] border border-amber-500/20 text-xs text-white focus:outline-none focus:border-amber-400 transition-colors cursor-pointer"
         >
           <option value="all">All Locations</option>
           <option value="Pune">Pune, Maharashtra</option>
@@ -86,7 +86,7 @@ export default function TrialsFilterPanel({
           <label className="font-bold text-slate-300 uppercase tracking-wider">
             Distance Radius
           </label>
-          <span className="font-mono text-[#00D4FF] font-bold">
+          <span className="font-mono text-amber-400 font-bold">
             {filters.maxDistance ? `${filters.maxDistance} km` : 'Any'}
           </span>
         </div>
@@ -98,7 +98,7 @@ export default function TrialsFilterPanel({
           value={filters.maxDistance || 60}
           onChange={(e) => onFilterChange('maxDistance', Number(e.target.value))}
           disabled={!userCoords}
-          className="w-full accent-[#00D4FF] cursor-pointer"
+          className="w-full accent-amber-500 cursor-pointer"
         />
         {!userCoords && (
           <span className="text-[10px] text-slate-500 block">
@@ -115,7 +115,7 @@ export default function TrialsFilterPanel({
         <select
           value={filters.organisationType}
           onChange={(e) => onFilterChange('organisationType', e.target.value)}
-          className="w-full px-3 py-2 rounded-xl bg-[#0B0F14] border border-[#293442] text-xs text-white focus:outline-none focus:border-[#B6FF3B] transition-colors cursor-pointer"
+          className="w-full px-3 py-2 rounded-xl bg-[#07090e] border border-amber-500/20 text-xs text-white focus:outline-none focus:border-amber-400 transition-colors cursor-pointer"
         >
           <option value="all">All Organisations</option>
           <option value="College">College / University</option>
@@ -137,8 +137,8 @@ export default function TrialsFilterPanel({
               onClick={() => onFilterChange('entryFee', f)}
               className={`py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                 filters.entryFee === f
-                  ? 'bg-[#B6FF3B] text-[#0B0F14]'
-                  : 'bg-[#0B0F14] text-[#94A3B8] border border-[#293442] hover:text-white'
+                  ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm'
+                  : 'bg-[#07090e] text-slate-300 border border-amber-500/20 hover:text-white'
               }`}
             >
               {f}
@@ -155,7 +155,7 @@ export default function TrialsFilterPanel({
         <select
           value={filters.status}
           onChange={(e) => onFilterChange('status', e.target.value)}
-          className="w-full px-3 py-2 rounded-xl bg-[#0B0F14] border border-[#293442] text-xs text-white focus:outline-none focus:border-[#B6FF3B] transition-colors cursor-pointer"
+          className="w-full px-3 py-2 rounded-xl bg-[#07090e] border border-amber-500/20 text-xs text-white focus:outline-none focus:border-amber-400 transition-colors cursor-pointer"
         >
           <option value="all">All Statuses</option>
           <option value="Open">Open</option>
@@ -172,7 +172,7 @@ export default function TrialsFilterPanel({
         <select
           value={filters.skillLevel}
           onChange={(e) => onFilterChange('skillLevel', e.target.value)}
-          className="w-full px-3 py-2 rounded-xl bg-[#0B0F14] border border-[#293442] text-xs text-white focus:outline-none focus:border-[#B6FF3B] transition-colors cursor-pointer"
+          className="w-full px-3 py-2 rounded-xl bg-[#07090e] border border-amber-500/20 text-xs text-white focus:outline-none focus:border-amber-400 transition-colors cursor-pointer"
         >
           <option value="all">Any Skill Level</option>
           <option value="Intermediate">Intermediate</option>
@@ -182,16 +182,16 @@ export default function TrialsFilterPanel({
       </div>
 
       {/* Safety & Trust Checkbox */}
-      <div className="pt-2 border-t border-[#293442] space-y-3">
+      <div className="pt-2 border-t border-amber-500/20 space-y-3">
         <label className="flex items-center gap-2.5 text-xs text-slate-300 cursor-pointer">
           <input
             type="checkbox"
             checked={filters.verifiedOnly}
             onChange={(e) => onFilterChange('verifiedOnly', e.target.checked)}
-            className="w-4 h-4 rounded accent-[#00D4FF] cursor-pointer"
+            className="w-4 h-4 rounded accent-amber-500 cursor-pointer"
           />
           <span className="flex items-center gap-1 font-semibold text-white">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#00D4FF]" /> Verified Organisers Only
+            <ShieldCheck className="w-3.5 h-3.5 text-amber-400" /> Verified Organisers Only
           </span>
         </label>
       </div>
@@ -200,7 +200,7 @@ export default function TrialsFilterPanel({
         <button
           type="button"
           onClick={onCloseMobileDrawer}
-          className="w-full py-2.5 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-black text-xs uppercase tracking-wider cursor-pointer"
+          className="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white font-black text-xs uppercase tracking-wider hover:shadow-[0_4px_18px_rgba(245,158,11,0.5)] border border-amber-400/40 cursor-pointer"
         >
           Apply Filters
         </button>

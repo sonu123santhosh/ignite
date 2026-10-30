@@ -7,9 +7,13 @@ export default function Navbar({ onShowToast }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const isFacilitiesPage = location.pathname.startsWith('/facilities');
+  const isFriendliesPage = location.pathname.startsWith('/friendlies') || location.pathname.startsWith('/friendly-matches');
+  const isCoachingPage = location.pathname.startsWith('/coaching');
+  const isTrialsPage = location.pathname.startsWith('/trials');
 
   const navLinks = [
-    { label: 'Home', path: '/' },
+    { label: 'Home', path: '/home' },
     { label: 'Facilities', path: '/facilities' },
     { label: 'Tournaments', path: '/tournaments' },
     { label: 'Friendly Matches', path: '/friendlies' },
@@ -30,7 +34,7 @@ export default function Navbar({ onShowToast }) {
 
   // Determine active nav key based on current URL path
   const getActiveKey = useCallback((pathname) => {
-    if (pathname === '/') return '/';
+    if (pathname === '/' || pathname === '/home') return '/home';
     if (pathname.startsWith('/facilities')) return '/facilities';
     if (pathname.startsWith('/tournaments')) return '/tournaments';
     if (pathname.startsWith('/friendlies') || pathname.startsWith('/friendly-matches')) return '/friendlies';
@@ -201,16 +205,38 @@ export default function Navbar({ onShowToast }) {
         <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Logo Mark + Brand */}
           <Link
-            to="/"
+            to="/home"
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6ff3d] rounded-xl p-1"
+            className={`flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 rounded-xl p-1 ${
+              isFacilitiesPage
+                ? 'focus-visible:ring-rose-500'
+                : isFriendliesPage
+                ? 'focus-visible:ring-sky-400'
+                : isCoachingPage
+                ? 'focus-visible:ring-red-500'
+                : isTrialsPage
+                ? 'focus-visible:ring-amber-500'
+                : 'focus-visible:ring-[#c6ff3d]'
+            }`}
           >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#c6ff3d] to-emerald-400 flex items-center justify-center text-[#0a1020] font-black shadow-[0_0_18px_rgba(198,255,61,0.35)] transition-transform group-hover:scale-105">
+            <div
+              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-black transition-transform group-hover:scale-105 ${
+                isFacilitiesPage
+                  ? 'bg-gradient-to-br from-rose-500 to-red-600 text-white shadow-[0_0_18px_rgba(244,63,94,0.35)]'
+                  : isFriendliesPage
+                  ? 'bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 text-white shadow-[0_0_18px_rgba(56,189,248,0.35)]'
+                  : isCoachingPage
+                  ? 'bg-gradient-to-br from-red-600 via-rose-600 to-red-700 text-white shadow-[0_0_18px_rgba(220,38,38,0.45)]'
+                  : isTrialsPage
+                  ? 'bg-gradient-to-br from-amber-500 via-orange-500 to-amber-600 text-white shadow-[0_0_18px_rgba(245,158,11,0.45)]'
+                  : 'bg-gradient-to-br from-[#c6ff3d] to-emerald-400 text-[#0a1020] shadow-[0_0_18px_rgba(198,255,61,0.35)]'
+              }`}
+            >
               <Zap className="w-5 h-5 fill-current" />
             </div>
             <div className="flex flex-col">
               <span className="font-display text-xl sm:text-2xl font-black tracking-wider uppercase text-white leading-none">
-                Sport<span className="text-[#c6ff3d]">Link</span>
+                Sport<span className={isFacilitiesPage ? 'text-rose-400' : isFriendliesPage ? 'text-sky-400' : isCoachingPage ? 'text-red-400' : isTrialsPage ? 'text-amber-400' : 'text-[#c6ff3d]'}>Link</span>
               </span>
               <span className="text-[9px] sm:text-[10px] text-slate-300/80 tracking-widest uppercase font-semibold">
                 Sports Platform
@@ -239,7 +265,11 @@ export default function Navbar({ onShowToast }) {
             >
               {/* Internal Liquid Glass Specular Highlights */}
               <div className="absolute inset-x-3.5 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/90 to-transparent" />
-              <div className="absolute inset-x-4 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-[#c6ff3d]/60 to-transparent" />
+              <div
+                className={`absolute inset-x-4 bottom-0 h-[1px] bg-gradient-to-r from-transparent ${
+                  isFacilitiesPage ? 'via-rose-400/80' : isFriendliesPage ? 'via-sky-400/80' : isCoachingPage ? 'via-red-400/80' : isTrialsPage ? 'via-amber-400/80' : 'via-[#c6ff3d]/60'
+                } to-transparent`}
+              />
             </div>
 
             {navLinks.map((link) => {
@@ -269,12 +299,22 @@ export default function Navbar({ onShowToast }) {
             <button
               type="button"
               onClick={() => handleAccountAction('Login')}
-              className="text-xs sm:text-sm font-semibold text-slate-200 hover:text-white px-4 py-2 transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#c6ff3d] rounded-full hover:bg-white/[0.08] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
+              className={`text-xs sm:text-sm font-semibold text-slate-200 hover:text-white px-4 py-2 transition-all duration-200 cursor-pointer rounded-full hover:bg-white/[0.08] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] focus-visible:outline-none focus-visible:ring-2 ${
+                isFacilitiesPage
+                  ? 'focus-visible:ring-rose-500'
+                  : isFriendliesPage
+                  ? 'focus-visible:ring-sky-400'
+                  : isCoachingPage
+                  ? 'focus-visible:ring-red-500'
+                  : isTrialsPage
+                  ? 'focus-visible:ring-amber-500'
+                  : 'focus-visible:ring-[#c6ff3d]'
+              }`}
             >
               Login
             </button>
             <Button
-              variant="primary"
+              variant={isFacilitiesPage ? 'crimson' : isFriendliesPage ? 'stadium' : isCoachingPage ? 'crimson' : isTrialsPage ? 'gold' : 'primary'}
               size="md"
               onClick={() => handleAccountAction('Get Started')}
               className="shadow-sm font-bold"
@@ -290,7 +330,17 @@ export default function Navbar({ onShowToast }) {
               onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}
               aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              className="p-2 rounded-xl text-slate-200 hover:text-white hover:bg-white/[0.12] border border-white/20 bg-white/[0.05] focus-visible:ring-2 focus-visible:ring-[#c6ff3d] cursor-pointer transition-colors shadow-sm"
+              className={`p-2 rounded-xl text-slate-200 hover:text-white hover:bg-white/[0.12] border border-white/20 bg-white/[0.05] cursor-pointer transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 ${
+                isFacilitiesPage
+                  ? 'focus-visible:ring-rose-500'
+                  : isFriendliesPage
+                  ? 'focus-visible:ring-sky-400'
+                  : isCoachingPage
+                  ? 'focus-visible:ring-red-500'
+                  : isTrialsPage
+                  ? 'focus-visible:ring-amber-500'
+                  : 'focus-visible:ring-[#c6ff3d]'
+              }`}
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -325,7 +375,11 @@ export default function Navbar({ onShowToast }) {
                 aria-hidden="true"
               >
                 <div className="absolute inset-x-3 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/90 to-transparent" />
-                <div className="absolute inset-x-4 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-[#c6ff3d]/60 to-transparent" />
+                <div
+                  className={`absolute inset-x-4 bottom-0 h-[1px] bg-gradient-to-r from-transparent ${
+                    isFacilitiesPage ? 'via-rose-400/80' : isFriendliesPage ? 'via-sky-400/80' : isCoachingPage ? 'via-red-400/80' : isTrialsPage ? 'via-amber-400/80' : 'via-[#c6ff3d]/60'
+                  } to-transparent`}
+                />
               </div>
 
               {navLinks.map((link) => {
@@ -344,7 +398,21 @@ export default function Navbar({ onShowToast }) {
                     }`}
                   >
                     <span>{link.label}</span>
-                    <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? 'text-[#c6ff3d] translate-x-0.5' : 'text-slate-400'}`} />
+                    <ChevronRight
+                      className={`w-4 h-4 transition-transform ${
+                        isActive
+                          ? isFacilitiesPage
+                            ? 'text-rose-400 translate-x-0.5'
+                            : isFriendliesPage
+                            ? 'text-sky-400 translate-x-0.5'
+                            : isCoachingPage
+                            ? 'text-red-400 translate-x-0.5'
+                            : isTrialsPage
+                            ? 'text-amber-400 translate-x-0.5'
+                            : 'text-[#c6ff3d] translate-x-0.5'
+                          : 'text-slate-400'
+                      }`}
+                    />
                   </NavLink>
                 );
               })}
@@ -362,7 +430,7 @@ export default function Navbar({ onShowToast }) {
                 Login
               </button>
               <Button
-                variant="primary"
+                variant={isFacilitiesPage ? 'crimson' : isFriendliesPage ? 'stadium' : isCoachingPage ? 'crimson' : isTrialsPage ? 'gold' : 'primary'}
                 size="md"
                 className="w-full font-bold"
                 onClick={() => {

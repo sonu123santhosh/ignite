@@ -4,12 +4,13 @@ import { Zap, ShieldCheck } from 'lucide-react';
 
 export default function Footer() {
   const pages = [
-    { label: 'Home', path: '/' },
+    { label: 'Home', path: '/home' },
     { label: 'Facilities', path: '/facilities' },
     { label: 'Tournaments', path: '/tournaments' },
     { label: 'College Friendly Matches', path: '/friendly-matches' },
     { label: 'Coaching Centres', path: '/coaching' },
-    { label: 'Sports Trials', path: '/trials' }
+    { label: 'Sports Trials', path: '/trials' },
+    { label: 'Watch Intro', path: '/' }
   ];
 
   return (
@@ -18,7 +19,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-3">
-            <Link to="/" className="inline-flex items-center gap-2.5 group">
+            <Link to="/home" className="inline-flex items-center gap-2.5 group">
               <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#c6ff3d] to-emerald-400 flex items-center justify-center text-[#0a1020] font-black shadow-[0_0_10px_rgba(198,255,61,0.25)]">
                 <Zap className="w-4 h-4 fill-current" />
               </div>

@@ -63,13 +63,13 @@ export default function AddAcademyModal({ onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-[#141B24] border border-[#293442] rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+      <div className="bg-[#0c0d15]/95 border border-red-500/30 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden animate-in fade-in zoom-in-95 duration-150">
         
         {/* Header */}
-        <div className="p-5 border-b border-[#293442] flex items-center justify-between bg-[#1B2530]/50">
+        <div className="p-5 border-b border-red-500/20 flex items-center justify-between bg-red-950/20">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-[#00D4FF]/10 text-[#00D4FF] border border-[#00D4FF]/25">
+            <div className="p-2 rounded-xl bg-red-500/15 text-red-400 border border-red-500/30">
               <Building className="w-5 h-5" />
             </div>
             <div>
@@ -77,7 +77,7 @@ export default function AddAcademyModal({ onClose }) {
               <p className="text-xs text-gray-400">Expand your academy footprint across the SportLink athlete network</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-[#293442]">
+          <button onClick={onClose} className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-red-950/40 cursor-pointer">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -86,8 +86,8 @@ export default function AddAcademyModal({ onClose }) {
         <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-5 flex-1 text-xs">
           
           {/* Notice: Verification Policy */}
-          <div className="bg-[#0B0F14] border border-[#293442] rounded-xl p-3.5 flex items-start gap-2.5 text-gray-300">
-            <ShieldCheck className="w-4 h-4 text-[#00D4FF] shrink-0 mt-0.5" />
+          <div className="bg-[#08050c] border border-red-500/20 rounded-xl p-3.5 flex items-start gap-2.5 text-gray-300">
+            <ShieldCheck className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
             <p>
               New listings are created under <strong>Pending Verification</strong> status. You can immediately configure coaches and batches; the academy will receive a <strong>Verified</strong> badge upon physical facility inspection.
             </p>
@@ -102,7 +102,7 @@ export default function AddAcademyModal({ onClose }) {
                 placeholder="e.g. Apex Sports Academy"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-[#00D4FF]"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-red-500"
               />
             </div>
 
@@ -113,7 +113,7 @@ export default function AddAcademyModal({ onClose }) {
                 placeholder="e.g. Junior High-Performance Cricket Hub"
                 value={tagline}
                 onChange={(e) => setTagline(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-[#00D4FF]"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-red-500"
               />
             </div>
           </div>
@@ -129,10 +129,10 @@ export default function AddAcademyModal({ onClose }) {
                     key={sport}
                     type="button"
                     onClick={() => toggleSport(sport)}
-                    className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                    className={`px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
                       isSelected
-                        ? 'bg-[#00D4FF]/20 text-[#00D4FF] border border-[#00D4FF]/40'
-                        : 'bg-[#0B0F14] text-gray-400 border border-[#293442] hover:text-white'
+                        ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-sm'
+                        : 'bg-[#08050c] text-gray-400 border border-red-500/20 hover:text-white'
                     }`}
                   >
                     {sport}
@@ -149,7 +149,7 @@ export default function AddAcademyModal({ onClose }) {
               placeholder="Describe your coaching philosophy, infrastructure, floodlights, turf wickets or court specifications..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-[#00D4FF]"
+              className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-red-500"
             />
           </div>
 
@@ -163,7 +163,7 @@ export default function AddAcademyModal({ onClose }) {
                 placeholder="Plot / Survey number, street, near landmark"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white focus:outline-none"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               />
             </div>
             <div className="space-y-1">
@@ -174,7 +174,7 @@ export default function AddAcademyModal({ onClose }) {
                 placeholder="e.g. Kothrud / Baner"
                 value={locality}
                 onChange={(e) => setLocality(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white focus:outline-none"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               />
             </div>
           </div>
@@ -188,7 +188,7 @@ export default function AddAcademyModal({ onClose }) {
                 min="0"
                 value={monthlyFeeMin}
                 onChange={(e) => setMonthlyFeeMin(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               />
             </div>
             <div className="space-y-1">
@@ -198,7 +198,7 @@ export default function AddAcademyModal({ onClose }) {
                 min="0"
                 value={monthlyFeeMax}
                 onChange={(e) => setMonthlyFeeMax(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               />
             </div>
             <div className="space-y-1">
@@ -208,7 +208,7 @@ export default function AddAcademyModal({ onClose }) {
                 min="0"
                 value={perSessionFee}
                 onChange={(e) => setPerSessionFee(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               />
             </div>
           </div>
@@ -220,7 +220,7 @@ export default function AddAcademyModal({ onClose }) {
               <select
                 value={facilityType}
                 onChange={(e) => setFacilityType(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
               >
                 <option value="Indoor & Outdoor">Indoor & Outdoor</option>
                 <option value="Indoor">Indoor Only</option>
@@ -236,7 +236,7 @@ export default function AddAcademyModal({ onClose }) {
                     type="checkbox"
                     checked={trialClassAvailable}
                     onChange={(e) => setTrialClassAvailable(e.target.checked)}
-                    className="w-4 h-4 rounded text-[#B6FF3B]"
+                    className="w-4 h-4 rounded accent-red-500 cursor-pointer"
                   />
                   <span>Offer Trial Sessions</span>
                 </label>
@@ -247,7 +247,7 @@ export default function AddAcademyModal({ onClose }) {
                     placeholder="Fee (0 = Free)"
                     value={trialFee}
                     onChange={(e) => setTrialFee(e.target.value)}
-                    className="w-24 bg-[#0B0F14] border border-[#293442] rounded-lg p-1 text-center text-white"
+                    className="w-24 bg-[#08050c] border border-red-500/20 rounded-lg p-1 text-center text-white focus:outline-none focus:border-red-500"
                   />
                 )}
               </div>
@@ -255,13 +255,13 @@ export default function AddAcademyModal({ onClose }) {
           </div>
 
           {/* Features Checkbox */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 border-t border-[#293442]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 border-t border-red-500/20">
             <label className="flex items-center gap-2 cursor-pointer text-gray-300">
               <input
                 type="checkbox"
                 checked={womenCoaches}
                 onChange={(e) => setWomenCoaches(e.target.checked)}
-                className="w-4 h-4 rounded text-[#00D4FF]"
+                className="w-4 h-4 rounded accent-red-500 cursor-pointer"
               />
               <span>Women Coaches on Staff</span>
             </label>
@@ -270,24 +270,24 @@ export default function AddAcademyModal({ onClose }) {
                 type="checkbox"
                 checked={accessible}
                 onChange={(e) => setAccessible(e.target.checked)}
-                className="w-4 h-4 rounded text-[#00D4FF]"
+                className="w-4 h-4 rounded accent-red-500 cursor-pointer"
               />
               <span>Wheelchair Accessible Infrastructure</span>
             </label>
           </div>
 
           {/* Footer Submit */}
-          <div className="pt-4 border-t border-[#293442] flex items-center justify-end gap-3">
+          <div className="pt-4 border-t border-red-500/20 flex items-center justify-end gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl bg-[#1B2530] text-gray-300 font-semibold"
+              className="px-4 py-2 rounded-xl bg-[#140e18] text-gray-300 border border-red-500/20 hover:text-white font-semibold cursor-pointer transition-all"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl bg-[#00D4FF] text-black font-extrabold hover:bg-[#00c2e6] transition-all shadow-md"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold hover:shadow-[0_4px_18px_rgba(220,38,38,0.5)] border border-red-500/40 transition-all cursor-pointer"
             >
               Publish Centre Listing
             </button>

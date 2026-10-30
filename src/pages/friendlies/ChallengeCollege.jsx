@@ -81,26 +81,26 @@ export default function ChallengeCollege() {
   if (role !== 'captain') {
     return (
       <div className="min-h-screen bg-transparent text-white py-16 px-4">
-        <div className="max-w-lg mx-auto bg-[#151B23] border border-[#293442] rounded-2xl p-8 text-center space-y-4 shadow-2xl">
+        <div className="max-w-lg mx-auto bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 rounded-2xl p-8 text-center space-y-4 shadow-2xl">
           <div className="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto">
             <Swords className="w-8 h-8" />
           </div>
           <h2 className="font-['Barlow_Condensed'] text-3xl font-bold uppercase text-white">
             Captain Role Required
           </h2>
-          <p className="text-sm text-[#9CA3AF] leading-relaxed">
+          <p className="text-sm text-slate-300 leading-relaxed">
             Only designated collegiate Team Captains can initiate friendly match challenges and negotiate terms with rival colleges.
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               to="/friendlies"
-              className="px-4 py-2 bg-[#1B2530] text-slate-300 border border-[#293442] rounded-xl text-xs font-semibold hover:text-white"
+              className="px-4 py-2 bg-white/10 hover:bg-white/15 text-slate-200 border border-white/15 rounded-xl text-xs font-semibold backdrop-blur-sm transition-colors"
             >
               Back to Matches
             </Link>
             <Link
               to="/friendlies/register-team"
-              className="px-5 py-2 bg-[#B6FF3B] text-[#0B0F14] rounded-xl text-xs font-bold hover:bg-[#a3ee28]"
+              className="px-5 py-2.5 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-xl text-xs font-bold hover:from-sky-400 hover:to-blue-500 shadow-md shadow-sky-500/25 transition-all"
             >
               Register as Team Captain
             </Link>
@@ -204,16 +204,16 @@ export default function ChallengeCollege() {
   return (
     <div className="min-h-screen bg-transparent text-[#FFFFFF] pb-24">
       {/* Top Bar */}
-      <div className="bg-[#151B23] border-b border-[#293442] py-4">
+      <div className="bg-[#0c1629]/80 backdrop-blur-xl border-b border-sky-500/20 py-4">
         <div className="max-w-4xl mx-auto px-4 flex items-center justify-between">
           <Link
             to="/friendlies"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#9CA3AF] hover:text-white"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Cancel &amp; Exit</span>
           </Link>
-          <span className="text-xs text-[#9CA3AF]">
+          <span className="text-xs text-slate-400">
             Challenging as Captain: <strong className="text-white">{currentActor?.name}</strong>
           </span>
         </div>
@@ -222,24 +222,24 @@ export default function ChallengeCollege() {
       <div className="max-w-4xl mx-auto px-4 pt-8">
         {/* Stepper Progress Bar */}
         {currentStep < 6 && (
-          <div className="bg-[#151B23] border border-[#293442] p-4 sm:p-5 rounded-2xl mb-8 shadow-lg">
+          <div className="bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 p-4 sm:p-5 rounded-2xl mb-8 shadow-lg">
             <div className="flex items-center justify-between">
               {steps.map((st) => (
                 <div key={st.num} className="flex flex-col items-center">
                   <div
-                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs ${
+                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all ${
                       currentStep > st.num
-                        ? 'bg-[#B6FF3B] text-[#0B0F14]'
+                        ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-md shadow-sky-500/25'
                         : currentStep === st.num
-                        ? 'bg-[#00D9FF] text-[#0B0F14] ring-4 ring-[#00D9FF]/20'
-                        : 'bg-[#1B2530] text-slate-500 border border-[#293442]'
+                        ? 'bg-gradient-to-r from-cyan-400 to-sky-500 text-black ring-4 ring-sky-400/25 shadow-md'
+                        : 'bg-white/[0.05] text-slate-500 border border-white/10'
                     }`}
                   >
                     {currentStep > st.num ? <Check className="w-4 h-4" /> : st.num}
                   </div>
                   <span
                     className={`text-[10px] sm:text-xs font-semibold mt-2 ${
-                      currentStep === st.num ? 'text-white' : 'text-slate-500'
+                      currentStep === st.num ? 'text-white' : 'text-slate-400'
                     }`}
                   >
                     {st.label}
@@ -260,19 +260,19 @@ export default function ChallengeCollege() {
 
         {/* Step 1: Select Opponent College & Squad */}
         {currentStep === 1 && (
-          <div className="bg-[#151B23] border border-[#293442] p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
+          <div className="bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
             <div>
               <h2 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white tracking-wide">
                 1. Select Rival College Squad
               </h2>
-              <p className="text-xs text-[#9CA3AF] mt-1">
+              <p className="text-xs text-slate-400 mt-1">
                 Choose the sport and select the opponent college squad to challenge.
               </p>
             </div>
 
             {/* Sport selector */}
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase text-[#9CA3AF] block">
+              <label className="text-xs font-bold uppercase text-slate-400 block">
                 Competition Sport
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
@@ -286,8 +286,8 @@ export default function ChallengeCollege() {
                     }}
                     className={`py-2 px-3 rounded-xl text-xs font-bold text-center transition-all cursor-pointer ${
                       selectedSport === sp
-                        ? 'bg-[#B6FF3B] text-[#0B0F14]'
-                        : 'bg-[#1B2530] text-slate-300 hover:text-white'
+                        ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-md shadow-sky-500/25'
+                        : 'bg-white/[0.06] text-slate-300 hover:text-white hover:bg-white/[0.12] border border-white/5'
                     }`}
                   >
                     {sp}
@@ -298,12 +298,12 @@ export default function ChallengeCollege() {
 
             {/* Opponent squads list */}
             <div className="space-y-3 pt-2">
-              <label className="text-xs font-bold uppercase text-[#9CA3AF] block">
+              <label className="text-xs font-bold uppercase text-slate-400 block">
                 Available Opponent Squads ({opponentTeams.length})
               </label>
 
               {opponentTeams.length === 0 ? (
-                <div className="p-6 text-center text-xs text-[#9CA3AF] bg-[#0B0F14] border border-[#293442] rounded-xl">
+                <div className="p-6 text-center text-xs text-slate-400 bg-black/40 border border-white/10 rounded-xl">
                   No registered college squads available in this sport to challenge.
                 </div>
               ) : (
@@ -317,20 +317,20 @@ export default function ChallengeCollege() {
                         onClick={() => setSelectedOpponentTeamId(team.id)}
                         className={`p-4 rounded-xl border text-left transition-all cursor-pointer flex items-center gap-3 ${
                           isSelected
-                            ? 'bg-[#00D9FF]/10 border-[#00D9FF] text-white shadow-md'
-                            : 'bg-[#1B2530] border-[#293442] text-slate-300 hover:border-slate-500'
+                            ? 'bg-sky-500/15 border-sky-400 text-white shadow-md'
+                            : 'bg-white/[0.05] border-white/10 text-slate-300 hover:border-sky-400/40 hover:bg-white/[0.08]'
                         }`}
                       >
-                        <div
-                          className="w-10 h-10 rounded-xl flex items-center justify-center font-['Barlow_Condensed'] font-black text-white shrink-0 text-base"
-                          style={{ backgroundColor: team.primaryColor || '#00D9FF' }}
-                        >
-                          {team.logoInitials}
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center font-['Barlow_Condensed'] font-black text-slate-100 shrink-0 text-base bg-gradient-to-br from-[#182235] via-[#0f1726] to-[#080d18] border border-sky-500/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_4px_10px_rgba(0,0,0,0.5)] relative overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-transparent to-transparent pointer-events-none" />
+                          <span className="relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                            {team.logoInitials}
+                          </span>
                         </div>
                         <div className="min-w-0">
                           <h4 className="font-bold text-sm text-white truncate">{team.name}</h4>
-                          <span className="text-xs text-[#9CA3AF] block truncate">{team.collegeName}</span>
-                          <span className="text-[10px] text-slate-500 font-mono">
+                          <span className="text-xs text-slate-400 block truncate">{team.collegeName}</span>
+                          <span className="text-[10px] text-slate-400 font-mono">
                             Skill: {team.skillLevel}
                           </span>
                         </div>
@@ -345,12 +345,12 @@ export default function ChallengeCollege() {
 
         {/* Step 2: Select Your Team */}
         {currentStep === 2 && (
-          <div className="bg-[#151B23] border border-[#293442] p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
+          <div className="bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
             <div>
               <h2 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white tracking-wide">
                 2. Select Your Squad
               </h2>
-              <p className="text-xs text-[#9CA3AF] mt-1">
+              <p className="text-xs text-slate-400 mt-1">
                 Choose which of your registered squads will represent your college in this match.
               </p>
             </div>
@@ -365,23 +365,23 @@ export default function ChallengeCollege() {
                     onClick={() => setSelectedMyTeamId(team.id)}
                     className={`w-full p-4 rounded-xl border text-left transition-all cursor-pointer flex items-center justify-between ${
                       isSelected
-                        ? 'bg-[#B6FF3B]/10 border-[#B6FF3B] text-white shadow-md'
-                        : 'bg-[#1B2530] border-[#293442] text-slate-300 hover:border-slate-500'
+                        ? 'bg-sky-500/15 border-sky-400 text-white shadow-md'
+                        : 'bg-white/[0.05] border-white/10 text-slate-300 hover:border-sky-400/40 hover:bg-white/[0.08]'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center font-['Barlow_Condensed'] font-black text-white shrink-0"
-                        style={{ backgroundColor: team.primaryColor || '#00D9FF' }}
-                      >
-                        {team.logoInitials}
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center font-['Barlow_Condensed'] font-black text-slate-100 shrink-0 text-base bg-gradient-to-br from-[#182235] via-[#0f1726] to-[#080d18] border border-sky-500/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_4px_10px_rgba(0,0,0,0.5)] relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-transparent to-transparent pointer-events-none" />
+                        <span className="relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                          {team.logoInitials}
+                        </span>
                       </div>
                       <div>
                         <h4 className="font-bold text-sm text-white">{team.name}</h4>
-                        <span className="text-xs text-[#9CA3AF]">{team.collegeName} &bull; {team.sport}</span>
+                        <span className="text-xs text-slate-400">{team.collegeName} &bull; {team.sport}</span>
                       </div>
                     </div>
-                    <span className="text-xs text-[#B6FF3B] font-bold">
+                    <span className="text-xs text-sky-400 font-bold">
                       {team.roster?.length || 0} players
                     </span>
                   </button>
@@ -393,19 +393,19 @@ export default function ChallengeCollege() {
 
         {/* Step 3: Propose Date & Time */}
         {currentStep === 3 && (
-          <div className="bg-[#151B23] border border-[#293442] p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
+          <div className="bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
             <div>
               <h2 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white tracking-wide">
                 3. Propose Match Schedule
               </h2>
-              <p className="text-xs text-[#9CA3AF] mt-1">
+              <p className="text-xs text-slate-400 mt-1">
                 Propose a tentative match date and kickoff time for opponent captain review.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                   Proposed Date *
                 </label>
                 <input
@@ -413,12 +413,12 @@ export default function ChallengeCollege() {
                   required
                   value={proposedDate}
                   onChange={(e) => setProposedDate(e.target.value)}
-                  className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-sm text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-3 bg-black/40 border border-white/15 rounded-xl text-sm text-white focus:border-sky-400 outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                   Kickoff Time *
                 </label>
                 <input
@@ -426,24 +426,24 @@ export default function ChallengeCollege() {
                   required
                   value={proposedTime}
                   onChange={(e) => setProposedTime(e.target.value)}
-                  className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-sm text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-3 bg-black/40 border border-white/15 rounded-xl text-sm text-white focus:border-sky-400 outline-none"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+              <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                 Match Duration (minutes)
               </label>
               <select
                 value={proposedDuration}
                 onChange={(e) => setProposedDuration(Number(e.target.value))}
-                className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none cursor-pointer"
+                className="w-full p-3 bg-black/40 border border-white/15 rounded-xl text-xs text-white focus:border-sky-400 outline-none cursor-pointer"
               >
-                <option value={60}>60 minutes</option>
-                <option value={90}>90 minutes (Standard)</option>
-                <option value={120}>120 minutes</option>
-                <option value={180}>180 minutes (Cricket T20)</option>
+                <option value={60} className="bg-[#0b1326] text-white">60 minutes</option>
+                <option value={90} className="bg-[#0b1326] text-white">90 minutes (Standard)</option>
+                <option value={120} className="bg-[#0b1326] text-white">120 minutes</option>
+                <option value={180} className="bg-[#0b1326] text-white">180 minutes (Cricket T20)</option>
               </select>
             </div>
           </div>
@@ -451,13 +451,13 @@ export default function ChallengeCollege() {
 
         {/* Step 4: Suggest Venue (with Find a Ground integration) */}
         {currentStep === 4 && (
-          <div className="bg-[#151B23] border border-[#293442] p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
+          <div className="bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <h2 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white tracking-wide">
                   4. Propose Venue &amp; Ground
                 </h2>
-                <p className="text-xs text-[#9CA3AF] mt-1">
+                <p className="text-xs text-slate-400 mt-1">
                   Enter a ground manually or choose a verified facility from SportLink Grounds.
                 </p>
               </div>
@@ -466,7 +466,7 @@ export default function ChallengeCollege() {
               <button
                 type="button"
                 onClick={() => setIsGroundFinderOpen(true)}
-                className="px-4 py-2 bg-[#00D9FF] hover:bg-[#00b3d6] text-[#0B0F14] font-bold text-xs rounded-xl flex items-center gap-1.5 cursor-pointer shadow-md self-start sm:self-auto"
+                className="px-4 py-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 cursor-pointer shadow-md shadow-sky-500/25 self-start sm:self-auto hover:from-sky-400 hover:to-blue-500"
               >
                 <Building2 className="w-4 h-4" />
                 <span>Find a Ground</span>
@@ -475,7 +475,7 @@ export default function ChallengeCollege() {
 
             <div className="space-y-4">
               <div>
-                <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                   Ground / Stadium Name *
                 </label>
                 <input
@@ -484,12 +484,12 @@ export default function ChallengeCollege() {
                   value={venueName}
                   onChange={(e) => setVenueName(e.target.value)}
                   placeholder="e.g. Elite Football Arena (Pitch 1) or College Main Turf"
-                  className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-sm text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-3 bg-black/40 border border-white/15 rounded-xl text-sm text-white focus:border-sky-400 outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                   Match Format Tag
                 </label>
                 <input
@@ -497,12 +497,12 @@ export default function ChallengeCollege() {
                   value={format}
                   onChange={(e) => setFormat(e.target.value)}
                   placeholder="e.g. 7-a-side Friendly (2 x 35 min)"
-                  className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-3 bg-black/40 border border-white/15 rounded-xl text-xs text-white focus:border-sky-400 outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                   Message to Opponent Captain (Max 200 chars)
                 </label>
                 <textarea
@@ -511,9 +511,9 @@ export default function ChallengeCollege() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Propose kit colours, referee arrangements, or friendly sparring objectives..."
-                  className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-3 bg-black/40 border border-white/15 rounded-xl text-xs text-white focus:border-sky-400 outline-none"
                 />
-                <span className="text-[10px] text-slate-500 text-right block">
+                <span className="text-[10px] text-slate-400 text-right block">
                   {message.length} / 200 characters
                 </span>
               </div>
@@ -523,40 +523,40 @@ export default function ChallengeCollege() {
 
         {/* Step 5: Review & Send Challenge */}
         {currentStep === 5 && (
-          <div className="bg-[#151B23] border border-[#293442] p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
+          <div className="bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
             <div>
               <h2 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white tracking-wide">
                 5. Review Challenge Terms
               </h2>
-              <p className="text-xs text-[#9CA3AF] mt-1">
+              <p className="text-xs text-slate-400 mt-1">
                 Verify proposed terms before sending invitation to the opponent captain.
               </p>
             </div>
 
-            <div className="p-5 bg-[#1B2530] border border-[#293442] rounded-xl space-y-3 text-xs">
+            <div className="p-5 bg-black/40 border border-white/10 rounded-xl space-y-3 text-xs">
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Your Squad:</span>
+                <span className="text-slate-400">Your Squad:</span>
                 <span className="font-bold text-white">{selectedMyTeam?.name} ({selectedMyTeam?.collegeName})</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Opponent Squad:</span>
-                <span className="font-bold text-[#00D9FF]">{selectedOpponent?.name} ({selectedOpponent?.collegeName})</span>
+                <span className="text-slate-400">Opponent Squad:</span>
+                <span className="font-bold text-sky-300">{selectedOpponent?.name} ({selectedOpponent?.collegeName})</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Date &amp; Kickoff:</span>
+                <span className="text-slate-400">Date &amp; Kickoff:</span>
                 <span className="font-semibold text-white">{formatDateDisplay(proposedDate)} at {proposedTime}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Venue Ground:</span>
+                <span className="text-slate-400">Venue Ground:</span>
                 <span className="font-semibold text-white">{venueName}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Format:</span>
+                <span className="text-slate-400">Format:</span>
                 <span className="font-semibold text-white">{format}</span>
               </div>
             </div>
 
-            <div className="p-4 bg-amber-500/10 border border-amber-500/40 rounded-xl text-xs text-amber-300">
+            <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-300">
               <strong>Match Agreement Rule:</strong> Sending this challenge sets status to <em>Pending</em>. The match is not confirmed until the other captain accepts or counter-proposes.
             </div>
           </div>
@@ -564,8 +564,8 @@ export default function ChallengeCollege() {
 
         {/* Step 6: Result Screen */}
         {currentStep === 6 && sentInvitation && (
-          <div className="bg-[#151B23] border border-[#293442] p-8 sm:p-12 rounded-2xl text-center space-y-6 shadow-2xl">
-            <div className="w-16 h-16 rounded-full bg-[#B6FF3B]/10 border border-[#B6FF3B] text-[#B6FF3B] flex items-center justify-center mx-auto shadow-[0_0_25px_rgba(182,255,59,0.3)]">
+          <div className="bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 p-8 sm:p-12 rounded-2xl text-center space-y-6 shadow-2xl">
+            <div className="w-16 h-16 rounded-full bg-sky-500/15 border border-sky-400 text-sky-400 flex items-center justify-center mx-auto shadow-[0_0_25px_rgba(56,189,248,0.35)]">
               <Sparkles className="w-8 h-8" />
             </div>
 
@@ -574,36 +574,36 @@ export default function ChallengeCollege() {
                 Invitation Sent
               </h2>
               {/* EXACT RESULT SCREEN REQUIREMENT */}
-              <p className="text-sm text-[#9CA3AF] max-w-md mx-auto">
+              <p className="text-sm text-slate-300 max-w-md mx-auto">
                 Invitation sent. The match isn&apos;t confirmed until the other captain accepts.
               </p>
             </div>
 
-            <div className="max-w-md mx-auto p-4 bg-[#1B2530] border border-[#293442] rounded-xl text-left text-xs space-y-2">
+            <div className="max-w-md mx-auto p-4 bg-black/40 border border-white/10 rounded-xl text-left text-xs space-y-2">
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Reference ID:</span>
-                <span className="font-mono font-bold text-[#B6FF3B]">{sentInvitation.id}</span>
+                <span className="text-slate-400">Reference ID:</span>
+                <span className="font-mono font-bold text-sky-300">{sentInvitation.id}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Recipient:</span>
+                <span className="text-slate-400">Recipient:</span>
                 <span className="font-semibold text-white">{selectedOpponent?.name}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Status:</span>
-                <span className="font-bold text-[#00D9FF]">{sentInvitation.status}</span>
+                <span className="text-slate-400">Status:</span>
+                <span className="font-bold text-sky-300">{sentInvitation.status}</span>
               </div>
             </div>
 
             <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/friendlies/inbox"
-                className="px-5 py-2.5 bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-[#a3ee28]"
+                className="px-5 py-2.5 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xs uppercase tracking-wider rounded-xl hover:from-sky-400 hover:to-blue-500 shadow-md shadow-sky-500/25"
               >
                 Go to Inbox
               </Link>
               <Link
                 to="/friendlies"
-                className="px-5 py-2.5 bg-[#1B2530] text-white border border-[#293442] font-semibold text-xs rounded-xl hover:bg-slate-700"
+                className="px-5 py-2.5 bg-white/10 hover:bg-white/15 text-white border border-white/15 font-semibold text-xs rounded-xl backdrop-blur-sm"
               >
                 Browse Matches
               </Link>
@@ -618,8 +618,8 @@ export default function ChallengeCollege() {
               type="button"
               disabled={currentStep === 1}
               onClick={handleBack}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold ${
-                currentStep === 1 ? 'opacity-30 cursor-not-allowed text-slate-500' : 'bg-[#1B2530] text-white hover:bg-slate-700'
+              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-colors ${
+                currentStep === 1 ? 'opacity-30 cursor-not-allowed text-slate-500' : 'bg-white/10 text-white hover:bg-white/15 border border-white/15 cursor-pointer backdrop-blur-sm'
               }`}
             >
               Back
@@ -629,7 +629,7 @@ export default function ChallengeCollege() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="px-6 py-2.5 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider hover:bg-[#a3ee28] flex items-center gap-1.5 cursor-pointer shadow-md"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-400 hover:via-blue-500 hover:to-indigo-500 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-[0_4px_16px_rgba(14,165,233,0.35)] active:translate-y-0.5"
               >
                 <span>Continue</span>
                 <ArrowRight className="w-4 h-4" />
@@ -638,7 +638,7 @@ export default function ChallengeCollege() {
               <button
                 type="button"
                 onClick={handleSend}
-                className="px-6 py-2.5 rounded-xl bg-[#00D9FF] text-[#0B0F14] font-black text-xs uppercase tracking-wider hover:bg-[#00b3d6] flex items-center gap-1.5 cursor-pointer shadow-md"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-600 to-cyan-600 hover:from-emerald-400 hover:via-teal-500 hover:to-cyan-500 text-white font-black text-xs uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-[0_4px_16px_rgba(16,185,129,0.35)] active:translate-y-0.5"
               >
                 <Swords className="w-4 h-4" />
                 <span>Send Challenge</span>

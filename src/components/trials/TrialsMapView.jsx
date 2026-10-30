@@ -10,7 +10,7 @@ const customTrialIcon = new L.DivIcon({
   className: 'custom-trial-pin',
   html: `
     <div style="
-      background-color: #B6FF3B;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
       color: #0B0F14;
       width: 32px;
       height: 32px;
@@ -20,8 +20,8 @@ const customTrialIcon = new L.DivIcon({
       justify-content: center;
       font-weight: 900;
       font-size: 14px;
-      box-shadow: 0 0 15px rgba(182, 255, 59, 0.6);
-      border: 2px solid #0B0F14;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.7);
+      border: 2px solid #fef3c7;
     ">
       ★
     </div>
@@ -35,13 +35,13 @@ const userLocationIcon = new L.DivIcon({
   className: 'custom-user-pin',
   html: `
     <div style="
-      background-color: #00D4FF;
+      background-color: #fbbf24;
       color: #0B0F14;
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      border: 3px solid #FFFFFF;
-      box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+      border: 3px solid #080a10;
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.8);
     "></div>
   `,
   iconSize: [22, 22],
@@ -65,7 +65,7 @@ export default function TrialsMapView({ trials, userCoords }) {
     : [18.5204, 73.8567]; // Pune center
 
   return (
-    <div className="w-full h-[600px] rounded-3xl overflow-hidden border border-[#293442] shadow-2xl relative z-0">
+    <div className="w-full h-[600px] rounded-3xl overflow-hidden border border-amber-500/25 shadow-2xl relative z-0">
       <MapContainer
         center={defaultCenter}
         zoom={12}
@@ -102,7 +102,7 @@ export default function TrialsMapView({ trials, userCoords }) {
             >
               <Popup className="custom-leaflet-popup">
                 <div className="p-1 space-y-2 max-w-[220px]">
-                  <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-black text-[#B6FF3B]">
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-black text-amber-400">
                     {trial.sport}
                   </span>
                   <h4 className="font-bold text-xs text-black leading-tight line-clamp-2">
@@ -113,12 +113,12 @@ export default function TrialsMapView({ trials, userCoords }) {
                     <div className="text-gray-500">{trial.venue}</div>
                   </div>
                   <div className="text-[11px] font-mono font-bold text-black flex items-center gap-1">
-                    <Calendar className="w-3 h-3" />
+                    <Calendar className="w-3 h-3 text-amber-600" />
                     <span>{trial.trialDate}</span>
                   </div>
                   <Link
                     to={`/trials/${trial.id}`}
-                    className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:underline pt-1"
+                    className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-700 hover:text-amber-900 hover:underline pt-1"
                   >
                     <span>View Trial Details</span>
                     <ArrowRight className="w-3 h-3" />

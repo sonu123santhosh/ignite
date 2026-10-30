@@ -179,7 +179,7 @@ export function FriendliesProvider({ children }) {
       followersCount: 1,
       preferredHomeGround: teamData.preferredHomeGround || 'College Main Ground',
       logoInitials: (teamData.name || 'TM').slice(0, 2).toUpperCase(),
-      primaryColor: '#00D9FF',
+      primaryColor: '#0f1726',
       roster: teamData.roster || []
     };
 

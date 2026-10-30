@@ -60,14 +60,14 @@ export default function AddBatchModal({ academy, initialProgramme, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-[#141B24] border border-[#293442] rounded-2xl w-full max-w-lg p-6 space-y-5 shadow-2xl">
-        <div className="flex items-center justify-between border-b border-[#293442] pb-3">
+    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+      <div className="bg-[#0c0d15]/95 border border-red-500/30 rounded-2xl w-full max-w-lg p-6 space-y-5 shadow-[0_10px_40px_rgba(0,0,0,0.8)]">
+        <div className="flex items-center justify-between border-b border-red-500/20 pb-3">
           <div className="flex items-center gap-2 text-white font-bold text-base">
-            <Calendar className="w-5 h-5 text-[#B6FF3B]" />
+            <Calendar className="w-5 h-5 text-red-500" />
             <span>Create New Batch Schedule</span>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-white">
+          <button onClick={onClose} className="text-gray-400 hover:text-white cursor-pointer">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -85,7 +85,7 @@ export default function AddBatchModal({ academy, initialProgramme, onClose }) {
             <select
               value={programmeId}
               onChange={(e) => setProgrammeId(e.target.value)}
-              className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+              className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
             >
               {academyProgrammes.map((p) => (
                 <option key={p.id} value={p.id}>{p.name} ({p.sport})</option>
@@ -101,7 +101,7 @@ export default function AddBatchModal({ academy, initialProgramme, onClose }) {
               placeholder="e.g. Early Morning Pace Squad"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2.5 text-white"
+              className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2.5 text-white focus:outline-none focus:border-red-500"
             />
           </div>
 
@@ -116,10 +116,10 @@ export default function AddBatchModal({ academy, initialProgramme, onClose }) {
                     key={d}
                     type="button"
                     onClick={() => toggleDay(d)}
-                    className={`w-10 h-8 rounded-lg font-bold text-xs transition-all ${
+                    className={`w-10 h-8 rounded-lg font-bold text-xs transition-all cursor-pointer ${
                       isSelected
-                        ? 'bg-[#B6FF3B] text-black shadow-sm'
-                        : 'bg-[#0B0F14] text-gray-400 border border-[#293442] hover:text-white'
+                        ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-sm'
+                        : 'bg-[#08050c] text-gray-400 border border-red-500/20 hover:text-white'
                     }`}
                   >
                     {d}
@@ -137,7 +137,7 @@ export default function AddBatchModal({ academy, initialProgramme, onClose }) {
                 type="time"
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2 text-white focus:outline-none focus:border-red-500"
               />
             </div>
             <div className="space-y-1">
@@ -146,7 +146,7 @@ export default function AddBatchModal({ academy, initialProgramme, onClose }) {
                 type="time"
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2 text-white focus:outline-none focus:border-red-500"
               />
             </div>
             <div className="space-y-1">
@@ -157,7 +157,7 @@ export default function AddBatchModal({ academy, initialProgramme, onClose }) {
                 max="50"
                 value={capacity}
                 onChange={(e) => setCapacity(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2 text-white focus:outline-none focus:border-red-500"
               />
             </div>
           </div>
@@ -168,7 +168,7 @@ export default function AddBatchModal({ academy, initialProgramme, onClose }) {
               <select
                 value={coachId}
                 onChange={(e) => setCoachId(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2 text-white focus:outline-none focus:border-red-500"
               >
                 {academyCoaches.map((c) => (
                   <option key={c.id} value={c.id}>{c.name}</option>
@@ -181,16 +181,16 @@ export default function AddBatchModal({ academy, initialProgramme, onClose }) {
                 type="text"
                 value={venue}
                 onChange={(e) => setVenue(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl p-2 text-white"
+                className="w-full bg-[#08050c] border border-red-500/20 rounded-xl p-2 text-white focus:outline-none focus:border-red-500"
               />
             </div>
           </div>
 
-          <div className="pt-3 border-t border-[#293442] flex items-center justify-end gap-3">
-            <button type="button" onClick={onClose} className="px-4 py-2 rounded-xl bg-[#1B2530] text-gray-300 font-semibold">
+          <div className="pt-3 border-t border-red-500/20 flex items-center justify-end gap-3">
+            <button type="button" onClick={onClose} className="px-4 py-2 rounded-xl bg-[#140e18] text-gray-300 border border-red-500/20 hover:text-white font-semibold cursor-pointer transition-all">
               Cancel
             </button>
-            <button type="submit" className="px-5 py-2.5 rounded-xl bg-[#B6FF3B] text-black font-extrabold hover:bg-[#a5ef28] shadow-md">
+            <button type="submit" className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold hover:shadow-[0_4px_18px_rgba(220,38,38,0.5)] border border-red-500/40 cursor-pointer transition-all">
               Save Batch
             </button>
           </div>

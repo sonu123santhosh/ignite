@@ -128,19 +128,19 @@ export default function AthleteTrainingDashboard() {
   return (
     <div className="min-h-screen bg-transparent text-[#F5F7FA] pb-24">
       {/* Top Banner & Header */}
-      <div className="bg-[#141B24] border-b border-[#293442]">
+      <div className="bg-[#0c0d15]/85 border-b border-red-500/20 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <Link to="/coaching" className="inline-flex items-center gap-1.5 text-xs text-[#94A3B8] hover:text-[#B6FF3B] transition-colors">
+                <Link to="/coaching" className="inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-red-400 transition-colors">
                   <ArrowLeft className="w-3.5 h-3.5" /> Back to Discovery
                 </Link>
                 <span className="text-slate-600">/</span>
-                <span className="text-xs text-[#B6FF3B] font-medium">Athlete Dashboard</span>
+                <span className="text-xs text-red-400 font-medium">Athlete Dashboard</span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-black text-[#F5F7FA] tracking-tight flex items-center gap-3">
-                My Training <span className="text-sm font-medium px-2.5 py-0.5 rounded-full bg-[#B6FF3B]/10 text-[#B6FF3B] border border-[#B6FF3B]/30">Athlete Portal</span>
+                My Training <span className="text-sm font-medium px-2.5 py-0.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/30">Athlete Portal</span>
               </h1>
               <p className="text-sm text-[#94A3B8] mt-1">
                 Welcome back, <strong className="text-white">{currentUser?.name}</strong>. Monitor your active training batches, upcoming trial workouts, and academy favourites.
@@ -150,7 +150,7 @@ export default function AthleteTrainingDashboard() {
               <CoachingRoleSwitcher />
               <Link
                 to="/coaching"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider hover:bg-[#a6ec31] transition-all shadow-lg shadow-[#B6FF3B]/10"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-bold text-xs uppercase tracking-wider hover:shadow-[0_4px_16px_rgba(220,38,38,0.5)] border border-red-500/40 transition-all shadow-lg"
               >
                 <Search className="w-4 h-4" /> Discover Academies
               </Link>
@@ -172,16 +172,16 @@ export default function AthleteTrainingDashboard() {
 
         {/* Notifications Bar */}
         {notifications.length > 0 && (
-          <div className="bg-[#1B2530] border border-[#293442] rounded-2xl p-4">
+          <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs uppercase font-bold text-[#00D4FF] tracking-wider flex items-center gap-2">
-                <AlertCircle className="w-4 h-4" /> Recent Alerts & Updates
+              <span className="text-xs uppercase font-bold text-red-400 tracking-wider flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 text-red-400" /> Recent Alerts & Updates
               </span>
               <span className="text-[11px] text-[#94A3B8]">{notifications.length} unread</span>
             </div>
             <div className="space-y-2">
               {notifications.slice(0, 2).map((n) => (
-                <div key={n.id} className="flex items-center justify-between text-xs bg-[#141B24] p-2.5 rounded-xl border border-[#293442]">
+                <div key={n.id} className="flex items-center justify-between text-xs bg-[#08050c] p-2.5 rounded-xl border border-red-500/15">
                   <span className="text-slate-200">{n.message}</span>
                   <button onClick={() => dismissNotification(n.id)} className="text-slate-500 hover:text-white text-[11px] ml-4 shrink-0">
                     Dismiss
@@ -194,25 +194,25 @@ export default function AthleteTrainingDashboard() {
 
         {/* Summary Metrics */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          <div className="bg-[#141B24] border border-[#293442] p-4 rounded-2xl">
+          <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md p-4 rounded-2xl">
             <div className="flex items-center justify-between mb-1">
               <span className="text-xs text-[#94A3B8]">Active Programmes</span>
-              <Award className="w-4 h-4 text-[#B6FF3B]" />
+              <Award className="w-4 h-4 text-red-400" />
             </div>
             <div className="text-2xl font-black text-white">{activeProgCount}</div>
             <p className="text-[11px] text-slate-500 mt-1">Confirmed training</p>
           </div>
 
-          <div className="bg-[#141B24] border border-[#293442] p-4 rounded-2xl">
+          <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md p-4 rounded-2xl">
             <div className="flex items-center justify-between mb-1">
               <span className="text-xs text-[#94A3B8]">Upcoming Sessions</span>
-              <Calendar className="w-4 h-4 text-[#00D4FF]" />
+              <Calendar className="w-4 h-4 text-rose-400" />
             </div>
             <div className="text-2xl font-black text-white">4</div>
             <p className="text-[11px] text-slate-500 mt-1">Next: Tomorrow 6:00 AM</p>
           </div>
 
-          <div className="bg-[#141B24] border border-[#293442] p-4 rounded-2xl">
+          <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md p-4 rounded-2xl">
             <div className="flex items-center justify-between mb-1">
               <span className="text-xs text-[#94A3B8]">Pending Trials</span>
               <Clock className="w-4 h-4 text-[#F59E0B]" />
@@ -221,7 +221,7 @@ export default function AthleteTrainingDashboard() {
             <p className="text-[11px] text-slate-500 mt-1">Awaiting completion</p>
           </div>
 
-          <div className="bg-[#141B24] border border-[#293442] p-4 rounded-2xl">
+          <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md p-4 rounded-2xl">
             <div className="flex items-center justify-between mb-1">
               <span className="text-xs text-[#94A3B8]">Pending Enrolments</span>
               <AlertCircle className="w-4 h-4 text-purple-400" />
@@ -230,7 +230,7 @@ export default function AthleteTrainingDashboard() {
             <p className="text-[11px] text-slate-500 mt-1">In review or waitlist</p>
           </div>
 
-          <div className="bg-[#141B24] border border-[#293442] p-4 rounded-2xl col-span-2 sm:col-span-1">
+          <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md p-4 rounded-2xl col-span-2 sm:col-span-1">
             <div className="flex items-center justify-between mb-1">
               <span className="text-xs text-[#94A3B8]">Saved Academies</span>
               <Bookmark className="w-4 h-4 text-pink-400" />
@@ -241,11 +241,11 @@ export default function AthleteTrainingDashboard() {
         </div>
 
         {/* Section 1: My Coaching Programmes */}
-        <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-5 sm:p-6 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#293442] pb-4">
+        <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-4 shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-red-500/20 pb-4">
             <div>
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                <Dumbbell className="w-5 h-5 text-[#B6FF3B]" /> My Coaching Programmes
+                <Dumbbell className="w-5 h-5 text-red-400" /> My Coaching Programmes
               </h2>
               <p className="text-xs text-[#94A3B8] mt-0.5">
                 All training batches you have applied for, active cohorts, and completion statuses.
@@ -256,10 +256,10 @@ export default function AthleteTrainingDashboard() {
                 <button
                   key={tab}
                   onClick={() => setProgFilter(tab)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                     progFilter === tab
-                      ? 'bg-[#B6FF3B] text-[#0B0F14]'
-                      : 'bg-[#1B2530] text-[#94A3B8] hover:text-white border border-[#293442]'
+                      ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-sm'
+                      : 'bg-[#140e18] text-[#94A3B8] hover:text-white border border-red-500/20'
                   }`}
                 >
                   {tab}
@@ -269,7 +269,7 @@ export default function AthleteTrainingDashboard() {
           </div>
 
           {filteredProgrammes.length === 0 ? (
-            <div className="text-center py-12 bg-[#0B0F14]/50 rounded-xl border border-dashed border-[#293442]">
+            <div className="text-center py-12 bg-[#08050c] rounded-xl border border-dashed border-red-500/30">
               <Award className="w-10 h-10 text-slate-600 mx-auto mb-2" />
               <p className="text-sm font-semibold text-slate-300">No programmes found</p>
               <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1 mb-4">
@@ -277,7 +277,7 @@ export default function AthleteTrainingDashboard() {
               </p>
               <Link
                 to="/coaching"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1B2530] hover:bg-[#22303e] text-xs font-bold text-[#B6FF3B] border border-[#293442]"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#140e18] hover:bg-red-950/40 text-xs font-bold text-red-300 border border-red-500/30 transition-colors"
               >
                 Browse Training Programmes
               </Link>
@@ -304,17 +304,17 @@ export default function AthleteTrainingDashboard() {
                     const batch = batches.find(b => b.id === enrol.batchId);
 
                     return (
-                      <tr key={enrol.id} className="hover:bg-[#1B2530]/50 transition-colors">
+                      <tr key={enrol.id} className="hover:bg-red-950/20 transition-colors">
                         <td className="py-3.5 px-4">
                           <div className="font-bold text-white text-sm">{enrol.programmeName}</div>
                           <div className="text-[11px] text-[#94A3B8] flex items-center gap-1 mt-0.5">
-                            <MapPin className="w-3 h-3 text-[#B6FF3B]" /> {acad?.name || enrol.academyName}
+                            <MapPin className="w-3 h-3 text-red-400" /> {acad?.name || enrol.academyName}
                           </div>
                         </td>
                         <td className="py-3.5 px-4">
                           <span className="font-medium text-slate-200">{coach?.name || enrol.coachName || 'Assigned Staff'}</span>
                           {coach?.verifiedBadge && (
-                            <span className="text-[10px] ml-1 text-[#00D4FF]">✓ Verified</span>
+                            <span className="text-[10px] ml-1 text-red-400 font-semibold">✓ Verified</span>
                           )}
                         </td>
                         <td className="py-3.5 px-4">
@@ -340,20 +340,20 @@ export default function AthleteTrainingDashboard() {
                           <div className="flex items-center justify-end gap-1.5">
                             <button
                               onClick={() => setActiveModal({ type: 'schedule', data: { enrol, batch, acad, coach } })}
-                              className="px-2.5 py-1 rounded-lg bg-[#1B2530] hover:bg-[#253241] text-slate-200 font-medium text-[11px] border border-[#293442]"
+                              className="px-2.5 py-1 rounded-lg bg-[#140e18] hover:bg-red-950/40 text-slate-200 font-medium text-[11px] border border-red-500/20 transition-colors cursor-pointer"
                             >
                               Schedule
                             </button>
                             <button
                               onClick={() => setActiveModal({ type: 'contact', data: { enrol, coach, acad } })}
-                              className="px-2.5 py-1 rounded-lg bg-[#1B2530] hover:bg-[#253241] text-[#00D4FF] font-medium text-[11px] border border-[#293442]"
+                              className="px-2.5 py-1 rounded-lg bg-[#140e18] hover:bg-red-950/40 text-red-300 font-medium text-[11px] border border-red-500/25 transition-colors cursor-pointer"
                             >
                               Contact
                             </button>
                             {enrol.status !== 'Cancelled' && (
                               <button
                                 onClick={() => setActiveModal({ type: 'cancelEnrol', data: enrol })}
-                                className="px-2 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 font-medium text-[11px] border border-red-500/30"
+                                className="px-2 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 font-medium text-[11px] border border-red-500/30 transition-colors cursor-pointer"
                               >
                                 Cancel
                               </button>
@@ -370,11 +370,11 @@ export default function AthleteTrainingDashboard() {
         </div>
 
         {/* Section 2: My Trial Bookings */}
-        <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-5 sm:p-6 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#293442] pb-4">
+        <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-4 shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-red-500/20 pb-4">
             <div>
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-[#00D4FF]" /> My Trial Bookings
+                <Calendar className="w-5 h-5 text-red-400" /> My Trial Bookings
               </h2>
               <p className="text-xs text-[#94A3B8] mt-0.5">
                 Trial sessions allow you to test coaching drills, equipment, and coach compatibility.
@@ -385,10 +385,10 @@ export default function AthleteTrainingDashboard() {
                 <button
                   key={tab}
                   onClick={() => setTrialFilter(tab)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                     trialFilter === tab
-                      ? 'bg-[#00D4FF] text-[#0B0F14]'
-                      : 'bg-[#1B2530] text-[#94A3B8] hover:text-white border border-[#293442]'
+                      ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-sm'
+                      : 'bg-[#140e18] text-[#94A3B8] hover:text-white border border-red-500/20'
                   }`}
                 >
                   {tab}
@@ -398,7 +398,7 @@ export default function AthleteTrainingDashboard() {
           </div>
 
           {filteredTrials.length === 0 ? (
-            <div className="text-center py-12 bg-[#0B0F14]/50 rounded-xl border border-dashed border-[#293442]">
+            <div className="text-center py-12 bg-[#08050c] rounded-xl border border-dashed border-red-500/30">
               <Calendar className="w-10 h-10 text-slate-600 mx-auto mb-2" />
               <p className="text-sm font-semibold text-slate-300">No trial bookings</p>
               <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1 mb-4">
@@ -406,7 +406,7 @@ export default function AthleteTrainingDashboard() {
               </p>
               <Link
                 to="/coaching"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1B2530] hover:bg-[#22303e] text-xs font-bold text-[#00D4FF] border border-[#293442]"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#140e18] hover:bg-red-950/40 text-xs font-bold text-red-300 border border-red-500/30 transition-colors"
               >
                 Find Free Trial Academies
               </Link>
@@ -414,7 +414,7 @@ export default function AthleteTrainingDashboard() {
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs text-slate-300">
-                <thead className="bg-[#1B2530] text-[#94A3B8] uppercase text-[10px] tracking-wider font-semibold border-b border-[#293442]">
+                <thead className="bg-[#08050c] text-gray-400 uppercase text-[10px] tracking-wider font-semibold border-b border-red-500/20">
                   <tr>
                     <th className="py-3 px-4">Booking ID</th>
                     <th className="py-3 px-4">Academy & Programme</th>
@@ -425,13 +425,13 @@ export default function AthleteTrainingDashboard() {
                     <th className="py-3 px-4 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#293442]">
+                <tbody className="divide-y divide-red-500/10">
                   {filteredTrials.map((trial) => {
                     const acad = academies.find(a => a.id === trial.academyId);
                     const coach = coaches.find(c => c.id === trial.coachId);
 
                     return (
-                      <tr key={trial.id} className="hover:bg-[#1B2530]/50 transition-colors">
+                      <tr key={trial.id} className="hover:bg-red-950/20 transition-colors">
                         <td className="py-3.5 px-4 font-mono font-bold text-slate-400">
                           {trial.id}
                         </td>
@@ -444,11 +444,11 @@ export default function AthleteTrainingDashboard() {
                         </td>
                         <td className="py-3.5 px-4">
                           <div className="font-semibold text-white">{trial.date}</div>
-                          <div className="text-[11px] text-[#00D4FF]">{trial.time || trial.timeSlot || '07:00'}</div>
+                          <div className="text-[11px] text-red-400 font-mono">{trial.time || trial.timeSlot || '07:00'}</div>
                         </td>
                         <td className="py-3.5 px-4">
                           {(trial.fee === 0 || trial.trialFee === 0 || trial.isFree) ? (
-                            <span className="font-bold text-[#B6FF3B]">Free Trial</span>
+                            <span className="font-bold text-red-400">Free Trial</span>
                           ) : (
                             <span className="font-bold text-white">₹{trial.fee || trial.trialFee || 200}</span>
                           )}
@@ -460,14 +460,14 @@ export default function AthleteTrainingDashboard() {
                           <div className="flex items-center justify-end gap-1.5">
                             <button
                               onClick={() => setActiveModal({ type: 'trialDetails', data: trial })}
-                              className="px-2.5 py-1 rounded-lg bg-[#1B2530] hover:bg-[#253241] text-slate-200 font-medium text-[11px] border border-[#293442]"
+                              className="px-2.5 py-1 rounded-lg bg-[#140e18] hover:bg-red-950/40 text-slate-200 font-medium text-[11px] border border-red-500/20 transition-colors cursor-pointer"
                             >
                               Details
                             </button>
                             {trial.status === 'Pending' || trial.status === 'Confirmed' ? (
                               <button
                                 onClick={() => setActiveModal({ type: 'cancelTrial', data: trial })}
-                                className="px-2 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 font-medium text-[11px] border border-red-500/30"
+                                className="px-2 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 font-medium text-[11px] border border-red-500/30 transition-colors cursor-pointer"
                               >
                                 Cancel
                               </button>
@@ -484,8 +484,8 @@ export default function AthleteTrainingDashboard() {
         </div>
 
         {/* Section 3: Favourite Academies & Coaches */}
-        <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-5 sm:p-6 space-y-4">
-          <div className="flex items-center justify-between border-b border-[#293442] pb-4">
+        <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-4 shadow-xl">
+          <div className="flex items-center justify-between border-b border-red-500/20 pb-4">
             <div>
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
                 <Bookmark className="w-5 h-5 text-pink-400" /> Saved Coaching Centres ({savedAcademiesList.length})
@@ -494,7 +494,7 @@ export default function AthleteTrainingDashboard() {
                 Quick access to academies you have bookmarked for easy comparison.
               </p>
             </div>
-            <Link to="/coaching" className="text-xs text-[#B6FF3B] hover:underline font-semibold">
+            <Link to="/coaching" className="text-xs text-red-400 hover:underline font-semibold">
               Browse More Academies →
             </Link>
           </div>
@@ -506,15 +506,15 @@ export default function AthleteTrainingDashboard() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {savedAcademiesList.map((acad) => (
-                <div key={acad.id} className="bg-[#1B2530] border border-[#293442] rounded-xl p-4 flex flex-col justify-between hover:border-[#B6FF3B]/40 transition-colors">
+                <div key={acad.id} className="bg-[#08050c] border border-red-500/20 rounded-xl p-4 flex flex-col justify-between hover:border-red-500/50 transition-colors shadow-md">
                   <div>
                     <div className="flex items-start justify-between gap-2 mb-2">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#B6FF3B]/10 text-[#B6FF3B] border border-[#B6FF3B]/30">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-red-500/10 text-red-400 border border-red-500/30">
                         {acad.sports?.join(', ') || 'Multi-Sport'}
                       </span>
                       <button
                         onClick={() => toggleFavourite(acad.id)}
-                        className="text-pink-400 hover:text-pink-300"
+                        className="text-pink-400 hover:text-pink-300 cursor-pointer"
                         title="Remove favourite"
                       >
                         <Heart className="w-4 h-4 fill-pink-500 text-pink-500" />
@@ -522,17 +522,17 @@ export default function AthleteTrainingDashboard() {
                     </div>
                     <h3 className="font-bold text-white text-base leading-snug">{acad.name}</h3>
                     <p className="text-xs text-[#94A3B8] mt-1 flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[#B6FF3B]" /> {acad.locality}, {acad.city}
+                      <MapPin className="w-3.5 h-3.5 text-red-400" /> {acad.locality}, {acad.city}
                     </p>
                   </div>
-                  <div className="pt-4 border-t border-[#293442]/60 mt-4 flex items-center justify-between">
+                  <div className="pt-4 border-t border-red-500/20 mt-4 flex items-center justify-between">
                     <div>
                       <span className="text-[10px] text-slate-400">Monthly from</span>
                       <div className="font-bold font-mono text-sm text-white">₹{acad.monthlyFee?.toLocaleString('en-IN')}</div>
                     </div>
                     <Link
                       to={`/coaching/${acad.id}`}
-                      className="px-3 py-1.5 rounded-lg bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider hover:bg-[#a6ec31] transition-colors"
+                      className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold text-xs uppercase tracking-wider hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all"
                     >
                       View Academy
                     </Link>
@@ -549,22 +549,22 @@ export default function AthleteTrainingDashboard() {
       {/* Schedule Detail Modal */}
       {activeModal?.type === 'schedule' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-[#141B24] border border-[#293442] rounded-2xl w-full max-w-md p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-[#293442] pb-3">
+          <div className="bg-[#0c0d15] border border-red-500/30 rounded-2xl w-full max-w-md p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-red-500/20 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-[#B6FF3B]" /> Batch Weekly Schedule
+                <Calendar className="w-4 h-4 text-red-400" /> Batch Weekly Schedule
               </h3>
-              <button onClick={() => setActiveModal(null)} className="text-slate-400 hover:text-white">✕</button>
+              <button onClick={() => setActiveModal(null)} className="text-slate-400 hover:text-white cursor-pointer">✕</button>
             </div>
             <div className="space-y-3 text-xs">
               <div>
                 <span className="text-slate-400">Programme:</span>
                 <p className="font-bold text-white text-sm">{activeModal.data.enrol.programmeName}</p>
               </div>
-              <div className="grid grid-cols-2 gap-2 bg-[#1B2530] p-3 rounded-xl border border-[#293442]">
+              <div className="grid grid-cols-2 gap-2 bg-[#140e18] p-3 rounded-xl border border-red-500/20">
                 <div>
                   <span className="text-slate-400">Timing:</span>
-                  <p className="font-bold text-[#00D4FF]">{activeModal.data.batch?.timing || activeModal.data.enrol.batchTiming}</p>
+                  <p className="font-bold text-red-400">{activeModal.data.batch?.timing || activeModal.data.enrol.batchTiming}</p>
                 </div>
                 <div>
                   <span className="text-slate-400">Days:</span>
@@ -583,7 +583,7 @@ export default function AthleteTrainingDashboard() {
             <div className="pt-2">
               <button
                 onClick={() => setActiveModal(null)}
-                className="w-full py-2 rounded-xl bg-[#1B2530] hover:bg-[#22303e] text-xs font-bold text-white border border-[#293442]"
+                className="w-full py-2 rounded-xl bg-[#140e18] hover:bg-red-950/40 text-xs font-bold text-white border border-red-500/25 transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -595,21 +595,21 @@ export default function AthleteTrainingDashboard() {
       {/* Contact Coach Modal */}
       {activeModal?.type === 'contact' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-[#141B24] border border-[#293442] rounded-2xl w-full max-w-md p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-[#293442] pb-3">
+          <div className="bg-[#0c0d15] border border-red-500/30 rounded-2xl w-full max-w-md p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-red-500/20 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-[#00D4FF]" /> Contact Training Team
+                <MessageSquare className="w-4 h-4 text-red-400" /> Contact Training Team
               </h3>
-              <button onClick={() => setActiveModal(null)} className="text-slate-400 hover:text-white">✕</button>
+              <button onClick={() => setActiveModal(null)} className="text-slate-400 hover:text-white cursor-pointer">✕</button>
             </div>
             <div className="space-y-3 text-xs">
               <p className="text-slate-300">
                 You can reach out directly to the academy management for queries regarding gear, attendance notes, or schedule adjustments.
               </p>
-              <div className="bg-[#1B2530] p-3 rounded-xl border border-[#293442] space-y-2">
+              <div className="bg-[#140e18] p-3 rounded-xl border border-red-500/20 space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-slate-400">Academy Phone:</span>
-                  <span className="font-mono text-[#B6FF3B] font-bold">{activeModal.data.acad?.phone || '+91 98234 11002'}</span>
+                  <span className="font-mono text-red-400 font-bold">{activeModal.data.acad?.phone || '+91 98234 11002'}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-slate-400">Email:</span>
@@ -626,7 +626,7 @@ export default function AthleteTrainingDashboard() {
             </div>
             <button
               onClick={() => setActiveModal(null)}
-              className="w-full py-2.5 rounded-xl bg-[#00D4FF] text-[#0B0F14] font-bold text-xs uppercase tracking-wider hover:bg-[#33ddff]"
+              className="w-full py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-bold text-xs uppercase tracking-wider hover:shadow-[0_4px_16px_rgba(220,38,38,0.5)] transition-all cursor-pointer"
             >
               Got It
             </button>

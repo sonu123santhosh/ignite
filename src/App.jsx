@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useSearchParams } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import IntroPage from './pages/IntroPage';
 import Facilities from './pages/Facilities';
 import FacilityDetails from './pages/FacilityDetails';
 import FacilityCheckout from './pages/FacilityCheckout';
@@ -39,9 +40,6 @@ import TrialsLanding from './pages/trials/TrialsLanding';
 import TrialDetails from './pages/trials/TrialDetails';
 import TrialApply from './pages/trials/TrialApply';
 import AthleteTrialsDashboard from './pages/trials/AthleteTrialsDashboard';
-import OrganiserDashboard from './pages/trials/OrganiserDashboard';
-import OrganiserCreateTrial from './pages/trials/OrganiserCreateTrial';
-import OrganiserManageTrial from './pages/trials/OrganiserManageTrial';
 
 // Other Sections
 import FriendlyMatches from './pages/FriendlyMatches';
@@ -91,8 +89,13 @@ export default function App() {
       <CoachingProvider>
         <TrialsProvider>
           <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+            {/* Cinematic Fullscreen Intro Landing Page (Pure White #FFFFFF) */}
+            <Route path="/" element={<IntroPage />} />
+            <Route path="/intro" element={<IntroPage />} />
+
+            {/* Main Application Shell */}
+            <Route element={<Layout />}>
+              <Route path="home" element={<Home />} />
 
           {/* Facilities & Grounds Feature Routes */}
           <Route
@@ -236,14 +239,12 @@ export default function App() {
           <Route path="coaching/:id" element={<CoachingDetails />} />
           <Route path="coaching/my-training" element={<AthleteTrainingDashboard />} />
 
-          {/* Sports Trials Routes */}
+          {/* Sports Trials Routes - Pure Athlete Journey */}
           <Route path="trials" element={<TrialsLanding />} />
           <Route path="trials/:id" element={<TrialDetails />} />
           <Route path="trials/:id/apply" element={<TrialApply />} />
           <Route path="trials/dashboard" element={<AthleteTrialsDashboard />} />
-          <Route path="trials/organiser" element={<OrganiserDashboard />} />
-          <Route path="trials/organiser/create" element={<OrganiserCreateTrial />} />
-          <Route path="trials/organiser/:id" element={<OrganiserManageTrial />} />
+          <Route path="trials/organiser/*" element={<Navigate to="/trials" replace />} />
 
           {/* Remaining sections */}
           <Route path="*" element={<NotFound />} />

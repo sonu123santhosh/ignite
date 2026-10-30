@@ -15,10 +15,8 @@ const TrialsContext = createContext(null);
 export function TrialsProvider({ children }) {
   const stored = storageWrapper.get(STORAGE_KEY, null);
 
-  const [role, setRole] = useState(stored?.role || 'athlete'); // 'athlete' | 'organiser'
-  const [activeUser, setActiveUser] = useState(
-    stored?.activeUser || DEMO_PERSONAS[0] // Rohan Mane default
-  );
+  const [role, setRole] = useState('athlete');
+  const [activeUser, setActiveUser] = useState(DEMO_PERSONAS[0]); // Rohan Mane (Athlete)
 
   const [organisations, setOrganisations] = useState(
     stored?.organisations || INITIAL_ORGANISATIONS

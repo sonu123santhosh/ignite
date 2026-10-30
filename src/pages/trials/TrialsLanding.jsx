@@ -14,7 +14,6 @@ import {
   Trophy
 } from 'lucide-react';
 import { useTrials } from '../../context/TrialsContext';
-import TrialsRoleSwitcher from '../../components/trials/TrialsRoleSwitcher';
 import TrialsHeader from '../../components/trials/TrialsHeader';
 import TrialCard from '../../components/trials/TrialCard';
 import TrialsFilterPanel from '../../components/trials/TrialsFilterPanel';
@@ -22,7 +21,7 @@ import TrialsMapView from '../../components/trials/TrialsMapView';
 import { filterTrials, sortTrials } from '../../data/trialsData';
 
 export default function TrialsLanding() {
-  const { role, trials, activeUser, applications } = useTrials();
+  const { trials, activeUser, applications } = useTrials();
   const navigate = useNavigate();
 
   // Search & Filter State
@@ -118,37 +117,6 @@ export default function TrialsLanding() {
   return (
     <div className="min-h-screen bg-transparent text-[#F5F7FA] pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
-        {/* Role Switcher Demo Bar */}
-        <TrialsRoleSwitcher />
-
-        {/* Organiser Quick Banner if in Organiser Role */}
-        {role === 'organiser' && (
-          <div className="bg-[#141B24] border border-[#00D4FF]/40 rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
-            <div className="space-y-1">
-              <h2 className="text-lg font-bold text-white">
-                Manage your trials, review candidates, and record selection results.
-              </h2>
-              <p className="text-xs text-[#94A3B8]">
-                Logged in as <strong>{activeUser.name}</strong> ({activeUser.organisationName}).
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <Link
-                to="/trials/organiser"
-                className="px-4 py-2.5 rounded-xl bg-[#00D4FF] text-[#0B0F14] font-extrabold text-xs uppercase tracking-wider hover:bg-[#33ddff] transition-all"
-              >
-                Go to Organiser Dashboard
-              </Link>
-              <Link
-                to="/trials/organiser/create"
-                className="px-4 py-2.5 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-extrabold text-xs uppercase tracking-wider hover:bg-[#a5ef28] transition-all"
-              >
-                + Create Trial
-              </Link>
-            </div>
-          </div>
-        )}
-
         {/* Hero & Discovery Search Header */}
         <TrialsHeader
           searchQuery={searchQuery}
@@ -165,21 +133,18 @@ export default function TrialsLanding() {
             const el = document.getElementById('trials-listing-section');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
-          onOrganiseClick={() => {
-            navigate('/trials/organiser/create');
-          }}
         />
 
         {/* Main Trial Listings Section */}
         <div id="trials-listing-section" className="space-y-6 pt-4">
           {/* Top Control Bar: Results count, sorting, view toggle */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#141B24] border border-[#293442] p-4 rounded-2xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#0a0d16]/85 border border-amber-500/20 p-4 rounded-2xl shadow-xl backdrop-blur-md">
             <div className="flex items-center gap-2">
               <span className="text-sm font-bold text-white">
                 {filteredTrials.length} {filteredTrials.length === 1 ? 'Trial' : 'Trials'} Found
               </span>
               {(selectedSport !== 'all' || selectedCity !== 'all' || searchQuery) && (
-                <span className="text-xs text-[#94A3B8]">• Active filters applied</span>
+                <span className="text-xs text-amber-300">• Active filters applied</span>
               )}
             </div>
 
@@ -188,9 +153,9 @@ export default function TrialsLanding() {
               <button
                 type="button"
                 onClick={() => setIsMobileFiltersOpen(true)}
-                className="lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#1B2530] text-xs font-bold text-white border border-[#293442] cursor-pointer"
+                className="lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#141824] text-xs font-bold text-amber-200 border border-amber-500/30 hover:bg-amber-950/40 cursor-pointer"
               >
-                <SlidersHorizontal className="w-3.5 h-3.5 text-[#B6FF3B]" />
+                <SlidersHorizontal className="w-3.5 h-3.5 text-amber-400" />
                 <span>Filters</span>
               </button>
 
@@ -200,7 +165,7 @@ export default function TrialsLanding() {
                 <select
                   value={sortKey}
                   onChange={(e) => setSortKey(e.target.value)}
-                  className="px-2.5 py-1.5 rounded-xl bg-[#0B0F14] border border-[#293442] text-xs text-white focus:outline-none focus:border-[#B6FF3B] cursor-pointer"
+                  className="px-2.5 py-1.5 rounded-xl bg-[#07090e] border border-amber-500/20 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer"
                 >
                   <option value="relevance">Most Relevant</option>
                   <option value="nearest">Nearest to Location</option>
@@ -210,14 +175,14 @@ export default function TrialsLanding() {
               </div>
 
               {/* View Mode Toggle: Grid | List | Map */}
-              <div className="flex items-center p-1 bg-[#0B0F14] rounded-xl border border-[#293442]">
+              <div className="flex items-center p-1 bg-[#07090e] rounded-xl border border-amber-500/20">
                 <button
                   type="button"
                   onClick={() => setViewMode('grid')}
                   title="Grid View"
-                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
+                  className={`p-1.5 rounded-lg transition-all cursor-pointer ${
                     viewMode === 'grid'
-                      ? 'bg-[#1B2530] text-[#B6FF3B]'
+                      ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm'
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
@@ -227,9 +192,9 @@ export default function TrialsLanding() {
                   type="button"
                   onClick={() => setViewMode('list')}
                   title="List View"
-                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
+                  className={`p-1.5 rounded-lg transition-all cursor-pointer ${
                     viewMode === 'list'
-                      ? 'bg-[#1B2530] text-[#B6FF3B]'
+                      ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm'
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
@@ -239,9 +204,9 @@ export default function TrialsLanding() {
                   type="button"
                   onClick={() => setViewMode('map')}
                   title="Map View"
-                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
+                  className={`p-1.5 rounded-lg transition-all cursor-pointer ${
                     viewMode === 'map'
-                      ? 'bg-[#1B2530] text-[#00D4FF]'
+                      ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm'
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
@@ -268,20 +233,20 @@ export default function TrialsLanding() {
               {viewMode === 'map' ? (
                 <TrialsMapView trials={filteredTrials} userCoords={userCoords} />
               ) : filteredTrials.length === 0 ? (
-                <div className="bg-[#141B24] border border-[#293442] rounded-3xl p-12 text-center space-y-4">
-                  <div className="w-14 h-14 rounded-full bg-[#1B2530] text-slate-500 border border-[#293442] flex items-center justify-center mx-auto">
+                <div className="bg-[#0a0d16]/85 border border-amber-500/20 rounded-3xl p-12 text-center space-y-4 backdrop-blur-md">
+                  <div className="w-14 h-14 rounded-full bg-[#141824] text-amber-400 border border-amber-500/30 flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(245,158,11,0.25)]">
                     <Trophy className="w-7 h-7" />
                   </div>
                   <div className="space-y-1">
                     <h3 className="text-lg font-bold text-white">No Sports Trials Found</h3>
-                    <p className="text-xs text-[#94A3B8] max-w-sm mx-auto leading-relaxed">
+                    <p className="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed">
                       No trials match your current search criteria or radius filters. Try resetting filters or expanding your location.
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={handleResetFilters}
-                    className="px-4 py-2 rounded-xl bg-[#B6FF3B] text-[#0B0F14] text-xs font-bold uppercase tracking-wider cursor-pointer"
+                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white text-xs font-black uppercase tracking-wider hover:shadow-[0_4px_18px_rgba(245,158,11,0.5)] border border-amber-400/40 cursor-pointer transition-all"
                   >
                     Reset All Filters
                   </button>

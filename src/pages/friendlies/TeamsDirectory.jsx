@@ -64,16 +64,16 @@ export default function TeamsDirectory() {
         <FriendliesRoleSwitcher />
 
         {/* Directory Banner & Sub-Nav */}
-        <div className="bg-[#151B23] border border-[#293442] rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
+        <div className="bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_12px_40px_rgba(14,165,233,0.12)]">
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#00D9FF]">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-400">
               <Users className="w-4 h-4" />
               <span>Inter-Collegiate Directory</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
               Registered College Squads
             </h1>
-            <p className="text-sm text-gray-400 max-w-2xl">
+            <p className="text-sm text-slate-300 max-w-2xl">
               Browse verified college teams, view official squad rosters, follow match schedules, and initiate friendly match challenges.
             </p>
           </div>
@@ -81,14 +81,14 @@ export default function TeamsDirectory() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               to="/friendlies/register-team"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#B6FF3B] text-black font-bold text-sm hover:bg-[#a5ef28] transition-all shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white font-bold text-sm shadow-[0_4px_20px_rgba(14,165,233,0.35)] hover:shadow-[0_4px_28px_rgba(14,165,233,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
               <PlusCircle className="w-4 h-4" />
               Register Squad
             </Link>
             <Link
               to="/friendlies"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1B2530] text-gray-200 border border-[#293442] font-semibold text-sm hover:text-white hover:bg-[#222f3d] transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-500/10 text-sky-200 border border-sky-400/30 font-semibold text-sm hover:text-white hover:bg-sky-500/20 transition-all"
             >
               Browse Matches
             </Link>
@@ -96,22 +96,22 @@ export default function TeamsDirectory() {
         </div>
 
         {/* Filters and Search Bar */}
-        <div className="bg-[#151B23] border border-[#293442] rounded-2xl p-5 space-y-4">
+        <div className="bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 rounded-2xl p-5 space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
             {/* Search Input */}
             <div className="md:col-span-5 relative">
-              <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+              <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
                 type="text"
                 placeholder="Search by team, college, captain, or sport..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#00D9FF]"
+                className="w-full bg-[#070d1a]/80 border border-sky-500/30 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 transition-all"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -123,10 +123,10 @@ export default function TeamsDirectory() {
               <select
                 value={selectedSport}
                 onChange={(e) => setSelectedSport(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#00D9FF]"
+                className="w-full bg-[#070d1a]/80 border border-sky-500/30 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 transition-all"
               >
                 {sportsList.map(sport => (
-                  <option key={sport} value={sport}>{sport === 'All' ? 'All Sports' : sport}</option>
+                  <option key={sport} value={sport} className="bg-[#0c1629] text-white">{sport === 'All' ? 'All Sports' : sport}</option>
                 ))}
               </select>
             </div>
@@ -136,48 +136,48 @@ export default function TeamsDirectory() {
               <select
                 value={selectedCollege}
                 onChange={(e) => setSelectedCollege(e.target.value)}
-                className="w-full bg-[#0B0F14] border border-[#293442] rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#00D9FF]"
+                className="w-full bg-[#070d1a]/80 border border-sky-500/30 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 transition-all"
               >
-                <option value="All">All Colleges / Universities</option>
+                <option value="All" className="bg-[#0c1629] text-white">All Colleges / Universities</option>
                 {(Array.isArray(colleges) ? colleges : Object.values(colleges || {})).map(c => (
-                  <option key={c.id} value={c.id}>{c.name} ({c.city})</option>
+                  <option key={c.id} value={c.id} className="bg-[#0c1629] text-white">{c.name} ({c.city})</option>
                 ))}
               </select>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-[#293442]/50 text-xs">
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-sky-500/20 text-xs">
             <div className="flex items-center gap-4">
-              <label className="flex items-center gap-2 cursor-pointer select-none text-gray-300 hover:text-white">
+              <label className="flex items-center gap-2 cursor-pointer select-none text-slate-300 hover:text-white">
                 <input
                   type="checkbox"
                   checked={verifiedOnly}
                   onChange={(e) => setVerifiedOnly(e.target.checked)}
-                  className="w-4 h-4 rounded border-gray-600 bg-[#0B0F14] text-[#B6FF3B] focus:ring-0 focus:ring-offset-0"
+                  className="w-4 h-4 rounded border-sky-500/40 bg-[#070d1a] text-sky-500 focus:ring-0 focus:ring-offset-0"
                 />
                 <span>Verified by Coordinator only</span>
               </label>
             </div>
 
-            <div className="text-gray-400 font-mono">
-              Showing <span className="text-[#00D9FF] font-semibold">{filteredTeams.length}</span> squads
+            <div className="text-slate-400 font-mono">
+              Showing <span className="text-sky-300 font-semibold">{filteredTeams.length}</span> squads
             </div>
           </div>
         </div>
 
         {/* Squad Cards Grid */}
         {filteredTeams.length === 0 ? (
-          <div className="bg-[#151B23] border border-[#293442] rounded-2xl p-12 text-center space-y-4">
-            <AlertCircle className="w-12 h-12 text-gray-500 mx-auto" />
+          <div className="bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 rounded-2xl p-12 text-center space-y-4">
+            <AlertCircle className="w-12 h-12 text-slate-500 mx-auto" />
             <div className="space-y-1">
               <h3 className="text-lg font-bold text-white">No College Teams Found</h3>
-              <p className="text-sm text-gray-400 max-w-md mx-auto">
+              <p className="text-sm text-slate-300 max-w-md mx-auto">
                 No registered squads match your active filters. Try resetting your search or register your college squad today.
               </p>
             </div>
             <button
               onClick={() => { setSelectedSport('All'); setSelectedCollege('All'); setSearchQuery(''); setVerifiedOnly(false); }}
-              className="px-4 py-2 rounded-xl bg-[#1B2530] text-gray-300 border border-[#293442] hover:text-white text-xs font-semibold"
+              className="px-4 py-2 rounded-xl bg-sky-500/10 text-sky-200 border border-sky-400/30 hover:text-white text-xs font-semibold"
             >
               Reset Filters
             </button>
@@ -191,24 +191,26 @@ export default function TeamsDirectory() {
               return (
                 <div 
                   key={team.id}
-                  className="bg-[#151B23] border border-[#293442] rounded-2xl p-6 flex flex-col justify-between hover:border-[#38485c] transition-all hover:shadow-xl group"
+                  className="bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 rounded-2xl p-6 flex flex-col justify-between hover:border-sky-400/50 hover:shadow-[0_12px_36px_rgba(14,165,233,0.15)] transition-all group"
                 >
                   <div className="space-y-4">
                     {/* Header: Logo, Name, Badge */}
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3">
                         <div 
-                          className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-sm tracking-tight border border-[#293442] shadow-inner"
-                          style={{ backgroundColor: `${team.color || '#3b82f6'}20`, color: team.color || '#3b82f6' }}
+                          className="w-12 h-12 rounded-xl flex items-center justify-center font-['Barlow_Condensed'] font-black text-base text-slate-100 shrink-0 bg-gradient-to-br from-[#182235] via-[#0f1726] to-[#080d18] border border-sky-500/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_4px_12px_rgba(0,0,0,0.6)] relative overflow-hidden group-hover:border-sky-400/50 transition-colors"
                         >
-                          {team.initials || team.name.slice(0, 3).toUpperCase()}
+                          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-transparent to-transparent pointer-events-none" />
+                          <span className="relative z-10 tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                            {team.initials || team.name.slice(0, 3).toUpperCase()}
+                          </span>
                         </div>
                         <div>
-                          <h3 className="font-bold text-white group-hover:text-[#00D9FF] transition-colors leading-snug">
+                          <h3 className="font-bold text-white group-hover:text-sky-300 transition-colors leading-snug">
                             {team.name}
                           </h3>
-                          <div className="flex items-center gap-1.5 text-xs text-gray-400 mt-0.5">
-                            <GraduationCap className="w-3.5 h-3.5 text-gray-500 shrink-0" />
+                          <div className="flex items-center gap-1.5 text-xs text-slate-400 mt-0.5">
+                            <GraduationCap className="w-3.5 h-3.5 text-slate-500 shrink-0" />
                             <span className="truncate max-w-[170px]" title={college.name}>{college.name}</span>
                           </div>
                         </div>
@@ -216,8 +218,8 @@ export default function TeamsDirectory() {
 
                       {/* Status Tag */}
                       {team.status?.toLowerCase() === 'verified' ? (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#B6FF3B]/10 text-[#B6FF3B] border border-[#B6FF3B]/30 shrink-0">
-                          <ShieldCheck className="w-3 h-3" />
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-sky-500/15 text-sky-300 border border-sky-400/40 shrink-0">
+                          <ShieldCheck className="w-3 h-3 text-sky-400" />
                           Verified
                         </span>
                       ) : (
@@ -229,33 +231,33 @@ export default function TeamsDirectory() {
                     </div>
 
                     {/* Metadata & Stats */}
-                    <div className="grid grid-cols-3 gap-2 py-3 px-3 bg-[#0B0F14] rounded-xl border border-[#293442]/60 text-center">
+                    <div className="grid grid-cols-3 gap-2 py-3 px-3 bg-[#070d1a]/80 rounded-xl border border-sky-500/20 text-center">
                       <div>
-                        <div className="text-[10px] uppercase font-semibold text-gray-500">Sport</div>
+                        <div className="text-[10px] uppercase font-semibold text-slate-400">Sport</div>
                         <div className="text-xs font-bold text-white mt-0.5">{team.sport}</div>
                       </div>
                       <div>
-                        <div className="text-[10px] uppercase font-semibold text-gray-500">Squad</div>
-                        <div className="text-xs font-bold text-[#00D9FF] mt-0.5">{team.roster?.length || 0} Players</div>
+                        <div className="text-[10px] uppercase font-semibold text-slate-400">Squad</div>
+                        <div className="text-xs font-bold text-sky-300 mt-0.5">{team.roster?.length || 0} Players</div>
                       </div>
                       <div>
-                        <div className="text-[10px] uppercase font-semibold text-gray-500">Record</div>
-                        <div className="text-xs font-bold text-[#B6FF3B] mt-0.5">
+                        <div className="text-[10px] uppercase font-semibold text-slate-400">Record</div>
+                        <div className="text-xs font-bold text-emerald-400 mt-0.5">
                           {team.stats?.wins || 0}W - {team.stats?.losses || 0}L
                         </div>
                       </div>
                     </div>
 
                     {/* Captain & City */}
-                    <div className="space-y-1.5 text-xs text-gray-400">
+                    <div className="space-y-1.5 text-xs text-slate-300">
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-500">Captain:</span>
-                        <span className="text-gray-200 font-medium">{team.captainName || team.captain?.name || 'Squad Captain'}</span>
+                        <span className="text-slate-400">Captain:</span>
+                        <span className="text-white font-medium">{team.captainName || team.captain?.name || 'Squad Captain'}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-500">Location:</span>
-                        <span className="text-gray-300 flex items-center gap-1">
-                          <MapPin className="w-3 h-3 text-gray-500" />
+                        <span className="text-slate-400">Location:</span>
+                        <span className="text-slate-300 flex items-center gap-1">
+                          <MapPin className="w-3 h-3 text-sky-400" />
                           {college.city}
                         </span>
                       </div>
@@ -263,19 +265,19 @@ export default function TeamsDirectory() {
                   </div>
 
                   {/* Actions Bar */}
-                  <div className="pt-5 mt-4 border-t border-[#293442] flex items-center gap-2">
+                  <div className="pt-5 mt-4 border-t border-sky-500/20 flex items-center gap-2">
                     <button
                       onClick={() => setActiveModalRoster(team)}
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-[#1B2530] text-gray-200 border border-[#293442] hover:bg-[#222f3d] hover:text-white transition-all text-xs font-semibold"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-sky-500/10 text-sky-200 border border-sky-400/30 hover:bg-sky-500/20 hover:text-white transition-all text-xs font-semibold"
                     >
-                      <Eye className="w-3.5 h-3.5" />
+                      <Eye className="w-3.5 h-3.5 text-sky-400" />
                       View Roster
                     </button>
 
                     {canChallenge ? (
                       <button
                         onClick={() => navigate(`/friendlies/challenge?opponentTeamId=${team.id}`)}
-                        className="inline-flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-xl bg-[#B6FF3B] text-black font-bold text-xs hover:bg-[#a5ef28] transition-all"
+                        className="inline-flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xs shadow-md shadow-sky-600/30 hover:from-sky-400 hover:to-blue-500 hover:scale-[1.02] active:scale-[0.98] transition-all"
                         title="Propose a friendly match challenge"
                       >
                         <Swords className="w-3.5 h-3.5" />
@@ -286,11 +288,11 @@ export default function TeamsDirectory() {
                         onClick={() => toggleFollowTeam(team.id)}
                         className={`inline-flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-xl border text-xs font-semibold transition-all ${
                           isFollowed 
-                            ? 'bg-[#00D9FF]/15 text-[#00D9FF] border-[#00D9FF]/40' 
-                            : 'bg-[#1B2530] text-gray-300 border-[#293442] hover:text-white'
+                            ? 'bg-sky-500/15 text-sky-300 border-sky-400/40' 
+                            : 'bg-sky-500/10 text-slate-300 border-sky-500/20 hover:text-white hover:bg-sky-500/20'
                         }`}
                       >
-                        <Star className={`w-3.5 h-3.5 ${isFollowed ? 'fill-[#00D9FF]' : ''}`} />
+                        <Star className={`w-3.5 h-3.5 ${isFollowed ? 'fill-sky-400 text-sky-400' : 'text-slate-400'}`} />
                         {isFollowed ? 'Following' : 'Follow'}
                       </button>
                     )}
@@ -303,32 +305,34 @@ export default function TeamsDirectory() {
 
         {/* Squad Roster Modal */}
         {activeModalRoster && (
-          <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-            <div className="bg-[#151B23] border border-[#293442] rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+          <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+            <div className="bg-[#0c1629] border border-sky-500/30 rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
               {/* Modal Header */}
-              <div className="p-6 border-b border-[#293442] flex items-center justify-between bg-[#1B2530]/50">
+              <div className="p-6 border-b border-sky-500/20 flex items-center justify-between bg-[#070d1a]/80">
                 <div className="flex items-center gap-3">
                   <div 
-                    className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm border border-[#293442]"
-                    style={{ backgroundColor: `${activeModalRoster.color || '#3b82f6'}20`, color: activeModalRoster.color || '#3b82f6' }}
+                    className="w-10 h-10 rounded-xl flex items-center justify-center font-['Barlow_Condensed'] font-black text-sm text-slate-100 shrink-0 bg-gradient-to-br from-[#182235] via-[#0f1726] to-[#080d18] border border-sky-500/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_4px_10px_rgba(0,0,0,0.5)] relative overflow-hidden"
                   >
-                    {activeModalRoster.initials || 'SQD'}
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-transparent to-transparent pointer-events-none" />
+                    <span className="relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                      {activeModalRoster.initials || 'SQD'}
+                    </span>
                   </div>
                   <div>
                     <h2 className="text-lg font-bold text-white flex items-center gap-2">
                       {activeModalRoster.name}
                       {activeModalRoster.status === 'verified' && (
-                        <ShieldCheck className="w-4 h-4 text-[#B6FF3B]" />
+                        <ShieldCheck className="w-4 h-4 text-sky-400" />
                       )}
                     </h2>
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-slate-400">
                       {colleges[activeModalRoster.collegeId]?.name} • {activeModalRoster.sport}
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={() => setActiveModalRoster(null)}
-                  className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-[#293442]/60"
+                  className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-sky-500/10"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -337,14 +341,14 @@ export default function TeamsDirectory() {
               {/* Modal Body */}
               <div className="p-6 overflow-y-auto space-y-5">
                 {/* Captain Card */}
-                <div className="bg-[#0B0F14] border border-[#293442] rounded-xl p-4 flex items-center justify-between">
+                <div className="bg-[#070d1a]/90 border border-sky-500/30 rounded-xl p-4 flex items-center justify-between shadow-inner">
                   <div>
-                    <div className="text-[10px] uppercase font-bold text-[#00D9FF] tracking-wider">Squad Captain</div>
+                    <div className="text-[10px] uppercase font-bold text-sky-400 tracking-wider">Squad Captain</div>
                     <div className="text-sm font-bold text-white mt-0.5">{activeModalRoster.captainName || activeModalRoster.captain?.name || 'Squad Captain'}</div>
-                    <div className="text-xs text-gray-400">Class of 2026 • Verified Student</div>
+                    <div className="text-xs text-slate-400">Class of 2026 • Verified Student</div>
                   </div>
                   <div className="text-right">
-                    <span className="text-[11px] px-2.5 py-1 rounded bg-[#1B2530] text-gray-300 font-mono">
+                    <span className="text-[11px] px-2.5 py-1 rounded bg-sky-500/15 text-sky-200 border border-sky-400/30 font-mono">
                       Jersey #{activeModalRoster.captainJersey || activeModalRoster.captain?.jerseyNumber || '10'}
                     </span>
                   </div>
@@ -352,25 +356,25 @@ export default function TeamsDirectory() {
 
                 {/* Players Table */}
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 flex items-center justify-between">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
                     <span>Registered Players ({activeModalRoster.roster?.length || 0})</span>
-                    <span className="text-[11px] text-gray-500 font-normal">Student verification on file</span>
+                    <span className="text-[11px] text-slate-500 font-normal">Student verification on file</span>
                   </h4>
 
-                  <div className="bg-[#0B0F14] border border-[#293442] rounded-xl overflow-hidden divide-y divide-[#293442]/50">
+                  <div className="bg-[#070d1a]/80 border border-sky-500/20 rounded-xl overflow-hidden divide-y divide-sky-500/20">
                     {(activeModalRoster.roster || []).map((player, idx) => (
-                      <div key={idx} className="p-3 flex items-center justify-between text-xs hover:bg-[#151B23]/50 transition-colors">
+                      <div key={idx} className="p-3 flex items-center justify-between text-xs hover:bg-sky-500/10 transition-colors">
                         <div className="flex items-center gap-3">
-                          <span className="w-6 text-center font-mono font-bold text-gray-500">
+                          <span className="w-6 text-center font-mono font-bold text-sky-400/70">
                             {player.jerseyNumber || idx + 1}
                           </span>
                           <div>
                             <div className="font-semibold text-white">{player.name}</div>
-                            <div className="text-[11px] text-gray-400">{player.position || 'Player'}</div>
+                            <div className="text-[11px] text-slate-400">{player.position || 'Player'}</div>
                           </div>
                         </div>
-                        <div className="text-right text-gray-400">
-                          <span className="text-[11px] bg-[#1B2530] px-2 py-0.5 rounded text-gray-300">
+                        <div className="text-right text-slate-400">
+                          <span className="text-[11px] bg-sky-500/15 text-sky-200 border border-sky-400/20 px-2 py-0.5 rounded">
                             {player.role || 'Regular'}
                           </span>
                         </div>
@@ -381,14 +385,14 @@ export default function TeamsDirectory() {
               </div>
 
               {/* Modal Footer */}
-              <div className="p-4 border-t border-[#293442] bg-[#151B23] flex items-center justify-between">
-                <div className="text-xs text-gray-400">
+              <div className="p-4 border-t border-sky-500/20 bg-[#0c1629] flex items-center justify-between">
+                <div className="text-xs text-slate-400">
                   Data confirmed by College Sports Department
                 </div>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setActiveModalRoster(null)}
-                    className="px-4 py-2 rounded-xl bg-[#1B2530] text-gray-300 border border-[#293442] text-xs font-semibold hover:text-white"
+                    className="px-4 py-2 rounded-xl bg-sky-500/10 text-sky-200 border border-sky-400/30 text-xs font-semibold hover:text-white hover:bg-sky-500/20 transition-all"
                   >
                     Close
                   </button>
@@ -399,7 +403,7 @@ export default function TeamsDirectory() {
                         setActiveModalRoster(null);
                         navigate(`/friendlies/challenge?opponentTeamId=${targetId}`);
                       }}
-                      className="px-4 py-2 rounded-xl bg-[#B6FF3B] text-black text-xs font-bold hover:bg-[#a5ef28]"
+                      className="px-4 py-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white text-xs font-bold hover:from-sky-400 hover:to-blue-500 shadow-md shadow-sky-600/30 transition-all"
                     >
                       Challenge This Squad
                     </button>

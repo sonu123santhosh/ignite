@@ -163,16 +163,16 @@ export default function RegisterTeam() {
   return (
     <div className="min-h-screen bg-transparent text-[#FFFFFF] pb-24">
       {/* Top Bar */}
-      <div className="bg-[#151B23] border-b border-[#293442] py-4">
+      <div className="bg-[#0c1629]/90 border-b border-sky-500/20 py-4 backdrop-blur-md">
         <div className="max-w-4xl mx-auto px-4 flex items-center justify-between">
           <Link
             to="/friendlies"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#9CA3AF] hover:text-white"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Cancel</span>
           </Link>
-          <span className="text-xs text-[#9CA3AF]">
+          <span className="text-xs text-slate-400">
             Collegiate Squad Registration
           </span>
         </div>
@@ -181,7 +181,7 @@ export default function RegisterTeam() {
       <div className="max-w-4xl mx-auto px-4 pt-8">
         {/* Step tracker */}
         {currentStep < 4 && (
-          <div className="bg-[#151B23] border border-[#293442] p-4 sm:p-5 rounded-2xl mb-8 shadow-lg">
+          <div className="bg-[#0c1629]/80 border border-sky-500/20 p-4 sm:p-5 rounded-2xl mb-8 shadow-xl backdrop-blur-xl">
             <div className="flex items-center justify-between">
               {[
                 { num: 1, label: 'Squad Info' },
@@ -190,19 +190,19 @@ export default function RegisterTeam() {
               ].map((st) => (
                 <div key={st.num} className="flex flex-col items-center">
                   <div
-                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs ${
+                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all ${
                       currentStep > st.num
-                        ? 'bg-[#B6FF3B] text-[#0B0F14]'
+                        ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/30'
                         : currentStep === st.num
-                        ? 'bg-[#00D9FF] text-[#0B0F14] ring-4 ring-[#00D9FF]/20'
-                        : 'bg-[#1B2530] text-slate-500 border border-[#293442]'
+                        ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white ring-4 ring-sky-500/30 shadow-md shadow-sky-500/30'
+                        : 'bg-[#070d1a]/80 text-slate-500 border border-sky-500/20'
                     }`}
                   >
                     {currentStep > st.num ? <Check className="w-4 h-4" /> : st.num}
                   </div>
                   <span
                     className={`text-[10px] sm:text-xs font-semibold mt-2 ${
-                      currentStep === st.num ? 'text-white' : 'text-slate-500'
+                      currentStep === st.num ? 'text-white' : 'text-slate-400'
                     }`}
                   >
                     {st.label}
@@ -216,19 +216,19 @@ export default function RegisterTeam() {
         {/* Error Alert */}
         {error && (
           <div className="mb-6 p-4 bg-red-500/10 border border-red-500/40 rounded-xl flex items-center gap-2.5 text-xs text-red-400">
-            <AlertTriangle className="w-4 h-4 shrink-0" />
+            <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{error}</span>
           </div>
         )}
 
         {/* Step 1: Squad Info */}
         {currentStep === 1 && (
-          <div className="bg-[#151B23] border border-[#293442] p-6 sm:p-8 rounded-2xl space-y-5 shadow-xl">
+          <div className="bg-[#0c1629]/80 border border-sky-500/20 p-6 sm:p-8 rounded-2xl space-y-5 shadow-2xl backdrop-blur-xl">
             <div>
               <h2 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white tracking-wide">
                 1. Squad &amp; Captain Credentials
               </h2>
-              <p className="text-xs text-[#9CA3AF] mt-1">
+              <p className="text-xs text-slate-400 mt-1">
                 Provide official collegiate affiliation and captain contact details.
               </p>
             </div>
@@ -236,16 +236,16 @@ export default function RegisterTeam() {
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                  <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                     College / University *
                   </label>
                   <select
                     value={collegeId}
                     onChange={(e) => setCollegeId(e.target.value)}
-                    className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none cursor-pointer"
+                    className="w-full p-3 bg-[#070d1a]/80 border border-sky-500/30 rounded-xl text-xs text-white focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 outline-none cursor-pointer"
                   >
                     {colleges.map((c) => (
-                      <option key={c.id} value={c.id}>
+                      <option key={c.id} value={c.id} className="bg-[#0c1629] text-white">
                         {c.name} ({c.city})
                       </option>
                     ))}
@@ -253,25 +253,25 @@ export default function RegisterTeam() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                  <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                     Sport
                   </label>
                   <select
                     value={sport}
                     onChange={(e) => setSport(e.target.value)}
-                    className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none cursor-pointer"
+                    className="w-full p-3 bg-[#070d1a]/80 border border-sky-500/30 rounded-xl text-xs text-white focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 outline-none cursor-pointer"
                   >
-                    <option value="Football">Football</option>
-                    <option value="Cricket">Cricket</option>
-                    <option value="Basketball">Basketball</option>
-                    <option value="Volleyball">Volleyball</option>
-                    <option value="Badminton">Badminton</option>
+                    <option value="Football" className="bg-[#0c1629] text-white">Football</option>
+                    <option value="Cricket" className="bg-[#0c1629] text-white">Cricket</option>
+                    <option value="Basketball" className="bg-[#0c1629] text-white">Basketball</option>
+                    <option value="Volleyball" className="bg-[#0c1629] text-white">Volleyball</option>
+                    <option value="Badminton" className="bg-[#0c1629] text-white">Badminton</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                   Team / Squad Name *
                 </label>
                 <input
@@ -280,13 +280,13 @@ export default function RegisterTeam() {
                   value={teamName}
                   onChange={(e) => setTeamName(e.target.value)}
                   placeholder="e.g. PIT Strikers or DCE Tigers"
-                  className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-sm text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-3 bg-[#070d1a]/80 border border-sky-500/30 rounded-xl text-sm text-white placeholder-slate-500 focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 outline-none"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                  <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                     Captain Full Name *
                   </label>
                   <input
@@ -295,12 +295,12 @@ export default function RegisterTeam() {
                     value={captainName}
                     onChange={(e) => setCaptainName(e.target.value)}
                     placeholder="e.g. Rohan Deshmukh"
-                    className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full p-3 bg-[#070d1a]/80 border border-sky-500/30 rounded-xl text-xs text-white placeholder-slate-500 focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                  <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                     Captain Phone Number *
                   </label>
                   <input
@@ -309,13 +309,13 @@ export default function RegisterTeam() {
                     value={captainPhone}
                     onChange={(e) => setCaptainPhone(e.target.value)}
                     placeholder="+91 98220 XXXXX"
-                    className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                    className="w-full p-3 bg-[#070d1a]/80 border border-sky-500/30 rounded-xl text-xs text-white placeholder-slate-500 focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                   College Institutional Email * (Simulates Domain Verification)
                 </label>
                 <input
@@ -324,16 +324,16 @@ export default function RegisterTeam() {
                   value={collegeEmail}
                   onChange={(e) => setCollegeEmail(e.target.value)}
                   placeholder={`captain@${selectedCollege?.emailDomain || 'college.edu.in'}`}
-                  className="w-full p-3 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white focus:border-[#B6FF3B] outline-none"
+                  className="w-full p-3 bg-[#070d1a]/80 border border-sky-500/30 rounded-xl text-xs text-white placeholder-slate-500 focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 outline-none"
                 />
-                <span className="text-[10px] text-slate-500 block mt-1">
+                <span className="text-[10px] text-slate-400 block mt-1">
                   Required domain for {selectedCollege?.name}: <strong>@{selectedCollege?.emailDomain}</strong>
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 border-t border-[#293442]">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 border-t border-sky-500/20">
                 <div>
-                  <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                  <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                     Number of Players *
                   </label>
                   <input
@@ -342,30 +342,30 @@ export default function RegisterTeam() {
                     max={sportLimits[sport]?.max || 20}
                     value={playerCount}
                     onChange={(e) => setPlayerCount(Number(e.target.value))}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white outline-none"
+                    className="w-full p-2.5 bg-[#070d1a]/80 border border-sky-500/30 rounded-xl text-xs text-white focus:border-sky-400 outline-none"
                   />
-                  <span className="text-[10px] text-slate-500 block mt-0.5">
+                  <span className="text-[10px] text-slate-400 block mt-0.5">
                     Allowed: {sportLimits[sport]?.min} - {sportLimits[sport]?.max}
                   </span>
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                  <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                     Preferred Skill Level
                   </label>
                   <select
                     value={skillLevel}
                     onChange={(e) => setSkillLevel(e.target.value)}
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white outline-none cursor-pointer"
+                    className="w-full p-2.5 bg-[#070d1a]/80 border border-sky-500/30 rounded-xl text-xs text-white focus:border-sky-400 outline-none cursor-pointer"
                   >
-                    <option value="Competitive">Competitive (Collegiate)</option>
-                    <option value="Intermediate">Intermediate (Club)</option>
-                    <option value="Beginner">Beginner / Casual</option>
+                    <option value="Competitive" className="bg-[#0c1629] text-white">Competitive (Collegiate)</option>
+                    <option value="Intermediate" className="bg-[#0c1629] text-white">Intermediate (Club)</option>
+                    <option value="Beginner" className="bg-[#0c1629] text-white">Beginner / Casual</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold uppercase text-[#9CA3AF] block mb-1">
+                  <label className="text-xs font-bold uppercase text-slate-400 block mb-1">
                     Preferred Home Ground
                   </label>
                   <input
@@ -373,7 +373,7 @@ export default function RegisterTeam() {
                     value={preferredGround}
                     onChange={(e) => setPreferredGround(e.target.value)}
                     placeholder="e.g. College Main Oval"
-                    className="w-full p-2.5 bg-[#1B2530] border border-[#293442] rounded-xl text-xs text-white outline-none"
+                    className="w-full p-2.5 bg-[#070d1a]/80 border border-sky-500/30 rounded-xl text-xs text-white placeholder-slate-500 focus:border-sky-400 outline-none"
                   />
                 </div>
               </div>
@@ -383,13 +383,13 @@ export default function RegisterTeam() {
 
         {/* Step 2: Roster Editor */}
         {currentStep === 2 && (
-          <div className="bg-[#151B23] border border-[#293442] p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
+          <div className="bg-[#0c1629]/80 border border-sky-500/20 p-6 sm:p-8 rounded-2xl space-y-6 shadow-2xl backdrop-blur-xl">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <h2 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white tracking-wide">
                   2. Squad Roster Lineup
                 </h2>
-                <p className="text-xs text-[#9CA3AF] mt-1">
+                <p className="text-xs text-slate-400 mt-1">
                   Add squad members. The count must match your entered Player Count ({playerCount}).
                 </p>
               </div>
@@ -397,9 +397,9 @@ export default function RegisterTeam() {
               <button
                 type="button"
                 onClick={handleAddPlayer}
-                className="px-3.5 py-1.5 bg-[#1B2530] hover:bg-slate-700 text-[#B6FF3B] font-bold text-xs border border-[#293442] rounded-xl flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
+                className="px-3.5 py-1.5 bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 font-bold text-xs border border-sky-400/30 rounded-xl flex items-center gap-1.5 self-start sm:self-auto cursor-pointer transition-all"
               >
-                <Plus className="w-3.5 h-3.5" />
+                <Plus className="w-3.5 h-3.5 text-sky-400" />
                 <span>Add Player</span>
               </button>
             </div>
@@ -408,9 +408,9 @@ export default function RegisterTeam() {
               {roster.map((p, idx) => (
                 <div
                   key={idx}
-                  className="p-3 bg-[#1B2530] border border-[#293442] rounded-xl flex items-center gap-3 text-xs"
+                  className="p-3 bg-[#070d1a]/80 border border-sky-500/20 rounded-xl flex items-center gap-3 text-xs"
                 >
-                  <span className="w-6 text-center text-slate-500 font-mono">#{idx + 1}</span>
+                  <span className="w-6 text-center text-sky-400/70 font-mono">#{idx + 1}</span>
 
                   <input
                     type="text"
@@ -418,7 +418,7 @@ export default function RegisterTeam() {
                     value={p.name}
                     onChange={(e) => handleUpdatePlayer(idx, 'name', e.target.value)}
                     placeholder="Player full name"
-                    className="flex-1 p-2 bg-[#0B0F14] border border-[#293442] rounded-lg text-white outline-none"
+                    className="flex-1 p-2 bg-[#0c1629] border border-sky-500/30 rounded-lg text-white placeholder-slate-500 focus:border-sky-400 outline-none"
                   />
 
                   <input
@@ -426,14 +426,14 @@ export default function RegisterTeam() {
                     value={p.position}
                     onChange={(e) => handleUpdatePlayer(idx, 'position', e.target.value)}
                     placeholder="Position (e.g. Striker)"
-                    className="w-32 p-2 bg-[#0B0F14] border border-[#293442] rounded-lg text-white outline-none"
+                    className="w-32 p-2 bg-[#0c1629] border border-sky-500/30 rounded-lg text-white placeholder-slate-500 focus:border-sky-400 outline-none"
                   />
 
                   {idx > 0 && (
                     <button
                       type="button"
                       onClick={() => handleRemovePlayer(idx)}
-                      className="p-1.5 text-slate-500 hover:text-red-400"
+                      className="p-1.5 text-slate-400 hover:text-red-400"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -446,41 +446,41 @@ export default function RegisterTeam() {
 
         {/* Step 3: Review */}
         {currentStep === 3 && (
-          <div className="bg-[#151B23] border border-[#293442] p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl">
+          <div className="bg-[#0c1629]/80 border border-sky-500/20 p-6 sm:p-8 rounded-2xl space-y-6 shadow-2xl backdrop-blur-xl">
             <div>
               <h2 className="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-white tracking-wide">
                 3. Review Squad Registration
               </h2>
-              <p className="text-xs text-[#9CA3AF] mt-1">
+              <p className="text-xs text-slate-400 mt-1">
                 Please verify details. New squads start as Unverified until approved by your College Coordinator.
               </p>
             </div>
 
-            <div className="p-5 bg-[#1B2530] border border-[#293442] rounded-xl space-y-2 text-xs">
+            <div className="p-5 bg-[#070d1a]/80 border border-sky-500/20 rounded-xl space-y-2 text-xs">
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">College:</span>
+                <span className="text-slate-400">College:</span>
                 <span className="font-bold text-white">{selectedCollege?.name}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Squad Name:</span>
-                <span className="font-bold text-[#00D9FF]">{teamName}</span>
+                <span className="text-slate-400">Squad Name:</span>
+                <span className="font-bold text-sky-400">{teamName}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Sport &amp; Skill:</span>
+                <span className="text-slate-400">Sport &amp; Skill:</span>
                 <span className="font-semibold text-white">{sport} &bull; {skillLevel}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Captain:</span>
+                <span className="text-slate-400">Captain:</span>
                 <span className="font-semibold text-white">{captainName} ({captainPhone})</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#9CA3AF]">Roster Count:</span>
-                <span className="font-bold text-[#B6FF3B]">{roster.length} registered players</span>
+                <span className="text-slate-400">Roster Count:</span>
+                <span className="font-bold text-emerald-400">{roster.length} registered players</span>
               </div>
             </div>
 
             <div className="p-4 bg-amber-500/10 border border-amber-500/40 rounded-xl text-xs text-amber-300 flex items-start gap-2.5">
-              <ShieldAlert className="w-5 h-5 shrink-0 mt-0.5" />
+              <ShieldAlert className="w-5 h-5 shrink-0 mt-0.5 text-amber-400" />
               <div>
                 <strong className="block mb-0.5 font-bold">Coordinator Verification Rule:</strong>
                 Submitting this form records the team in <em>Pending Verification</em>. Your college sports coordinator must approve the roster before official match challenges can be issued.
@@ -491,8 +491,8 @@ export default function RegisterTeam() {
 
         {/* Step 4: Result Screen */}
         {currentStep === 4 && registeredResult && (
-          <div className="bg-[#151B23] border border-[#293442] p-8 sm:p-12 rounded-2xl text-center space-y-6 shadow-2xl">
-            <div className="w-16 h-16 rounded-full bg-[#B6FF3B]/10 border border-[#B6FF3B] text-[#B6FF3B] flex items-center justify-center mx-auto shadow-[0_0_25px_rgba(182,255,59,0.3)]">
+          <div className="bg-[#0c1629]/90 border border-sky-500/30 p-8 sm:p-12 rounded-2xl text-center space-y-6 shadow-2xl backdrop-blur-xl">
+            <div className="w-16 h-16 rounded-full bg-sky-500/15 border border-sky-400 text-sky-400 flex items-center justify-center mx-auto shadow-[0_0_25px_rgba(56,189,248,0.3)]">
               <Sparkles className="w-8 h-8" />
             </div>
 
@@ -503,7 +503,7 @@ export default function RegisterTeam() {
               <h2 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-black uppercase text-white">
                 {registeredResult.name}
               </h2>
-              <p className="text-sm text-[#9CA3AF] max-w-md mx-auto">
+              <p className="text-sm text-slate-300 max-w-md mx-auto">
                 Your squad has been submitted. It is now visible to your College Coordinator for official roster validation.
               </p>
             </div>
@@ -511,13 +511,13 @@ export default function RegisterTeam() {
             <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/friendlies/teams"
-                className="px-5 py-2.5 bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-[#a3ee28]"
+                className="px-5 py-2.5 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white font-bold text-xs uppercase tracking-wider rounded-xl hover:shadow-[0_0_20px_rgba(14,165,233,0.5)] transition-all"
               >
                 View Teams Directory
               </Link>
               <Link
                 to="/friendlies"
-                className="px-5 py-2.5 bg-[#1B2530] text-white border border-[#293442] font-semibold text-xs rounded-xl hover:bg-slate-700"
+                className="px-5 py-2.5 bg-sky-500/10 text-sky-200 border border-sky-400/30 font-semibold text-xs rounded-xl hover:bg-sky-500/20 transition-all"
               >
                 Browse Matches
               </Link>
@@ -532,8 +532,8 @@ export default function RegisterTeam() {
               type="button"
               disabled={currentStep === 1}
               onClick={handleBack}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold ${
-                currentStep === 1 ? 'opacity-30 cursor-not-allowed text-slate-500' : 'bg-[#1B2530] text-white hover:bg-slate-700'
+              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                currentStep === 1 ? 'opacity-30 cursor-not-allowed text-slate-500' : 'bg-[#070d1a]/80 text-white border border-sky-500/20 hover:bg-sky-500/10'
               }`}
             >
               Back
@@ -543,7 +543,7 @@ export default function RegisterTeam() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="px-6 py-2.5 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs uppercase tracking-wider hover:bg-[#a3ee28] flex items-center gap-1.5 cursor-pointer shadow-md"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xs uppercase tracking-wider hover:from-sky-400 hover:to-blue-500 flex items-center gap-1.5 cursor-pointer shadow-md shadow-sky-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <span>Continue</span>
                 <ArrowRight className="w-4 h-4" />
@@ -552,7 +552,7 @@ export default function RegisterTeam() {
               <button
                 type="button"
                 onClick={handleSubmit}
-                className="px-6 py-2.5 rounded-xl bg-[#B6FF3B] text-[#0B0F14] font-black text-xs uppercase tracking-wider hover:bg-[#a3ee28] flex items-center gap-1.5 cursor-pointer shadow-md"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white font-black text-xs uppercase tracking-wider hover:shadow-[0_0_25px_rgba(14,165,233,0.5)] flex items-center gap-1.5 cursor-pointer shadow-md shadow-sky-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <span>Submit for Verification</span>
               </button>

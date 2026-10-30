@@ -51,16 +51,17 @@ h1, h2, h3, h4, h5, h6,
    ========================================================================= */
 
 /* All Textboxes / Inputs / Selects / Textareas: Glassy look with 10px blur */
+/* All Textboxes / Inputs / Selects / Textareas: Sleek glass look with warm crimson focus */
 input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="range"]),
 textarea,
 select,
 .sportlink-input {
-  background-color: rgba(12, 18, 30, 0.42) !important;
+  background-color: rgba(14, 16, 22, 0.55) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(255, 255, 255, 0.16) !important;
   color: #F5F7FA !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
@@ -68,9 +69,9 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type=
 textarea:focus,
 select:focus,
 .sportlink-input:focus {
-  background-color: rgba(16, 24, 40, 0.65) !important;
-  border-color: #B6FF3B !important;
-  box-shadow: 0 0 16px rgba(182, 255, 59, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+  background-color: rgba(18, 18, 26, 0.8) !important;
+  border-color: rgba(225, 29, 72, 0.75) !important;
+  box-shadow: 0 0 16px rgba(225, 29, 72, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
   outline: none !important;
 }
 
@@ -80,11 +81,11 @@ select:focus,
 .bg-\[\#151B23\],
 .bg-\[\#172033\],
 .bg-\[\#131a2b\] {
-  background-color: rgba(16, 24, 38, 0.55) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
+  background-color: rgba(18, 16, 22, 0.62) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4), 0 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05) !important;
 }
 
 #root {
@@ -95,11 +96,11 @@ select:focus,
 
 /* Custom focus ring for WCAG AA keyboard accessibility */
 :focus-visible {
-  outline: 2px solid #B6FF3B;
+  outline: 2px solid #E11D48;
   outline-offset: 2px;
 }
 
-/* Card hover 3px lift and subtle lime or cyan border */
+/* Card hover 3px lift and subtle warm crimson or cyan border */
 .sportlink-card {
   border-radius: 18px;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -107,8 +108,8 @@ select:focus,
 
 .sportlink-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(182, 255, 59, 0.7) !important;
-  box-shadow: 0 14px 35px -5px rgba(0, 0, 0, 0.55), 0 0 20px -3px rgba(182, 255, 59, 0.2) !important;
+  border-color: rgba(244, 63, 94, 0.65) !important;
+  box-shadow: 0 14px 35px -5px rgba(0, 0, 0, 0.6), 0 0 20px -3px rgba(244, 63, 94, 0.25) !important;
 }
 
 .sportlink-card-cyan:hover {

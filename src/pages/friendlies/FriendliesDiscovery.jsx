@@ -186,13 +186,13 @@ export default function FriendliesDiscovery() {
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
               placeholder="Search colleges, rival teams, sports, or grounds..."
-              className="w-full pl-12 pr-10 py-3 bg-[#151B23] border border-[#293442] focus:border-[#B6FF3B] rounded-2xl text-sm text-white placeholder-slate-500 outline-none transition-colors shadow-lg"
+              className="w-full pl-12 pr-10 py-3.5 bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 focus:border-sky-400 focus:ring-2 focus:ring-sky-500/30 rounded-2xl text-sm text-white placeholder-slate-400 outline-none transition-all shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
             />
             {keyword && (
               <button
                 type="button"
                 onClick={() => setKeyword('')}
-                className="absolute right-4 top-3.5 text-slate-400 hover:text-white"
+                className="absolute right-4 top-3.5 text-slate-400 hover:text-white cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -200,7 +200,7 @@ export default function FriendliesDiscovery() {
 
             {/* Autocomplete Search Suggestions */}
             {searchSuggestions.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-[#151B23] border border-[#293442] rounded-xl p-2 shadow-2xl z-30 space-y-1">
+              <div className="absolute top-full left-0 right-0 mt-2 bg-[#0c1629]/95 backdrop-blur-xl border border-sky-500/30 rounded-xl p-2 shadow-2xl z-30 space-y-1">
                 {searchSuggestions.map((sug, sIdx) => (
                   <button
                     key={sIdx}
@@ -213,10 +213,10 @@ export default function FriendliesDiscovery() {
                         setKeyword(sug.text);
                       }
                     }}
-                    className="w-full p-2 rounded-lg text-left text-xs hover:bg-[#1B2530] flex items-center justify-between text-slate-300 hover:text-white cursor-pointer"
+                    className="w-full p-2 rounded-lg text-left text-xs hover:bg-white/[0.08] flex items-center justify-between text-slate-300 hover:text-white cursor-pointer"
                   >
                     <span>{sug.text}</span>
-                    <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-[#0B0F14] text-[#00D9FF]">
+                    <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-400/20">
                       {sug.type}
                     </span>
                   </button>
@@ -254,8 +254,8 @@ export default function FriendliesDiscovery() {
                   }}
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-[#B6FF3B] text-[#0B0F14] font-bold shadow-sm'
-                      : 'bg-[#151B23] text-slate-300 hover:text-white border border-[#293442]'
+                      ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold shadow-md shadow-sky-500/25'
+                      : 'bg-white/[0.06] text-slate-300 hover:text-white border border-white/10 hover:bg-white/[0.12] backdrop-blur-sm'
                   }`}
                 >
                   {col.label}
@@ -267,11 +267,11 @@ export default function FriendliesDiscovery() {
           {/* Active Filter Chips */}
           {activeChips.length > 0 && (
             <div className="flex flex-wrap items-center gap-2 pt-1">
-              <span className="text-xs text-[#9CA3AF]">Active filters:</span>
+              <span className="text-xs text-slate-400">Active filters:</span>
               {activeChips.map((chip) => (
                 <span
                   key={chip.key}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#1B2530] text-white border border-[#293442]"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-white/[0.08] text-white border border-white/15 backdrop-blur-sm"
                 >
                   <span>{chip.label}</span>
                   <button
@@ -286,7 +286,7 @@ export default function FriendliesDiscovery() {
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="text-xs text-[#B6FF3B] hover:underline font-semibold cursor-pointer ml-1"
+                className="text-xs text-sky-400 hover:text-sky-300 hover:underline font-semibold cursor-pointer ml-1"
               >
                 Clear all
               </button>
@@ -309,7 +309,7 @@ export default function FriendliesDiscovery() {
           {/* Results Main Column */}
           <main className="flex-1 w-full min-w-0 space-y-6">
             {/* Header controls: count, sort, mobile filter trigger */}
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-[#151B23] border border-[#293442] p-4 rounded-2xl shadow-md">
+            <div className="flex flex-wrap items-center justify-between gap-4 bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 p-4 rounded-2xl shadow-md">
               <div className="flex items-center gap-2">
                 <span className="font-['Barlow_Condensed'] text-xl font-bold uppercase text-white">
                   Showing {filteredMatches.length} Match{filteredMatches.length === 1 ? '' : 'es'}
@@ -321,24 +321,24 @@ export default function FriendliesDiscovery() {
                 <button
                   type="button"
                   onClick={() => setIsMobileFiltersOpen(true)}
-                  className="lg:hidden flex items-center gap-1.5 px-3 py-1.5 bg-[#1B2530] text-xs font-semibold text-white border border-[#293442] rounded-xl cursor-pointer"
+                  className="lg:hidden flex items-center gap-1.5 px-3 py-1.5 bg-white/10 text-xs font-semibold text-white border border-white/15 rounded-xl cursor-pointer hover:bg-white/15 backdrop-blur-sm"
                 >
-                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#B6FF3B]" />
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-sky-400" />
                   <span>Filters</span>
                 </button>
 
                 {/* Sort selector */}
-                <div className="flex items-center gap-1.5 text-xs text-[#9CA3AF]">
+                <div className="flex items-center gap-1.5 text-xs text-slate-400">
                   <span className="hidden sm:inline">Sort:</span>
                   <select
                     value={sortKey}
                     onChange={(e) => setSortKey(e.target.value)}
-                    className="bg-[#1B2530] border border-[#293442] rounded-xl px-2.5 py-1.5 text-xs text-white outline-none cursor-pointer focus:border-[#B6FF3B]"
+                    className="bg-black/40 border border-white/15 rounded-xl px-2.5 py-1.5 text-xs text-white outline-none cursor-pointer focus:border-sky-400"
                   >
-                    <option value="upcoming">Upcoming Matches</option>
-                    <option value="closing_soon">Registration Closing Soon</option>
-                    <option value="recently_posted">Recently Posted</option>
-                    <option value="nearest">Nearest (Pune Centre)</option>
+                    <option value="upcoming" className="bg-[#0b1326] text-white">Upcoming Matches</option>
+                    <option value="closing_soon" className="bg-[#0b1326] text-white">Registration Closing Soon</option>
+                    <option value="recently_posted" className="bg-[#0b1326] text-white">Recently Posted</option>
+                    <option value="nearest" className="bg-[#0b1326] text-white">Nearest (Pune Centre)</option>
                   </select>
                 </div>
               </div>
@@ -346,7 +346,7 @@ export default function FriendliesDiscovery() {
 
             {/* Listings Grid or EXACT Empty State */}
             {filteredMatches.length === 0 ? (
-              <div className="p-8 sm:p-12 text-center bg-[#151B23] border border-[#293442] rounded-2xl space-y-4 shadow-xl">
+              <div className="p-8 sm:p-12 text-center bg-[#0c1629]/80 backdrop-blur-xl border border-sky-500/20 rounded-2xl space-y-4 shadow-xl">
                 <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto">
                   <Swords className="w-6 h-6" />
                 </div>
@@ -363,13 +363,13 @@ export default function FriendliesDiscovery() {
                   <button
                     type="button"
                     onClick={handleResetFilters}
-                    className="px-4 py-2 bg-[#1B2530] text-white border border-[#293442] text-xs font-semibold rounded-xl hover:bg-slate-700"
+                    className="px-4 py-2 bg-white/10 hover:bg-white/15 text-white border border-white/15 text-xs font-semibold rounded-xl cursor-pointer backdrop-blur-sm"
                   >
                     Clear All Filters
                   </button>
                   <Link
                     to="/friendlies/challenge"
-                    className="px-5 py-2 bg-[#B6FF3B] text-[#0B0F14] font-bold text-xs rounded-xl hover:bg-[#a3ee28]"
+                    className="px-5 py-2 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-400 hover:via-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-md shadow-sky-500/25"
                   >
                     Create a Match Proposal
                   </Link>

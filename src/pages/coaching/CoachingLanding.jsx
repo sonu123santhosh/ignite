@@ -239,13 +239,13 @@ export default function CoachingLanding() {
               <main className="flex-1 w-full min-w-0 space-y-6">
                 
                 {/* Control bar: count, mobile filter trigger, sort, view mode */}
-                <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-md">
+                <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
                   <div className="flex items-center gap-2">
                     <span className="font-['Barlow_Condensed'] text-xl font-bold uppercase text-white tracking-wide">
                       Showing {filteredAcademies.length} Coaching Centre{filteredAcademies.length === 1 ? '' : 's'}
                     </span>
                     {userCoords && (
-                      <span className="text-[11px] font-mono text-[#B6FF3B] bg-[#B6FF3B]/10 px-2 py-0.5 rounded-full border border-[#B6FF3B]/30">
+                      <span className="text-[11px] font-mono text-red-400 bg-red-500/10 px-2 py-0.5 rounded-full border border-red-500/30">
                         Sorted by Distance
                       </span>
                     )}
@@ -256,19 +256,19 @@ export default function CoachingLanding() {
                     <button
                       type="button"
                       onClick={() => setIsMobileFiltersOpen(true)}
-                      className="lg:hidden flex items-center gap-1.5 px-3 py-1.5 bg-[#1B2530] text-xs font-semibold text-white border border-[#293442] rounded-xl cursor-pointer"
+                      className="lg:hidden flex items-center gap-1.5 px-3 py-1.5 bg-[#140e18] text-xs font-semibold text-red-200 border border-red-500/30 hover:border-red-500/60 rounded-xl cursor-pointer"
                     >
-                      <SlidersHorizontal className="w-3.5 h-3.5 text-[#B6FF3B]" />
+                      <SlidersHorizontal className="w-3.5 h-3.5 text-red-400" />
                       <span>Filters</span>
                     </button>
 
                     {/* Sort Dropdown */}
-                    <div className="flex items-center gap-1.5 text-xs text-[#94A3B8]">
+                    <div className="flex items-center gap-1.5 text-xs text-slate-300">
                       <span className="hidden sm:inline">Sort:</span>
                       <select
                         value={sortKey}
                         onChange={(e) => setSortKey(e.target.value)}
-                        className="bg-[#0B0F14] border border-[#293442] rounded-xl px-3 py-1.5 text-xs text-white outline-none cursor-pointer focus:border-[#B6FF3B]"
+                        className="bg-[#08050c] border border-red-500/25 rounded-xl px-3 py-1.5 text-xs text-white outline-none cursor-pointer focus:border-red-500 focus:ring-1 focus:ring-red-500/40"
                       >
                         <option value="relevant">Most Relevant</option>
                         <option value="nearest">Nearest First</option>
@@ -279,12 +279,12 @@ export default function CoachingLanding() {
                     </div>
 
                     {/* View Mode Toggle: Grid, List, Map */}
-                    <div className="inline-flex p-1 bg-[#0B0F14] border border-[#293442] rounded-xl">
+                    <div className="inline-flex p-1 bg-[#08050c] border border-red-500/25 rounded-xl">
                       <button
                         type="button"
                         onClick={() => setViewMode('grid')}
                         className={`p-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                          viewMode === 'grid' ? 'bg-[#1B2530] text-[#B6FF3B]' : 'text-gray-400 hover:text-white'
+                          viewMode === 'grid' ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-md' : 'text-gray-400 hover:text-white'
                         }`}
                         title="Grid View"
                       >
@@ -294,7 +294,7 @@ export default function CoachingLanding() {
                         type="button"
                         onClick={() => setViewMode('list')}
                         className={`p-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                          viewMode === 'list' ? 'bg-[#1B2530] text-[#B6FF3B]' : 'text-gray-400 hover:text-white'
+                          viewMode === 'list' ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-md' : 'text-gray-400 hover:text-white'
                         }`}
                         title="List View"
                       >
@@ -304,7 +304,7 @@ export default function CoachingLanding() {
                         type="button"
                         onClick={() => setViewMode('map')}
                         className={`p-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                          viewMode === 'map' ? 'bg-[#1B2530] text-[#00D4FF]' : 'text-gray-400 hover:text-white'
+                          viewMode === 'map' ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-md' : 'text-gray-400 hover:text-white'
                         }`}
                         title="Interactive Map View"
                       >
@@ -385,16 +385,16 @@ export default function CoachingLanding() {
           <div className="space-y-8 animate-in fade-in duration-200">
             
             {/* Owner Header & Summary Bar */}
-            <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
+            <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#00D4FF]/10 text-[#00D4FF] border border-[#00D4FF]/30 tracking-wide uppercase">
-                  <Layers className="w-3.5 h-3.5" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-red-500/15 text-red-400 border border-red-500/30 tracking-wide uppercase">
+                  <Layers className="w-3.5 h-3.5 text-red-400" />
                   <span>Academy Operations Console</span>
                 </div>
                 <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
                   Manage Your Coaching.
                 </h1>
-                <p className="text-sm text-[#94A3B8] max-w-2xl">
+                <p className="text-sm text-slate-300 max-w-2xl">
                   Manage programmes, organise batches, handle student enrolments, track session attendance, and grow your coaching community.
                 </p>
               </div>
@@ -404,7 +404,7 @@ export default function CoachingLanding() {
                 <button
                   type="button"
                   onClick={() => setIsAddAcademyOpen(true)}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#00D4FF] text-black font-extrabold text-xs hover:bg-[#00c2e6] transition-all shadow-md cursor-pointer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-extrabold text-xs hover:shadow-[0_4px_18px_rgba(220,38,38,0.5)] border border-red-500/40 transition-all shadow-md cursor-pointer"
                 >
                   <PlusCircle className="w-4 h-4" />
                   <span>+ Add Coaching Centre</span>
@@ -413,7 +413,7 @@ export default function CoachingLanding() {
                 <button
                   type="button"
                   onClick={() => setIsAddProgrammeOpen(true)}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#B6FF3B] text-black font-extrabold text-xs hover:bg-[#a5ef28] transition-all shadow-md cursor-pointer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-950/70 hover:bg-red-900/70 text-red-100 border border-red-500/40 font-extrabold text-xs transition-all shadow-md cursor-pointer"
                 >
                   <PlusCircle className="w-4 h-4" />
                   <span>+ Create Programme</span>
@@ -423,37 +423,37 @@ export default function CoachingLanding() {
 
             {/* Metrics Summary Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-4 space-y-1">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-4 space-y-1">
                 <div className="text-[11px] font-bold text-gray-400 uppercase">Centres</div>
                 <div className="text-2xl font-extrabold text-white">{ownerAcademies.length}</div>
                 <div className="text-[10px] text-gray-500">Active listings</div>
               </div>
 
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-4 space-y-1">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-4 space-y-1">
                 <div className="text-[11px] font-bold text-gray-400 uppercase">Programmes</div>
-                <div className="text-2xl font-extrabold text-[#00D4FF]">{ownerProgrammes.length}</div>
+                <div className="text-2xl font-extrabold text-rose-400">{ownerProgrammes.length}</div>
                 <div className="text-[10px] text-gray-500">{ownerBatches.length} active batches</div>
               </div>
 
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-4 space-y-1">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-4 space-y-1">
                 <div className="text-[11px] font-bold text-gray-400 uppercase">Enrolled Students</div>
-                <div className="text-2xl font-extrabold text-[#B6FF3B]">{totalStudentsCount}</div>
+                <div className="text-2xl font-extrabold text-red-400">{totalStudentsCount}</div>
                 <div className="text-[10px] text-gray-500">Confirmed athletes</div>
               </div>
 
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-4 space-y-1">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-4 space-y-1">
                 <div className="text-[11px] font-bold text-gray-400 uppercase">Pending Enrolments</div>
                 <div className="text-2xl font-extrabold text-amber-400">{pendingEnrolmentsCount}</div>
                 <div className="text-[10px] text-gray-500">Awaiting approval</div>
               </div>
 
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-4 space-y-1">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-4 space-y-1">
                 <div className="text-[11px] font-bold text-gray-400 uppercase">Upcoming Trials</div>
                 <div className="text-2xl font-extrabold text-purple-400">{pendingTrialsCount}</div>
                 <div className="text-[10px] text-gray-500">Trial bookings</div>
               </div>
 
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-4 space-y-1">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-4 space-y-1">
                 <div className="text-[11px] font-bold text-gray-400 uppercase">Available Seats</div>
                 <div className="text-2xl font-extrabold text-white">{availableSeats}</div>
                 <div className="text-[10px] text-gray-500">Across {ownerBatches.length} batches</div>
@@ -461,7 +461,7 @@ export default function CoachingLanding() {
             </div>
 
             {/* Owner Navigation Tabs */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-[#293442]">
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-red-500/20">
               {[
                 { id: 'academies', label: 'My Coaching Centres' },
                 { id: 'coaches', label: 'Coaches' },
@@ -478,8 +478,8 @@ export default function CoachingLanding() {
                   onClick={() => setOwnerActiveTab(tab.id)}
                   className={`px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                     ownerActiveTab === tab.id
-                      ? 'bg-[#B6FF3B] text-[#0B0F14] shadow-md'
-                      : 'bg-[#141B24] text-gray-400 border border-[#293442] hover:text-white'
+                      ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-[0_4px_14px_rgba(220,38,38,0.4)] border border-red-500/50'
+                      : 'bg-[#0c0d15]/80 text-gray-300 border border-red-500/15 hover:text-white hover:border-red-500/30'
                   }`}
                 >
                   {tab.label}
@@ -489,7 +489,7 @@ export default function CoachingLanding() {
 
             {/* TAB 1: My Coaching Centres Table */}
             {ownerActiveTab === 'academies' && (
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-4 shadow-xl">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-4 shadow-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-white">My Coaching Centres</h3>
@@ -498,7 +498,7 @@ export default function CoachingLanding() {
                   <button
                     type="button"
                     onClick={() => setIsAddAcademyOpen(true)}
-                    className="px-3 py-1.5 rounded-lg bg-[#00D4FF] text-black text-xs font-bold"
+                    className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-red-600 to-rose-600 text-white text-xs font-bold hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] border border-red-500/30 transition-all cursor-pointer"
                   >
                     + New Centre
                   </button>
@@ -519,9 +519,9 @@ export default function CoachingLanding() {
                     </thead>
                     <tbody className="divide-y divide-[#293442]">
                       {ownerAcademies.map((acad) => (
-                        <tr key={acad.id} className="hover:bg-[#1B2530]/50 transition-colors">
+                        <tr key={acad.id} className="hover:bg-red-950/20 transition-colors">
                           <td className="p-3.5 font-bold text-white flex items-center gap-2">
-                            <span className="w-7 h-7 rounded-lg bg-[#1B2530] text-[#00D4FF] flex items-center justify-center font-bold text-[11px]">
+                            <span className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#1c121e] to-[#0d070f] text-red-200 border border-red-500/30 flex items-center justify-center font-bold text-[11px] shadow-sm">
                               {acad.logoInitials}
                             </span>
                             <span>{acad.name}</span>
@@ -547,14 +547,14 @@ export default function CoachingLanding() {
                           <td className="p-3.5 text-right space-x-2">
                             <Link
                               to={`/coaching/${acad.id}`}
-                              className="px-2.5 py-1 rounded-lg bg-[#1B2530] text-gray-200 border border-[#293442] hover:text-white"
+                              className="px-2.5 py-1 rounded-lg bg-[#140e18] text-red-200 border border-red-500/30 hover:bg-red-950/40 hover:text-white transition-colors"
                             >
                               View
                             </Link>
                             <button
                               type="button"
                               onClick={() => toggleAcademyStatus(acad.id)}
-                              className="px-2.5 py-1 rounded-lg bg-[#0B0F14] text-gray-400 border border-[#293442] hover:text-white"
+                              className="px-2.5 py-1 rounded-lg bg-[#08050c] text-gray-400 border border-red-500/20 hover:text-white hover:border-red-500/40 transition-colors"
                             >
                               {acad.status === 'Active' ? 'Deactivate' : 'Activate'}
                             </button>
@@ -569,7 +569,7 @@ export default function CoachingLanding() {
 
             {/* TAB 2: Coach Management */}
             {ownerActiveTab === 'coaches' && (
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-4 shadow-xl">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-4 shadow-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-white">Academy Coaches</h3>
@@ -579,7 +579,7 @@ export default function CoachingLanding() {
 
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs text-gray-300">
-                    <thead className="bg-[#0B0F14] text-gray-400 uppercase font-mono text-[11px] border-b border-[#293442]">
+                    <thead className="bg-[#08050c] text-gray-400 uppercase font-mono text-[11px] border-b border-red-500/20">
                       <tr>
                         <th className="p-3.5">Coach</th>
                         <th className="p-3.5">Sport</th>
@@ -590,9 +590,9 @@ export default function CoachingLanding() {
                         <th className="p-3.5 text-right">Actions</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-[#293442]">
+                    <tbody className="divide-y divide-red-500/10">
                       {coaches.filter(c => myAcademyIds.includes(c.academyId)).map((coach) => (
-                        <tr key={coach.id} className="hover:bg-[#1B2530]/50 transition-colors">
+                        <tr key={coach.id} className="hover:bg-red-950/20 transition-colors">
                           <td className="p-3.5 font-bold text-white flex items-center gap-2.5">
                             <img src={coach.photo} alt={coach.name} className="w-8 h-8 rounded-full object-cover" />
                             <span>{coach.name}</span>
@@ -621,7 +621,7 @@ export default function CoachingLanding() {
                             <button
                               type="button"
                               onClick={() => toggleCoachStatus(coach.id)}
-                              className="px-2.5 py-1 rounded-lg bg-[#1B2530] text-gray-300 border border-[#293442] hover:text-white"
+                              className="px-2.5 py-1 rounded-lg bg-[#140e18] text-gray-300 border border-red-500/25 hover:border-red-500/50 hover:text-white"
                             >
                               {coach.status === 'Active' ? 'Deactivate' : 'Activate'}
                             </button>
@@ -636,7 +636,7 @@ export default function CoachingLanding() {
 
             {/* TAB 3: Programmes & Batches */}
             {ownerActiveTab === 'programmes' && (
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-6 shadow-xl">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-6 shadow-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-white">Programmes & Batch Capacity</h3>
@@ -646,14 +646,14 @@ export default function CoachingLanding() {
                     <button
                       type="button"
                       onClick={() => setIsAddBatchOpen(true)}
-                      className="px-3 py-1.5 rounded-lg bg-[#1B2530] border border-[#293442] text-white text-xs font-bold hover:bg-[#222f3d]"
+                      className="px-3 py-1.5 rounded-lg bg-[#140e18] border border-red-500/30 text-red-200 text-xs font-bold hover:bg-red-950/40 hover:text-white transition-all cursor-pointer"
                     >
                       + Create Batch
                     </button>
                     <button
                       type="button"
                       onClick={() => setIsAddProgrammeOpen(true)}
-                      className="px-3 py-1.5 rounded-lg bg-[#B6FF3B] text-black text-xs font-bold"
+                      className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-red-600 to-rose-600 text-white text-xs font-bold hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all cursor-pointer"
                     >
                       + Create Programme
                     </button>
@@ -697,7 +697,7 @@ export default function CoachingLanding() {
                                   Full (0 Left)
                                 </span>
                               ) : (
-                                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#B6FF3B]/15 text-[#B6FF3B] border border-[#B6FF3B]/30 font-mono">
+                                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-red-500/15 text-red-300 border border-red-500/30 font-mono">
                                   {free} Available
                                 </span>
                               )}
@@ -706,7 +706,7 @@ export default function CoachingLanding() {
                               <button
                                 type="button"
                                 onClick={() => setAttendanceModalBatch(b)}
-                                className="px-2.5 py-1 rounded-lg bg-[#00D4FF]/20 text-[#00D4FF] border border-[#00D4FF]/40 text-xs font-semibold hover:bg-[#00D4FF]/30"
+                                className="px-2.5 py-1 rounded-lg bg-red-600/20 text-red-300 border border-red-500/40 text-xs font-semibold hover:bg-red-600/30 transition-colors"
                               >
                                 Take Attendance
                               </button>
@@ -722,7 +722,7 @@ export default function CoachingLanding() {
 
             {/* TAB 4: Student Enrolments */}
             {ownerActiveTab === 'enrolments' && (
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-4 shadow-xl">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-4 shadow-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-white">Student Enrolment Applications</h3>
@@ -732,7 +732,7 @@ export default function CoachingLanding() {
 
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs text-gray-300">
-                    <thead className="bg-[#0B0F14] text-gray-400 uppercase font-mono text-[11px] border-b border-[#293442]">
+                    <thead className="bg-[#08050c] text-gray-400 uppercase font-mono text-[11px] border-b border-red-500/20">
                       <tr>
                         <th className="p-3.5">Student</th>
                         <th className="p-3.5">Programme</th>
@@ -743,9 +743,9 @@ export default function CoachingLanding() {
                         <th className="p-3.5 text-right">Actions</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-[#293442]">
+                    <tbody className="divide-y divide-red-500/10">
                       {ownerEnrolments.map((enr) => (
-                        <tr key={enr.id} className="hover:bg-[#1B2530]/50 transition-colors">
+                        <tr key={enr.id} className="hover:bg-red-950/20 transition-colors">
                           <td className="p-3.5">
                             <div className="font-bold text-white">{enr.athleteName}</div>
                             <div className="text-[11px] text-gray-400">Age: {enr.athleteAge} • {enr.athletePhone}</div>
@@ -776,14 +776,14 @@ export default function CoachingLanding() {
                                 <button
                                   type="button"
                                   onClick={() => updateEnrolmentStatus(enr.id, 'Approved')}
-                                  className="px-2.5 py-1 rounded-lg bg-[#B6FF3B] text-black font-bold text-xs"
+                                  className="px-3 py-1 rounded-lg bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-bold text-xs hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all cursor-pointer"
                                 >
                                   Approve
                                 </button>
                                 <button
                                   type="button"
                                   onClick={() => setRejectItemModal({ type: 'enrolment', id: enr.id, name: enr.athleteName })}
-                                  className="px-2.5 py-1 rounded-lg bg-red-500/20 text-red-400 border border-red-500/30 text-xs"
+                                  className="px-2.5 py-1 rounded-lg bg-red-500/20 text-red-400 border border-red-500/30 text-xs hover:bg-red-500/30 transition-colors cursor-pointer"
                                 >
                                   Reject
                                 </button>
@@ -793,7 +793,7 @@ export default function CoachingLanding() {
                               <button
                                 type="button"
                                 onClick={() => updateEnrolmentStatus(enr.id, 'Approved')}
-                                className="px-2.5 py-1 rounded-lg bg-[#00D4FF] text-black font-bold text-xs"
+                                className="px-3 py-1 rounded-lg bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold text-xs hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all cursor-pointer"
                               >
                                 Move to Batch
                               </button>
@@ -809,7 +809,7 @@ export default function CoachingLanding() {
 
             {/* TAB 5: Trial Bookings */}
             {ownerActiveTab === 'trials' && (
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-4 shadow-xl">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-4 shadow-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-white">Trial Session Bookings</h3>
@@ -819,7 +819,7 @@ export default function CoachingLanding() {
 
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs text-gray-300">
-                    <thead className="bg-[#0B0F14] text-gray-400 uppercase font-mono text-[11px] border-b border-[#293442]">
+                    <thead className="bg-[#08050c] text-gray-400 uppercase font-mono text-[11px] border-b border-red-500/20">
                       <tr>
                         <th className="p-3.5">Booking ID</th>
                         <th className="p-3.5">Athlete</th>
@@ -830,9 +830,9 @@ export default function CoachingLanding() {
                         <th className="p-3.5 text-right">Actions</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-[#293442]">
+                    <tbody className="divide-y divide-red-500/10">
                       {ownerTrials.map((tb) => (
-                        <tr key={tb.id} className="hover:bg-[#1B2530]/50 transition-colors">
+                        <tr key={tb.id} className="hover:bg-red-950/20 transition-colors">
                           <td className="p-3.5 font-mono text-gray-400">{tb.id}</td>
                           <td className="p-3.5">
                             <div className="font-bold text-white">{tb.athleteName}</div>
@@ -843,7 +843,7 @@ export default function CoachingLanding() {
                           <td className="p-3.5 font-mono">{tb.date} ({tb.time})</td>
                           <td className="p-3.5">
                             <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border ${
-                              tb.status === 'Confirmed' ? 'bg-[#B6FF3B]/15 text-[#B6FF3B] border-[#B6FF3B]/30' :
+                              tb.status === 'Confirmed' ? 'bg-red-500/15 text-red-400 border-red-500/30' :
                               tb.status === 'Completed' ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' :
                               tb.status === 'Cancelled' || tb.status === 'Rejected' ? 'bg-red-500/15 text-red-400 border-red-500/30' :
                               'bg-amber-500/15 text-amber-400 border-amber-500/30'
@@ -857,14 +857,14 @@ export default function CoachingLanding() {
                                 <button
                                   type="button"
                                   onClick={() => updateTrialStatus(tb.id, 'Confirmed')}
-                                  className="px-2.5 py-1 rounded-lg bg-[#B6FF3B] text-black font-bold text-xs"
+                                  className="px-3 py-1 rounded-lg bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-bold text-xs hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all cursor-pointer"
                                 >
                                   Confirm
                                 </button>
                                 <button
                                   type="button"
                                   onClick={() => setRejectItemModal({ type: 'trial', id: tb.id, name: tb.athleteName })}
-                                  className="px-2.5 py-1 rounded-lg bg-red-500/20 text-red-400 border border-red-500/30 text-xs"
+                                  className="px-2.5 py-1 rounded-lg bg-red-500/20 text-red-400 border border-red-500/30 text-xs hover:bg-red-500/30 transition-colors cursor-pointer"
                                 >
                                   Decline
                                 </button>
@@ -874,7 +874,7 @@ export default function CoachingLanding() {
                               <button
                                 type="button"
                                 onClick={() => updateTrialStatus(tb.id, 'Completed')}
-                                className="px-2.5 py-1 rounded-lg bg-emerald-500 text-black font-bold text-xs"
+                                className="px-3 py-1 rounded-lg bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-500 transition-colors cursor-pointer"
                               >
                                 Mark Completed
                               </button>
@@ -890,7 +890,7 @@ export default function CoachingLanding() {
 
             {/* TAB 6: Attendance Tracking */}
             {ownerActiveTab === 'attendance' && (
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-5 shadow-xl">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-5 shadow-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-white">Student Attendance Records</h3>
@@ -900,16 +900,16 @@ export default function CoachingLanding() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {ownerBatches.map((b) => (
-                    <div key={b.id} className="p-4 bg-[#0B0F14] border border-[#293442] rounded-xl flex items-center justify-between">
+                    <div key={b.id} className="p-4 bg-[#08050c] border border-red-500/20 rounded-xl flex items-center justify-between">
                       <div>
                         <div className="font-bold text-white text-sm">{b.name}</div>
                         <div className="text-xs text-gray-400">{b.days.join(', ')} • {b.startTime} - {b.endTime}</div>
-                        <div className="text-[11px] text-[#00D4FF] mt-1 font-mono">{b.enrolledCount} Students Enrolled</div>
+                        <div className="text-[11px] text-red-400 mt-1 font-mono">{b.enrolledCount} Students Enrolled</div>
                       </div>
                       <button
                         type="button"
                         onClick={() => setAttendanceModalBatch(b)}
-                        className="px-3 py-1.5 rounded-xl bg-[#00D4FF] text-black font-bold text-xs hover:bg-[#00c2e6]"
+                        className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold text-xs hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all cursor-pointer"
                       >
                         Take Attendance
                       </button>
@@ -921,7 +921,7 @@ export default function CoachingLanding() {
 
             {/* TAB 7: Fees & Payments */}
             {ownerActiveTab === 'payments' && (
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-4 shadow-xl">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-4 shadow-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-white">Fees & Payment Tracking</h3>
@@ -931,7 +931,7 @@ export default function CoachingLanding() {
 
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs text-gray-300">
-                    <thead className="bg-[#0B0F14] text-gray-400 uppercase font-mono text-[11px] border-b border-[#293442]">
+                    <thead className="bg-[#08050c] text-gray-400 uppercase font-mono text-[11px] border-b border-red-500/20">
                       <tr>
                         <th className="p-3.5">Transaction Ref</th>
                         <th className="p-3.5">Student</th>
@@ -942,10 +942,10 @@ export default function CoachingLanding() {
                         <th className="p-3.5 text-right">Actions</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-[#293442]">
+                    <tbody className="divide-y divide-red-500/10">
                       {payments.map((p) => (
-                        <tr key={p.id} className="hover:bg-[#1B2530]/50 transition-colors">
-                          <td className="p-3.5 font-mono text-[#00D4FF]">{p.refId || p.id}</td>
+                        <tr key={p.id} className="hover:bg-red-950/20 transition-colors">
+                          <td className="p-3.5 font-mono text-red-400">{p.refId || p.id}</td>
                           <td className="p-3.5 font-bold text-white">{p.studentName}</td>
                           <td className="p-3.5 text-gray-300">{p.programmeName}</td>
                           <td className="p-3.5 font-bold text-white">₹{p.amount.toLocaleString('en-IN')}</td>
@@ -964,7 +964,7 @@ export default function CoachingLanding() {
                               <button
                                 type="button"
                                 onClick={() => recordPayment(p.id, 'Paid')}
-                                className="px-2.5 py-1 rounded-lg bg-[#B6FF3B] text-black font-bold text-xs"
+                                className="px-3 py-1 rounded-lg bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-bold text-xs hover:shadow-[0_4px_14px_rgba(220,38,38,0.4)] transition-all cursor-pointer"
                               >
                                 Mark Paid
                               </button>
@@ -980,37 +980,37 @@ export default function CoachingLanding() {
 
             {/* TAB 8: Owner Analytics */}
             {ownerActiveTab === 'analytics' && (
-              <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 space-y-6 shadow-xl">
+              <div className="bg-[#0c0d15]/85 border border-red-500/20 backdrop-blur-md rounded-2xl p-6 space-y-6 shadow-xl">
                 <div>
                   <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-[#B6FF3B]" />
+                    <TrendingUp className="w-5 h-5 text-red-400" />
                     Academy Performance Analytics (Simulated Demo Data)
                   </h3>
                   <p className="text-xs text-gray-400">Key metrics on student growth, batch utilisation, and trial conversion rates</p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div className="p-4 bg-[#0B0F14] border border-[#293442] rounded-xl space-y-1">
+                  <div className="p-4 bg-[#08050c] border border-red-500/20 rounded-xl space-y-1">
                     <span className="text-xs text-gray-400 font-semibold">Trial-to-Enrolment Conversion</span>
-                    <div className="text-2xl font-extrabold text-[#B6FF3B]">68%</div>
+                    <div className="text-2xl font-extrabold text-red-400">68%</div>
                     <span className="text-[10px] text-gray-500">Above Pune regional average (54%)</span>
                   </div>
 
-                  <div className="p-4 bg-[#0B0F14] border border-[#293442] rounded-xl space-y-1">
+                  <div className="p-4 bg-[#08050c] border border-red-500/20 rounded-xl space-y-1">
                     <span className="text-xs text-gray-400 font-semibold">Batch Seat Utilisation</span>
-                    <div className="text-2xl font-extrabold text-[#00D4FF]">
+                    <div className="text-2xl font-extrabold text-rose-400">
                       {totalCapacity > 0 ? Math.round((totalEnrolled / totalCapacity) * 100) : 0}%
                     </div>
                     <span className="text-[10px] text-gray-500">{totalEnrolled} active of {totalCapacity} seats</span>
                   </div>
 
-                  <div className="p-4 bg-[#0B0F14] border border-[#293442] rounded-xl space-y-1">
+                  <div className="p-4 bg-[#08050c] border border-red-500/20 rounded-xl space-y-1">
                     <span className="text-xs text-gray-400 font-semibold">Average Attendance Rate</span>
                     <div className="text-2xl font-extrabold text-white">92.4%</div>
                     <span className="text-[10px] text-gray-500">Last 30 days sessions</span>
                   </div>
 
-                  <div className="p-4 bg-[#0B0F14] border border-[#293442] rounded-xl space-y-1">
+                  <div className="p-4 bg-[#08050c] border border-red-500/20 rounded-xl space-y-1">
                     <span className="text-xs text-gray-400 font-semibold">Student Satisfaction Rating</span>
                     <div className="text-2xl font-extrabold text-amber-400">4.9 / 5.0</div>
                     <span className="text-[10px] text-gray-500">Based on 148 verified reviews</span>

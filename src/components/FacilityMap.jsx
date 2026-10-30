@@ -81,16 +81,16 @@ export default function FacilityMap({
         <div style="
           width: 32px;
           height: 32px;
-          background-color: ${isSelected ? '#D4AF37' : '#E5C378'};
-          border: ${isSelected ? '2px solid #DC2626' : '2px solid #0B0F14'};
+          background: ${isSelected ? 'linear-gradient(135deg, #DC2626, #991B1B)' : 'linear-gradient(135deg, #EF4444, #DC2626)'};
+          border: ${isSelected ? '2px solid #FFFFFF' : '2px solid rgba(255,255,255,0.85)'};
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #0B0F14;
+          color: #FFFFFF;
           font-weight: 800;
-          font-size: 11px;
-          box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+          font-size: 12px;
+          box-shadow: 0 4px 14px rgba(220,38,38,0.5);
           cursor: pointer;
           transform: ${isSelected ? 'scale(1.2)' : 'scale(1)'};
           transition: transform 0.15s ease;
@@ -113,13 +113,13 @@ export default function FacilityMap({
       const popupHtml = `
         <div style="min-width: 200px; padding: 4px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-            <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; color: #E5C378; letter-spacing: 0.5px;">${fac.sport}</span>
+            <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; color: #FDA4AF; letter-spacing: 0.5px;">${fac.sport}</span>
             <span style="font-size: 10px; color: #94A3B8;">${fac.area}</span>
           </div>
           <h4 style="font-size: 15px; font-weight: 800; margin: 0 0 4px 0; color: #F5F7FA; font-family: sans-serif;">${fac.name}</h4>
           <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; border-top: 1px solid #293442; padding-top: 6px;">
-            <span style="font-size: 14px; font-weight: 800; color: #E5C378;">₹${fac.pricing.offPeak}<span style="font-size: 10px; font-weight: normal; color: #94A3B8;">/hr</span></span>
-            <a href="/facilities/${fac.id}" style="display: inline-block; font-size: 11px; font-weight: 700; color: #0B0F14; background: #D4AF37; padding: 4px 10px; border-radius: 999px; text-decoration: none;">View Details →</a>
+            <span style="font-size: 14px; font-weight: 800; color: #FECDD3;">₹${fac.pricing.offPeak}<span style="font-size: 10px; font-weight: normal; color: #94A3B8;">/hr</span></span>
+            <a href="/facilities/${fac.id}" style="display: inline-block; font-size: 11px; font-weight: 700; color: #FFFFFF; background: linear-gradient(135deg, #DC2626, #E11D48); padding: 4px 10px; border-radius: 999px; text-decoration: none; box-shadow: 0 2px 10px rgba(225,29,72,0.4);">View Details →</a>
           </div>
         </div>
       `;

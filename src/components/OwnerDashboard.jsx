@@ -268,7 +268,7 @@ export default function OwnerDashboard({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#E5C378]">
+              <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
                 Facility Owner Suite
               </span>
               <span className="text-[10px] text-[#94A3B8] bg-slate-800 px-2 py-0.5 rounded border border-slate-700">
@@ -280,7 +280,7 @@ export default function OwnerDashboard({
             </h2>
           </div>
 
-          <Button variant="gold" size="md" onClick={handleStartAdd} className="gap-2">
+          <Button variant="crimson" size="md" onClick={handleStartAdd} className="gap-2">
             <PlusCircle className="w-4 h-4" />
             <span>List a New Facility</span>
           </Button>
@@ -291,7 +291,7 @@ export default function OwnerDashboard({
           <div className="bg-[#141B24] border border-[#293442] rounded-xl p-4 sm:p-5">
             <div className="flex items-center justify-between text-[#94A3B8] mb-2">
               <span className="text-xs uppercase font-bold tracking-wider">Total Facilities</span>
-              <Building2 className="w-4 h-4 text-amber-400" />
+              <Building2 className="w-4 h-4 text-rose-400" />
             </div>
             <div className="text-2xl sm:text-3xl font-black text-[#F5F7FA] font-['Barlow_Condensed']">
               {totalFacilities}
@@ -302,9 +302,9 @@ export default function OwnerDashboard({
           <div className="bg-[#141B24] border border-[#293442] rounded-xl p-4 sm:p-5">
             <div className="flex items-center justify-between text-[#94A3B8] mb-2">
               <span className="text-xs uppercase font-bold tracking-wider">Bookings Today</span>
-              <Clock className="w-4 h-4 text-[#E5C378]" />
+              <Clock className="w-4 h-4 text-rose-400" />
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-[#E5C378] font-['Barlow_Condensed']">
+            <div className="text-2xl sm:text-3xl font-black text-rose-300 font-['Barlow_Condensed']">
               {bookingsToday}
             </div>
             <span className="text-[11px] text-[#94A3B8]">Scheduled matches</span>
@@ -313,7 +313,7 @@ export default function OwnerDashboard({
           <div className="bg-[#141B24] border border-[#293442] rounded-xl p-4 sm:p-5">
             <div className="flex items-center justify-between text-[#94A3B8] mb-2">
               <span className="text-xs uppercase font-bold tracking-wider">Upcoming Bookings</span>
-              <Calendar className="w-4 h-4 text-amber-400" />
+              <Calendar className="w-4 h-4 text-rose-400" />
             </div>
             <div className="text-2xl sm:text-3xl font-black text-[#F5F7FA] font-['Barlow_Condensed']">
               {upcomingBookings}
@@ -349,7 +349,7 @@ export default function OwnerDashboard({
             onClick={() => setActiveTab(tab.id)}
             className={`py-3 px-4 font-bold text-xs uppercase tracking-wider transition-colors border-b-2 cursor-pointer whitespace-nowrap ${
               activeTab === tab.id
-                ? 'border-[#D4AF37] text-[#E5C378]'
+                ? 'border-rose-500 text-rose-300'
                 : 'border-transparent text-[#94A3B8] hover:text-[#F5F7FA]'
             }`}
           >
@@ -419,7 +419,7 @@ export default function OwnerDashboard({
                       <button
                         type="button"
                         onClick={() => handleStartEdit(fac)}
-                        className="px-2.5 py-1 text-xs rounded bg-[#0B0F14] border border-[#293442] text-slate-300 hover:text-white hover:border-[#D4AF37]"
+                        className="px-2.5 py-1 text-xs rounded bg-[#0B0F14] border border-[#293442] text-slate-300 hover:text-white hover:border-rose-400"
                       >
                         Edit
                       </button>
@@ -437,7 +437,7 @@ export default function OwnerDashboard({
                           setSlotGroundId(fac.grounds[0]?.id || 'g1-1');
                           setActiveTab('slots');
                         }}
-                        className="px-2.5 py-1 text-xs rounded bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#E5C378] hover:bg-[#D4AF37]/20"
+                        className="px-2.5 py-1 text-xs rounded bg-rose-500/15 border border-rose-500/30 text-rose-200 hover:bg-rose-500/25"
                       >
                         Slots
                       </button>
@@ -454,7 +454,7 @@ export default function OwnerDashboard({
       {activeTab === 'add_facility' && (
         <div className="bg-[#141B24] border border-[#293442] rounded-2xl p-6 sm:p-8 shadow-xl max-w-3xl">
           <div className="mb-6 pb-4 border-b border-[#293442]">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-[#E5C378]">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-rose-400">
               Inventory Configuration
             </span>
             <h3 className="font-['Barlow_Condensed'] text-2xl font-black uppercase text-[#F5F7FA] mt-1">
@@ -476,7 +476,7 @@ export default function OwnerDashboard({
                   value={facilityForm.name}
                   onChange={(e) => setFacilityForm({ ...facilityForm, name: e.target.value })}
                   placeholder="e.g. Koramangala Champions Arena"
-                  className="w-full bg-[#0B0F14] border border-[#293442] text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-[#D4AF37]"
+                  className="w-full bg-[#0B0F14] border border-[#293442] text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-rose-500"
                 />
                 {formErrors.name && (
                   <p className="text-rose-400 text-[11px] mt-1">{formErrors.name}</p>
@@ -605,7 +605,7 @@ export default function OwnerDashboard({
             </div>
 
             <div className="pt-4 border-t border-[#293442] flex gap-3">
-              <Button type="submit" variant="primary" size="md">
+              <Button type="submit" variant="crimson" size="md">
                 {editingFacility ? 'Save Changes' : 'Submit Facility (Unverified)'}
               </Button>
               <Button type="button" variant="secondary" size="md" onClick={() => setActiveTab('facilities')}>
@@ -712,7 +712,7 @@ export default function OwnerDashboard({
                       <td className="py-3 px-4 font-semibold text-white">
                         {timeStr} - {(hour + 1).toString().padStart(2, '0')}:00
                       </td>
-                      <td className="py-3 px-4 text-[#E5C378] font-bold">
+                      <td className="py-3 px-4 text-rose-200 font-bold">
                         ₹{currentPrice}
                       </td>
                       <td className="py-3 px-4 text-right space-x-1.5">
@@ -764,7 +764,7 @@ export default function OwnerDashboard({
                   onClick={() => setReservationStatusFilter(st)}
                   className={`px-3 py-1 text-xs rounded-lg font-semibold transition-colors border ${
                     reservationStatusFilter === st
-                      ? 'bg-gradient-to-r from-[#D4AF37] to-[#C59B27] text-[#0F141C] border-[#D4AF37]'
+                      ? 'bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white border-rose-500 font-bold shadow-md shadow-red-950/40'
                       : 'bg-[#0B0F14] text-[#94A3B8] border-[#293442]'
                   }`}
                 >
@@ -790,7 +790,7 @@ export default function OwnerDashboard({
               <tbody className="divide-y divide-[#293442]/60 font-medium">
                 {filteredReservations.map((b) => (
                   <tr key={b.id} className="hover:bg-[#1B2530]/40">
-                    <td className="py-3.5 px-4 font-mono font-bold text-amber-400">{b.id}</td>
+                    <td className="py-3.5 px-4 font-mono font-bold text-rose-300">{b.id}</td>
                     <td className="py-3.5 px-4">
                       <div className="text-white font-bold">{b.playerName}</div>
                       <div className="text-[11px] text-[#94A3B8]">{b.playerPhone}</div>
@@ -801,7 +801,7 @@ export default function OwnerDashboard({
                     </td>
                     <td className="py-3.5 px-4">
                       <div>{b.date}</div>
-                      <div className="text-[11px] text-[#E5C378]">{b.startTime} ({b.durationHours}h)</div>
+                      <div className="text-[11px] text-rose-300">{b.startTime} ({b.durationHours}h)</div>
                     </td>
                     <td className="py-3.5 px-4 font-bold text-white">₹{b.amount}</td>
                     <td className="py-3.5 px-4">

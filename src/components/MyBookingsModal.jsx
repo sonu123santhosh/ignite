@@ -36,7 +36,7 @@ export default function MyBookingsModal({
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-[#293442]">
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-[#E5C378]">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-rose-400">
               Player Reservation History
             </span>
             <h2 id="my-bookings-title" className="font-['Barlow_Condensed'] text-2xl font-black uppercase text-[#F5F7FA]">
@@ -68,7 +68,7 @@ export default function MyBookingsModal({
               >
                 <div className="space-y-1.5 flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold text-amber-400">
+                    <span className="text-xs font-mono font-bold text-rose-300">
                       {b.id}
                     </span>
                     <span
@@ -93,14 +93,14 @@ export default function MyBookingsModal({
 
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-300 pt-1">
                     <span className="flex items-center gap-1 text-[#94A3B8]">
-                      <Calendar className="w-3.5 h-3.5 text-[#E5C378]" />
+                      <Calendar className="w-3.5 h-3.5 text-rose-400" />
                       {b.date}
                     </span>
                     <span className="flex items-center gap-1 text-[#94A3B8]">
-                      <Clock className="w-3.5 h-3.5 text-[#E5C378]" />
+                      <Clock className="w-3.5 h-3.5 text-rose-400" />
                       {b.startTime} ({b.durationHours}h)
                     </span>
-                    <span className="font-bold text-[#E5C378]">
+                    <span className="font-bold text-rose-200">
                       ₹{b.amount}
                     </span>
                   </div>
