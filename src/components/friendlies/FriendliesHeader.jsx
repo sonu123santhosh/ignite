@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Swords, Plus, Shield, Search, ArrowDown } from 'lucide-react';
+import { Swords, Plus, Shield, Search, ArrowDown, Sparkles } from 'lucide-react';
 
 export default function FriendliesHeader({ onScrollToMatches }) {
   return (
@@ -50,6 +50,14 @@ export default function FriendliesHeader({ onScrollToMatches }) {
             >
               <Plus className="w-4 h-4 text-[#B6FF3B]" />
               <span>Register Your Team</span>
+            </Link>
+
+            <Link
+              to="/friendlies/feed"
+              className="px-4 py-2.5 rounded-xl bg-[#B6FF3B]/15 hover:bg-[#B6FF3B]/25 text-[#B6FF3B] font-bold text-xs sm:text-sm border border-[#B6FF3B]/35 transition-all flex items-center gap-1.5"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>Match Feed</span>
             </Link>
           </div>
         </div>

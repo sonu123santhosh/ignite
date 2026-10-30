@@ -15,9 +15,15 @@ import TournamentTeams from './pages/TournamentTeams';
 import TournamentOrganiserDashboard from './pages/TournamentOrganiserDashboard';
 import TournamentOrganiserCreate from './pages/TournamentOrganiserCreate';
 import TournamentOrganiserManage from './pages/TournamentOrganiserManage';
+// Your League Feature Pages
+import YourLeagueHub from './pages/tournaments/your-league/YourLeagueHub';
+import CreateLeague from './pages/tournaments/your-league/CreateLeague';
+import LeagueManage from './pages/tournaments/your-league/LeagueManage';
+import PublicLeagueView from './pages/tournaments/your-league/PublicLeagueView';
 
 // College Friendly Matches Pages
 import { FriendliesProvider } from './context/FriendliesContext';
+import FriendlyFeedPage from './pages/friendlies/FriendlyFeedPage';
 import FriendliesDiscovery from './pages/friendlies/FriendliesDiscovery';
 import MatchDetails from './pages/friendlies/MatchDetails';
 import ChallengeCollege from './pages/friendlies/ChallengeCollege';
@@ -220,6 +226,39 @@ export default function App() {
             }
           />
 
+          {/* Your League Feature Routes */}
+          <Route
+            path="tournaments/your-league"
+            element={
+              <YourLeagueHub
+                currentDemoUser={currentDemoUser}
+                tournamentRole={tournamentRole}
+              />
+            }
+          />
+          <Route
+            path="tournaments/your-league/new"
+            element={
+              <CreateLeague
+                currentDemoUser={currentDemoUser}
+                tournamentRole={tournamentRole}
+              />
+            }
+          />
+          <Route
+            path="tournaments/your-league/:id"
+            element={
+              <LeagueManage
+                currentDemoUser={currentDemoUser}
+                tournamentRole={tournamentRole}
+              />
+            }
+          />
+          <Route
+            path="tournaments/your-league/public/:shareToken"
+            element={<PublicLeagueView />}
+          />
+
           {/* College Friendly Matches Routes */}
           <Route path="friendlies" element={<FriendliesDiscovery />} />
           <Route path="friendlies/matches/:id" element={<MatchDetails />} />
@@ -229,6 +268,7 @@ export default function App() {
           <Route path="friendlies/inbox" element={<FriendliesInbox />} />
           <Route path="friendlies/dashboard" element={<FriendliesDashboard />} />
           <Route path="friendlies/updates" element={<OfficialUpdates />} />
+          <Route path="friendlies/feed" element={<FriendlyFeedPage />} />
           <Route path="friendly-matches" element={<FriendliesDiscovery />} />
 
           {/* Coaching Centres Routes */}
