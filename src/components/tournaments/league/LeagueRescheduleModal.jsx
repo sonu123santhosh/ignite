@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Calendar, AlertTriangle, AlertCircle } from 'lucide-react';
 import Button from '../../Button';
 
@@ -27,37 +27,63 @@ export default function LeagueRescheduleModal({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
+  // Synchronize modal state whenever the match prop changes
+  useEffect(() => {
+    if (match) {
+      const d = match.scheduledAt
+        ? match.scheduledAt.slice(0, 10)
+        : (league?.startDate || new Date().toISOString().slice(0, 10));
+      const t = match.scheduledAt
+        ? match.scheduledAt.slice(11, 16)
+        : '10:00';
+      setDateStr(d);
+      setTimeStr(t);
+      setVenue(match.venue || 'Sanctuary Arena 1');
+      setOverrideConflict(false);
+      setError(null);
+    }
+  }, [match?.id, match?.scheduledAt, match?.venue, league?.startDate]);
+
   if (!isOpen || !match) return null;
 
   const todayStr = new Date().toISOString().slice(0, 10);
-  const proposedIso = new Date(`${dateStr}T${timeStr}:00`).toISOString();
-  const proposedTime = new Date(proposedIso).getTime();
+  const parsedDate = dateStr && timeStr ? new Date(`${dateStr}T${timeStr}:00`) : null;
+  const isDateValid = Boolean(parsedDate && !isNaN(parsedDate.getTime()));
+  const proposedIso = isDateValid ? parsedDate.toISOString() : null;
+  const proposedTime = isDateValid ? parsedDate.getTime() : 0;
 
   // Check conflicts live against other matches in this league
   const liveConflicts = [];
   const matchDurationMinutes = 90;
 
-  allMatches.forEach((other) => {
-    if (other.id === match.id || !other.scheduledAt) return;
-    const otherTime = new Date(other.scheduledAt).getTime();
-    const diffMinutes = Math.abs(proposedTime - otherTime) / (1000 * 60);
+  if (isDateValid && proposedTime > 0) {
+    allMatches.forEach((other) => {
+      if (other.id === match.id || !other.scheduledAt) return;
+      const otherTime = new Date(other.scheduledAt).getTime();
+      const diffMinutes = Math.abs(proposedTime - otherTime) / (1000 * 60);
 
-    if (diffMinutes < matchDurationMinutes) {
-      if (venue && other.venue && venue.trim().toLowerCase() === other.venue.trim().toLowerCase()) {
-        liveConflicts.push(`Venue "${venue}" is already booked for match #${other.id} at ${other.scheduledAt.slice(11, 16)}.`);
+      if (diffMinutes < matchDurationMinutes) {
+        if (venue && other.venue && venue.trim().toLowerCase() === other.venue.trim().toLowerCase()) {
+          liveConflicts.push(`Venue "${venue}" is already booked for match #${other.id} at ${other.scheduledAt.slice(11, 16)}.`);
+        }
+        const sharedTeams = [match.homeTeamId, match.awayTeamId].filter((tId) =>
+          [other.homeTeamId, other.awayTeamId].includes(tId)
+        );
+        if (sharedTeams.length > 0) {
+          liveConflicts.push(`A participating team is already playing in match #${other.id} in an overlapping time window.`);
+        }
       }
-      const sharedTeams = [match.homeTeamId, match.awayTeamId].filter((tId) =>
-        [other.homeTeamId, other.awayTeamId].includes(tId)
-      );
-      if (sharedTeams.length > 0) {
-        liveConflicts.push(`A participating team is already playing in match #${other.id} in an overlapping time window.`);
-      }
-    }
-  });
+    });
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+
+    if (!isDateValid || !proposedIso) {
+      setError('Please provide a valid match date and kickoff time.');
+      return;
+    }
 
     if (proposedTime < Date.now() - 3600000 * 12) {
       setError('Cannot schedule a match in the past.');
