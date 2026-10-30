@@ -405,6 +405,7 @@ export function FriendliesProvider({ children }) {
         collegesMap,
         teams,
         matches,
+        setMatches,
         invitations,
         notifications,
         followedTeamIds,

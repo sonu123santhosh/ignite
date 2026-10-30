@@ -266,6 +266,15 @@ export default function Tournaments({
                 <span>My Registrations</span>
               </Link>
 
+              {/* Your League Hub - Custom Round-Robin Leagues */}
+              <Link
+                to="/tournaments/your-league"
+                className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#c6ff3d]/15 to-emerald-400/15 hover:from-[#c6ff3d]/25 hover:to-emerald-400/25 text-[#c6ff3d] font-bold text-xs sm:text-sm border border-[#c6ff3d]/35 transition-all flex items-center gap-1.5 shadow-[0_2px_10px_rgba(198,255,61,0.15)]"
+              >
+                <Trophy className="w-4 h-4 text-[#c6ff3d]" />
+                <span>Your League</span>
+              </Link>
+
               {/* Show Team Captain squad button if Captain or Organiser */}
               {(tournamentRole === 'captain' || tournamentRole === 'organiser') && (
                 <Link
