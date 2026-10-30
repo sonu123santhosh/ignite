@@ -29,6 +29,61 @@ const rateLimitMap = new Map();
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 mins
 const MAX_SPLIT_OPS_PER_WINDOW = 30;
 
+export const DEFAULT_SEEDED_SPLITS = [
+  {
+    id: 'spl_seed_101',
+    bookingId: 'bk-101',
+    facilityId: 'fac-1',
+    facilityName: 'Elite Football Arena',
+    groundName: 'Pitch 1 (7v7 Main Arena)',
+    date: 'Today',
+    time: '18:00',
+    totalPaise: 145600,
+    totalRupees: 1456,
+    participantCount: 4,
+    mode: 'equal',
+    note: '7v7 Friday turf match with college alumni',
+    creatorUserId: 'usr_arjun_verma_101',
+    creatorName: 'Arjun Verma',
+    status: 'active',
+    shareToken: 'spl_elite_arena_demo_split',
+    shareTokenRevoked: false,
+    participants: [
+      { position: 1, name: 'Arjun Verma (Booker)', userId: 'usr_arjun_verma_101', amountPaise: 36400, amountRupees: 364, paymentStatus: null },
+      { position: 2, name: 'Rohan Sharma', userId: null, amountPaise: 36400, amountRupees: 364, paymentStatus: null },
+      { position: 3, name: 'Vikram Seth', userId: null, amountPaise: 36400, amountRupees: 364, paymentStatus: null },
+      { position: 4, name: 'Karthik Raja', userId: null, amountPaise: 36400, amountRupees: 364, paymentStatus: null }
+    ],
+    createdAt: '2026-10-30T06:00:00.000Z',
+    updatedAt: '2026-10-30T06:00:00.000Z'
+  },
+  {
+    id: 'spl_seed_102',
+    bookingId: 'bk-102',
+    facilityId: 'fac-2',
+    facilityName: 'SmashPoint Badminton Club',
+    groundName: 'Court 1 (Yonex Mat)',
+    date: 'Today',
+    time: '19:00',
+    totalPaise: 55600,
+    totalRupees: 556,
+    participantCount: 2,
+    mode: 'equal',
+    note: 'Weekly singles training match',
+    creatorUserId: 'usr_pooja_hegde_102',
+    creatorName: 'Pooja Hegde',
+    status: 'active',
+    shareToken: 'spl_smashpoint_demo_split',
+    shareTokenRevoked: false,
+    participants: [
+      { position: 1, name: 'Pooja Hegde (Booker)', userId: 'usr_pooja_hegde_102', amountPaise: 27800, amountRupees: 278, paymentStatus: null },
+      { position: 2, name: 'Ananya Roy', userId: null, amountPaise: 27800, amountRupees: 278, paymentStatus: null }
+    ],
+    createdAt: '2026-10-30T06:30:00.000Z',
+    updatedAt: '2026-10-30T06:30:00.000Z'
+  }
+];
+
 export function resetSplitDbState() {
   inMemorySplits = null;
   rateLimitMap.clear();
@@ -45,12 +100,17 @@ function getSplitsStore() {
   try {
     if (typeof window !== 'undefined' && window.localStorage) {
       const raw = window.localStorage.getItem(SPLITS_STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
+      if (raw) {
+        return JSON.parse(raw);
+      }
     }
   } catch {
     // fallback
   }
-  return inMemorySplits || [];
+  if (!inMemorySplits || inMemorySplits.length === 0) {
+    inMemorySplits = JSON.parse(JSON.stringify(DEFAULT_SEEDED_SPLITS));
+  }
+  return inMemorySplits;
 }
 
 function saveSplitsStore(splits) {
@@ -547,3 +607,4 @@ export function generateWhatsAppUrl(split, shareUrl = '') {
   const text = generateShareText(split, shareUrl);
   return `https://wa.me/?text=${encodeURIComponent(text)}`;
 }
+

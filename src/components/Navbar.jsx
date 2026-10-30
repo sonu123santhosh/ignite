@@ -15,7 +15,7 @@ export default function Navbar({ onShowToast }) {
   const { currentUser, isAuthenticated, logout } = useAuth();
 
   const navLinks = [
-    { label: 'Home', path: '/home' },
+    { label: 'Home', path: '/' },
     { label: 'Facilities', path: '/facilities' },
     { label: 'Tournaments', path: '/tournaments' },
     { label: 'Friendly Matches', path: '/friendlies' },
@@ -36,7 +36,7 @@ export default function Navbar({ onShowToast }) {
 
   // Determine active nav key based on current URL path
   const getActiveKey = useCallback((pathname) => {
-    if (pathname === '/' || pathname === '/home') return '/home';
+    if (pathname === '/' || pathname === '/home') return '/';
     if (pathname.startsWith('/facilities')) return '/facilities';
     if (pathname.startsWith('/tournaments')) return '/tournaments';
     if (pathname.startsWith('/friendlies') || pathname.startsWith('/friendly-matches')) return '/friendlies';
@@ -207,7 +207,7 @@ export default function Navbar({ onShowToast }) {
         <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Logo Mark + Brand */}
           <Link
-            to="/home"
+            to="/"
             onClick={() => setIsOpen(false)}
             className={`flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 rounded-xl p-1 ${
               isFacilitiesPage

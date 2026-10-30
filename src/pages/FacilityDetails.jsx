@@ -21,7 +21,8 @@ import {
 } from '../components/facility/facilityAdapter';
 import {
   INITIAL_FACILITIES,
-  checkSlotOverlap
+  checkSlotOverlap,
+  generateSlotsForGroundAndDate
 } from '../data/facilitiesData';
 
 export default function FacilityDetails({
@@ -73,6 +74,26 @@ export default function FacilityDetails({
     setHoldRemainingSec(300);
     setHoldExpired(false);
   }, [id, facility, todayStr]);
+
+  // Auto-select earliest available slot so user immediately sees live booking pricing
+  useEffect(() => {
+    if (!rawFacility || !selectedGroundId || selectedSlotTime) return;
+    try {
+      const generated = generateSlotsForGroundAndDate(
+        rawFacility,
+        selectedGroundId,
+        selectedDate,
+        bookings,
+        customSlotOverrides
+      );
+      const firstAvailable = generated.find((s) => s.state === 'available');
+      if (firstAvailable) {
+        setSelectedSlotTime(firstAvailable.startStr);
+      }
+    } catch {
+      // Safe fallback
+    }
+  }, [rawFacility, selectedGroundId, selectedDate, bookings, customSlotOverrides, selectedSlotTime]);
 
   // Document title
   useEffect(() => {

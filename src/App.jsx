@@ -102,12 +102,15 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
 
-            {/* Cinematic Fullscreen Intro Landing Page (Pure White #FFFFFF) */}
-            <Route path="/" element={<IntroPage />} />
+            {/* Optional Cinematic Intro Page */}
             <Route path="/intro" element={<IntroPage />} />
+
+            {/* Standalone Public Cost Split Share Route */}
+            <Route path="/splits/:shareToken" element={<PublicSplitView />} />
 
             {/* Main Application Shell */}
             <Route element={<Layout />}>
+              <Route index element={<Home />} />
               <Route path="home" element={<Home />} />
 
           {/* Facilities & Grounds Feature Routes */}
