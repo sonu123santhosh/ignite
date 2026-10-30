@@ -9,6 +9,7 @@ import IntroPage from './pages/IntroPage';
 import Facilities from './pages/Facilities';
 import FacilityDetails from './pages/FacilityDetails';
 import FacilityCheckout from './pages/FacilityCheckout';
+import MyBookingsPage from './pages/facility/MyBookingsPage';
 
 // Tournaments Feature Pages
 import Tournaments from './pages/Tournaments';
@@ -146,6 +147,8 @@ export default function App() {
               />
             }
           />
+          <Route path="facilities/my-bookings" element={<MyBookingsPage />} />
+          <Route path="facilities/my-bookings/:id" element={<MyBookingsPage />} />
 
           {/* Tournaments Feature Routes */}
           <Route

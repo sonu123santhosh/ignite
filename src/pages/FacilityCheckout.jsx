@@ -14,6 +14,7 @@ import {
 import Button from '../components/Button';
 import { createBookingSplit } from '../services/costSplitService';
 import CostSplitBreakdownView from '../components/facility/CostSplitBreakdownView';
+import { recordNewBooking } from '../services/bookingHistoryService';
 import { useAuth } from '../context/AuthContext';
 import Tag from '../components/Tag';
 import { checkSlotOverlap, INITIAL_FACILITIES } from '../data/facilitiesData';
@@ -120,8 +121,12 @@ export default function FacilityCheckout({
       notes: notes.trim(),
       status: 'Confirmed',
       createdAt: new Date().toISOString(),
-      isSample: true
+      userId: currentUser?.id || 'usr_guest',
+      priceBreakdown: selection.priceBreakdown,
+      isSample: false
     };
+
+    recordNewBooking(newBooking);
 
     // Save to shared in-memory bookings state
     setSharedState((prev) => ({

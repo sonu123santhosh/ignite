@@ -33,7 +33,7 @@ import {
 
 export default function Facilities({ sharedRole, onRoleChange, sharedState, setSharedState }) {
   const outletContext = useOutletContext() || {};
-  const showToast = outletContext.showToast || (() => {});
+  const showToast = outletContext.showToast || (() => { });
   const todayStr = getRelativeDateStr(0);
 
   // Role: 'player' | 'owner'
@@ -272,15 +272,16 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
               </div>
 
               <div className="flex items-center gap-2 shrink-0">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setIsMyBookingsOpen(true)}
-                  className="gap-2 text-xs hover:border-rose-400 hover:text-white"
-                >
-                  <BookmarkCheck className="w-4 h-4 text-rose-400" />
-                  <span>My Bookings ({bookings.filter(b => b.status === 'Confirmed').length})</span>
-                </Button>
+                <Link to="/facilities/my-bookings">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="gap-2 text-xs hover:border-rose-400 hover:text-white cursor-pointer"
+                  >
+                    <BookmarkCheck className="w-4 h-4 text-rose-400" />
+                    <span>My Bookings</span>
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -427,9 +428,8 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                   type="button"
                   onClick={() => setViewMode('grid')}
                   aria-pressed={viewMode === 'grid'}
-                  className={`p-1.5 rounded-lg text-xs transition-all cursor-pointer ${
-                    viewMode === 'grid' ? 'bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-md shadow-red-950/40' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
-                  }`}
+                  className={`p-1.5 rounded-lg text-xs transition-all cursor-pointer ${viewMode === 'grid' ? 'bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-md shadow-red-950/40' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
+                    }`}
                   title="Grid View"
                 >
                   <LayoutGrid className="w-4 h-4" />
@@ -438,9 +438,8 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                   type="button"
                   onClick={() => setViewMode('list')}
                   aria-pressed={viewMode === 'list'}
-                  className={`p-1.5 rounded-lg text-xs transition-all cursor-pointer ${
-                    viewMode === 'list' ? 'bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-md shadow-red-950/40' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
-                  }`}
+                  className={`p-1.5 rounded-lg text-xs transition-all cursor-pointer ${viewMode === 'list' ? 'bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-md shadow-red-950/40' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
+                    }`}
                   title="List View"
                 >
                   <List className="w-4 h-4" />
@@ -449,9 +448,8 @@ export default function Facilities({ sharedRole, onRoleChange, sharedState, setS
                   type="button"
                   onClick={() => setViewMode('map')}
                   aria-pressed={viewMode === 'map'}
-                  className={`p-1.5 rounded-lg text-xs transition-all cursor-pointer ${
-                    viewMode === 'map' ? 'bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-md shadow-red-950/40' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
-                  }`}
+                  className={`p-1.5 rounded-lg text-xs transition-all cursor-pointer ${viewMode === 'map' ? 'bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-md shadow-red-950/40' : 'text-[#94A3B8] hover:text-[#F5F7FA]'
+                    }`}
                   title="Map View"
                 >
                   <MapIcon className="w-4 h-4" />
